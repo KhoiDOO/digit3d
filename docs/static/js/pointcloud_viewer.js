@@ -28,79 +28,108 @@
     return sharedRenderer;
   }
 
-  // 2. Parse ASCII PLY format and normalize geometry bounds
+  // 2. Parse ASCII PLY format (supports both Point Clouds & 3D Triangle Meshes)
   function parsePLY(text) {
     const lines = text.split('\n');
     let headerEnded = false;
+    let numVertices = 0;
+    let numFaces = 0;
     const positions = [];
     const colors = [];
     const normals = [];
+    const faces = [];
+    let vertexCount = 0;
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i].trim();
       if (!line) continue;
 
       if (!headerEnded) {
-        if (line === 'end_header') {
+        if (line.startsWith('element vertex')) {
+          numVertices = parseInt(line.split(/\s+/)[2], 10) || 0;
+        } else if (line.startsWith('element face')) {
+          numFaces = parseInt(line.split(/\s+/)[2], 10) || 0;
+        } else if (line === 'end_header') {
           headerEnded = true;
         }
         continue;
       }
 
       const parts = line.split(/\s+/);
-      if (parts.length >= 3) {
-        const x = parseFloat(parts[0]);
-        const y = parseFloat(parts[1]);
-        const z = parseFloat(parts[2]);
+      if (vertexCount < numVertices || numFaces === 0) {
+        if (parts.length >= 3) {
+          const x = parseFloat(parts[0]);
+          const y = parseFloat(parts[1]);
+          const z = parseFloat(parts[2]);
 
-        if (isNaN(x) || isNaN(y) || isNaN(z)) continue;
+          if (!isNaN(x) && !isNaN(y) && !isNaN(z)) {
+            positions.push(x, z, -y);
 
-        // Digit3D point clouds: X is width, Z is height, Y is thickness
-        // Reorient so that X is horizontal, Z is vertical (upright), Y is depth
-        positions.push(x, z, -y);
+            if (parts.length >= 6) {
+              const nx = parseFloat(parts[3]);
+              const ny = parseFloat(parts[4]);
+              const nz = parseFloat(parts[5]);
 
-        if (parts.length >= 6) {
-          const nx = parseFloat(parts[3]);
-          const ny = parseFloat(parts[4]);
-          const nz = parseFloat(parts[5]);
+              const normX = isNaN(nx) ? 0 : nx;
+              const normY = isNaN(nz) ? 0 : nz;
+              const normZ = isNaN(ny) ? 0 : -ny;
+              normals.push(normX, normY, normZ);
 
-          const normX = isNaN(nx) ? 0 : nx;
-          const normY = isNaN(nz) ? 0 : nz;
-          const normZ = isNaN(ny) ? 0 : -ny;
-
-          normals.push(normX, normY, normZ);
-
-          // Map normal [-1, 1] to vibrant RGB [0.12, 1.0]
-          const r = Math.min(1.0, Math.max(0.12, 0.5 * normX + 0.5));
-          const g = Math.min(1.0, Math.max(0.12, 0.5 * normY + 0.5));
-          const b = Math.min(1.0, Math.max(0.12, 0.5 * normZ + 0.5));
-          colors.push(r, g, b);
-        } else {
-          colors.push(0.35, 0.75, 1.0);
+              const r = Math.min(1.0, Math.max(0.12, 0.5 * normX + 0.5));
+              const g = Math.min(1.0, Math.max(0.12, 0.5 * normY + 0.5));
+              const b = Math.min(1.0, Math.max(0.12, 0.5 * normZ + 0.5));
+              colors.push(r, g, b);
+            } else {
+              colors.push(0.35, 0.75, 1.0);
+            }
+            vertexCount++;
+          }
+        }
+      } else {
+        if (parts.length >= 4) {
+          const count = parseInt(parts[0], 10);
+          if (count === 3) {
+            faces.push(parseInt(parts[1], 10), parseInt(parts[2], 10), parseInt(parts[3], 10));
+          } else if (count === 4) {
+            const i0 = parseInt(parts[1], 10);
+            const i1 = parseInt(parts[2], 10);
+            const i2 = parseInt(parts[3], 10);
+            const i3 = parseInt(parts[4], 10);
+            faces.push(i0, i1, i2, i0, i2, i3);
+          }
         }
       }
     }
 
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-    if (colors.length > 0) {
-      geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-    }
-    if (normals.length > 0) {
-      geometry.setAttribute('normal', new THREE.Float32BufferAttribute(normals, 3));
+
+    const isMesh = faces.length > 0;
+    if (isMesh) {
+      geometry.setIndex(faces);
+      geometry.computeVertexNormals();
+    } else {
+      if (colors.length > 0) {
+        geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+      }
+      if (normals.length > 0) {
+        geometry.setAttribute('normal', new THREE.Float32BufferAttribute(normals, 3));
+      }
     }
 
     geometry.center();
     geometry.computeBoundingSphere();
 
-    // Auto-scale geometry to standard radius (0.85) so every digit is completely visible without truncation
     if (geometry.boundingSphere && geometry.boundingSphere.radius > 0) {
       const scale = 0.85 / geometry.boundingSphere.radius;
       geometry.scale(scale, scale, scale);
       geometry.computeBoundingSphere();
     }
 
-    return geometry;
+    return {
+      geometry: geometry,
+      isMesh: isMesh
+    };
   }
 
   // 3. Create smooth circular point particle material
@@ -111,7 +140,7 @@
     const ctx = canvas.getContext('2d');
     const grad = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
     grad.addColorStop(0.0, 'rgba(255, 255, 255, 1.0)');
-    grad.addColorStop(0.7, 'rgba(255, 255, 255, 0.9)');
+    grad.addColorStop(0.75, 'rgba(255, 255, 255, 0.9)');
     grad.addColorStop(1.0, 'rgba(255, 255, 255, 0.0)');
     ctx.fillStyle = grad;
     ctx.beginPath();
@@ -131,7 +160,7 @@
     });
   }
 
-  // 4. Point Cloud Item Controller
+  // 4. Geometry Item Controller
   class PointCloudCard {
     constructor(container) {
       this.container = container;
@@ -145,6 +174,7 @@
       this.cameraDistance = 2.4;
       this.pitch = 0.1;
       this.isLoaded = false;
+      this.object3d = null;
 
       // 2D Output Canvas
       this.canvas = document.createElement('canvas');
@@ -157,8 +187,12 @@
       this.camera = new THREE.PerspectiveCamera(45, 1.0, 0.01, 50);
       this.camera.position.set(0, 0, this.cameraDistance);
 
-      const light = new THREE.AmbientLight(0xffffff, 1.0);
-      this.scene.add(light);
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+      this.scene.add(ambientLight);
+
+      const dirLight = new THREE.DirectionalLight(0xffffff, 0.6);
+      dirLight.position.set(2, 4, 3);
+      this.scene.add(dirLight);
 
       this.showSpinner();
       this.setupEvents();
@@ -188,10 +222,21 @@
           return res.text();
         })
         .then((text) => {
-          this.geometry = parsePLY(text);
-          this.material = createPointMaterial(this.pointSize);
-          this.points = new THREE.Points(this.geometry, this.material);
-          this.scene.add(this.points);
+          const parsed = parsePLY(text);
+          this.geometry = parsed.geometry;
+
+          if (parsed.isMesh) {
+            this.material = new THREE.MeshNormalMaterial({
+              side: THREE.DoubleSide,
+              flatShading: false
+            });
+            this.object3d = new THREE.Mesh(this.geometry, this.material);
+          } else {
+            this.material = createPointMaterial(this.pointSize);
+            this.object3d = new THREE.Points(this.geometry, this.material);
+          }
+
+          this.scene.add(this.object3d);
           this.isLoaded = true;
           this.hideSpinner();
           this.renderToCanvas();
@@ -282,7 +327,7 @@
     }
 
     renderToCanvas() {
-      if (!this.isLoaded || !this.points) return;
+      if (!this.isLoaded || !this.object3d) return;
 
       const renderer = getSharedRenderer();
       const w = this.canvas.width;
@@ -371,11 +416,21 @@
     const closeBtn = modal.querySelector('.modal-close-btn');
     const modalBackground = modal.querySelector('.modal-background');
     const titleEl = modal.querySelector('.modal-sample-title');
+    const statsEl = modal.querySelector('.modal-stats-badge');
     let modalCard = null;
 
-    function openModal(plyPath, title) {
+    function openModal(plyPath, title, stats) {
       modal.classList.add('is-active');
-      titleEl.textContent = title || '3D Point Cloud Sample';
+      titleEl.textContent = title || '3D Geometry Inspector';
+      if (statsEl) {
+        if (stats) {
+          statsEl.textContent = stats;
+          statsEl.style.display = 'inline-block';
+        } else {
+          statsEl.textContent = '';
+          statsEl.style.display = 'none';
+        }
+      }
       modalContainer.innerHTML = '';
 
       modalContainer.setAttribute('data-ply', plyPath);
@@ -410,7 +465,8 @@
       if (expandBtn) {
         const plyPath = expandBtn.getAttribute('data-ply');
         const title = expandBtn.getAttribute('data-title');
-        if (plyPath) openModal(plyPath, title);
+        const stats = expandBtn.getAttribute('data-stats');
+        if (plyPath) openModal(plyPath, title, stats);
       }
     });
   }

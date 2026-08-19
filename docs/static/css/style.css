@@ -455,6 +455,95 @@ code {
   min-height: 200px;
 }
 
+/* Sparse Voxel Reconstruction Mesh Cards */
+.mesh-recon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.25rem;
+}
+
+.mesh-pair-card {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: all 0.25s ease;
+}
+
+.mesh-pair-card:hover {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 8px 25px rgba(56, 189, 248, 0.2);
+  transform: translateY(-3px);
+}
+
+.mesh-pair-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.mesh-view-wrapper {
+  background: #020617;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.mesh-expand-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 2;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-muted);
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.mesh-expand-btn:hover {
+  color: #fff;
+  border-color: var(--primary);
+  background: var(--primary);
+}
+
+.mesh-view-wrapper .ply-viewer {
+  width: 100%;
+  height: 180px;
+  min-height: 180px;
+}
+
+.mesh-view-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 0.4rem;
+  text-align: center;
+}
+
+.mesh-view-label.gt-label {
+  color: #38bdf8;
+}
+
+.mesh-view-label.recon-label {
+  color: #ec4899;
+}
+
 /* Spinner */
 .ply-spinner {
   position: absolute;
@@ -508,6 +597,24 @@ code {
   margin-bottom: 1rem;
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 0.75rem;
+}
+
+.modal-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.modal-stats-badge {
+  background: rgba(99, 102, 241, 0.18);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  color: #c7d2fe;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
 }
 
 .modal-viewer-container {

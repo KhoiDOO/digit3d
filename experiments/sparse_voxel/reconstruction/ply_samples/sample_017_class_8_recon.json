@@ -1,0 +1,8 @@
+{
+    "sample_idx": 26,
+    "class_label": 8,
+    "num_active_voxels": 1133,
+    "num_grid_vertices": 2149,
+    "num_mesh_vertices": 1134,
+    "num_mesh_triangles": 2257
+}
