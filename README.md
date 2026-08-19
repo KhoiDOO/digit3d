@@ -29,21 +29,37 @@ digit3d/
 │   ├── compute.py                     # Mesh -> Sparse SDF narrow-band computation (GPU BVH)
 │   └── run.sh                         # Complete end-to-end dataset generation bash script
 │
+├── docs/                               # Interactive academic project page & WebGL viewers
+│
 └── experiments/
-    └── pc/                            # Point Cloud experiments
-        ├── classification/            # 3D Classification benchmark
-        │   ├── models.py              # PointTransformerCls model definition
+    ├── pc/                            # Point Cloud experiments
+    │   ├── classification/            # 3D Point Cloud classification benchmark
+    │   │   ├── models.py              # PointTransformerCls model definition
+    │   │   ├── train.py               # Classification training script
+    │   │   ├── eval.py                # Evaluation & misclassified case export (.ply + .png)
+    │   │   └── eval_results.json      # Benchmark metrics & per-class breakdown
+    │   │
+    │   └── generation/                # 3D Generative modeling & continuous flows
+    │       ├── transformer.py         # PointTransformer, ClassConditioned, ImgConditionPointTransformer
+    │       ├── train.py               # RectifiedFlow, MeanFlow, SoFlow training
+    │       ├── generation.py          # Image-conditioned & class-conditioned 3D sampling
+    │       ├── interpolation.py       # Latent shape morphing & class interpolation
+    │       ├── fid.py                 # Fréchet Distance evaluation for 3D point clouds
+    │       └── checkpoint.py          # Memory-efficient gradient checkpointing
+    │
+    └── sparse_voxel/                  # Sparse Voxel experiments
+        ├── classification/            # Sparse Voxel ResNet classification benchmark
+        │   ├── models.py              # SparseClassifier architecture
         │   ├── train.py               # Classification training script
-        │   ├── eval.py                # Evaluation & misclassified case export (.ply + .png)
-        │   └── eval_results.json      # Benchmark metrics & per-class evaluation breakdown
+        │   ├── eval.py                # Evaluation & misclassified error export (.ply + .png)
+        │   └── eval_results.json      # Benchmark metrics & per-class breakdown
         │
-        └── generation/                # 3D Generative modeling & flow matching
-            ├── transformer.py         # PointTransformer, ClassConditioned, ImgConditionPointTransformer
-            ├── train.py               # RectifiedFlow, MeanFlow, SoFlow training
-            ├── generation.py          # Image-conditioned & class-conditioned 3D sampling
-            ├── interpolation.py       # Latent shape morphing & class interpolation
-            ├── fid.py                 # Fréchet Distance evaluation for 3D point clouds
-            └── checkpoint.py          # Memory-efficient gradient checkpointing
+        └── reconstruction/            # Sparse Voxel VAE 3D reconstruction
+            ├── models.py              # SimpleSparseVAE architecture
+            ├── train.py               # VAE reconstruction training script
+            ├── generation.py          # 3D Mesh reconstruction & ply_samples export
+            ├── eval.py                # Reconstruction evaluation (Chamfer Distance, SDF MSE)
+            └── arch.py                # Layer-by-layer stride & coordinate inspection
 ```
 
 ---
