@@ -1,0 +1,6009 @@
+{
+    "mean_chamfer_distance": NaN,
+    "median_chamfer_distance": NaN,
+    "mean_sdf_mse": 0.0010010670731317077,
+    "total_evaluated_samples": 1000,
+    "valid_mesh_reconstructions": 1000,
+    "per_sample_metrics": [
+        {
+            "sample_idx": 0,
+            "label": 1,
+            "sdf_mse": 0.00010853129060706124,
+            "chamfer_distance": 0.0074721467681229115
+        },
+        {
+            "sample_idx": 1,
+            "label": 6,
+            "sdf_mse": 9.44135244935751e-05,
+            "chamfer_distance": 0.008673228323459625
+        },
+        {
+            "sample_idx": 2,
+            "label": 2,
+            "sdf_mse": 9.985852375393733e-05,
+            "chamfer_distance": 0.0104483962059021
+        },
+        {
+            "sample_idx": 3,
+            "label": 1,
+            "sdf_mse": 7.47690282878466e-05,
+            "chamfer_distance": 0.007737950421869755
+        },
+        {
+            "sample_idx": 4,
+            "label": 0,
+            "sdf_mse": 0.00013696783571504056,
+            "chamfer_distance": 0.01137885544449091
+        },
+        {
+            "sample_idx": 5,
+            "label": 4,
+            "sdf_mse": 9.283605322707444e-05,
+            "chamfer_distance": 0.009196021594107151
+        },
+        {
+            "sample_idx": 6,
+            "label": 1,
+            "sdf_mse": 0.07793111354112625,
+            "chamfer_distance": 0.4654664695262909
+        },
+        {
+            "sample_idx": 7,
+            "label": 1,
+            "sdf_mse": 0.0001177269296022132,
+            "chamfer_distance": 0.011083878576755524
+        },
+        {
+            "sample_idx": 8,
+            "label": 5,
+            "sdf_mse": 9.379210678162053e-05,
+            "chamfer_distance": 0.011734044179320335
+        },
+        {
+            "sample_idx": 9,
+            "label": 2,
+            "sdf_mse": 0.00011751284182537347,
+            "chamfer_distance": 0.013424409553408623
+        },
+        {
+            "sample_idx": 10,
+            "label": 6,
+            "sdf_mse": 0.0061661796644330025,
+            "chamfer_distance": 0.047595977783203125
+        },
+        {
+            "sample_idx": 11,
+            "label": 2,
+            "sdf_mse": 9.129491809289902e-05,
+            "chamfer_distance": 0.010015685111284256
+        },
+        {
+            "sample_idx": 12,
+            "label": 6,
+            "sdf_mse": 9.58765231189318e-05,
+            "chamfer_distance": 0.00799689069390297
+        },
+        {
+            "sample_idx": 13,
+            "label": 1,
+            "sdf_mse": 0.00939385686069727,
+            "chamfer_distance": 0.06472831219434738
+        },
+        {
+            "sample_idx": 14,
+            "label": 4,
+            "sdf_mse": 8.560868445783854e-05,
+            "chamfer_distance": 0.006701652891933918
+        },
+        {
+            "sample_idx": 15,
+            "label": 2,
+            "sdf_mse": 0.00010761915473267436,
+            "chamfer_distance": 0.009431092068552971
+        },
+        {
+            "sample_idx": 16,
+            "label": 9,
+            "sdf_mse": 9.165016672341153e-05,
+            "chamfer_distance": 0.009748833253979683
+        },
+        {
+            "sample_idx": 17,
+            "label": 4,
+            "sdf_mse": 8.5701365605928e-05,
+            "chamfer_distance": 0.011529031209647655
+        },
+        {
+            "sample_idx": 18,
+            "label": 5,
+            "sdf_mse": 8.188011997845024e-05,
+            "chamfer_distance": 0.010307260788977146
+        },
+        {
+            "sample_idx": 19,
+            "label": 1,
+            "sdf_mse": 6.94454211043194e-05,
+            "chamfer_distance": 0.006939489860087633
+        },
+        {
+            "sample_idx": 20,
+            "label": 1,
+            "sdf_mse": 0.08733171224594116,
+            "chamfer_distance": 0.4857425391674042
+        },
+        {
+            "sample_idx": 21,
+            "label": 8,
+            "sdf_mse": 0.00011320658813929185,
+            "chamfer_distance": 0.010254397056996822
+        },
+        {
+            "sample_idx": 22,
+            "label": 1,
+            "sdf_mse": 7.081699004629627e-05,
+            "chamfer_distance": 0.00866663083434105
+        },
+        {
+            "sample_idx": 23,
+            "label": 3,
+            "sdf_mse": 9.73143323790282e-05,
+            "chamfer_distance": 0.009956141002476215
+        },
+        {
+            "sample_idx": 24,
+            "label": 2,
+            "sdf_mse": 7.744274626020342e-05,
+            "chamfer_distance": 0.010047310963273048
+        },
+        {
+            "sample_idx": 25,
+            "label": 1,
+            "sdf_mse": 8.442169200861827e-05,
+            "chamfer_distance": 0.045802388340234756
+        },
+        {
+            "sample_idx": 26,
+            "label": 8,
+            "sdf_mse": 0.0001243815349880606,
+            "chamfer_distance": 0.008652154356241226
+        },
+        {
+            "sample_idx": 27,
+            "label": 9,
+            "sdf_mse": 7.938675844343379e-05,
+            "chamfer_distance": 0.007899061776697636
+        },
+        {
+            "sample_idx": 28,
+            "label": 1,
+            "sdf_mse": 7.449564145645127e-05,
+            "chamfer_distance": 0.006594346836209297
+        },
+        {
+            "sample_idx": 29,
+            "label": 7,
+            "sdf_mse": 0.00011091287160525098,
+            "chamfer_distance": 0.01407129317522049
+        },
+        {
+            "sample_idx": 30,
+            "label": 5,
+            "sdf_mse": 8.989858179120347e-05,
+            "chamfer_distance": 0.009725576266646385
+        },
+        {
+            "sample_idx": 31,
+            "label": 7,
+            "sdf_mse": 8.192266977857798e-05,
+            "chamfer_distance": 0.008291274309158325
+        },
+        {
+            "sample_idx": 32,
+            "label": 5,
+            "sdf_mse": 0.00015718124632257968,
+            "chamfer_distance": 0.011050575412809849
+        },
+        {
+            "sample_idx": 33,
+            "label": 5,
+            "sdf_mse": 8.623624307801947e-05,
+            "chamfer_distance": 0.01274512242525816
+        },
+        {
+            "sample_idx": 34,
+            "label": 1,
+            "sdf_mse": 9.622157813282683e-05,
+            "chamfer_distance": 0.007952390238642693
+        },
+        {
+            "sample_idx": 35,
+            "label": 7,
+            "sdf_mse": 8.658397564431652e-05,
+            "chamfer_distance": 0.007323878817260265
+        },
+        {
+            "sample_idx": 36,
+            "label": 0,
+            "sdf_mse": 0.0018784771673381329,
+            "chamfer_distance": 0.022322067990899086
+        },
+        {
+            "sample_idx": 37,
+            "label": 1,
+            "sdf_mse": 9.680045332061127e-05,
+            "chamfer_distance": 0.04597930982708931
+        },
+        {
+            "sample_idx": 38,
+            "label": 1,
+            "sdf_mse": 6.476037378888577e-05,
+            "chamfer_distance": 0.006158558651804924
+        },
+        {
+            "sample_idx": 39,
+            "label": 7,
+            "sdf_mse": 8.591706136940047e-05,
+            "chamfer_distance": 0.008024770766496658
+        },
+        {
+            "sample_idx": 40,
+            "label": 2,
+            "sdf_mse": 0.00010060735803563148,
+            "chamfer_distance": 0.011574916541576385
+        },
+        {
+            "sample_idx": 41,
+            "label": 9,
+            "sdf_mse": 8.472049375995994e-05,
+            "chamfer_distance": 0.007757049985229969
+        },
+        {
+            "sample_idx": 42,
+            "label": 3,
+            "sdf_mse": 9.968320227926597e-05,
+            "chamfer_distance": 0.012809696607291698
+        },
+        {
+            "sample_idx": 43,
+            "label": 3,
+            "sdf_mse": 0.00010073235171148553,
+            "chamfer_distance": 0.010706483386456966
+        },
+        {
+            "sample_idx": 44,
+            "label": 2,
+            "sdf_mse": 0.00012282750685699284,
+            "chamfer_distance": 0.014368298463523388
+        },
+        {
+            "sample_idx": 45,
+            "label": 0,
+            "sdf_mse": 8.90765804797411e-05,
+            "chamfer_distance": 0.011365711688995361
+        },
+        {
+            "sample_idx": 46,
+            "label": 1,
+            "sdf_mse": 0.0001328080688836053,
+            "chamfer_distance": 0.013077774085104465
+        },
+        {
+            "sample_idx": 47,
+            "label": 1,
+            "sdf_mse": 0.00022457909653894603,
+            "chamfer_distance": 0.016136936843395233
+        },
+        {
+            "sample_idx": 48,
+            "label": 5,
+            "sdf_mse": 0.00010535428737057373,
+            "chamfer_distance": 0.01009686104953289
+        },
+        {
+            "sample_idx": 49,
+            "label": 4,
+            "sdf_mse": 9.418361150892451e-05,
+            "chamfer_distance": 0.007352081127464771
+        },
+        {
+            "sample_idx": 50,
+            "label": 9,
+            "sdf_mse": 0.00011285518849035725,
+            "chamfer_distance": 0.009942947886884212
+        },
+        {
+            "sample_idx": 51,
+            "label": 9,
+            "sdf_mse": 0.00011677320435410365,
+            "chamfer_distance": 0.010720830410718918
+        },
+        {
+            "sample_idx": 52,
+            "label": 8,
+            "sdf_mse": 0.00010562244278844446,
+            "chamfer_distance": 0.009072043932974339
+        },
+        {
+            "sample_idx": 53,
+            "label": 7,
+            "sdf_mse": 9.236066398443654e-05,
+            "chamfer_distance": 0.008312324993312359
+        },
+        {
+            "sample_idx": 54,
+            "label": 7,
+            "sdf_mse": 9.590972331352532e-05,
+            "chamfer_distance": 0.011765317060053349
+        },
+        {
+            "sample_idx": 55,
+            "label": 8,
+            "sdf_mse": 9.73351052380167e-05,
+            "chamfer_distance": 0.00932277087122202
+        },
+        {
+            "sample_idx": 56,
+            "label": 8,
+            "sdf_mse": 0.00011426374112488702,
+            "chamfer_distance": 0.010653511621057987
+        },
+        {
+            "sample_idx": 57,
+            "label": 9,
+            "sdf_mse": 9.506667265668511e-05,
+            "chamfer_distance": 0.009282460436224937
+        },
+        {
+            "sample_idx": 58,
+            "label": 8,
+            "sdf_mse": 0.00012186456297058612,
+            "chamfer_distance": 0.011639251373708248
+        },
+        {
+            "sample_idx": 59,
+            "label": 1,
+            "sdf_mse": 0.00018645013915374875,
+            "chamfer_distance": 0.010024392046034336
+        },
+        {
+            "sample_idx": 60,
+            "label": 2,
+            "sdf_mse": 9.388323087478057e-05,
+            "chamfer_distance": 0.013392211869359016
+        },
+        {
+            "sample_idx": 61,
+            "label": 7,
+            "sdf_mse": 0.00010223566641798243,
+            "chamfer_distance": 0.008278317749500275
+        },
+        {
+            "sample_idx": 62,
+            "label": 7,
+            "sdf_mse": 0.0001193691641674377,
+            "chamfer_distance": 0.011758586391806602
+        },
+        {
+            "sample_idx": 63,
+            "label": 1,
+            "sdf_mse": 8.345294918399304e-05,
+            "chamfer_distance": 0.0056262388825416565
+        },
+        {
+            "sample_idx": 64,
+            "label": 8,
+            "sdf_mse": 0.00011603251186897978,
+            "chamfer_distance": 0.011421460658311844
+        },
+        {
+            "sample_idx": 65,
+            "label": 9,
+            "sdf_mse": 9.097333531826735e-05,
+            "chamfer_distance": 0.00958976335823536
+        },
+        {
+            "sample_idx": 66,
+            "label": 7,
+            "sdf_mse": 9.560077887726948e-05,
+            "chamfer_distance": 0.013254019431769848
+        },
+        {
+            "sample_idx": 67,
+            "label": 2,
+            "sdf_mse": 9.33952396735549e-05,
+            "chamfer_distance": 0.01500751357525587
+        },
+        {
+            "sample_idx": 68,
+            "label": 5,
+            "sdf_mse": 0.00010458056931383908,
+            "chamfer_distance": 0.012346366420388222
+        },
+        {
+            "sample_idx": 69,
+            "label": 6,
+            "sdf_mse": 0.00011968561739195138,
+            "chamfer_distance": 0.010444452986121178
+        },
+        {
+            "sample_idx": 70,
+            "label": 5,
+            "sdf_mse": 0.00011793893645517528,
+            "chamfer_distance": 0.019226303324103355
+        },
+        {
+            "sample_idx": 71,
+            "label": 9,
+            "sdf_mse": 8.824145334074274e-05,
+            "chamfer_distance": 0.010301265865564346
+        },
+        {
+            "sample_idx": 72,
+            "label": 5,
+            "sdf_mse": 0.00011504549911478534,
+            "chamfer_distance": 0.009855302050709724
+        },
+        {
+            "sample_idx": 73,
+            "label": 4,
+            "sdf_mse": 8.106186578515917e-05,
+            "chamfer_distance": 0.008401182480156422
+        },
+        {
+            "sample_idx": 74,
+            "label": 3,
+            "sdf_mse": 0.00010285132157150656,
+            "chamfer_distance": 0.01096398662775755
+        },
+        {
+            "sample_idx": 75,
+            "label": 7,
+            "sdf_mse": 0.00012156482989666983,
+            "chamfer_distance": 0.010880623944103718
+        },
+        {
+            "sample_idx": 76,
+            "label": 0,
+            "sdf_mse": 0.00010654576908564195,
+            "chamfer_distance": 0.011696304194629192
+        },
+        {
+            "sample_idx": 77,
+            "label": 8,
+            "sdf_mse": 0.00010142145038116723,
+            "chamfer_distance": 0.009480093605816364
+        },
+        {
+            "sample_idx": 78,
+            "label": 1,
+            "sdf_mse": 6.641806976404041e-05,
+            "chamfer_distance": 0.007192562334239483
+        },
+        {
+            "sample_idx": 79,
+            "label": 9,
+            "sdf_mse": 9.812667121877894e-05,
+            "chamfer_distance": 0.008739679120481014
+        },
+        {
+            "sample_idx": 80,
+            "label": 2,
+            "sdf_mse": 0.0001088644057745114,
+            "chamfer_distance": 0.010509893298149109
+        },
+        {
+            "sample_idx": 81,
+            "label": 8,
+            "sdf_mse": 9.425356984138489e-05,
+            "chamfer_distance": 0.008698506280779839
+        },
+        {
+            "sample_idx": 82,
+            "label": 1,
+            "sdf_mse": 7.385173375951126e-05,
+            "chamfer_distance": 0.00587549339979887
+        },
+        {
+            "sample_idx": 83,
+            "label": 2,
+            "sdf_mse": 8.679204620420933e-05,
+            "chamfer_distance": 0.012559095397591591
+        },
+        {
+            "sample_idx": 84,
+            "label": 7,
+            "sdf_mse": 0.00012963206972926855,
+            "chamfer_distance": 0.009536401368677616
+        },
+        {
+            "sample_idx": 85,
+            "label": 6,
+            "sdf_mse": 0.0001272767985938117,
+            "chamfer_distance": 0.012900762259960175
+        },
+        {
+            "sample_idx": 86,
+            "label": 7,
+            "sdf_mse": 0.00015539837477263063,
+            "chamfer_distance": 0.008509855717420578
+        },
+        {
+            "sample_idx": 87,
+            "label": 5,
+            "sdf_mse": 0.0001282755401916802,
+            "chamfer_distance": 0.011539430357515812
+        },
+        {
+            "sample_idx": 88,
+            "label": 1,
+            "sdf_mse": 0.00023152606445364654,
+            "chamfer_distance": 0.014085455797612667
+        },
+        {
+            "sample_idx": 89,
+            "label": 1,
+            "sdf_mse": 6.345252768369392e-05,
+            "chamfer_distance": 0.014640511013567448
+        },
+        {
+            "sample_idx": 90,
+            "label": 1,
+            "sdf_mse": 6.400233542080969e-05,
+            "chamfer_distance": 0.006116956472396851
+        },
+        {
+            "sample_idx": 91,
+            "label": 4,
+            "sdf_mse": 8.169616194209084e-05,
+            "chamfer_distance": 0.009715709835290909
+        },
+        {
+            "sample_idx": 92,
+            "label": 8,
+            "sdf_mse": 0.00010839467722689733,
+            "chamfer_distance": 0.010219576768577099
+        },
+        {
+            "sample_idx": 93,
+            "label": 8,
+            "sdf_mse": 0.00013623706763610244,
+            "chamfer_distance": 0.009920796379446983
+        },
+        {
+            "sample_idx": 94,
+            "label": 2,
+            "sdf_mse": 7.729786011623219e-05,
+            "chamfer_distance": 0.009550283662974834
+        },
+        {
+            "sample_idx": 95,
+            "label": 8,
+            "sdf_mse": 0.055549465119838715,
+            "chamfer_distance": 0.1666230410337448
+        },
+        {
+            "sample_idx": 96,
+            "label": 5,
+            "sdf_mse": 9.492362005403265e-05,
+            "chamfer_distance": 0.007665163371711969
+        },
+        {
+            "sample_idx": 97,
+            "label": 0,
+            "sdf_mse": 9.111768304137513e-05,
+            "chamfer_distance": 0.01177174225449562
+        },
+        {
+            "sample_idx": 98,
+            "label": 1,
+            "sdf_mse": 0.07583341747522354,
+            "chamfer_distance": 0.17501279711723328
+        },
+        {
+            "sample_idx": 99,
+            "label": 8,
+            "sdf_mse": 0.00010895263403654099,
+            "chamfer_distance": 0.01270180195569992
+        },
+        {
+            "sample_idx": 100,
+            "label": 6,
+            "sdf_mse": 0.00019483819778542966,
+            "chamfer_distance": 0.009436294436454773
+        },
+        {
+            "sample_idx": 101,
+            "label": 0,
+            "sdf_mse": 0.00012401191634126008,
+            "chamfer_distance": 0.016113700345158577
+        },
+        {
+            "sample_idx": 102,
+            "label": 1,
+            "sdf_mse": 7.779424049658701e-05,
+            "chamfer_distance": 0.01336170919239521
+        },
+        {
+            "sample_idx": 103,
+            "label": 1,
+            "sdf_mse": 6.45645777694881e-05,
+            "chamfer_distance": 0.006156564690172672
+        },
+        {
+            "sample_idx": 104,
+            "label": 4,
+            "sdf_mse": 7.607296720379964e-05,
+            "chamfer_distance": 0.008709277957677841
+        },
+        {
+            "sample_idx": 105,
+            "label": 7,
+            "sdf_mse": 9.065873018698767e-05,
+            "chamfer_distance": 0.006684359163045883
+        },
+        {
+            "sample_idx": 106,
+            "label": 2,
+            "sdf_mse": 9.541731560602784e-05,
+            "chamfer_distance": 0.011088776402175426
+        },
+        {
+            "sample_idx": 107,
+            "label": 7,
+            "sdf_mse": 8.605566108599305e-05,
+            "chamfer_distance": 0.007192447781562805
+        },
+        {
+            "sample_idx": 108,
+            "label": 6,
+            "sdf_mse": 8.804727258393541e-05,
+            "chamfer_distance": 0.0103007722645998
+        },
+        {
+            "sample_idx": 109,
+            "label": 5,
+            "sdf_mse": 0.00011449916928540915,
+            "chamfer_distance": 0.009561517275869846
+        },
+        {
+            "sample_idx": 110,
+            "label": 7,
+            "sdf_mse": 9.197555482387543e-05,
+            "chamfer_distance": 0.009324124082922935
+        },
+        {
+            "sample_idx": 111,
+            "label": 9,
+            "sdf_mse": 0.00011427772551542148,
+            "chamfer_distance": 0.012459836900234222
+        },
+        {
+            "sample_idx": 112,
+            "label": 0,
+            "sdf_mse": 9.258535283152014e-05,
+            "chamfer_distance": 0.009597677737474442
+        },
+        {
+            "sample_idx": 113,
+            "label": 9,
+            "sdf_mse": 0.00013905024388805032,
+            "chamfer_distance": 0.010191300883889198
+        },
+        {
+            "sample_idx": 114,
+            "label": 1,
+            "sdf_mse": 6.611378194065765e-05,
+            "chamfer_distance": 0.01447284035384655
+        },
+        {
+            "sample_idx": 115,
+            "label": 6,
+            "sdf_mse": 0.039622507989406586,
+            "chamfer_distance": 0.16786564886569977
+        },
+        {
+            "sample_idx": 116,
+            "label": 9,
+            "sdf_mse": 0.00010288962221238762,
+            "chamfer_distance": 0.010001534596085548
+        },
+        {
+            "sample_idx": 117,
+            "label": 6,
+            "sdf_mse": 8.728772081667557e-05,
+            "chamfer_distance": 0.009346616454422474
+        },
+        {
+            "sample_idx": 118,
+            "label": 9,
+            "sdf_mse": 9.455073450226337e-05,
+            "chamfer_distance": 0.009852315299212933
+        },
+        {
+            "sample_idx": 119,
+            "label": 2,
+            "sdf_mse": 8.305009396281093e-05,
+            "chamfer_distance": 0.009090689942240715
+        },
+        {
+            "sample_idx": 120,
+            "label": 0,
+            "sdf_mse": 7.402359915431589e-05,
+            "chamfer_distance": 0.008970530703663826
+        },
+        {
+            "sample_idx": 121,
+            "label": 3,
+            "sdf_mse": 0.00011850204464280978,
+            "chamfer_distance": 0.009090978652238846
+        },
+        {
+            "sample_idx": 122,
+            "label": 2,
+            "sdf_mse": 9.577025775797665e-05,
+            "chamfer_distance": 0.010530702769756317
+        },
+        {
+            "sample_idx": 123,
+            "label": 8,
+            "sdf_mse": 0.00014455209020525217,
+            "chamfer_distance": 0.009572124108672142
+        },
+        {
+            "sample_idx": 124,
+            "label": 8,
+            "sdf_mse": 0.00010235798981739208,
+            "chamfer_distance": 0.008538595400750637
+        },
+        {
+            "sample_idx": 125,
+            "label": 4,
+            "sdf_mse": 0.00010759558790596202,
+            "chamfer_distance": 0.009610606357455254
+        },
+        {
+            "sample_idx": 126,
+            "label": 9,
+            "sdf_mse": 8.013830665731803e-05,
+            "chamfer_distance": 0.00879777129739523
+        },
+        {
+            "sample_idx": 127,
+            "label": 3,
+            "sdf_mse": 0.00013531204604078084,
+            "chamfer_distance": 0.011567268520593643
+        },
+        {
+            "sample_idx": 128,
+            "label": 4,
+            "sdf_mse": 9.810493793338537e-05,
+            "chamfer_distance": 0.008285092189908028
+        },
+        {
+            "sample_idx": 129,
+            "label": 1,
+            "sdf_mse": 9.859877172857523e-05,
+            "chamfer_distance": 0.00869664829224348
+        },
+        {
+            "sample_idx": 130,
+            "label": 0,
+            "sdf_mse": 9.294458868680522e-05,
+            "chamfer_distance": 0.01246066763997078
+        },
+        {
+            "sample_idx": 131,
+            "label": 7,
+            "sdf_mse": 8.219511073548347e-05,
+            "chamfer_distance": 0.009142176248133183
+        },
+        {
+            "sample_idx": 132,
+            "label": 8,
+            "sdf_mse": 9.841559949563816e-05,
+            "chamfer_distance": 0.011483889073133469
+        },
+        {
+            "sample_idx": 133,
+            "label": 2,
+            "sdf_mse": 0.00010716652468545362,
+            "chamfer_distance": 0.01046276930719614
+        },
+        {
+            "sample_idx": 134,
+            "label": 6,
+            "sdf_mse": 9.173239959636703e-05,
+            "chamfer_distance": 0.019354768097400665
+        },
+        {
+            "sample_idx": 135,
+            "label": 9,
+            "sdf_mse": 9.175403829431161e-05,
+            "chamfer_distance": 0.011656323447823524
+        },
+        {
+            "sample_idx": 136,
+            "label": 4,
+            "sdf_mse": 9.56326985033229e-05,
+            "chamfer_distance": 0.012064475566148758
+        },
+        {
+            "sample_idx": 137,
+            "label": 3,
+            "sdf_mse": 0.00010135486809303984,
+            "chamfer_distance": 0.012354543432593346
+        },
+        {
+            "sample_idx": 138,
+            "label": 7,
+            "sdf_mse": 7.936498877825215e-05,
+            "chamfer_distance": 0.009516727179288864
+        },
+        {
+            "sample_idx": 139,
+            "label": 9,
+            "sdf_mse": 0.00010366446804255247,
+            "chamfer_distance": 0.009331784211099148
+        },
+        {
+            "sample_idx": 140,
+            "label": 3,
+            "sdf_mse": 0.00012067499483237043,
+            "chamfer_distance": 0.009446371346712112
+        },
+        {
+            "sample_idx": 141,
+            "label": 5,
+            "sdf_mse": 0.0001284803875023499,
+            "chamfer_distance": 0.0158685352653265
+        },
+        {
+            "sample_idx": 142,
+            "label": 5,
+            "sdf_mse": 0.0001187280286103487,
+            "chamfer_distance": 0.0123245008289814
+        },
+        {
+            "sample_idx": 143,
+            "label": 0,
+            "sdf_mse": 0.00011407631245674565,
+            "chamfer_distance": 0.008613627403974533
+        },
+        {
+            "sample_idx": 144,
+            "label": 5,
+            "sdf_mse": 9.208089613821357e-05,
+            "chamfer_distance": 0.009125495329499245
+        },
+        {
+            "sample_idx": 145,
+            "label": 5,
+            "sdf_mse": 0.00011583680316107348,
+            "chamfer_distance": 0.011650536209344864
+        },
+        {
+            "sample_idx": 146,
+            "label": 4,
+            "sdf_mse": 0.00010226621816400439,
+            "chamfer_distance": 0.007936888374388218
+        },
+        {
+            "sample_idx": 147,
+            "label": 0,
+            "sdf_mse": 0.00011202875612070784,
+            "chamfer_distance": 0.010691381990909576
+        },
+        {
+            "sample_idx": 148,
+            "label": 2,
+            "sdf_mse": 8.156365947797894e-05,
+            "chamfer_distance": 0.013458377681672573
+        },
+        {
+            "sample_idx": 149,
+            "label": 7,
+            "sdf_mse": 0.00010181980178458616,
+            "chamfer_distance": 0.010309708304703236
+        },
+        {
+            "sample_idx": 150,
+            "label": 6,
+            "sdf_mse": 9.416399552719668e-05,
+            "chamfer_distance": 0.008854230865836143
+        },
+        {
+            "sample_idx": 151,
+            "label": 9,
+            "sdf_mse": 0.00011604286555666476,
+            "chamfer_distance": 0.007810571696609259
+        },
+        {
+            "sample_idx": 152,
+            "label": 3,
+            "sdf_mse": 0.0001175937577500008,
+            "chamfer_distance": 0.00937260314822197
+        },
+        {
+            "sample_idx": 153,
+            "label": 8,
+            "sdf_mse": 0.00010615536302793771,
+            "chamfer_distance": 0.010873444378376007
+        },
+        {
+            "sample_idx": 154,
+            "label": 2,
+            "sdf_mse": 8.069679461186752e-05,
+            "chamfer_distance": 0.010578476823866367
+        },
+        {
+            "sample_idx": 155,
+            "label": 6,
+            "sdf_mse": 9.964557102648541e-05,
+            "chamfer_distance": 0.009808730334043503
+        },
+        {
+            "sample_idx": 156,
+            "label": 9,
+            "sdf_mse": 9.411166684003547e-05,
+            "chamfer_distance": 0.01149269100278616
+        },
+        {
+            "sample_idx": 157,
+            "label": 7,
+            "sdf_mse": 8.204673213185742e-05,
+            "chamfer_distance": 0.010964686051011086
+        },
+        {
+            "sample_idx": 158,
+            "label": 4,
+            "sdf_mse": 0.00012196820171084255,
+            "chamfer_distance": 0.009072091430425644
+        },
+        {
+            "sample_idx": 159,
+            "label": 4,
+            "sdf_mse": 0.00010393859702162445,
+            "chamfer_distance": 0.009508971124887466
+        },
+        {
+            "sample_idx": 160,
+            "label": 7,
+            "sdf_mse": 9.76478258962743e-05,
+            "chamfer_distance": 0.01040971651673317
+        },
+        {
+            "sample_idx": 161,
+            "label": 8,
+            "sdf_mse": 0.00013936604955233634,
+            "chamfer_distance": 0.010751921683549881
+        },
+        {
+            "sample_idx": 162,
+            "label": 4,
+            "sdf_mse": 9.829550981521606e-05,
+            "chamfer_distance": 0.00815768726170063
+        },
+        {
+            "sample_idx": 163,
+            "label": 2,
+            "sdf_mse": 9.952818800229579e-05,
+            "chamfer_distance": 0.007961814291775227
+        },
+        {
+            "sample_idx": 164,
+            "label": 2,
+            "sdf_mse": 0.00013339074212126434,
+            "chamfer_distance": 0.01698189787566662
+        },
+        {
+            "sample_idx": 165,
+            "label": 3,
+            "sdf_mse": 0.00011374126916052774,
+            "chamfer_distance": 0.007917842827737331
+        },
+        {
+            "sample_idx": 166,
+            "label": 0,
+            "sdf_mse": 0.00011410931620048359,
+            "chamfer_distance": 0.01214233972132206
+        },
+        {
+            "sample_idx": 167,
+            "label": 3,
+            "sdf_mse": 0.00010592044418444857,
+            "chamfer_distance": NaN
+        },
+        {
+            "sample_idx": 168,
+            "label": 6,
+            "sdf_mse": 0.00010640375694492832,
+            "chamfer_distance": 0.010608935728669167
+        },
+        {
+            "sample_idx": 169,
+            "label": 1,
+            "sdf_mse": 0.00010680320701794699,
+            "chamfer_distance": 0.00994645245373249
+        },
+        {
+            "sample_idx": 170,
+            "label": 6,
+            "sdf_mse": 0.00012205560051370412,
+            "chamfer_distance": 0.010975651443004608
+        },
+        {
+            "sample_idx": 171,
+            "label": 2,
+            "sdf_mse": 0.00010304062016075477,
+            "chamfer_distance": 0.010714360512793064
+        },
+        {
+            "sample_idx": 172,
+            "label": 4,
+            "sdf_mse": 9.384816803503782e-05,
+            "chamfer_distance": 0.010492313653230667
+        },
+        {
+            "sample_idx": 173,
+            "label": 0,
+            "sdf_mse": 7.517902849940583e-05,
+            "chamfer_distance": 0.012660248205065727
+        },
+        {
+            "sample_idx": 174,
+            "label": 4,
+            "sdf_mse": 8.081921987468377e-05,
+            "chamfer_distance": 0.00966581329703331
+        },
+        {
+            "sample_idx": 175,
+            "label": 9,
+            "sdf_mse": 0.0001169825773104094,
+            "chamfer_distance": 0.007667876314371824
+        },
+        {
+            "sample_idx": 176,
+            "label": 4,
+            "sdf_mse": 9.032710659084842e-05,
+            "chamfer_distance": 0.009037717245519161
+        },
+        {
+            "sample_idx": 177,
+            "label": 0,
+            "sdf_mse": 8.247188088716939e-05,
+            "chamfer_distance": 0.011029294691979885
+        },
+        {
+            "sample_idx": 178,
+            "label": 5,
+            "sdf_mse": 0.00012413464719429612,
+            "chamfer_distance": 0.013536835089325905
+        },
+        {
+            "sample_idx": 179,
+            "label": 5,
+            "sdf_mse": 9.423950541531667e-05,
+            "chamfer_distance": 0.013033960945904255
+        },
+        {
+            "sample_idx": 180,
+            "label": 9,
+            "sdf_mse": 9.324166603619233e-05,
+            "chamfer_distance": 0.008820625022053719
+        },
+        {
+            "sample_idx": 181,
+            "label": 2,
+            "sdf_mse": 0.00012539159797597677,
+            "chamfer_distance": 0.01368617732077837
+        },
+        {
+            "sample_idx": 182,
+            "label": 7,
+            "sdf_mse": 0.00039548336644656956,
+            "chamfer_distance": 0.024460643529891968
+        },
+        {
+            "sample_idx": 183,
+            "label": 1,
+            "sdf_mse": 0.00010138576908502728,
+            "chamfer_distance": 0.00872435886412859
+        },
+        {
+            "sample_idx": 184,
+            "label": 4,
+            "sdf_mse": 8.953021460911259e-05,
+            "chamfer_distance": 0.008125217631459236
+        },
+        {
+            "sample_idx": 185,
+            "label": 6,
+            "sdf_mse": 8.856122440192848e-05,
+            "chamfer_distance": 0.010078329592943192
+        },
+        {
+            "sample_idx": 186,
+            "label": 1,
+            "sdf_mse": 7.824497151887044e-05,
+            "chamfer_distance": 0.013618050143122673
+        },
+        {
+            "sample_idx": 187,
+            "label": 7,
+            "sdf_mse": 7.932804146548733e-05,
+            "chamfer_distance": 0.008451735600829124
+        },
+        {
+            "sample_idx": 188,
+            "label": 1,
+            "sdf_mse": 5.477614831761457e-05,
+            "chamfer_distance": 0.00931301899254322
+        },
+        {
+            "sample_idx": 189,
+            "label": 4,
+            "sdf_mse": 0.00010467561514815316,
+            "chamfer_distance": 0.017289618030190468
+        },
+        {
+            "sample_idx": 190,
+            "label": 3,
+            "sdf_mse": 9.502517787041143e-05,
+            "chamfer_distance": 0.009642349556088448
+        },
+        {
+            "sample_idx": 191,
+            "label": 8,
+            "sdf_mse": 0.0001340168237220496,
+            "chamfer_distance": 0.010400903411209583
+        },
+        {
+            "sample_idx": 192,
+            "label": 7,
+            "sdf_mse": 6.858137930976227e-05,
+            "chamfer_distance": 0.012732462957501411
+        },
+        {
+            "sample_idx": 193,
+            "label": 4,
+            "sdf_mse": 0.00012227363185957074,
+            "chamfer_distance": 0.011616433039307594
+        },
+        {
+            "sample_idx": 194,
+            "label": 7,
+            "sdf_mse": 8.067512681009248e-05,
+            "chamfer_distance": 0.008519308641552925
+        },
+        {
+            "sample_idx": 195,
+            "label": 1,
+            "sdf_mse": 7.851477857911959e-05,
+            "chamfer_distance": 0.029718708246946335
+        },
+        {
+            "sample_idx": 196,
+            "label": 9,
+            "sdf_mse": 0.00010028242104453966,
+            "chamfer_distance": 0.010239041410386562
+        },
+        {
+            "sample_idx": 197,
+            "label": 8,
+            "sdf_mse": 0.0001060705617419444,
+            "chamfer_distance": 0.010509124025702477
+        },
+        {
+            "sample_idx": 198,
+            "label": 8,
+            "sdf_mse": 0.0001608813472557813,
+            "chamfer_distance": 0.01280450914055109
+        },
+        {
+            "sample_idx": 199,
+            "label": 7,
+            "sdf_mse": 0.00010067760740639642,
+            "chamfer_distance": 0.015375057235360146
+        },
+        {
+            "sample_idx": 200,
+            "label": 8,
+            "sdf_mse": 9.73000715021044e-05,
+            "chamfer_distance": 0.013368199579417706
+        },
+        {
+            "sample_idx": 201,
+            "label": 0,
+            "sdf_mse": 9.77106174104847e-05,
+            "chamfer_distance": 0.011937683448195457
+        },
+        {
+            "sample_idx": 202,
+            "label": 5,
+            "sdf_mse": 0.00012360479740891606,
+            "chamfer_distance": 0.017830267548561096
+        },
+        {
+            "sample_idx": 203,
+            "label": 9,
+            "sdf_mse": 8.279825851786882e-05,
+            "chamfer_distance": 0.008723685517907143
+        },
+        {
+            "sample_idx": 204,
+            "label": 2,
+            "sdf_mse": 9.792564378585666e-05,
+            "chamfer_distance": 0.013638533651828766
+        },
+        {
+            "sample_idx": 205,
+            "label": 3,
+            "sdf_mse": 0.0001300915755564347,
+            "chamfer_distance": 0.007752713747322559
+        },
+        {
+            "sample_idx": 206,
+            "label": 0,
+            "sdf_mse": 0.00018216144235339016,
+            "chamfer_distance": 0.014420520514249802
+        },
+        {
+            "sample_idx": 207,
+            "label": 0,
+            "sdf_mse": 8.430890738964081e-05,
+            "chamfer_distance": 0.010162809863686562
+        },
+        {
+            "sample_idx": 208,
+            "label": 9,
+            "sdf_mse": 9.632691944716498e-05,
+            "chamfer_distance": 0.008065527305006981
+        },
+        {
+            "sample_idx": 209,
+            "label": 1,
+            "sdf_mse": 8.21554713184014e-05,
+            "chamfer_distance": 0.007726272102445364
+        },
+        {
+            "sample_idx": 210,
+            "label": 7,
+            "sdf_mse": 9.421332651982084e-05,
+            "chamfer_distance": 0.008427348919212818
+        },
+        {
+            "sample_idx": 211,
+            "label": 2,
+            "sdf_mse": 9.555157157592475e-05,
+            "chamfer_distance": 0.01184324361383915
+        },
+        {
+            "sample_idx": 212,
+            "label": 9,
+            "sdf_mse": 0.00011479004024295136,
+            "chamfer_distance": 0.010131518356502056
+        },
+        {
+            "sample_idx": 213,
+            "label": 6,
+            "sdf_mse": 9.399284317623824e-05,
+            "chamfer_distance": 0.011113032698631287
+        },
+        {
+            "sample_idx": 214,
+            "label": 5,
+            "sdf_mse": 0.0001166192305390723,
+            "chamfer_distance": 0.011537730693817139
+        },
+        {
+            "sample_idx": 215,
+            "label": 2,
+            "sdf_mse": 7.600378739880398e-05,
+            "chamfer_distance": 0.009207474999129772
+        },
+        {
+            "sample_idx": 216,
+            "label": 1,
+            "sdf_mse": 0.00016532147128600627,
+            "chamfer_distance": 0.00729784183204174
+        },
+        {
+            "sample_idx": 217,
+            "label": 9,
+            "sdf_mse": 9.256221528630704e-05,
+            "chamfer_distance": 0.011503754183650017
+        },
+        {
+            "sample_idx": 218,
+            "label": 9,
+            "sdf_mse": 9.14364936761558e-05,
+            "chamfer_distance": 0.008419092744588852
+        },
+        {
+            "sample_idx": 219,
+            "label": 7,
+            "sdf_mse": 0.00010469652625033632,
+            "chamfer_distance": 0.009646067395806313
+        },
+        {
+            "sample_idx": 220,
+            "label": 6,
+            "sdf_mse": 8.673186675878242e-05,
+            "chamfer_distance": 0.009807128459215164
+        },
+        {
+            "sample_idx": 221,
+            "label": 5,
+            "sdf_mse": 8.150040230248123e-05,
+            "chamfer_distance": 0.00992710329592228
+        },
+        {
+            "sample_idx": 222,
+            "label": 2,
+            "sdf_mse": 9.115666762227193e-05,
+            "chamfer_distance": 0.012082488276064396
+        },
+        {
+            "sample_idx": 223,
+            "label": 5,
+            "sdf_mse": 0.00010575818305369467,
+            "chamfer_distance": 0.007995791733264923
+        },
+        {
+            "sample_idx": 224,
+            "label": 6,
+            "sdf_mse": 9.336293442174792e-05,
+            "chamfer_distance": 0.009596145711839199
+        },
+        {
+            "sample_idx": 225,
+            "label": 8,
+            "sdf_mse": 9.932880493579432e-05,
+            "chamfer_distance": 0.010581225156784058
+        },
+        {
+            "sample_idx": 226,
+            "label": 4,
+            "sdf_mse": 7.298722630366683e-05,
+            "chamfer_distance": 0.008478155359625816
+        },
+        {
+            "sample_idx": 227,
+            "label": 9,
+            "sdf_mse": 9.606656385585666e-05,
+            "chamfer_distance": 0.007929942570626736
+        },
+        {
+            "sample_idx": 228,
+            "label": 6,
+            "sdf_mse": 8.478429663227871e-05,
+            "chamfer_distance": 0.009940192103385925
+        },
+        {
+            "sample_idx": 229,
+            "label": 7,
+            "sdf_mse": 0.00011169820936629549,
+            "chamfer_distance": 0.010259097442030907
+        },
+        {
+            "sample_idx": 230,
+            "label": 9,
+            "sdf_mse": 9.189251431962475e-05,
+            "chamfer_distance": 0.014791157096624374
+        },
+        {
+            "sample_idx": 231,
+            "label": 3,
+            "sdf_mse": 8.854620682541281e-05,
+            "chamfer_distance": 0.010526116006076336
+        },
+        {
+            "sample_idx": 232,
+            "label": 7,
+            "sdf_mse": 9.839046106208116e-05,
+            "chamfer_distance": 0.008399725891649723
+        },
+        {
+            "sample_idx": 233,
+            "label": 2,
+            "sdf_mse": 9.94119982351549e-05,
+            "chamfer_distance": 0.010436931625008583
+        },
+        {
+            "sample_idx": 234,
+            "label": 4,
+            "sdf_mse": 8.960744162322953e-05,
+            "chamfer_distance": 0.01128658652305603
+        },
+        {
+            "sample_idx": 235,
+            "label": 8,
+            "sdf_mse": 0.00011308900138828903,
+            "chamfer_distance": 0.009678393602371216
+        },
+        {
+            "sample_idx": 236,
+            "label": 1,
+            "sdf_mse": 5.722621062886901e-05,
+            "chamfer_distance": NaN
+        },
+        {
+            "sample_idx": 237,
+            "label": 8,
+            "sdf_mse": 0.00013547288835979998,
+            "chamfer_distance": 0.011563315987586975
+        },
+        {
+            "sample_idx": 238,
+            "label": 4,
+            "sdf_mse": 9.929142106557265e-05,
+            "chamfer_distance": 0.010348581708967686
+        },
+        {
+            "sample_idx": 239,
+            "label": 3,
+            "sdf_mse": 7.689037011004984e-05,
+            "chamfer_distance": 0.007554296404123306
+        },
+        {
+            "sample_idx": 240,
+            "label": 1,
+            "sdf_mse": 7.216082303784788e-05,
+            "chamfer_distance": 0.006067776121199131
+        },
+        {
+            "sample_idx": 241,
+            "label": 5,
+            "sdf_mse": 8.475900540361181e-05,
+            "chamfer_distance": 0.01066383346915245
+        },
+        {
+            "sample_idx": 242,
+            "label": 2,
+            "sdf_mse": 0.0001432203862350434,
+            "chamfer_distance": 0.010659578256309032
+        },
+        {
+            "sample_idx": 243,
+            "label": 9,
+            "sdf_mse": 0.00011506008013384417,
+            "chamfer_distance": 0.011934245936572552
+        },
+        {
+            "sample_idx": 244,
+            "label": 0,
+            "sdf_mse": 9.630670683691278e-05,
+            "chamfer_distance": 0.013466806150972843
+        },
+        {
+            "sample_idx": 245,
+            "label": 2,
+            "sdf_mse": 9.060251613846049e-05,
+            "chamfer_distance": 0.012806150130927563
+        },
+        {
+            "sample_idx": 246,
+            "label": 7,
+            "sdf_mse": 0.00010824475612025708,
+            "chamfer_distance": 0.00957829412072897
+        },
+        {
+            "sample_idx": 247,
+            "label": 7,
+            "sdf_mse": 0.00031955717713572085,
+            "chamfer_distance": 0.011208372190594673
+        },
+        {
+            "sample_idx": 248,
+            "label": 9,
+            "sdf_mse": 0.00012492809037212282,
+            "chamfer_distance": 0.010702109895646572
+        },
+        {
+            "sample_idx": 249,
+            "label": 0,
+            "sdf_mse": 9.060428419616073e-05,
+            "chamfer_distance": 0.010898826643824577
+        },
+        {
+            "sample_idx": 250,
+            "label": 9,
+            "sdf_mse": 9.907934872899204e-05,
+            "chamfer_distance": 0.008056173101067543
+        },
+        {
+            "sample_idx": 251,
+            "label": 1,
+            "sdf_mse": 0.00036919652484357357,
+            "chamfer_distance": 0.014922654256224632
+        },
+        {
+            "sample_idx": 252,
+            "label": 4,
+            "sdf_mse": 0.00021028672927059233,
+            "chamfer_distance": 0.01715818978846073
+        },
+        {
+            "sample_idx": 253,
+            "label": 7,
+            "sdf_mse": 7.51584957470186e-05,
+            "chamfer_distance": 0.01060580275952816
+        },
+        {
+            "sample_idx": 254,
+            "label": 2,
+            "sdf_mse": 0.00010306794138159603,
+            "chamfer_distance": 0.01171797700226307
+        },
+        {
+            "sample_idx": 255,
+            "label": 1,
+            "sdf_mse": 6.222644879017025e-05,
+            "chamfer_distance": 0.007843736559152603
+        },
+        {
+            "sample_idx": 256,
+            "label": 8,
+            "sdf_mse": 0.00011286325025139377,
+            "chamfer_distance": 0.0101366201415658
+        },
+        {
+            "sample_idx": 257,
+            "label": 3,
+            "sdf_mse": 0.00011236235877731815,
+            "chamfer_distance": 0.011781841516494751
+        },
+        {
+            "sample_idx": 258,
+            "label": 5,
+            "sdf_mse": 0.0001006331731332466,
+            "chamfer_distance": 0.0123692462220788
+        },
+        {
+            "sample_idx": 259,
+            "label": 9,
+            "sdf_mse": 9.52664267970249e-05,
+            "chamfer_distance": 0.009927854873239994
+        },
+        {
+            "sample_idx": 260,
+            "label": 2,
+            "sdf_mse": 8.52928205858916e-05,
+            "chamfer_distance": 0.01243029534816742
+        },
+        {
+            "sample_idx": 261,
+            "label": 6,
+            "sdf_mse": 9.180416964227334e-05,
+            "chamfer_distance": 0.011099211871623993
+        },
+        {
+            "sample_idx": 262,
+            "label": 7,
+            "sdf_mse": 7.894331065472215e-05,
+            "chamfer_distance": 0.00995634775608778
+        },
+        {
+            "sample_idx": 263,
+            "label": 9,
+            "sdf_mse": 0.00017758121248334646,
+            "chamfer_distance": 0.011647650972008705
+        },
+        {
+            "sample_idx": 264,
+            "label": 5,
+            "sdf_mse": 9.82669516815804e-05,
+            "chamfer_distance": 0.011068768799304962
+        },
+        {
+            "sample_idx": 265,
+            "label": 8,
+            "sdf_mse": 0.00015227377298288047,
+            "chamfer_distance": 0.010890469886362553
+        },
+        {
+            "sample_idx": 266,
+            "label": 0,
+            "sdf_mse": 8.074351353570819e-05,
+            "chamfer_distance": 0.010837418027222157
+        },
+        {
+            "sample_idx": 267,
+            "label": 9,
+            "sdf_mse": 0.00010866641969187185,
+            "chamfer_distance": 0.009934410452842712
+        },
+        {
+            "sample_idx": 268,
+            "label": 1,
+            "sdf_mse": 8.798372437013313e-05,
+            "chamfer_distance": 0.0071906098164618015
+        },
+        {
+            "sample_idx": 269,
+            "label": 9,
+            "sdf_mse": 9.339571988675743e-05,
+            "chamfer_distance": 0.007529622875154018
+        },
+        {
+            "sample_idx": 270,
+            "label": 1,
+            "sdf_mse": 0.019454598426818848,
+            "chamfer_distance": 0.20037299394607544
+        },
+        {
+            "sample_idx": 271,
+            "label": 2,
+            "sdf_mse": 0.0001918386114994064,
+            "chamfer_distance": 0.009130941703915596
+        },
+        {
+            "sample_idx": 272,
+            "label": 0,
+            "sdf_mse": 8.790325227892026e-05,
+            "chamfer_distance": 0.012855912558734417
+        },
+        {
+            "sample_idx": 273,
+            "label": 6,
+            "sdf_mse": 8.57626146171242e-05,
+            "chamfer_distance": 0.010371463373303413
+        },
+        {
+            "sample_idx": 274,
+            "label": 0,
+            "sdf_mse": 0.00011347502731950954,
+            "chamfer_distance": 0.011261154897511005
+        },
+        {
+            "sample_idx": 275,
+            "label": 0,
+            "sdf_mse": 8.629049261799082e-05,
+            "chamfer_distance": 0.011116527952253819
+        },
+        {
+            "sample_idx": 276,
+            "label": 1,
+            "sdf_mse": 7.461734639946371e-05,
+            "chamfer_distance": 0.005753201432526112
+        },
+        {
+            "sample_idx": 277,
+            "label": 3,
+            "sdf_mse": 7.192022894741967e-05,
+            "chamfer_distance": 0.00959138572216034
+        },
+        {
+            "sample_idx": 278,
+            "label": 1,
+            "sdf_mse": 0.04637283459305763,
+            "chamfer_distance": 0.21313270926475525
+        },
+        {
+            "sample_idx": 279,
+            "label": 7,
+            "sdf_mse": 7.874881703173742e-05,
+            "chamfer_distance": 0.008980861864984035
+        },
+        {
+            "sample_idx": 280,
+            "label": 9,
+            "sdf_mse": 0.00012033391249133274,
+            "chamfer_distance": 0.01043697539716959
+        },
+        {
+            "sample_idx": 281,
+            "label": 4,
+            "sdf_mse": 9.516369755147025e-05,
+            "chamfer_distance": 0.011006037704646587
+        },
+        {
+            "sample_idx": 282,
+            "label": 7,
+            "sdf_mse": 0.000148586361319758,
+            "chamfer_distance": 0.012033934704959393
+        },
+        {
+            "sample_idx": 283,
+            "label": 6,
+            "sdf_mse": 8.697574230609462e-05,
+            "chamfer_distance": 0.009358088485896587
+        },
+        {
+            "sample_idx": 284,
+            "label": 4,
+            "sdf_mse": 0.00010624281276250258,
+            "chamfer_distance": 0.011938812211155891
+        },
+        {
+            "sample_idx": 285,
+            "label": 8,
+            "sdf_mse": 0.0001241871214006096,
+            "chamfer_distance": 0.011555282399058342
+        },
+        {
+            "sample_idx": 286,
+            "label": 6,
+            "sdf_mse": 9.411040809936821e-05,
+            "chamfer_distance": 0.010388795286417007
+        },
+        {
+            "sample_idx": 287,
+            "label": 4,
+            "sdf_mse": 0.00010023974027717486,
+            "chamfer_distance": 0.00881500355899334
+        },
+        {
+            "sample_idx": 288,
+            "label": 6,
+            "sdf_mse": 8.358458580914885e-05,
+            "chamfer_distance": 0.0137858921661973
+        },
+        {
+            "sample_idx": 289,
+            "label": 7,
+            "sdf_mse": 0.00010187319276155904,
+            "chamfer_distance": 0.009262031875550747
+        },
+        {
+            "sample_idx": 290,
+            "label": 8,
+            "sdf_mse": 9.185793896904215e-05,
+            "chamfer_distance": 0.01143353246152401
+        },
+        {
+            "sample_idx": 291,
+            "label": 0,
+            "sdf_mse": 0.00038954976480454206,
+            "chamfer_distance": 0.011980396695435047
+        },
+        {
+            "sample_idx": 292,
+            "label": 2,
+            "sdf_mse": 8.33197555039078e-05,
+            "chamfer_distance": 0.009650900959968567
+        },
+        {
+            "sample_idx": 293,
+            "label": 4,
+            "sdf_mse": 7.442573405569419e-05,
+            "chamfer_distance": 0.010325279086828232
+        },
+        {
+            "sample_idx": 294,
+            "label": 4,
+            "sdf_mse": 9.489397780271247e-05,
+            "chamfer_distance": 0.008808132261037827
+        },
+        {
+            "sample_idx": 295,
+            "label": 9,
+            "sdf_mse": 0.00010319733701180667,
+            "chamfer_distance": 0.012574290856719017
+        },
+        {
+            "sample_idx": 296,
+            "label": 9,
+            "sdf_mse": 9.931855311151594e-05,
+            "chamfer_distance": 0.009107544086873531
+        },
+        {
+            "sample_idx": 297,
+            "label": 1,
+            "sdf_mse": 6.789663166273385e-05,
+            "chamfer_distance": 0.0065859537571668625
+        },
+        {
+            "sample_idx": 298,
+            "label": 7,
+            "sdf_mse": 0.0001332676038146019,
+            "chamfer_distance": 0.02502470090985298
+        },
+        {
+            "sample_idx": 299,
+            "label": 0,
+            "sdf_mse": 0.00010055601160274819,
+            "chamfer_distance": 0.011530648916959763
+        },
+        {
+            "sample_idx": 300,
+            "label": 6,
+            "sdf_mse": 0.00010048946569440886,
+            "chamfer_distance": 0.011635661125183105
+        },
+        {
+            "sample_idx": 301,
+            "label": 5,
+            "sdf_mse": 9.567203233018517e-05,
+            "chamfer_distance": 0.013140961527824402
+        },
+        {
+            "sample_idx": 302,
+            "label": 3,
+            "sdf_mse": 8.581686415709555e-05,
+            "chamfer_distance": 0.010820598341524601
+        },
+        {
+            "sample_idx": 303,
+            "label": 9,
+            "sdf_mse": 8.467418228974566e-05,
+            "chamfer_distance": 0.01071426086127758
+        },
+        {
+            "sample_idx": 304,
+            "label": 9,
+            "sdf_mse": 0.00010039479820989072,
+            "chamfer_distance": 0.009000600315630436
+        },
+        {
+            "sample_idx": 305,
+            "label": 3,
+            "sdf_mse": 0.00011473363701952621,
+            "chamfer_distance": 0.011530987918376923
+        },
+        {
+            "sample_idx": 306,
+            "label": 9,
+            "sdf_mse": 9.552497795084491e-05,
+            "chamfer_distance": 0.012821946293115616
+        },
+        {
+            "sample_idx": 307,
+            "label": 0,
+            "sdf_mse": 8.117484685499221e-05,
+            "chamfer_distance": 0.013719894923269749
+        },
+        {
+            "sample_idx": 308,
+            "label": 3,
+            "sdf_mse": 0.0001234801165992394,
+            "chamfer_distance": 0.009717662818729877
+        },
+        {
+            "sample_idx": 309,
+            "label": 5,
+            "sdf_mse": 0.00010103806562256068,
+            "chamfer_distance": 0.01186002604663372
+        },
+        {
+            "sample_idx": 310,
+            "label": 2,
+            "sdf_mse": 7.7600430813618e-05,
+            "chamfer_distance": 0.012223592959344387
+        },
+        {
+            "sample_idx": 311,
+            "label": 8,
+            "sdf_mse": 0.00012665595568250865,
+            "chamfer_distance": 0.011059204116463661
+        },
+        {
+            "sample_idx": 312,
+            "label": 0,
+            "sdf_mse": 7.868315151426941e-05,
+            "chamfer_distance": 0.01298492681235075
+        },
+        {
+            "sample_idx": 313,
+            "label": 1,
+            "sdf_mse": 0.00020643690368160605,
+            "chamfer_distance": 0.007999938912689686
+        },
+        {
+            "sample_idx": 314,
+            "label": 3,
+            "sdf_mse": 0.00010825513891177252,
+            "chamfer_distance": 0.011056795716285706
+        },
+        {
+            "sample_idx": 315,
+            "label": 9,
+            "sdf_mse": 9.655806934460998e-05,
+            "chamfer_distance": 0.009457765147089958
+        },
+        {
+            "sample_idx": 316,
+            "label": 6,
+            "sdf_mse": 9.227976988768205e-05,
+            "chamfer_distance": 0.015690768137574196
+        },
+        {
+            "sample_idx": 317,
+            "label": 6,
+            "sdf_mse": 9.06717250472866e-05,
+            "chamfer_distance": 0.008984535932540894
+        },
+        {
+            "sample_idx": 318,
+            "label": 7,
+            "sdf_mse": 7.2070601163432e-05,
+            "chamfer_distance": 0.008386065252125263
+        },
+        {
+            "sample_idx": 319,
+            "label": 3,
+            "sdf_mse": 0.00012081889872206375,
+            "chamfer_distance": 0.010572785511612892
+        },
+        {
+            "sample_idx": 320,
+            "label": 4,
+            "sdf_mse": 8.170786168193445e-05,
+            "chamfer_distance": 0.01715475134551525
+        },
+        {
+            "sample_idx": 321,
+            "label": 6,
+            "sdf_mse": 7.704453309997916e-05,
+            "chamfer_distance": 0.008673549629747868
+        },
+        {
+            "sample_idx": 322,
+            "label": 6,
+            "sdf_mse": 0.00011485615686979145,
+            "chamfer_distance": 0.011687703430652618
+        },
+        {
+            "sample_idx": 323,
+            "label": 5,
+            "sdf_mse": 9.722855611471459e-05,
+            "chamfer_distance": 0.00915740430355072
+        },
+        {
+            "sample_idx": 324,
+            "label": 2,
+            "sdf_mse": 0.00011280670878477395,
+            "chamfer_distance": 0.010673382319509983
+        },
+        {
+            "sample_idx": 325,
+            "label": 7,
+            "sdf_mse": 0.00015144403732847422,
+            "chamfer_distance": 0.022199712693691254
+        },
+        {
+            "sample_idx": 326,
+            "label": 2,
+            "sdf_mse": 7.293903036043048e-05,
+            "chamfer_distance": 0.009462444111704826
+        },
+        {
+            "sample_idx": 327,
+            "label": 5,
+            "sdf_mse": 8.718045137356967e-05,
+            "chamfer_distance": 0.010544925928115845
+        },
+        {
+            "sample_idx": 328,
+            "label": 1,
+            "sdf_mse": 7.02563047525473e-05,
+            "chamfer_distance": 0.00622605811804533
+        },
+        {
+            "sample_idx": 329,
+            "label": 5,
+            "sdf_mse": 0.00010395872232038528,
+            "chamfer_distance": 0.008351786062121391
+        },
+        {
+            "sample_idx": 330,
+            "label": 6,
+            "sdf_mse": 0.00010466900130268186,
+            "chamfer_distance": 0.015652623027563095
+        },
+        {
+            "sample_idx": 331,
+            "label": 6,
+            "sdf_mse": 0.00010416396980872378,
+            "chamfer_distance": 0.018917281180620193
+        },
+        {
+            "sample_idx": 332,
+            "label": 5,
+            "sdf_mse": 8.244632772402838e-05,
+            "chamfer_distance": 0.014451158232986927
+        },
+        {
+            "sample_idx": 333,
+            "label": 1,
+            "sdf_mse": 0.13270235061645508,
+            "chamfer_distance": 0.3864608407020569
+        },
+        {
+            "sample_idx": 334,
+            "label": 5,
+            "sdf_mse": 0.00010925619426416233,
+            "chamfer_distance": 0.017314210534095764
+        },
+        {
+            "sample_idx": 335,
+            "label": 8,
+            "sdf_mse": 0.00012846867321059108,
+            "chamfer_distance": 0.011874720454216003
+        },
+        {
+            "sample_idx": 336,
+            "label": 7,
+            "sdf_mse": 0.00013091129949316382,
+            "chamfer_distance": 0.014367799274623394
+        },
+        {
+            "sample_idx": 337,
+            "label": 8,
+            "sdf_mse": 0.00010996904893545434,
+            "chamfer_distance": 0.012432637624442577
+        },
+        {
+            "sample_idx": 338,
+            "label": 9,
+            "sdf_mse": 8.457616058876738e-05,
+            "chamfer_distance": 0.00949372909963131
+        },
+        {
+            "sample_idx": 339,
+            "label": 2,
+            "sdf_mse": 7.35186695237644e-05,
+            "chamfer_distance": 0.010045520961284637
+        },
+        {
+            "sample_idx": 340,
+            "label": 2,
+            "sdf_mse": 8.557725959690288e-05,
+            "chamfer_distance": 0.007631669752299786
+        },
+        {
+            "sample_idx": 341,
+            "label": 6,
+            "sdf_mse": 9.660263458499685e-05,
+            "chamfer_distance": 0.009864477440714836
+        },
+        {
+            "sample_idx": 342,
+            "label": 7,
+            "sdf_mse": 7.316953997360542e-05,
+            "chamfer_distance": 0.008319001644849777
+        },
+        {
+            "sample_idx": 343,
+            "label": 2,
+            "sdf_mse": 9.899276483338326e-05,
+            "chamfer_distance": 0.009056991897523403
+        },
+        {
+            "sample_idx": 344,
+            "label": 1,
+            "sdf_mse": 6.858494452899322e-05,
+            "chamfer_distance": 0.009459814988076687
+        },
+        {
+            "sample_idx": 345,
+            "label": 3,
+            "sdf_mse": 8.24483358883299e-05,
+            "chamfer_distance": 0.010651566088199615
+        },
+        {
+            "sample_idx": 346,
+            "label": 1,
+            "sdf_mse": 9.537683217786252e-05,
+            "chamfer_distance": 0.013294043950736523
+        },
+        {
+            "sample_idx": 347,
+            "label": 5,
+            "sdf_mse": 9.638786286814138e-05,
+            "chamfer_distance": 0.011867212131619453
+        },
+        {
+            "sample_idx": 348,
+            "label": 3,
+            "sdf_mse": 8.82481035660021e-05,
+            "chamfer_distance": 0.012443442828953266
+        },
+        {
+            "sample_idx": 349,
+            "label": 8,
+            "sdf_mse": 0.0001194943833979778,
+            "chamfer_distance": 0.010182560421526432
+        },
+        {
+            "sample_idx": 350,
+            "label": 0,
+            "sdf_mse": 9.057484567165375e-05,
+            "chamfer_distance": 0.013487027026712894
+        },
+        {
+            "sample_idx": 351,
+            "label": 9,
+            "sdf_mse": 9.217903425451368e-05,
+            "chamfer_distance": 0.0077281128615140915
+        },
+        {
+            "sample_idx": 352,
+            "label": 7,
+            "sdf_mse": 0.0001348123187199235,
+            "chamfer_distance": 0.010142524726688862
+        },
+        {
+            "sample_idx": 353,
+            "label": 1,
+            "sdf_mse": 6.792200292693451e-05,
+            "chamfer_distance": 0.006540031172335148
+        },
+        {
+            "sample_idx": 354,
+            "label": 7,
+            "sdf_mse": 8.082008571363986e-05,
+            "chamfer_distance": 0.014694555662572384
+        },
+        {
+            "sample_idx": 355,
+            "label": 9,
+            "sdf_mse": 0.00012166739907115698,
+            "chamfer_distance": 0.010059963911771774
+        },
+        {
+            "sample_idx": 356,
+            "label": 1,
+            "sdf_mse": 9.477386629441753e-05,
+            "chamfer_distance": 0.007605989463627338
+        },
+        {
+            "sample_idx": 357,
+            "label": 9,
+            "sdf_mse": 0.00028277465025894344,
+            "chamfer_distance": 0.01876886561512947
+        },
+        {
+            "sample_idx": 358,
+            "label": 1,
+            "sdf_mse": 7.316390838241205e-05,
+            "chamfer_distance": 0.006432228721678257
+        },
+        {
+            "sample_idx": 359,
+            "label": 8,
+            "sdf_mse": 0.00010766150808194652,
+            "chamfer_distance": 0.012208868749439716
+        },
+        {
+            "sample_idx": 360,
+            "label": 3,
+            "sdf_mse": 0.00011505217844387516,
+            "chamfer_distance": 0.012214296497404575
+        },
+        {
+            "sample_idx": 361,
+            "label": 1,
+            "sdf_mse": 5.604176840279251e-05,
+            "chamfer_distance": 0.00612892210483551
+        },
+        {
+            "sample_idx": 362,
+            "label": 1,
+            "sdf_mse": 0.00010677282989490777,
+            "chamfer_distance": 0.015370877459645271
+        },
+        {
+            "sample_idx": 363,
+            "label": 3,
+            "sdf_mse": 0.00012281480303499848,
+            "chamfer_distance": 0.01040347944945097
+        },
+        {
+            "sample_idx": 364,
+            "label": 1,
+            "sdf_mse": 9.469620999880135e-05,
+            "chamfer_distance": 0.008121898397803307
+        },
+        {
+            "sample_idx": 365,
+            "label": 3,
+            "sdf_mse": 0.00011649847874650732,
+            "chamfer_distance": 0.010572277009487152
+        },
+        {
+            "sample_idx": 366,
+            "label": 9,
+            "sdf_mse": 9.153377322945744e-05,
+            "chamfer_distance": 0.00869885366410017
+        },
+        {
+            "sample_idx": 367,
+            "label": 4,
+            "sdf_mse": 9.915899863699451e-05,
+            "chamfer_distance": 0.015572240576148033
+        },
+        {
+            "sample_idx": 368,
+            "label": 1,
+            "sdf_mse": 0.01223763171583414,
+            "chamfer_distance": 0.11048159003257751
+        },
+        {
+            "sample_idx": 369,
+            "label": 3,
+            "sdf_mse": 8.681503823027015e-05,
+            "chamfer_distance": 0.012736789882183075
+        },
+        {
+            "sample_idx": 370,
+            "label": 6,
+            "sdf_mse": 0.00013454903091769665,
+            "chamfer_distance": 0.010696894489228725
+        },
+        {
+            "sample_idx": 371,
+            "label": 2,
+            "sdf_mse": 9.532749390928075e-05,
+            "chamfer_distance": 0.008137431927025318
+        },
+        {
+            "sample_idx": 372,
+            "label": 4,
+            "sdf_mse": 0.00010107299021910876,
+            "chamfer_distance": 0.014119547791779041
+        },
+        {
+            "sample_idx": 373,
+            "label": 4,
+            "sdf_mse": 8.148216875270009e-05,
+            "chamfer_distance": 0.008543864823877811
+        },
+        {
+            "sample_idx": 374,
+            "label": 1,
+            "sdf_mse": 8.410487498622388e-05,
+            "chamfer_distance": 0.011820346117019653
+        },
+        {
+            "sample_idx": 375,
+            "label": 9,
+            "sdf_mse": 0.0001262403093278408,
+            "chamfer_distance": 0.01515072863548994
+        },
+        {
+            "sample_idx": 376,
+            "label": 9,
+            "sdf_mse": 8.818474452709779e-05,
+            "chamfer_distance": 0.0078020342625677586
+        },
+        {
+            "sample_idx": 377,
+            "label": 1,
+            "sdf_mse": 7.01689423294738e-05,
+            "chamfer_distance": 0.006565009709447622
+        },
+        {
+            "sample_idx": 378,
+            "label": 4,
+            "sdf_mse": 9.913608664646745e-05,
+            "chamfer_distance": 0.01071617566049099
+        },
+        {
+            "sample_idx": 379,
+            "label": 3,
+            "sdf_mse": 0.000103071412013378,
+            "chamfer_distance": 0.014474029652774334
+        },
+        {
+            "sample_idx": 380,
+            "label": 2,
+            "sdf_mse": 0.00010996306809829548,
+            "chamfer_distance": 0.011160590685904026
+        },
+        {
+            "sample_idx": 381,
+            "label": 0,
+            "sdf_mse": 0.00010774833208415657,
+            "chamfer_distance": 0.016245737671852112
+        },
+        {
+            "sample_idx": 382,
+            "label": 6,
+            "sdf_mse": 7.847867527743801e-05,
+            "chamfer_distance": 0.012314359657466412
+        },
+        {
+            "sample_idx": 383,
+            "label": 5,
+            "sdf_mse": 0.0001405975635861978,
+            "chamfer_distance": 0.01580052450299263
+        },
+        {
+            "sample_idx": 384,
+            "label": 7,
+            "sdf_mse": 9.678529750090092e-05,
+            "chamfer_distance": 0.007219989784061909
+        },
+        {
+            "sample_idx": 385,
+            "label": 3,
+            "sdf_mse": 0.00012431661889422685,
+            "chamfer_distance": 0.009339457377791405
+        },
+        {
+            "sample_idx": 386,
+            "label": 2,
+            "sdf_mse": 9.137634333455935e-05,
+            "chamfer_distance": 0.009398750960826874
+        },
+        {
+            "sample_idx": 387,
+            "label": 5,
+            "sdf_mse": 9.018687705975026e-05,
+            "chamfer_distance": 0.013925129547715187
+        },
+        {
+            "sample_idx": 388,
+            "label": 7,
+            "sdf_mse": 0.0001023511285893619,
+            "chamfer_distance": 0.008453850634396076
+        },
+        {
+            "sample_idx": 389,
+            "label": 7,
+            "sdf_mse": 0.00029827604885213077,
+            "chamfer_distance": 0.010687291622161865
+        },
+        {
+            "sample_idx": 390,
+            "label": 9,
+            "sdf_mse": 9.910466178553179e-05,
+            "chamfer_distance": 0.00831195991486311
+        },
+        {
+            "sample_idx": 391,
+            "label": 2,
+            "sdf_mse": 9.541853796690702e-05,
+            "chamfer_distance": 0.009366517886519432
+        },
+        {
+            "sample_idx": 392,
+            "label": 4,
+            "sdf_mse": 8.618272840976715e-05,
+            "chamfer_distance": 0.010263921692967415
+        },
+        {
+            "sample_idx": 393,
+            "label": 6,
+            "sdf_mse": 8.613640238763765e-05,
+            "chamfer_distance": 0.012782213278114796
+        },
+        {
+            "sample_idx": 394,
+            "label": 0,
+            "sdf_mse": 0.00012217886978760362,
+            "chamfer_distance": 0.010547141544520855
+        },
+        {
+            "sample_idx": 395,
+            "label": 6,
+            "sdf_mse": 0.00012299914669711143,
+            "chamfer_distance": 0.012673085555434227
+        },
+        {
+            "sample_idx": 396,
+            "label": 8,
+            "sdf_mse": 0.0001406557421432808,
+            "chamfer_distance": 0.01273128017783165
+        },
+        {
+            "sample_idx": 397,
+            "label": 6,
+            "sdf_mse": 0.00010836412548087537,
+            "chamfer_distance": 0.012321879155933857
+        },
+        {
+            "sample_idx": 398,
+            "label": 4,
+            "sdf_mse": 8.080177212832496e-05,
+            "chamfer_distance": 0.01507418043911457
+        },
+        {
+            "sample_idx": 399,
+            "label": 5,
+            "sdf_mse": 0.028275638818740845,
+            "chamfer_distance": 0.11140710860490799
+        },
+        {
+            "sample_idx": 400,
+            "label": 2,
+            "sdf_mse": 9.3132744950708e-05,
+            "chamfer_distance": 0.010399560444056988
+        },
+        {
+            "sample_idx": 401,
+            "label": 7,
+            "sdf_mse": 0.00010239682887913659,
+            "chamfer_distance": 0.008703125640749931
+        },
+        {
+            "sample_idx": 402,
+            "label": 3,
+            "sdf_mse": 0.00011042421101592481,
+            "chamfer_distance": 0.010356912389397621
+        },
+        {
+            "sample_idx": 403,
+            "label": 3,
+            "sdf_mse": 7.793389522703364e-05,
+            "chamfer_distance": 0.01134076714515686
+        },
+        {
+            "sample_idx": 404,
+            "label": 3,
+            "sdf_mse": 0.0001995797356357798,
+            "chamfer_distance": 0.013003918342292309
+        },
+        {
+            "sample_idx": 405,
+            "label": 8,
+            "sdf_mse": 9.867158951237798e-05,
+            "chamfer_distance": 0.009576184675097466
+        },
+        {
+            "sample_idx": 406,
+            "label": 6,
+            "sdf_mse": 8.581163274357095e-05,
+            "chamfer_distance": 0.013386748731136322
+        },
+        {
+            "sample_idx": 407,
+            "label": 1,
+            "sdf_mse": 6.689282599836588e-05,
+            "chamfer_distance": 0.007866107858717442
+        },
+        {
+            "sample_idx": 408,
+            "label": 2,
+            "sdf_mse": 9.512327233096585e-05,
+            "chamfer_distance": 0.009375047869980335
+        },
+        {
+            "sample_idx": 409,
+            "label": 2,
+            "sdf_mse": 0.00011044673010474071,
+            "chamfer_distance": 0.009423157200217247
+        },
+        {
+            "sample_idx": 410,
+            "label": 0,
+            "sdf_mse": 0.00010093561286339536,
+            "chamfer_distance": 0.016718169674277306
+        },
+        {
+            "sample_idx": 411,
+            "label": 1,
+            "sdf_mse": 8.560961578041315e-05,
+            "chamfer_distance": 0.00643817987293005
+        },
+        {
+            "sample_idx": 412,
+            "label": 3,
+            "sdf_mse": 0.00011607623309828341,
+            "chamfer_distance": 0.0104141253978014
+        },
+        {
+            "sample_idx": 413,
+            "label": 6,
+            "sdf_mse": 8.739942859392613e-05,
+            "chamfer_distance": 0.011266693472862244
+        },
+        {
+            "sample_idx": 414,
+            "label": 5,
+            "sdf_mse": 0.0001442512875655666,
+            "chamfer_distance": 0.012146463617682457
+        },
+        {
+            "sample_idx": 415,
+            "label": 8,
+            "sdf_mse": 0.00012294990301597863,
+            "chamfer_distance": 0.008832763880491257
+        },
+        {
+            "sample_idx": 416,
+            "label": 9,
+            "sdf_mse": 8.165819599526003e-05,
+            "chamfer_distance": 0.009080898948013783
+        },
+        {
+            "sample_idx": 417,
+            "label": 5,
+            "sdf_mse": 8.533978689229116e-05,
+            "chamfer_distance": 0.011793574318289757
+        },
+        {
+            "sample_idx": 418,
+            "label": 9,
+            "sdf_mse": 0.00026410454302094877,
+            "chamfer_distance": 0.009019982069730759
+        },
+        {
+            "sample_idx": 419,
+            "label": 7,
+            "sdf_mse": 9.918639261741191e-05,
+            "chamfer_distance": 0.0070292893797159195
+        },
+        {
+            "sample_idx": 420,
+            "label": 0,
+            "sdf_mse": 8.801144576864317e-05,
+            "chamfer_distance": 0.011672343127429485
+        },
+        {
+            "sample_idx": 421,
+            "label": 0,
+            "sdf_mse": 9.467798372497782e-05,
+            "chamfer_distance": 0.016659419983625412
+        },
+        {
+            "sample_idx": 422,
+            "label": 2,
+            "sdf_mse": 0.00011980764975305647,
+            "chamfer_distance": 0.011866233311593533
+        },
+        {
+            "sample_idx": 423,
+            "label": 0,
+            "sdf_mse": 0.00010611538164084777,
+            "chamfer_distance": 0.011441412381827831
+        },
+        {
+            "sample_idx": 424,
+            "label": 7,
+            "sdf_mse": 0.00010163853585254401,
+            "chamfer_distance": 0.008687485009431839
+        },
+        {
+            "sample_idx": 425,
+            "label": 0,
+            "sdf_mse": 8.113578951451927e-05,
+            "chamfer_distance": 0.012428714893758297
+        },
+        {
+            "sample_idx": 426,
+            "label": 6,
+            "sdf_mse": 8.912822522688657e-05,
+            "chamfer_distance": 0.007579976227134466
+        },
+        {
+            "sample_idx": 427,
+            "label": 9,
+            "sdf_mse": 0.0001639814581722021,
+            "chamfer_distance": 0.010264422744512558
+        },
+        {
+            "sample_idx": 428,
+            "label": 6,
+            "sdf_mse": 9.625980601413175e-05,
+            "chamfer_distance": 0.010404973290860653
+        },
+        {
+            "sample_idx": 429,
+            "label": 6,
+            "sdf_mse": 8.468903979519382e-05,
+            "chamfer_distance": 0.00781075656414032
+        },
+        {
+            "sample_idx": 430,
+            "label": 2,
+            "sdf_mse": 8.573292143410072e-05,
+            "chamfer_distance": 0.010750113986432552
+        },
+        {
+            "sample_idx": 431,
+            "label": 4,
+            "sdf_mse": 0.00010122868843609467,
+            "chamfer_distance": 0.00872601754963398
+        },
+        {
+            "sample_idx": 432,
+            "label": 3,
+            "sdf_mse": 9.851226059254259e-05,
+            "chamfer_distance": 0.011740271002054214
+        },
+        {
+            "sample_idx": 433,
+            "label": 0,
+            "sdf_mse": 0.00010094593744724989,
+            "chamfer_distance": 0.011633919551968575
+        },
+        {
+            "sample_idx": 434,
+            "label": 2,
+            "sdf_mse": 8.77240308909677e-05,
+            "chamfer_distance": 0.011241719126701355
+        },
+        {
+            "sample_idx": 435,
+            "label": 4,
+            "sdf_mse": 9.363507706439123e-05,
+            "chamfer_distance": 0.009366230107843876
+        },
+        {
+            "sample_idx": 436,
+            "label": 9,
+            "sdf_mse": 8.881887333700433e-05,
+            "chamfer_distance": 0.00883417297154665
+        },
+        {
+            "sample_idx": 437,
+            "label": 7,
+            "sdf_mse": 9.422667790204287e-05,
+            "chamfer_distance": 0.008354341611266136
+        },
+        {
+            "sample_idx": 438,
+            "label": 1,
+            "sdf_mse": 7.455897866748273e-05,
+            "chamfer_distance": 0.009077692404389381
+        },
+        {
+            "sample_idx": 439,
+            "label": 3,
+            "sdf_mse": 0.0001451235293643549,
+            "chamfer_distance": 0.009629007428884506
+        },
+        {
+            "sample_idx": 440,
+            "label": 1,
+            "sdf_mse": 5.788749331259169e-05,
+            "chamfer_distance": 0.006468842271715403
+        },
+        {
+            "sample_idx": 441,
+            "label": 9,
+            "sdf_mse": 7.231908239191398e-05,
+            "chamfer_distance": 0.008666474372148514
+        },
+        {
+            "sample_idx": 442,
+            "label": 2,
+            "sdf_mse": 9.116567525779828e-05,
+            "chamfer_distance": 0.010865584015846252
+        },
+        {
+            "sample_idx": 443,
+            "label": 2,
+            "sdf_mse": 7.782471220707521e-05,
+            "chamfer_distance": 0.010472159832715988
+        },
+        {
+            "sample_idx": 444,
+            "label": 2,
+            "sdf_mse": 8.229685772676021e-05,
+            "chamfer_distance": 0.009839006699621677
+        },
+        {
+            "sample_idx": 445,
+            "label": 2,
+            "sdf_mse": 0.0001301681186305359,
+            "chamfer_distance": 0.007592872716486454
+        },
+        {
+            "sample_idx": 446,
+            "label": 9,
+            "sdf_mse": 9.695425251265988e-05,
+            "chamfer_distance": 0.012519546784460545
+        },
+        {
+            "sample_idx": 447,
+            "label": 3,
+            "sdf_mse": 0.00011918529344256967,
+            "chamfer_distance": 0.008945619687438011
+        },
+        {
+            "sample_idx": 448,
+            "label": 8,
+            "sdf_mse": 0.00012541328032966703,
+            "chamfer_distance": 0.009667156264185905
+        },
+        {
+            "sample_idx": 449,
+            "label": 7,
+            "sdf_mse": 9.451693767914549e-05,
+            "chamfer_distance": 0.01084580086171627
+        },
+        {
+            "sample_idx": 450,
+            "label": 4,
+            "sdf_mse": 8.534655353287235e-05,
+            "chamfer_distance": 0.008677116595208645
+        },
+        {
+            "sample_idx": 451,
+            "label": 0,
+            "sdf_mse": 0.00010877098247874528,
+            "chamfer_distance": 0.014167113229632378
+        },
+        {
+            "sample_idx": 452,
+            "label": 0,
+            "sdf_mse": 7.866771920816973e-05,
+            "chamfer_distance": 0.012122206389904022
+        },
+        {
+            "sample_idx": 453,
+            "label": 6,
+            "sdf_mse": 8.998459816211835e-05,
+            "chamfer_distance": 0.009410139173269272
+        },
+        {
+            "sample_idx": 454,
+            "label": 2,
+            "sdf_mse": 8.965346205513924e-05,
+            "chamfer_distance": 0.010366545990109444
+        },
+        {
+            "sample_idx": 455,
+            "label": 0,
+            "sdf_mse": 0.00010599440429359674,
+            "chamfer_distance": 0.012188561260700226
+        },
+        {
+            "sample_idx": 456,
+            "label": 0,
+            "sdf_mse": 7.510899740736932e-05,
+            "chamfer_distance": 0.012364163063466549
+        },
+        {
+            "sample_idx": 457,
+            "label": 8,
+            "sdf_mse": 0.00011092917702626437,
+            "chamfer_distance": 0.010158493183553219
+        },
+        {
+            "sample_idx": 458,
+            "label": 7,
+            "sdf_mse": 9.455109830014408e-05,
+            "chamfer_distance": 0.01059043500572443
+        },
+        {
+            "sample_idx": 459,
+            "label": 7,
+            "sdf_mse": 0.00015245052054524422,
+            "chamfer_distance": 0.02165745571255684
+        },
+        {
+            "sample_idx": 460,
+            "label": 8,
+            "sdf_mse": 0.00014540788833983243,
+            "chamfer_distance": 0.009269384667277336
+        },
+        {
+            "sample_idx": 461,
+            "label": 3,
+            "sdf_mse": 8.256387809524313e-05,
+            "chamfer_distance": 0.027797512710094452
+        },
+        {
+            "sample_idx": 462,
+            "label": 4,
+            "sdf_mse": 0.00010445421503391117,
+            "chamfer_distance": 0.014377059414982796
+        },
+        {
+            "sample_idx": 463,
+            "label": 5,
+            "sdf_mse": 8.029222226468846e-05,
+            "chamfer_distance": 0.010611935518682003
+        },
+        {
+            "sample_idx": 464,
+            "label": 6,
+            "sdf_mse": 8.869451994542032e-05,
+            "chamfer_distance": 0.011069778352975845
+        },
+        {
+            "sample_idx": 465,
+            "label": 5,
+            "sdf_mse": 0.000132486064103432,
+            "chamfer_distance": 0.012402001768350601
+        },
+        {
+            "sample_idx": 466,
+            "label": 4,
+            "sdf_mse": 8.156336116371676e-05,
+            "chamfer_distance": 0.009138308465480804
+        },
+        {
+            "sample_idx": 467,
+            "label": 9,
+            "sdf_mse": 7.947716221679002e-05,
+            "chamfer_distance": 0.01168026588857174
+        },
+        {
+            "sample_idx": 468,
+            "label": 2,
+            "sdf_mse": 9.834594675339758e-05,
+            "chamfer_distance": 0.010837826877832413
+        },
+        {
+            "sample_idx": 469,
+            "label": 3,
+            "sdf_mse": 0.0001227202155860141,
+            "chamfer_distance": 0.009467273950576782
+        },
+        {
+            "sample_idx": 470,
+            "label": 6,
+            "sdf_mse": 0.0001072259183274582,
+            "chamfer_distance": 0.010605476796627045
+        },
+        {
+            "sample_idx": 471,
+            "label": 1,
+            "sdf_mse": 6.496749119833112e-05,
+            "chamfer_distance": 0.006804997101426125
+        },
+        {
+            "sample_idx": 472,
+            "label": 6,
+            "sdf_mse": 0.00010175155330216512,
+            "chamfer_distance": 0.010862487368285656
+        },
+        {
+            "sample_idx": 473,
+            "label": 0,
+            "sdf_mse": 9.289872832596302e-05,
+            "chamfer_distance": 0.012092896737158298
+        },
+        {
+            "sample_idx": 474,
+            "label": 5,
+            "sdf_mse": 0.00010523116361582652,
+            "chamfer_distance": 0.01022313628345728
+        },
+        {
+            "sample_idx": 475,
+            "label": 8,
+            "sdf_mse": 0.00011045325663872063,
+            "chamfer_distance": 0.008908124640583992
+        },
+        {
+            "sample_idx": 476,
+            "label": 5,
+            "sdf_mse": 9.765453432919458e-05,
+            "chamfer_distance": 0.013954054564237595
+        },
+        {
+            "sample_idx": 477,
+            "label": 4,
+            "sdf_mse": 8.729290129849687e-05,
+            "chamfer_distance": 0.020916001871228218
+        },
+        {
+            "sample_idx": 478,
+            "label": 3,
+            "sdf_mse": 0.00010112603922607377,
+            "chamfer_distance": 0.010206203907728195
+        },
+        {
+            "sample_idx": 479,
+            "label": 1,
+            "sdf_mse": 0.03132715821266174,
+            "chamfer_distance": 0.1729826033115387
+        },
+        {
+            "sample_idx": 480,
+            "label": 0,
+            "sdf_mse": 0.00010237146489089355,
+            "chamfer_distance": 0.010860470123589039
+        },
+        {
+            "sample_idx": 481,
+            "label": 9,
+            "sdf_mse": 0.00010239504626952112,
+            "chamfer_distance": 0.011630035005509853
+        },
+        {
+            "sample_idx": 482,
+            "label": 3,
+            "sdf_mse": 0.00010606139403535053,
+            "chamfer_distance": 0.014376610517501831
+        },
+        {
+            "sample_idx": 483,
+            "label": 6,
+            "sdf_mse": 8.803383389022201e-05,
+            "chamfer_distance": 0.009730900637805462
+        },
+        {
+            "sample_idx": 484,
+            "label": 7,
+            "sdf_mse": 0.00010164887498831376,
+            "chamfer_distance": 0.011216619983315468
+        },
+        {
+            "sample_idx": 485,
+            "label": 0,
+            "sdf_mse": 9.611353743821383e-05,
+            "chamfer_distance": 0.012154428288340569
+        },
+        {
+            "sample_idx": 486,
+            "label": 8,
+            "sdf_mse": 0.00010341691813664511,
+            "chamfer_distance": 0.009016760624945164
+        },
+        {
+            "sample_idx": 487,
+            "label": 8,
+            "sdf_mse": 0.00010706434841267765,
+            "chamfer_distance": 0.013594535179436207
+        },
+        {
+            "sample_idx": 488,
+            "label": 6,
+            "sdf_mse": 9.220839274348691e-05,
+            "chamfer_distance": 0.008185561746358871
+        },
+        {
+            "sample_idx": 489,
+            "label": 3,
+            "sdf_mse": 8.158055425155908e-05,
+            "chamfer_distance": 0.011845184490084648
+        },
+        {
+            "sample_idx": 490,
+            "label": 9,
+            "sdf_mse": 8.591213554609567e-05,
+            "chamfer_distance": 0.008556324988603592
+        },
+        {
+            "sample_idx": 491,
+            "label": 6,
+            "sdf_mse": 8.614661783212796e-05,
+            "chamfer_distance": 0.009976016357541084
+        },
+        {
+            "sample_idx": 492,
+            "label": 9,
+            "sdf_mse": 8.49659409141168e-05,
+            "chamfer_distance": 0.007944965735077858
+        },
+        {
+            "sample_idx": 493,
+            "label": 6,
+            "sdf_mse": 8.974892261903733e-05,
+            "chamfer_distance": 0.008656353689730167
+        },
+        {
+            "sample_idx": 494,
+            "label": 8,
+            "sdf_mse": 0.00012021946895401925,
+            "chamfer_distance": 0.011331573128700256
+        },
+        {
+            "sample_idx": 495,
+            "label": 9,
+            "sdf_mse": 9.096699068322778e-05,
+            "chamfer_distance": 0.011481275781989098
+        },
+        {
+            "sample_idx": 496,
+            "label": 4,
+            "sdf_mse": 9.351816697744653e-05,
+            "chamfer_distance": 0.008049044758081436
+        },
+        {
+            "sample_idx": 497,
+            "label": 3,
+            "sdf_mse": 0.00012921217421535403,
+            "chamfer_distance": 0.014745828695595264
+        },
+        {
+            "sample_idx": 498,
+            "label": 6,
+            "sdf_mse": 9.453497477807105e-05,
+            "chamfer_distance": 0.008066382259130478
+        },
+        {
+            "sample_idx": 499,
+            "label": 1,
+            "sdf_mse": 0.0001128422882175073,
+            "chamfer_distance": 0.014569055289030075
+        },
+        {
+            "sample_idx": 500,
+            "label": 0,
+            "sdf_mse": 8.23780064820312e-05,
+            "chamfer_distance": 0.009011544287204742
+        },
+        {
+            "sample_idx": 501,
+            "label": 9,
+            "sdf_mse": 0.00010896564344875515,
+            "chamfer_distance": 0.00751377921551466
+        },
+        {
+            "sample_idx": 502,
+            "label": 1,
+            "sdf_mse": 9.415284876013175e-05,
+            "chamfer_distance": 0.011734933592379093
+        },
+        {
+            "sample_idx": 503,
+            "label": 3,
+            "sdf_mse": 9.742475231178105e-05,
+            "chamfer_distance": 0.01110463310033083
+        },
+        {
+            "sample_idx": 504,
+            "label": 8,
+            "sdf_mse": 0.0001138684747274965,
+            "chamfer_distance": 0.01077357493340969
+        },
+        {
+            "sample_idx": 505,
+            "label": 3,
+            "sdf_mse": 9.439237328479066e-05,
+            "chamfer_distance": 0.012769200839102268
+        },
+        {
+            "sample_idx": 506,
+            "label": 3,
+            "sdf_mse": 0.0001317184214713052,
+            "chamfer_distance": 0.009957271628081799
+        },
+        {
+            "sample_idx": 507,
+            "label": 4,
+            "sdf_mse": 0.00010512190056033432,
+            "chamfer_distance": 0.00750676030293107
+        },
+        {
+            "sample_idx": 508,
+            "label": 2,
+            "sdf_mse": 9.779645915841684e-05,
+            "chamfer_distance": 0.009825404733419418
+        },
+        {
+            "sample_idx": 509,
+            "label": 2,
+            "sdf_mse": 0.0001547402935102582,
+            "chamfer_distance": 0.020301569253206253
+        },
+        {
+            "sample_idx": 510,
+            "label": 1,
+            "sdf_mse": 5.876331852050498e-05,
+            "chamfer_distance": 0.005928292404860258
+        },
+        {
+            "sample_idx": 511,
+            "label": 0,
+            "sdf_mse": 7.486130198230967e-05,
+            "chamfer_distance": 0.011916541494429111
+        },
+        {
+            "sample_idx": 512,
+            "label": 3,
+            "sdf_mse": 9.900425357045606e-05,
+            "chamfer_distance": 0.01146838627755642
+        },
+        {
+            "sample_idx": 513,
+            "label": 4,
+            "sdf_mse": 9.59338212851435e-05,
+            "chamfer_distance": 0.011037878692150116
+        },
+        {
+            "sample_idx": 514,
+            "label": 9,
+            "sdf_mse": 0.00011282790364930406,
+            "chamfer_distance": 0.008082050830125809
+        },
+        {
+            "sample_idx": 515,
+            "label": 2,
+            "sdf_mse": 0.00010549051512498409,
+            "chamfer_distance": 0.013030814938247204
+        },
+        {
+            "sample_idx": 516,
+            "label": 2,
+            "sdf_mse": 7.541380182374269e-05,
+            "chamfer_distance": 0.010007211938500404
+        },
+        {
+            "sample_idx": 517,
+            "label": 2,
+            "sdf_mse": 9.364027937408537e-05,
+            "chamfer_distance": 0.012704553082585335
+        },
+        {
+            "sample_idx": 518,
+            "label": 8,
+            "sdf_mse": 0.00013343492173589766,
+            "chamfer_distance": 0.011227800510823727
+        },
+        {
+            "sample_idx": 519,
+            "label": 8,
+            "sdf_mse": 0.00011563306907191873,
+            "chamfer_distance": 0.009085670113563538
+        },
+        {
+            "sample_idx": 520,
+            "label": 7,
+            "sdf_mse": 0.00018577228183858097,
+            "chamfer_distance": 0.00968126766383648
+        },
+        {
+            "sample_idx": 521,
+            "label": 9,
+            "sdf_mse": 9.133418643614277e-05,
+            "chamfer_distance": 0.008395463228225708
+        },
+        {
+            "sample_idx": 522,
+            "label": 9,
+            "sdf_mse": 0.0001825467188609764,
+            "chamfer_distance": 0.018746504560112953
+        },
+        {
+            "sample_idx": 523,
+            "label": 2,
+            "sdf_mse": 8.129497291520238e-05,
+            "chamfer_distance": 0.011301059275865555
+        },
+        {
+            "sample_idx": 524,
+            "label": 5,
+            "sdf_mse": 9.062460594577715e-05,
+            "chamfer_distance": 0.009863641113042831
+        },
+        {
+            "sample_idx": 525,
+            "label": 9,
+            "sdf_mse": 9.7669631941244e-05,
+            "chamfer_distance": 0.01113946083933115
+        },
+        {
+            "sample_idx": 526,
+            "label": 6,
+            "sdf_mse": 8.56568367453292e-05,
+            "chamfer_distance": 0.008879799395799637
+        },
+        {
+            "sample_idx": 527,
+            "label": 4,
+            "sdf_mse": 9.868438792182133e-05,
+            "chamfer_distance": 0.008549617603421211
+        },
+        {
+            "sample_idx": 528,
+            "label": 6,
+            "sdf_mse": 8.684277418069541e-05,
+            "chamfer_distance": 0.00898976530879736
+        },
+        {
+            "sample_idx": 529,
+            "label": 4,
+            "sdf_mse": 8.262396295322105e-05,
+            "chamfer_distance": 0.008084859699010849
+        },
+        {
+            "sample_idx": 530,
+            "label": 2,
+            "sdf_mse": 9.05548658920452e-05,
+            "chamfer_distance": 0.015884216874837875
+        },
+        {
+            "sample_idx": 531,
+            "label": 9,
+            "sdf_mse": 0.00012881112343166023,
+            "chamfer_distance": 0.010874342173337936
+        },
+        {
+            "sample_idx": 532,
+            "label": 4,
+            "sdf_mse": 0.00010162001854041591,
+            "chamfer_distance": 0.008764101192355156
+        },
+        {
+            "sample_idx": 533,
+            "label": 1,
+            "sdf_mse": 0.00026254222029820085,
+            "chamfer_distance": 0.023975959047675133
+        },
+        {
+            "sample_idx": 534,
+            "label": 4,
+            "sdf_mse": 0.00011444678239058703,
+            "chamfer_distance": 0.015943314880132675
+        },
+        {
+            "sample_idx": 535,
+            "label": 6,
+            "sdf_mse": 0.00010206569277215749,
+            "chamfer_distance": 0.017994139343500137
+        },
+        {
+            "sample_idx": 536,
+            "label": 4,
+            "sdf_mse": 9.126226359512657e-05,
+            "chamfer_distance": 0.01275478582829237
+        },
+        {
+            "sample_idx": 537,
+            "label": 6,
+            "sdf_mse": 0.00010794720583362505,
+            "chamfer_distance": 0.01065380871295929
+        },
+        {
+            "sample_idx": 538,
+            "label": 6,
+            "sdf_mse": 9.844906162470579e-05,
+            "chamfer_distance": 0.012937173247337341
+        },
+        {
+            "sample_idx": 539,
+            "label": 4,
+            "sdf_mse": 7.209159230114892e-05,
+            "chamfer_distance": 0.008817031979560852
+        },
+        {
+            "sample_idx": 540,
+            "label": 2,
+            "sdf_mse": 0.00011522321437951177,
+            "chamfer_distance": 0.007803822867572308
+        },
+        {
+            "sample_idx": 541,
+            "label": 8,
+            "sdf_mse": 9.036589472088963e-05,
+            "chamfer_distance": 0.011699624359607697
+        },
+        {
+            "sample_idx": 542,
+            "label": 0,
+            "sdf_mse": 8.85893459781073e-05,
+            "chamfer_distance": 0.011610077694058418
+        },
+        {
+            "sample_idx": 543,
+            "label": 7,
+            "sdf_mse": 9.921729360939935e-05,
+            "chamfer_distance": 0.01154581643640995
+        },
+        {
+            "sample_idx": 544,
+            "label": 7,
+            "sdf_mse": 0.00012712643365375698,
+            "chamfer_distance": 0.011101488955318928
+        },
+        {
+            "sample_idx": 545,
+            "label": 1,
+            "sdf_mse": 9.55907889874652e-05,
+            "chamfer_distance": 0.02814430370926857
+        },
+        {
+            "sample_idx": 546,
+            "label": 4,
+            "sdf_mse": 9.839979611570016e-05,
+            "chamfer_distance": 0.011043993756175041
+        },
+        {
+            "sample_idx": 547,
+            "label": 2,
+            "sdf_mse": 0.00015370493929367512,
+            "chamfer_distance": 0.008028874173760414
+        },
+        {
+            "sample_idx": 548,
+            "label": 8,
+            "sdf_mse": 0.00012021830480080098,
+            "chamfer_distance": NaN
+        },
+        {
+            "sample_idx": 549,
+            "label": 4,
+            "sdf_mse": 9.16749268071726e-05,
+            "chamfer_distance": 0.007815905846655369
+        },
+        {
+            "sample_idx": 550,
+            "label": 3,
+            "sdf_mse": 9.496987331658602e-05,
+            "chamfer_distance": 0.01188656222075224
+        },
+        {
+            "sample_idx": 551,
+            "label": 8,
+            "sdf_mse": 8.173214155249298e-05,
+            "chamfer_distance": 0.00945596769452095
+        },
+        {
+            "sample_idx": 552,
+            "label": 8,
+            "sdf_mse": 0.00013150987797416747,
+            "chamfer_distance": 0.008212401531636715
+        },
+        {
+            "sample_idx": 553,
+            "label": 8,
+            "sdf_mse": 0.00010717355326050892,
+            "chamfer_distance": 0.014401985332369804
+        },
+        {
+            "sample_idx": 554,
+            "label": 1,
+            "sdf_mse": 8.520778646925464e-05,
+            "chamfer_distance": 0.007564144674688578
+        },
+        {
+            "sample_idx": 555,
+            "label": 5,
+            "sdf_mse": 0.00010892343561863527,
+            "chamfer_distance": 0.010950712487101555
+        },
+        {
+            "sample_idx": 556,
+            "label": 5,
+            "sdf_mse": 0.00010460792691446841,
+            "chamfer_distance": 0.008695518597960472
+        },
+        {
+            "sample_idx": 557,
+            "label": 2,
+            "sdf_mse": 8.982096915133297e-05,
+            "chamfer_distance": 0.009145231917500496
+        },
+        {
+            "sample_idx": 558,
+            "label": 7,
+            "sdf_mse": 0.00012256711488589644,
+            "chamfer_distance": 0.012522979639470577
+        },
+        {
+            "sample_idx": 559,
+            "label": 5,
+            "sdf_mse": 9.030332876136526e-05,
+            "chamfer_distance": 0.014771902933716774
+        },
+        {
+            "sample_idx": 560,
+            "label": 9,
+            "sdf_mse": 8.000345405889675e-05,
+            "chamfer_distance": 0.011029835790395737
+        },
+        {
+            "sample_idx": 561,
+            "label": 0,
+            "sdf_mse": 8.629934745840728e-05,
+            "chamfer_distance": 0.008738365955650806
+        },
+        {
+            "sample_idx": 562,
+            "label": 3,
+            "sdf_mse": 0.00010284451127517968,
+            "chamfer_distance": 0.012501303106546402
+        },
+        {
+            "sample_idx": 563,
+            "label": 1,
+            "sdf_mse": 7.443680078722537e-05,
+            "chamfer_distance": 0.006417243741452694
+        },
+        {
+            "sample_idx": 564,
+            "label": 6,
+            "sdf_mse": 7.732430822215974e-05,
+            "chamfer_distance": 0.009743346832692623
+        },
+        {
+            "sample_idx": 565,
+            "label": 8,
+            "sdf_mse": 0.00012339836393948644,
+            "chamfer_distance": 0.009405246935784817
+        },
+        {
+            "sample_idx": 566,
+            "label": 0,
+            "sdf_mse": 9.538968151900917e-05,
+            "chamfer_distance": 0.014670398086309433
+        },
+        {
+            "sample_idx": 567,
+            "label": 6,
+            "sdf_mse": 0.021302511915564537,
+            "chamfer_distance": 0.08934509009122849
+        },
+        {
+            "sample_idx": 568,
+            "label": 0,
+            "sdf_mse": 9.280877566197887e-05,
+            "chamfer_distance": 0.01174207590520382
+        },
+        {
+            "sample_idx": 569,
+            "label": 8,
+            "sdf_mse": 0.00010461849888088182,
+            "chamfer_distance": 0.010213767178356647
+        },
+        {
+            "sample_idx": 570,
+            "label": 7,
+            "sdf_mse": 8.101007551886141e-05,
+            "chamfer_distance": 0.007288490422070026
+        },
+        {
+            "sample_idx": 571,
+            "label": 0,
+            "sdf_mse": 0.00010089732677442953,
+            "chamfer_distance": 0.010004443116486073
+        },
+        {
+            "sample_idx": 572,
+            "label": 7,
+            "sdf_mse": 8.516760863130912e-05,
+            "chamfer_distance": 0.008645998314023018
+        },
+        {
+            "sample_idx": 573,
+            "label": 5,
+            "sdf_mse": 9.406737808603793e-05,
+            "chamfer_distance": 0.009886320680379868
+        },
+        {
+            "sample_idx": 574,
+            "label": 4,
+            "sdf_mse": 7.926466059871018e-05,
+            "chamfer_distance": 0.009115660563111305
+        },
+        {
+            "sample_idx": 575,
+            "label": 2,
+            "sdf_mse": 7.959153299452737e-05,
+            "chamfer_distance": 0.008569230325520039
+        },
+        {
+            "sample_idx": 576,
+            "label": 3,
+            "sdf_mse": 8.335783786606044e-05,
+            "chamfer_distance": 0.01292568352073431
+        },
+        {
+            "sample_idx": 577,
+            "label": 0,
+            "sdf_mse": 9.794725337997079e-05,
+            "chamfer_distance": 0.010617070831358433
+        },
+        {
+            "sample_idx": 578,
+            "label": 5,
+            "sdf_mse": 0.00011347035615472123,
+            "chamfer_distance": 0.01034621149301529
+        },
+        {
+            "sample_idx": 579,
+            "label": 3,
+            "sdf_mse": 8.47418123157695e-05,
+            "chamfer_distance": 0.011516089551150799
+        },
+        {
+            "sample_idx": 580,
+            "label": 1,
+            "sdf_mse": 6.639154889853671e-05,
+            "chamfer_distance": 0.01287189032882452
+        },
+        {
+            "sample_idx": 581,
+            "label": 7,
+            "sdf_mse": 8.339238411281258e-05,
+            "chamfer_distance": 0.007644234225153923
+        },
+        {
+            "sample_idx": 582,
+            "label": 7,
+            "sdf_mse": 0.00011649628140730783,
+            "chamfer_distance": 0.009902984835207462
+        },
+        {
+            "sample_idx": 583,
+            "label": 1,
+            "sdf_mse": 0.00010020716581493616,
+            "chamfer_distance": 0.017518045380711555
+        },
+        {
+            "sample_idx": 584,
+            "label": 0,
+            "sdf_mse": 9.321291145170107e-05,
+            "chamfer_distance": 0.012861315160989761
+        },
+        {
+            "sample_idx": 585,
+            "label": 3,
+            "sdf_mse": 8.405053085880354e-05,
+            "chamfer_distance": 0.010087154805660248
+        },
+        {
+            "sample_idx": 586,
+            "label": 1,
+            "sdf_mse": 6.419952842406929e-05,
+            "chamfer_distance": 0.008549313060939312
+        },
+        {
+            "sample_idx": 587,
+            "label": 1,
+            "sdf_mse": 0.00011789013660745695,
+            "chamfer_distance": 0.02197309583425522
+        },
+        {
+            "sample_idx": 588,
+            "label": 1,
+            "sdf_mse": 6.535824650200084e-05,
+            "chamfer_distance": 0.008397691883146763
+        },
+        {
+            "sample_idx": 589,
+            "label": 0,
+            "sdf_mse": 0.00011759511107811704,
+            "chamfer_distance": 0.01383429579436779
+        },
+        {
+            "sample_idx": 590,
+            "label": 4,
+            "sdf_mse": 0.00010283783194608986,
+            "chamfer_distance": 0.008589610457420349
+        },
+        {
+            "sample_idx": 591,
+            "label": 7,
+            "sdf_mse": 0.00013801790191791952,
+            "chamfer_distance": 0.010085435584187508
+        },
+        {
+            "sample_idx": 592,
+            "label": 0,
+            "sdf_mse": 8.036295912461355e-05,
+            "chamfer_distance": 0.010409265756607056
+        },
+        {
+            "sample_idx": 593,
+            "label": 6,
+            "sdf_mse": 9.140310430666432e-05,
+            "chamfer_distance": 0.009495683014392853
+        },
+        {
+            "sample_idx": 594,
+            "label": 2,
+            "sdf_mse": 9.61119367275387e-05,
+            "chamfer_distance": 0.009299645200371742
+        },
+        {
+            "sample_idx": 595,
+            "label": 8,
+            "sdf_mse": 0.00012061680172337219,
+            "chamfer_distance": 0.009456158615648746
+        },
+        {
+            "sample_idx": 596,
+            "label": 3,
+            "sdf_mse": 0.000122163983178325,
+            "chamfer_distance": 0.008234163746237755
+        },
+        {
+            "sample_idx": 597,
+            "label": 2,
+            "sdf_mse": 9.354509529657662e-05,
+            "chamfer_distance": 0.009229808114469051
+        },
+        {
+            "sample_idx": 598,
+            "label": 0,
+            "sdf_mse": 0.0002476911759003997,
+            "chamfer_distance": 0.01684151589870453
+        },
+        {
+            "sample_idx": 599,
+            "label": 8,
+            "sdf_mse": 9.765514550963417e-05,
+            "chamfer_distance": 0.010165742598474026
+        },
+        {
+            "sample_idx": 600,
+            "label": 7,
+            "sdf_mse": 8.923238783609122e-05,
+            "chamfer_distance": 0.00931193120777607
+        },
+        {
+            "sample_idx": 601,
+            "label": 7,
+            "sdf_mse": 0.00011713684943970293,
+            "chamfer_distance": 0.011836444959044456
+        },
+        {
+            "sample_idx": 602,
+            "label": 9,
+            "sdf_mse": 0.00012530598905868828,
+            "chamfer_distance": 0.011735501699149609
+        },
+        {
+            "sample_idx": 603,
+            "label": 3,
+            "sdf_mse": 8.488855382893234e-05,
+            "chamfer_distance": 0.011141642928123474
+        },
+        {
+            "sample_idx": 604,
+            "label": 2,
+            "sdf_mse": 9.097583824768662e-05,
+            "chamfer_distance": 0.014048290438950062
+        },
+        {
+            "sample_idx": 605,
+            "label": 2,
+            "sdf_mse": 0.00010829584061866626,
+            "chamfer_distance": 0.013989184983074665
+        },
+        {
+            "sample_idx": 606,
+            "label": 1,
+            "sdf_mse": 7.848355744499713e-05,
+            "chamfer_distance": 0.006628522649407387
+        },
+        {
+            "sample_idx": 607,
+            "label": 5,
+            "sdf_mse": 9.907767525874078e-05,
+            "chamfer_distance": 0.010823143646121025
+        },
+        {
+            "sample_idx": 608,
+            "label": 5,
+            "sdf_mse": 0.00011986680328845978,
+            "chamfer_distance": 0.014049524441361427
+        },
+        {
+            "sample_idx": 609,
+            "label": 9,
+            "sdf_mse": 0.00011652240209514275,
+            "chamfer_distance": 0.013128244318068027
+        },
+        {
+            "sample_idx": 610,
+            "label": 1,
+            "sdf_mse": 7.984395051607862e-05,
+            "chamfer_distance": 0.012634359300136566
+        },
+        {
+            "sample_idx": 611,
+            "label": 1,
+            "sdf_mse": 5.2398030675249174e-05,
+            "chamfer_distance": 0.006554905790835619
+        },
+        {
+            "sample_idx": 612,
+            "label": 5,
+            "sdf_mse": 0.00012173726281616837,
+            "chamfer_distance": 0.010028693825006485
+        },
+        {
+            "sample_idx": 613,
+            "label": 1,
+            "sdf_mse": 7.425469812005758e-05,
+            "chamfer_distance": 0.005617124028503895
+        },
+        {
+            "sample_idx": 614,
+            "label": 8,
+            "sdf_mse": 0.00011558533878996968,
+            "chamfer_distance": 0.008817259222269058
+        },
+        {
+            "sample_idx": 615,
+            "label": 2,
+            "sdf_mse": 9.848597983364016e-05,
+            "chamfer_distance": 0.010636270977556705
+        },
+        {
+            "sample_idx": 616,
+            "label": 1,
+            "sdf_mse": 0.0001260995923075825,
+            "chamfer_distance": 0.007800597231835127
+        },
+        {
+            "sample_idx": 617,
+            "label": 7,
+            "sdf_mse": 0.000138558738399297,
+            "chamfer_distance": 0.01414244994521141
+        },
+        {
+            "sample_idx": 618,
+            "label": 2,
+            "sdf_mse": 0.00011057463416364044,
+            "chamfer_distance": 0.011087862774729729
+        },
+        {
+            "sample_idx": 619,
+            "label": 8,
+            "sdf_mse": 0.00010694700904423371,
+            "chamfer_distance": 0.010414505377411842
+        },
+        {
+            "sample_idx": 620,
+            "label": 7,
+            "sdf_mse": 0.00015242811059579253,
+            "chamfer_distance": 0.010237764567136765
+        },
+        {
+            "sample_idx": 621,
+            "label": 1,
+            "sdf_mse": 6.64485851302743e-05,
+            "chamfer_distance": 0.007107764948159456
+        },
+        {
+            "sample_idx": 622,
+            "label": 4,
+            "sdf_mse": 0.00011162864393554628,
+            "chamfer_distance": 0.01116106379777193
+        },
+        {
+            "sample_idx": 623,
+            "label": 4,
+            "sdf_mse": 0.00010272872896166518,
+            "chamfer_distance": 0.009735742583870888
+        },
+        {
+            "sample_idx": 624,
+            "label": 8,
+            "sdf_mse": 8.984837040770799e-05,
+            "chamfer_distance": 0.00950570497661829
+        },
+        {
+            "sample_idx": 625,
+            "label": 4,
+            "sdf_mse": 7.350111263804138e-05,
+            "chamfer_distance": 0.008312773890793324
+        },
+        {
+            "sample_idx": 626,
+            "label": 2,
+            "sdf_mse": 0.00011565544264158234,
+            "chamfer_distance": 0.009588493034243584
+        },
+        {
+            "sample_idx": 627,
+            "label": 6,
+            "sdf_mse": 0.0001406895462423563,
+            "chamfer_distance": 0.0127428462728858
+        },
+        {
+            "sample_idx": 628,
+            "label": 5,
+            "sdf_mse": 9.692232561064884e-05,
+            "chamfer_distance": 0.0102390693500638
+        },
+        {
+            "sample_idx": 629,
+            "label": 8,
+            "sdf_mse": 0.00010654422658262774,
+            "chamfer_distance": 0.008552983403205872
+        },
+        {
+            "sample_idx": 630,
+            "label": 9,
+            "sdf_mse": 0.00010694078082451597,
+            "chamfer_distance": 0.011086242273449898
+        },
+        {
+            "sample_idx": 631,
+            "label": 2,
+            "sdf_mse": 8.959508704720065e-05,
+            "chamfer_distance": 0.008944571018218994
+        },
+        {
+            "sample_idx": 632,
+            "label": 3,
+            "sdf_mse": 8.828839054331183e-05,
+            "chamfer_distance": 0.013030418194830418
+        },
+        {
+            "sample_idx": 633,
+            "label": 4,
+            "sdf_mse": 0.00010263544390909374,
+            "chamfer_distance": 0.009168537333607674
+        },
+        {
+            "sample_idx": 634,
+            "label": 7,
+            "sdf_mse": 0.00013242237037047744,
+            "chamfer_distance": 0.012458400800824165
+        },
+        {
+            "sample_idx": 635,
+            "label": 0,
+            "sdf_mse": 0.00011657867435133085,
+            "chamfer_distance": 0.012055055238306522
+        },
+        {
+            "sample_idx": 636,
+            "label": 9,
+            "sdf_mse": 9.750787285156548e-05,
+            "chamfer_distance": 0.012650680728256702
+        },
+        {
+            "sample_idx": 637,
+            "label": 1,
+            "sdf_mse": 9.73493661149405e-05,
+            "chamfer_distance": 0.030333613976836205
+        },
+        {
+            "sample_idx": 638,
+            "label": 8,
+            "sdf_mse": 0.00010105574619956315,
+            "chamfer_distance": 0.011897175572812557
+        },
+        {
+            "sample_idx": 639,
+            "label": 1,
+            "sdf_mse": 0.00011316522432025522,
+            "chamfer_distance": 0.009542014449834824
+        },
+        {
+            "sample_idx": 640,
+            "label": 3,
+            "sdf_mse": 7.521998486481607e-05,
+            "chamfer_distance": 0.008391955867409706
+        },
+        {
+            "sample_idx": 641,
+            "label": 2,
+            "sdf_mse": 9.581982885720208e-05,
+            "chamfer_distance": 0.009317398071289062
+        },
+        {
+            "sample_idx": 642,
+            "label": 0,
+            "sdf_mse": 0.00010482950892765075,
+            "chamfer_distance": 0.010621842928230762
+        },
+        {
+            "sample_idx": 643,
+            "label": 2,
+            "sdf_mse": 0.0001252941437996924,
+            "chamfer_distance": 0.011335464194417
+        },
+        {
+            "sample_idx": 644,
+            "label": 3,
+            "sdf_mse": 0.00021162297343835235,
+            "chamfer_distance": 0.012384459376335144
+        },
+        {
+            "sample_idx": 645,
+            "label": 4,
+            "sdf_mse": 9.334934293292463e-05,
+            "chamfer_distance": 0.012979485094547272
+        },
+        {
+            "sample_idx": 646,
+            "label": 7,
+            "sdf_mse": 0.00012230935681145638,
+            "chamfer_distance": 0.015099250711500645
+        },
+        {
+            "sample_idx": 647,
+            "label": 6,
+            "sdf_mse": 0.00011579468991840258,
+            "chamfer_distance": 0.007937644608318806
+        },
+        {
+            "sample_idx": 648,
+            "label": 4,
+            "sdf_mse": 8.520724077243358e-05,
+            "chamfer_distance": 0.009358585812151432
+        },
+        {
+            "sample_idx": 649,
+            "label": 1,
+            "sdf_mse": 7.918952178442851e-05,
+            "chamfer_distance": 0.011647919192910194
+        },
+        {
+            "sample_idx": 650,
+            "label": 1,
+            "sdf_mse": 8.98063080967404e-05,
+            "chamfer_distance": 0.009411872364580631
+        },
+        {
+            "sample_idx": 651,
+            "label": 6,
+            "sdf_mse": 0.0001073775565600954,
+            "chamfer_distance": 0.011248258873820305
+        },
+        {
+            "sample_idx": 652,
+            "label": 8,
+            "sdf_mse": 0.0001104493931052275,
+            "chamfer_distance": 0.01037623081356287
+        },
+        {
+            "sample_idx": 653,
+            "label": 8,
+            "sdf_mse": 8.732842252356932e-05,
+            "chamfer_distance": 0.00969547126442194
+        },
+        {
+            "sample_idx": 654,
+            "label": 8,
+            "sdf_mse": 0.00010687088797567412,
+            "chamfer_distance": 0.009748702868819237
+        },
+        {
+            "sample_idx": 655,
+            "label": 8,
+            "sdf_mse": 0.00013692793436348438,
+            "chamfer_distance": 0.010808594524860382
+        },
+        {
+            "sample_idx": 656,
+            "label": 0,
+            "sdf_mse": 9.055837290361524e-05,
+            "chamfer_distance": 0.009019387885928154
+        },
+        {
+            "sample_idx": 657,
+            "label": 3,
+            "sdf_mse": 9.916876297211275e-05,
+            "chamfer_distance": 0.010457973927259445
+        },
+        {
+            "sample_idx": 658,
+            "label": 6,
+            "sdf_mse": 7.630701293237507e-05,
+            "chamfer_distance": 0.009692653082311153
+        },
+        {
+            "sample_idx": 659,
+            "label": 0,
+            "sdf_mse": 0.00010523767559789121,
+            "chamfer_distance": 0.01083388738334179
+        },
+        {
+            "sample_idx": 660,
+            "label": 9,
+            "sdf_mse": 0.0002678674354683608,
+            "chamfer_distance": 0.01808973215520382
+        },
+        {
+            "sample_idx": 661,
+            "label": 9,
+            "sdf_mse": 0.00010816723079187796,
+            "chamfer_distance": 0.009236232377588749
+        },
+        {
+            "sample_idx": 662,
+            "label": 0,
+            "sdf_mse": 0.00012505108315963298,
+            "chamfer_distance": 0.010053972713649273
+        },
+        {
+            "sample_idx": 663,
+            "label": 0,
+            "sdf_mse": 9.333025082014501e-05,
+            "chamfer_distance": 0.01422188337892294
+        },
+        {
+            "sample_idx": 664,
+            "label": 6,
+            "sdf_mse": 0.00015149715181905776,
+            "chamfer_distance": 0.011902306228876114
+        },
+        {
+            "sample_idx": 665,
+            "label": 5,
+            "sdf_mse": 8.279093890450895e-05,
+            "chamfer_distance": 0.009723217226564884
+        },
+        {
+            "sample_idx": 666,
+            "label": 4,
+            "sdf_mse": 9.120416507357731e-05,
+            "chamfer_distance": 0.00791849847882986
+        },
+        {
+            "sample_idx": 667,
+            "label": 1,
+            "sdf_mse": 7.014161383267492e-05,
+            "chamfer_distance": 0.007658107206225395
+        },
+        {
+            "sample_idx": 668,
+            "label": 6,
+            "sdf_mse": 0.00012020049325656146,
+            "chamfer_distance": 0.01082149799913168
+        },
+        {
+            "sample_idx": 669,
+            "label": 3,
+            "sdf_mse": 0.00011109139450127259,
+            "chamfer_distance": 0.01417483203113079
+        },
+        {
+            "sample_idx": 670,
+            "label": 2,
+            "sdf_mse": 0.0001349505764665082,
+            "chamfer_distance": 0.010546519421041012
+        },
+        {
+            "sample_idx": 671,
+            "label": 6,
+            "sdf_mse": 0.00010480330820428208,
+            "chamfer_distance": 0.013350501656532288
+        },
+        {
+            "sample_idx": 672,
+            "label": 1,
+            "sdf_mse": 5.49025644431822e-05,
+            "chamfer_distance": 0.007507031783461571
+        },
+        {
+            "sample_idx": 673,
+            "label": 7,
+            "sdf_mse": 9.050669177668169e-05,
+            "chamfer_distance": 0.007925724610686302
+        },
+        {
+            "sample_idx": 674,
+            "label": 5,
+            "sdf_mse": 9.535036952001974e-05,
+            "chamfer_distance": 0.012061726301908493
+        },
+        {
+            "sample_idx": 675,
+            "label": 1,
+            "sdf_mse": 8.527513273293152e-05,
+            "chamfer_distance": 0.01014902163296938
+        },
+        {
+            "sample_idx": 676,
+            "label": 4,
+            "sdf_mse": 0.00010143212421098724,
+            "chamfer_distance": 0.012438256293535233
+        },
+        {
+            "sample_idx": 677,
+            "label": 4,
+            "sdf_mse": 8.457553485641256e-05,
+            "chamfer_distance": 0.010633853264153004
+        },
+        {
+            "sample_idx": 678,
+            "label": 2,
+            "sdf_mse": 8.538030670024455e-05,
+            "chamfer_distance": 0.013031063601374626
+        },
+        {
+            "sample_idx": 679,
+            "label": 9,
+            "sdf_mse": 9.44047060329467e-05,
+            "chamfer_distance": 0.00852445513010025
+        },
+        {
+            "sample_idx": 680,
+            "label": 9,
+            "sdf_mse": 0.00011568841728148982,
+            "chamfer_distance": 0.009097680449485779
+        },
+        {
+            "sample_idx": 681,
+            "label": 0,
+            "sdf_mse": 0.00010939662024611607,
+            "chamfer_distance": 0.011651525273919106
+        },
+        {
+            "sample_idx": 682,
+            "label": 1,
+            "sdf_mse": 6.852656952105463e-05,
+            "chamfer_distance": 0.00946144387125969
+        },
+        {
+            "sample_idx": 683,
+            "label": 3,
+            "sdf_mse": 0.00014847205602563918,
+            "chamfer_distance": 0.009962587617337704
+        },
+        {
+            "sample_idx": 684,
+            "label": 8,
+            "sdf_mse": 0.00012785122089553624,
+            "chamfer_distance": 0.010143349878489971
+        },
+        {
+            "sample_idx": 685,
+            "label": 9,
+            "sdf_mse": 0.00010612705227686092,
+            "chamfer_distance": 0.011470291763544083
+        },
+        {
+            "sample_idx": 686,
+            "label": 6,
+            "sdf_mse": 9.404009324498475e-05,
+            "chamfer_distance": 0.00881191249936819
+        },
+        {
+            "sample_idx": 687,
+            "label": 1,
+            "sdf_mse": 0.00011385412653908134,
+            "chamfer_distance": 0.010336666367948055
+        },
+        {
+            "sample_idx": 688,
+            "label": 7,
+            "sdf_mse": 0.09224211424589157,
+            "chamfer_distance": 0.1930822879076004
+        },
+        {
+            "sample_idx": 689,
+            "label": 1,
+            "sdf_mse": 7.816909783286974e-05,
+            "chamfer_distance": 0.008694025687873363
+        },
+        {
+            "sample_idx": 690,
+            "label": 9,
+            "sdf_mse": 0.044913142919540405,
+            "chamfer_distance": 0.16058659553527832
+        },
+        {
+            "sample_idx": 691,
+            "label": 2,
+            "sdf_mse": 0.00011253263073740527,
+            "chamfer_distance": 0.011582436040043831
+        },
+        {
+            "sample_idx": 692,
+            "label": 9,
+            "sdf_mse": 0.00018019959679804742,
+            "chamfer_distance": 0.010741589590907097
+        },
+        {
+            "sample_idx": 693,
+            "label": 9,
+            "sdf_mse": 0.00013503484660759568,
+            "chamfer_distance": 0.017368216067552567
+        },
+        {
+            "sample_idx": 694,
+            "label": 4,
+            "sdf_mse": 8.30079588922672e-05,
+            "chamfer_distance": 0.009125251322984695
+        },
+        {
+            "sample_idx": 695,
+            "label": 0,
+            "sdf_mse": 0.00010328219650546089,
+            "chamfer_distance": 0.011391742154955864
+        },
+        {
+            "sample_idx": 696,
+            "label": 2,
+            "sdf_mse": 8.986875764094293e-05,
+            "chamfer_distance": 0.010048525407910347
+        },
+        {
+            "sample_idx": 697,
+            "label": 2,
+            "sdf_mse": 9.191287972498685e-05,
+            "chamfer_distance": 0.010801412165164948
+        },
+        {
+            "sample_idx": 698,
+            "label": 2,
+            "sdf_mse": 9.439079440198839e-05,
+            "chamfer_distance": 0.009587264619767666
+        },
+        {
+            "sample_idx": 699,
+            "label": 8,
+            "sdf_mse": 0.00012701291416306049,
+            "chamfer_distance": 0.011537233367562294
+        },
+        {
+            "sample_idx": 700,
+            "label": 4,
+            "sdf_mse": 0.0001274474780075252,
+            "chamfer_distance": NaN
+        },
+        {
+            "sample_idx": 701,
+            "label": 2,
+            "sdf_mse": 9.410887287231162e-05,
+            "chamfer_distance": 0.011424195021390915
+        },
+        {
+            "sample_idx": 702,
+            "label": 8,
+            "sdf_mse": 0.00014070776524022222,
+            "chamfer_distance": 0.011548912152647972
+        },
+        {
+            "sample_idx": 703,
+            "label": 2,
+            "sdf_mse": 9.372460044687614e-05,
+            "chamfer_distance": 0.010001398622989655
+        },
+        {
+            "sample_idx": 704,
+            "label": 8,
+            "sdf_mse": 9.67780506471172e-05,
+            "chamfer_distance": 0.010328425094485283
+        },
+        {
+            "sample_idx": 705,
+            "label": 5,
+            "sdf_mse": 0.00012279812654014677,
+            "chamfer_distance": 0.01193122286349535
+        },
+        {
+            "sample_idx": 706,
+            "label": 8,
+            "sdf_mse": 0.00012965915084350854,
+            "chamfer_distance": 0.00954478606581688
+        },
+        {
+            "sample_idx": 707,
+            "label": 6,
+            "sdf_mse": 0.00010112760355696082,
+            "chamfer_distance": 0.008763994090259075
+        },
+        {
+            "sample_idx": 708,
+            "label": 9,
+            "sdf_mse": 8.713269198779017e-05,
+            "chamfer_distance": 0.0091774370521307
+        },
+        {
+            "sample_idx": 709,
+            "label": 9,
+            "sdf_mse": 9.606032108422369e-05,
+            "chamfer_distance": 0.01898272894322872
+        },
+        {
+            "sample_idx": 710,
+            "label": 3,
+            "sdf_mse": 0.00014498985547106713,
+            "chamfer_distance": 0.011005411855876446
+        },
+        {
+            "sample_idx": 711,
+            "label": 6,
+            "sdf_mse": 7.701904542045668e-05,
+            "chamfer_distance": 0.011220608837902546
+        },
+        {
+            "sample_idx": 712,
+            "label": 8,
+            "sdf_mse": 0.00013355044939089566,
+            "chamfer_distance": 0.011078624986112118
+        },
+        {
+            "sample_idx": 713,
+            "label": 4,
+            "sdf_mse": 0.00010107574780704454,
+            "chamfer_distance": 0.01067571621388197
+        },
+        {
+            "sample_idx": 714,
+            "label": 6,
+            "sdf_mse": 9.206384129356593e-05,
+            "chamfer_distance": 0.011449972167611122
+        },
+        {
+            "sample_idx": 715,
+            "label": 2,
+            "sdf_mse": 0.0001166317451861687,
+            "chamfer_distance": 0.013048576191067696
+        },
+        {
+            "sample_idx": 716,
+            "label": 4,
+            "sdf_mse": 9.418265108251944e-05,
+            "chamfer_distance": 0.009455567225813866
+        },
+        {
+            "sample_idx": 717,
+            "label": 7,
+            "sdf_mse": 8.873916522134095e-05,
+            "chamfer_distance": 0.00878850556910038
+        },
+        {
+            "sample_idx": 718,
+            "label": 8,
+            "sdf_mse": 0.000204229581868276,
+            "chamfer_distance": 0.008994409814476967
+        },
+        {
+            "sample_idx": 719,
+            "label": 9,
+            "sdf_mse": 0.0001795427524484694,
+            "chamfer_distance": 0.008918484672904015
+        },
+        {
+            "sample_idx": 720,
+            "label": 6,
+            "sdf_mse": 0.00011042448750231415,
+            "chamfer_distance": 0.01293262466788292
+        },
+        {
+            "sample_idx": 721,
+            "label": 1,
+            "sdf_mse": 8.37352781672962e-05,
+            "chamfer_distance": 0.017793189734220505
+        },
+        {
+            "sample_idx": 722,
+            "label": 6,
+            "sdf_mse": 0.00026810247800312936,
+            "chamfer_distance": 0.010415562428534031
+        },
+        {
+            "sample_idx": 723,
+            "label": 4,
+            "sdf_mse": 9.578996832715347e-05,
+            "chamfer_distance": 0.009845830500125885
+        },
+        {
+            "sample_idx": 724,
+            "label": 6,
+            "sdf_mse": 9.150546975433826e-05,
+            "chamfer_distance": 0.01041783019900322
+        },
+        {
+            "sample_idx": 725,
+            "label": 6,
+            "sdf_mse": 8.817993511911482e-05,
+            "chamfer_distance": 0.009223345667123795
+        },
+        {
+            "sample_idx": 726,
+            "label": 4,
+            "sdf_mse": 7.696934335399419e-05,
+            "chamfer_distance": 0.008543984964489937
+        },
+        {
+            "sample_idx": 727,
+            "label": 3,
+            "sdf_mse": 0.00010349110380047932,
+            "chamfer_distance": 0.011301538906991482
+        },
+        {
+            "sample_idx": 728,
+            "label": 4,
+            "sdf_mse": 8.440701640211046e-05,
+            "chamfer_distance": 0.006989688612520695
+        },
+        {
+            "sample_idx": 729,
+            "label": 3,
+            "sdf_mse": 0.0001224524894496426,
+            "chamfer_distance": 0.012650608085095882
+        },
+        {
+            "sample_idx": 730,
+            "label": 6,
+            "sdf_mse": 7.333128451136872e-05,
+            "chamfer_distance": 0.01027983333915472
+        },
+        {
+            "sample_idx": 731,
+            "label": 4,
+            "sdf_mse": 8.615645492682233e-05,
+            "chamfer_distance": 0.008719897828996181
+        },
+        {
+            "sample_idx": 732,
+            "label": 8,
+            "sdf_mse": 0.00010846609075088054,
+            "chamfer_distance": 0.009961694478988647
+        },
+        {
+            "sample_idx": 733,
+            "label": 1,
+            "sdf_mse": 9.278720244765282e-05,
+            "chamfer_distance": 0.006627975031733513
+        },
+        {
+            "sample_idx": 734,
+            "label": 5,
+            "sdf_mse": 0.0026889326982200146,
+            "chamfer_distance": 0.01699770987033844
+        },
+        {
+            "sample_idx": 735,
+            "label": 3,
+            "sdf_mse": 0.00012223952217027545,
+            "chamfer_distance": 0.014143997803330421
+        },
+        {
+            "sample_idx": 736,
+            "label": 0,
+            "sdf_mse": 9.720143134472892e-05,
+            "chamfer_distance": 0.010744180530309677
+        },
+        {
+            "sample_idx": 737,
+            "label": 9,
+            "sdf_mse": 8.944124419940636e-05,
+            "chamfer_distance": 0.008681168779730797
+        },
+        {
+            "sample_idx": 738,
+            "label": 2,
+            "sdf_mse": 8.818706555757672e-05,
+            "chamfer_distance": 0.009093619883060455
+        },
+        {
+            "sample_idx": 739,
+            "label": 6,
+            "sdf_mse": 7.793054828653112e-05,
+            "chamfer_distance": 0.0073606399819254875
+        },
+        {
+            "sample_idx": 740,
+            "label": 5,
+            "sdf_mse": 9.464855247642845e-05,
+            "chamfer_distance": 0.008379604667425156
+        },
+        {
+            "sample_idx": 741,
+            "label": 8,
+            "sdf_mse": 0.00019428251835051924,
+            "chamfer_distance": 0.013800665736198425
+        },
+        {
+            "sample_idx": 742,
+            "label": 5,
+            "sdf_mse": 8.494810026604682e-05,
+            "chamfer_distance": 0.00950105581432581
+        },
+        {
+            "sample_idx": 743,
+            "label": 7,
+            "sdf_mse": 7.905338134150952e-05,
+            "chamfer_distance": 0.011973508633673191
+        },
+        {
+            "sample_idx": 744,
+            "label": 2,
+            "sdf_mse": 9.661280637374148e-05,
+            "chamfer_distance": 0.010952399112284184
+        },
+        {
+            "sample_idx": 745,
+            "label": 7,
+            "sdf_mse": 9.070325177162886e-05,
+            "chamfer_distance": 0.00884504709392786
+        },
+        {
+            "sample_idx": 746,
+            "label": 9,
+            "sdf_mse": 0.00011271206312812865,
+            "chamfer_distance": 0.01112823560833931
+        },
+        {
+            "sample_idx": 747,
+            "label": 2,
+            "sdf_mse": 0.00011276382429059595,
+            "chamfer_distance": 0.015048282220959663
+        },
+        {
+            "sample_idx": 748,
+            "label": 1,
+            "sdf_mse": 0.00018174877914134413,
+            "chamfer_distance": 0.01669018715620041
+        },
+        {
+            "sample_idx": 749,
+            "label": 6,
+            "sdf_mse": 0.00010579656373010948,
+            "chamfer_distance": 0.01193489320576191
+        },
+        {
+            "sample_idx": 750,
+            "label": 1,
+            "sdf_mse": 0.00012349209282547235,
+            "chamfer_distance": 0.008279834873974323
+        },
+        {
+            "sample_idx": 751,
+            "label": 6,
+            "sdf_mse": 0.0001045102981152013,
+            "chamfer_distance": 0.011285267770290375
+        },
+        {
+            "sample_idx": 752,
+            "label": 4,
+            "sdf_mse": 9.449466597288847e-05,
+            "chamfer_distance": 0.014703049324452877
+        },
+        {
+            "sample_idx": 753,
+            "label": 8,
+            "sdf_mse": 0.00011471462494228035,
+            "chamfer_distance": 0.010836813598871231
+        },
+        {
+            "sample_idx": 754,
+            "label": 1,
+            "sdf_mse": 6.165575177874416e-05,
+            "chamfer_distance": 0.0056878020986914635
+        },
+        {
+            "sample_idx": 755,
+            "label": 3,
+            "sdf_mse": 0.00019267933384981006,
+            "chamfer_distance": 0.013277506455779076
+        },
+        {
+            "sample_idx": 756,
+            "label": 9,
+            "sdf_mse": 7.410038233501837e-05,
+            "chamfer_distance": 0.008148223161697388
+        },
+        {
+            "sample_idx": 757,
+            "label": 8,
+            "sdf_mse": 0.00013378473522607237,
+            "chamfer_distance": 0.009864690713584423
+        },
+        {
+            "sample_idx": 758,
+            "label": 4,
+            "sdf_mse": 0.00038740664604119956,
+            "chamfer_distance": 0.012531478889286518
+        },
+        {
+            "sample_idx": 759,
+            "label": 5,
+            "sdf_mse": 8.993392839329317e-05,
+            "chamfer_distance": 0.009733789600431919
+        },
+        {
+            "sample_idx": 760,
+            "label": 4,
+            "sdf_mse": 8.799207716947421e-05,
+            "chamfer_distance": 0.007986348122358322
+        },
+        {
+            "sample_idx": 761,
+            "label": 3,
+            "sdf_mse": 0.00010872301209019497,
+            "chamfer_distance": 0.011412862688302994
+        },
+        {
+            "sample_idx": 762,
+            "label": 2,
+            "sdf_mse": 0.00011084007564932108,
+            "chamfer_distance": 0.012316171079874039
+        },
+        {
+            "sample_idx": 763,
+            "label": 7,
+            "sdf_mse": 9.643247176427394e-05,
+            "chamfer_distance": 0.011166451498866081
+        },
+        {
+            "sample_idx": 764,
+            "label": 1,
+            "sdf_mse": 0.00012429687194526196,
+            "chamfer_distance": 0.009438976645469666
+        },
+        {
+            "sample_idx": 765,
+            "label": 2,
+            "sdf_mse": 8.3238395745866e-05,
+            "chamfer_distance": 0.010698484256863594
+        },
+        {
+            "sample_idx": 766,
+            "label": 5,
+            "sdf_mse": 9.542340558255091e-05,
+            "chamfer_distance": 0.013747465796768665
+        },
+        {
+            "sample_idx": 767,
+            "label": 9,
+            "sdf_mse": 0.00010916094470303506,
+            "chamfer_distance": 0.008008322678506374
+        },
+        {
+            "sample_idx": 768,
+            "label": 6,
+            "sdf_mse": 8.583974704379216e-05,
+            "chamfer_distance": 0.012982813641428947
+        },
+        {
+            "sample_idx": 769,
+            "label": 3,
+            "sdf_mse": 9.703754039946944e-05,
+            "chamfer_distance": 0.009034132584929466
+        },
+        {
+            "sample_idx": 770,
+            "label": 1,
+            "sdf_mse": 7.585337152704597e-05,
+            "chamfer_distance": 0.033619027584791183
+        },
+        {
+            "sample_idx": 771,
+            "label": 0,
+            "sdf_mse": 7.569397712359205e-05,
+            "chamfer_distance": 0.010133147239685059
+        },
+        {
+            "sample_idx": 772,
+            "label": 7,
+            "sdf_mse": 8.171549416147172e-05,
+            "chamfer_distance": 0.00901838205754757
+        },
+        {
+            "sample_idx": 773,
+            "label": 8,
+            "sdf_mse": 0.00011510104377521202,
+            "chamfer_distance": 0.010144045576453209
+        },
+        {
+            "sample_idx": 774,
+            "label": 4,
+            "sdf_mse": 0.00010424175707157701,
+            "chamfer_distance": 0.010762789286673069
+        },
+        {
+            "sample_idx": 775,
+            "label": 2,
+            "sdf_mse": 9.56648655119352e-05,
+            "chamfer_distance": 0.011279853992164135
+        },
+        {
+            "sample_idx": 776,
+            "label": 1,
+            "sdf_mse": 0.00010642643610481173,
+            "chamfer_distance": 0.028932882472872734
+        },
+        {
+            "sample_idx": 777,
+            "label": 2,
+            "sdf_mse": 0.00011445570271462202,
+            "chamfer_distance": 0.013395426794886589
+        },
+        {
+            "sample_idx": 778,
+            "label": 1,
+            "sdf_mse": 0.0001272001100005582,
+            "chamfer_distance": 0.011888902634382248
+        },
+        {
+            "sample_idx": 779,
+            "label": 3,
+            "sdf_mse": 9.391320054419339e-05,
+            "chamfer_distance": 0.011961606331169605
+        },
+        {
+            "sample_idx": 780,
+            "label": 4,
+            "sdf_mse": 0.00010982261301251128,
+            "chamfer_distance": 0.007685913238674402
+        },
+        {
+            "sample_idx": 781,
+            "label": 1,
+            "sdf_mse": 9.799958934308961e-05,
+            "chamfer_distance": 0.011495541781187057
+        },
+        {
+            "sample_idx": 782,
+            "label": 4,
+            "sdf_mse": 7.607440784340724e-05,
+            "chamfer_distance": 0.00833081640303135
+        },
+        {
+            "sample_idx": 783,
+            "label": 2,
+            "sdf_mse": 0.00012302241520956159,
+            "chamfer_distance": 0.010851067490875721
+        },
+        {
+            "sample_idx": 784,
+            "label": 7,
+            "sdf_mse": 8.828812133288011e-05,
+            "chamfer_distance": 0.009532018564641476
+        },
+        {
+            "sample_idx": 785,
+            "label": 9,
+            "sdf_mse": 9.210802090819925e-05,
+            "chamfer_distance": 0.0094749815762043
+        },
+        {
+            "sample_idx": 786,
+            "label": 2,
+            "sdf_mse": 0.0001237960677826777,
+            "chamfer_distance": 0.013310343027114868
+        },
+        {
+            "sample_idx": 787,
+            "label": 4,
+            "sdf_mse": 9.212071017827839e-05,
+            "chamfer_distance": 0.014296716079115868
+        },
+        {
+            "sample_idx": 788,
+            "label": 6,
+            "sdf_mse": 7.214268407551572e-05,
+            "chamfer_distance": 0.008266282267868519
+        },
+        {
+            "sample_idx": 789,
+            "label": 0,
+            "sdf_mse": 0.0001012517896015197,
+            "chamfer_distance": 0.012181073427200317
+        },
+        {
+            "sample_idx": 790,
+            "label": 2,
+            "sdf_mse": 8.672745752846822e-05,
+            "chamfer_distance": 0.009870018810033798
+        },
+        {
+            "sample_idx": 791,
+            "label": 7,
+            "sdf_mse": 8.164581231540069e-05,
+            "chamfer_distance": 0.00843855645507574
+        },
+        {
+            "sample_idx": 792,
+            "label": 0,
+            "sdf_mse": 0.0001075544350896962,
+            "chamfer_distance": 0.011447612196207047
+        },
+        {
+            "sample_idx": 793,
+            "label": 2,
+            "sdf_mse": 0.000131987442728132,
+            "chamfer_distance": 0.008905530907213688
+        },
+        {
+            "sample_idx": 794,
+            "label": 4,
+            "sdf_mse": 0.0001351783430436626,
+            "chamfer_distance": 0.010401676408946514
+        },
+        {
+            "sample_idx": 795,
+            "label": 9,
+            "sdf_mse": 8.82309177541174e-05,
+            "chamfer_distance": 0.01191418245434761
+        },
+        {
+            "sample_idx": 796,
+            "label": 6,
+            "sdf_mse": 9.913463873090222e-05,
+            "chamfer_distance": 0.010989871807396412
+        },
+        {
+            "sample_idx": 797,
+            "label": 9,
+            "sdf_mse": 7.934407040011138e-05,
+            "chamfer_distance": 0.009647835977375507
+        },
+        {
+            "sample_idx": 798,
+            "label": 2,
+            "sdf_mse": 0.00010266837489325553,
+            "chamfer_distance": 0.01120977383106947
+        },
+        {
+            "sample_idx": 799,
+            "label": 6,
+            "sdf_mse": 9.657556802267209e-05,
+            "chamfer_distance": 0.01090032048523426
+        },
+        {
+            "sample_idx": 800,
+            "label": 9,
+            "sdf_mse": 0.00010048673721030354,
+            "chamfer_distance": 0.011716681532561779
+        },
+        {
+            "sample_idx": 801,
+            "label": 5,
+            "sdf_mse": 0.0001035282839438878,
+            "chamfer_distance": 0.012178354896605015
+        },
+        {
+            "sample_idx": 802,
+            "label": 4,
+            "sdf_mse": 7.927546539576724e-05,
+            "chamfer_distance": 0.0077777765691280365
+        },
+        {
+            "sample_idx": 803,
+            "label": 1,
+            "sdf_mse": 5.8949499361915514e-05,
+            "chamfer_distance": 0.006327138748019934
+        },
+        {
+            "sample_idx": 804,
+            "label": 1,
+            "sdf_mse": 8.403012179769576e-05,
+            "chamfer_distance": 0.012213429436087608
+        },
+        {
+            "sample_idx": 805,
+            "label": 3,
+            "sdf_mse": 0.00013161421520635486,
+            "chamfer_distance": 0.011013693176209927
+        },
+        {
+            "sample_idx": 806,
+            "label": 9,
+            "sdf_mse": 9.51299662119709e-05,
+            "chamfer_distance": 0.008304037153720856
+        },
+        {
+            "sample_idx": 807,
+            "label": 6,
+            "sdf_mse": 9.30349706322886e-05,
+            "chamfer_distance": 0.00917058065533638
+        },
+        {
+            "sample_idx": 808,
+            "label": 4,
+            "sdf_mse": 0.0001100797308026813,
+            "chamfer_distance": 0.011591575108468533
+        },
+        {
+            "sample_idx": 809,
+            "label": 3,
+            "sdf_mse": 8.499041723553091e-05,
+            "chamfer_distance": 0.015465831384062767
+        },
+        {
+            "sample_idx": 810,
+            "label": 3,
+            "sdf_mse": 0.0001368234952678904,
+            "chamfer_distance": 0.011699950322508812
+        },
+        {
+            "sample_idx": 811,
+            "label": 3,
+            "sdf_mse": 0.00010526640107855201,
+            "chamfer_distance": 0.009510315954685211
+        },
+        {
+            "sample_idx": 812,
+            "label": 8,
+            "sdf_mse": 9.481137385591865e-05,
+            "chamfer_distance": 0.010050458833575249
+        },
+        {
+            "sample_idx": 813,
+            "label": 9,
+            "sdf_mse": 0.00010989178554154932,
+            "chamfer_distance": 0.008795072324573994
+        },
+        {
+            "sample_idx": 814,
+            "label": 9,
+            "sdf_mse": 0.00011042079859180376,
+            "chamfer_distance": 0.008976559154689312
+        },
+        {
+            "sample_idx": 815,
+            "label": 7,
+            "sdf_mse": 6.283351103775203e-05,
+            "chamfer_distance": 0.00942731462419033
+        },
+        {
+            "sample_idx": 816,
+            "label": 0,
+            "sdf_mse": 8.42915105749853e-05,
+            "chamfer_distance": 0.011861261911690235
+        },
+        {
+            "sample_idx": 817,
+            "label": 2,
+            "sdf_mse": 9.901096927933395e-05,
+            "chamfer_distance": 0.012575030326843262
+        },
+        {
+            "sample_idx": 818,
+            "label": 3,
+            "sdf_mse": 0.0001116877028835006,
+            "chamfer_distance": 0.009037087671458721
+        },
+        {
+            "sample_idx": 819,
+            "label": 2,
+            "sdf_mse": 0.00010588510485831648,
+            "chamfer_distance": 0.011046645231544971
+        },
+        {
+            "sample_idx": 820,
+            "label": 6,
+            "sdf_mse": 0.00010203968122368678,
+            "chamfer_distance": 0.009073087945580482
+        },
+        {
+            "sample_idx": 821,
+            "label": 3,
+            "sdf_mse": 8.165178587660193e-05,
+            "chamfer_distance": 0.009145230986177921
+        },
+        {
+            "sample_idx": 822,
+            "label": 0,
+            "sdf_mse": 0.00010393002594355494,
+            "chamfer_distance": 0.012661442160606384
+        },
+        {
+            "sample_idx": 823,
+            "label": 0,
+            "sdf_mse": 7.953189924592152e-05,
+            "chamfer_distance": 0.01300001610070467
+        },
+        {
+            "sample_idx": 824,
+            "label": 0,
+            "sdf_mse": 8.889285527402535e-05,
+            "chamfer_distance": 0.012223252095282078
+        },
+        {
+            "sample_idx": 825,
+            "label": 1,
+            "sdf_mse": 8.375778998015448e-05,
+            "chamfer_distance": 0.008843053132295609
+        },
+        {
+            "sample_idx": 826,
+            "label": 3,
+            "sdf_mse": 0.00011760369670810178,
+            "chamfer_distance": 0.011409791186451912
+        },
+        {
+            "sample_idx": 827,
+            "label": 6,
+            "sdf_mse": 9.681633673608303e-05,
+            "chamfer_distance": 0.008843247778713703
+        },
+        {
+            "sample_idx": 828,
+            "label": 2,
+            "sdf_mse": 8.696185977896675e-05,
+            "chamfer_distance": 0.009842334315180779
+        },
+        {
+            "sample_idx": 829,
+            "label": 3,
+            "sdf_mse": 0.00010387966904090717,
+            "chamfer_distance": 0.01403730921447277
+        },
+        {
+            "sample_idx": 830,
+            "label": 4,
+            "sdf_mse": 7.828244270058349e-05,
+            "chamfer_distance": 0.00928259827196598
+        },
+        {
+            "sample_idx": 831,
+            "label": 7,
+            "sdf_mse": 9.84618891379796e-05,
+            "chamfer_distance": 0.009752027690410614
+        },
+        {
+            "sample_idx": 832,
+            "label": 0,
+            "sdf_mse": 7.369217200903222e-05,
+            "chamfer_distance": 0.010057059116661549
+        },
+        {
+            "sample_idx": 833,
+            "label": 1,
+            "sdf_mse": 8.097352838376537e-05,
+            "chamfer_distance": 0.014458755031228065
+        },
+        {
+            "sample_idx": 834,
+            "label": 3,
+            "sdf_mse": 0.00011496880324557424,
+            "chamfer_distance": 0.010065545327961445
+        },
+        {
+            "sample_idx": 835,
+            "label": 7,
+            "sdf_mse": 9.253294410882518e-05,
+            "chamfer_distance": 0.008755211718380451
+        },
+        {
+            "sample_idx": 836,
+            "label": 1,
+            "sdf_mse": 0.0002612589451018721,
+            "chamfer_distance": 0.01302495226264
+        },
+        {
+            "sample_idx": 837,
+            "label": 1,
+            "sdf_mse": 6.641718209721148e-05,
+            "chamfer_distance": 0.006049655377864838
+        },
+        {
+            "sample_idx": 838,
+            "label": 3,
+            "sdf_mse": 0.00010352105891797692,
+            "chamfer_distance": 0.013369129970669746
+        },
+        {
+            "sample_idx": 839,
+            "label": 3,
+            "sdf_mse": 0.00012017528206342831,
+            "chamfer_distance": 0.011302652768790722
+        },
+        {
+            "sample_idx": 840,
+            "label": 0,
+            "sdf_mse": 9.028927161125466e-05,
+            "chamfer_distance": 0.01047525368630886
+        },
+        {
+            "sample_idx": 841,
+            "label": 7,
+            "sdf_mse": 0.000319867511279881,
+            "chamfer_distance": 0.011195741593837738
+        },
+        {
+            "sample_idx": 842,
+            "label": 2,
+            "sdf_mse": 8.545799209969118e-05,
+            "chamfer_distance": 0.013342143036425114
+        },
+        {
+            "sample_idx": 843,
+            "label": 8,
+            "sdf_mse": 0.00013285498425830156,
+            "chamfer_distance": 0.010559774935245514
+        },
+        {
+            "sample_idx": 844,
+            "label": 1,
+            "sdf_mse": 0.00013299210695549846,
+            "chamfer_distance": 0.01695762202143669
+        },
+        {
+            "sample_idx": 845,
+            "label": 6,
+            "sdf_mse": 0.00010813913831952959,
+            "chamfer_distance": 0.011289289221167564
+        },
+        {
+            "sample_idx": 846,
+            "label": 4,
+            "sdf_mse": 7.829196692910045e-05,
+            "chamfer_distance": 0.007399397436529398
+        },
+        {
+            "sample_idx": 847,
+            "label": 4,
+            "sdf_mse": 7.473858568118885e-05,
+            "chamfer_distance": 0.008854486048221588
+        },
+        {
+            "sample_idx": 848,
+            "label": 4,
+            "sdf_mse": 7.744992763036862e-05,
+            "chamfer_distance": 0.009202616289258003
+        },
+        {
+            "sample_idx": 849,
+            "label": 2,
+            "sdf_mse": 9.840974234975874e-05,
+            "chamfer_distance": 0.010199259966611862
+        },
+        {
+            "sample_idx": 850,
+            "label": 9,
+            "sdf_mse": 7.377088331850246e-05,
+            "chamfer_distance": 0.008824714459478855
+        },
+        {
+            "sample_idx": 851,
+            "label": 2,
+            "sdf_mse": 0.00010597881919238716,
+            "chamfer_distance": 0.011935370974242687
+        },
+        {
+            "sample_idx": 852,
+            "label": 3,
+            "sdf_mse": 0.0001478759804740548,
+            "chamfer_distance": 0.01383079681545496
+        },
+        {
+            "sample_idx": 853,
+            "label": 8,
+            "sdf_mse": 0.00012452987721189857,
+            "chamfer_distance": 0.009072782471776009
+        },
+        {
+            "sample_idx": 854,
+            "label": 1,
+            "sdf_mse": 8.754152804613113e-05,
+            "chamfer_distance": 0.01774662733078003
+        },
+        {
+            "sample_idx": 855,
+            "label": 4,
+            "sdf_mse": 0.00013218974345363677,
+            "chamfer_distance": 0.007933148182928562
+        },
+        {
+            "sample_idx": 856,
+            "label": 0,
+            "sdf_mse": 0.00010064278467325494,
+            "chamfer_distance": 0.010763646103441715
+        },
+        {
+            "sample_idx": 857,
+            "label": 2,
+            "sdf_mse": 0.0001111089950427413,
+            "chamfer_distance": 0.011340039782226086
+        },
+        {
+            "sample_idx": 858,
+            "label": 9,
+            "sdf_mse": 9.422977745998651e-05,
+            "chamfer_distance": 0.007834822870790958
+        },
+        {
+            "sample_idx": 859,
+            "label": 1,
+            "sdf_mse": 8.418695506406948e-05,
+            "chamfer_distance": 0.0083497054874897
+        },
+        {
+            "sample_idx": 860,
+            "label": 0,
+            "sdf_mse": 8.471010369248688e-05,
+            "chamfer_distance": 0.010578460991382599
+        },
+        {
+            "sample_idx": 861,
+            "label": 4,
+            "sdf_mse": 8.41786022647284e-05,
+            "chamfer_distance": 0.00939906481653452
+        },
+        {
+            "sample_idx": 862,
+            "label": 5,
+            "sdf_mse": 0.0001284135942114517,
+            "chamfer_distance": 0.009020848199725151
+        },
+        {
+            "sample_idx": 863,
+            "label": 5,
+            "sdf_mse": 9.15567361516878e-05,
+            "chamfer_distance": 0.009872717782855034
+        },
+        {
+            "sample_idx": 864,
+            "label": 9,
+            "sdf_mse": 0.00010024990478996187,
+            "chamfer_distance": 0.009573232382535934
+        },
+        {
+            "sample_idx": 865,
+            "label": 3,
+            "sdf_mse": 8.87010755832307e-05,
+            "chamfer_distance": 0.014010044746100903
+        },
+        {
+            "sample_idx": 866,
+            "label": 6,
+            "sdf_mse": 8.085426088655367e-05,
+            "chamfer_distance": 0.007899092510342598
+        },
+        {
+            "sample_idx": 867,
+            "label": 1,
+            "sdf_mse": 0.025048330426216125,
+            "chamfer_distance": 0.18436473608016968
+        },
+        {
+            "sample_idx": 868,
+            "label": 1,
+            "sdf_mse": 7.515347533626482e-05,
+            "chamfer_distance": 0.0063255708664655685
+        },
+        {
+            "sample_idx": 869,
+            "label": 1,
+            "sdf_mse": 8.583907765569165e-05,
+            "chamfer_distance": 0.0069357771426439285
+        },
+        {
+            "sample_idx": 870,
+            "label": 9,
+            "sdf_mse": 7.997914508450776e-05,
+            "chamfer_distance": 0.009768979623913765
+        },
+        {
+            "sample_idx": 871,
+            "label": 9,
+            "sdf_mse": 0.0001684165035840124,
+            "chamfer_distance": 0.008964696899056435
+        },
+        {
+            "sample_idx": 872,
+            "label": 1,
+            "sdf_mse": 7.657716196263209e-05,
+            "chamfer_distance": 0.007945802994072437
+        },
+        {
+            "sample_idx": 873,
+            "label": 3,
+            "sdf_mse": 0.0001210977352457121,
+            "chamfer_distance": 0.009856796823441982
+        },
+        {
+            "sample_idx": 874,
+            "label": 8,
+            "sdf_mse": 0.00010809978994075209,
+            "chamfer_distance": 0.01307884231209755
+        },
+        {
+            "sample_idx": 875,
+            "label": 3,
+            "sdf_mse": 0.00011012968025170267,
+            "chamfer_distance": 0.009555241093039513
+        },
+        {
+            "sample_idx": 876,
+            "label": 1,
+            "sdf_mse": 8.382611122215167e-05,
+            "chamfer_distance": 0.006895536556839943
+        },
+        {
+            "sample_idx": 877,
+            "label": 0,
+            "sdf_mse": 9.574142313795164e-05,
+            "chamfer_distance": 0.011618085205554962
+        },
+        {
+            "sample_idx": 878,
+            "label": 5,
+            "sdf_mse": 0.00014797411859035492,
+            "chamfer_distance": 0.01061029452830553
+        },
+        {
+            "sample_idx": 879,
+            "label": 9,
+            "sdf_mse": 0.00010808715887833387,
+            "chamfer_distance": 0.009519245475530624
+        },
+        {
+            "sample_idx": 880,
+            "label": 0,
+            "sdf_mse": 9.138081804849207e-05,
+            "chamfer_distance": 0.012715321965515614
+        },
+        {
+            "sample_idx": 881,
+            "label": 5,
+            "sdf_mse": 9.730649617267773e-05,
+            "chamfer_distance": 0.011635691858828068
+        },
+        {
+            "sample_idx": 882,
+            "label": 7,
+            "sdf_mse": 0.00013263834989629686,
+            "chamfer_distance": 0.036146361380815506
+        },
+        {
+            "sample_idx": 883,
+            "label": 3,
+            "sdf_mse": 0.0001060303402482532,
+            "chamfer_distance": 0.015016302466392517
+        },
+        {
+            "sample_idx": 884,
+            "label": 7,
+            "sdf_mse": 8.291162521345541e-05,
+            "chamfer_distance": 0.00669220183044672
+        },
+        {
+            "sample_idx": 885,
+            "label": 1,
+            "sdf_mse": 0.00011327255197102204,
+            "chamfer_distance": 0.030050568282604218
+        },
+        {
+            "sample_idx": 886,
+            "label": 0,
+            "sdf_mse": 8.5477702668868e-05,
+            "chamfer_distance": 0.012857809662818909
+        },
+        {
+            "sample_idx": 887,
+            "label": 3,
+            "sdf_mse": 0.0001446027890779078,
+            "chamfer_distance": 0.012101991102099419
+        },
+        {
+            "sample_idx": 888,
+            "label": 2,
+            "sdf_mse": 9.479824075242504e-05,
+            "chamfer_distance": 0.015876805409789085
+        },
+        {
+            "sample_idx": 889,
+            "label": 8,
+            "sdf_mse": 9.966945799533278e-05,
+            "chamfer_distance": 0.01100243255496025
+        },
+        {
+            "sample_idx": 890,
+            "label": 5,
+            "sdf_mse": 8.280471956823021e-05,
+            "chamfer_distance": 0.008983788080513477
+        },
+        {
+            "sample_idx": 891,
+            "label": 1,
+            "sdf_mse": 6.758241215720773e-05,
+            "chamfer_distance": 0.0069299424067139626
+        },
+        {
+            "sample_idx": 892,
+            "label": 4,
+            "sdf_mse": 8.692604023963213e-05,
+            "chamfer_distance": 0.010161397978663445
+        },
+        {
+            "sample_idx": 893,
+            "label": 8,
+            "sdf_mse": 9.934492118190974e-05,
+            "chamfer_distance": 0.009810964576900005
+        },
+        {
+            "sample_idx": 894,
+            "label": 4,
+            "sdf_mse": 0.0001118564250646159,
+            "chamfer_distance": 0.010922740213572979
+        },
+        {
+            "sample_idx": 895,
+            "label": 4,
+            "sdf_mse": 0.0002970368950627744,
+            "chamfer_distance": 0.010420454666018486
+        },
+        {
+            "sample_idx": 896,
+            "label": 3,
+            "sdf_mse": 8.212780812755227e-05,
+            "chamfer_distance": 0.00829552672803402
+        },
+        {
+            "sample_idx": 897,
+            "label": 1,
+            "sdf_mse": 8.626517228549346e-05,
+            "chamfer_distance": 0.013440651819109917
+        },
+        {
+            "sample_idx": 898,
+            "label": 2,
+            "sdf_mse": 9.07183057279326e-05,
+            "chamfer_distance": 0.01289385836571455
+        },
+        {
+            "sample_idx": 899,
+            "label": 9,
+            "sdf_mse": 9.747037256602198e-05,
+            "chamfer_distance": 0.009946506470441818
+        },
+        {
+            "sample_idx": 900,
+            "label": 5,
+            "sdf_mse": 0.00012689731374848634,
+            "chamfer_distance": 0.009050368331372738
+        },
+        {
+            "sample_idx": 901,
+            "label": 0,
+            "sdf_mse": 0.0001223365543410182,
+            "chamfer_distance": 0.014236850664019585
+        },
+        {
+            "sample_idx": 902,
+            "label": 8,
+            "sdf_mse": 0.0001336144341621548,
+            "chamfer_distance": 0.010062530636787415
+        },
+        {
+            "sample_idx": 903,
+            "label": 0,
+            "sdf_mse": 9.929420775733888e-05,
+            "chamfer_distance": 0.014054013416171074
+        },
+        {
+            "sample_idx": 904,
+            "label": 0,
+            "sdf_mse": 8.049335883697495e-05,
+            "chamfer_distance": 0.015254666097462177
+        },
+        {
+            "sample_idx": 905,
+            "label": 0,
+            "sdf_mse": 9.281110396841541e-05,
+            "chamfer_distance": 0.023226991295814514
+        },
+        {
+            "sample_idx": 906,
+            "label": 5,
+            "sdf_mse": 8.503055869368836e-05,
+            "chamfer_distance": 0.011817488819360733
+        },
+        {
+            "sample_idx": 907,
+            "label": 8,
+            "sdf_mse": 0.00010651831689756364,
+            "chamfer_distance": 0.00943099893629551
+        },
+        {
+            "sample_idx": 908,
+            "label": 5,
+            "sdf_mse": 9.602577483747154e-05,
+            "chamfer_distance": 0.011721810325980186
+        },
+        {
+            "sample_idx": 909,
+            "label": 0,
+            "sdf_mse": 8.962390711531043e-05,
+            "chamfer_distance": 0.012669919058680534
+        },
+        {
+            "sample_idx": 910,
+            "label": 5,
+            "sdf_mse": 9.459196007810533e-05,
+            "chamfer_distance": 0.013938426971435547
+        },
+        {
+            "sample_idx": 911,
+            "label": 8,
+            "sdf_mse": 0.0001455492019886151,
+            "chamfer_distance": 0.010185588151216507
+        },
+        {
+            "sample_idx": 912,
+            "label": 1,
+            "sdf_mse": 6.496264541056007e-05,
+            "chamfer_distance": 0.007241693325340748
+        },
+        {
+            "sample_idx": 913,
+            "label": 9,
+            "sdf_mse": 0.00010800731251947582,
+            "chamfer_distance": 0.011104732751846313
+        },
+        {
+            "sample_idx": 914,
+            "label": 3,
+            "sdf_mse": 0.00010184584243688732,
+            "chamfer_distance": 0.00941402092576027
+        },
+        {
+            "sample_idx": 915,
+            "label": 7,
+            "sdf_mse": 8.699574391357601e-05,
+            "chamfer_distance": 0.011531488969922066
+        },
+        {
+            "sample_idx": 916,
+            "label": 9,
+            "sdf_mse": 9.548620437271893e-05,
+            "chamfer_distance": 0.009276315569877625
+        },
+        {
+            "sample_idx": 917,
+            "label": 7,
+            "sdf_mse": 0.00011680019088089466,
+            "chamfer_distance": 0.008271442726254463
+        },
+        {
+            "sample_idx": 918,
+            "label": 3,
+            "sdf_mse": 0.00016324425814673305,
+            "chamfer_distance": 0.009886830113828182
+        },
+        {
+            "sample_idx": 919,
+            "label": 8,
+            "sdf_mse": 9.5990406407509e-05,
+            "chamfer_distance": 0.009712054394185543
+        },
+        {
+            "sample_idx": 920,
+            "label": 0,
+            "sdf_mse": 9.90182306850329e-05,
+            "chamfer_distance": 0.016153786331415176
+        },
+        {
+            "sample_idx": 921,
+            "label": 0,
+            "sdf_mse": 0.0001794167619664222,
+            "chamfer_distance": 0.010462190955877304
+        },
+        {
+            "sample_idx": 922,
+            "label": 4,
+            "sdf_mse": 0.00011297554738121107,
+            "chamfer_distance": 0.01617451012134552
+        },
+        {
+            "sample_idx": 923,
+            "label": 7,
+            "sdf_mse": 0.00010241613199468702,
+            "chamfer_distance": 0.01301736943423748
+        },
+        {
+            "sample_idx": 924,
+            "label": 4,
+            "sdf_mse": 8.430337766185403e-05,
+            "chamfer_distance": 0.008909521624445915
+        },
+        {
+            "sample_idx": 925,
+            "label": 2,
+            "sdf_mse": 0.0001081327282008715,
+            "chamfer_distance": 0.012655142694711685
+        },
+        {
+            "sample_idx": 926,
+            "label": 3,
+            "sdf_mse": 0.00011964831355726346,
+            "chamfer_distance": 0.0107890535145998
+        },
+        {
+            "sample_idx": 927,
+            "label": 3,
+            "sdf_mse": 0.026048660278320312,
+            "chamfer_distance": 0.05505572631955147
+        },
+        {
+            "sample_idx": 928,
+            "label": 2,
+            "sdf_mse": 8.2729100540746e-05,
+            "chamfer_distance": 0.01069776900112629
+        },
+        {
+            "sample_idx": 929,
+            "label": 6,
+            "sdf_mse": 0.000155163201270625,
+            "chamfer_distance": 0.010811850428581238
+        },
+        {
+            "sample_idx": 930,
+            "label": 8,
+            "sdf_mse": 0.0001416283630533144,
+            "chamfer_distance": 0.009508409537374973
+        },
+        {
+            "sample_idx": 931,
+            "label": 6,
+            "sdf_mse": 0.00010308915079804137,
+            "chamfer_distance": 0.010964961722493172
+        },
+        {
+            "sample_idx": 932,
+            "label": 8,
+            "sdf_mse": 0.00017603680316824466,
+            "chamfer_distance": 0.010595870204269886
+        },
+        {
+            "sample_idx": 933,
+            "label": 6,
+            "sdf_mse": 0.00010195154754910618,
+            "chamfer_distance": 0.00936860404908657
+        },
+        {
+            "sample_idx": 934,
+            "label": 9,
+            "sdf_mse": 0.00010801953612826765,
+            "chamfer_distance": 0.009505385532975197
+        },
+        {
+            "sample_idx": 935,
+            "label": 6,
+            "sdf_mse": 8.108217298286036e-05,
+            "chamfer_distance": 0.009492801502346992
+        },
+        {
+            "sample_idx": 936,
+            "label": 1,
+            "sdf_mse": 6.383024447131902e-05,
+            "chamfer_distance": 0.007698360830545425
+        },
+        {
+            "sample_idx": 937,
+            "label": 7,
+            "sdf_mse": 0.00015152573178056628,
+            "chamfer_distance": 0.009078736416995525
+        },
+        {
+            "sample_idx": 938,
+            "label": 0,
+            "sdf_mse": 0.00011351639113854617,
+            "chamfer_distance": 0.01096042338758707
+        },
+        {
+            "sample_idx": 939,
+            "label": 1,
+            "sdf_mse": 0.0002681433688849211,
+            "chamfer_distance": 0.00733183091506362
+        },
+        {
+            "sample_idx": 940,
+            "label": 7,
+            "sdf_mse": 7.196653314167634e-05,
+            "chamfer_distance": 0.00841758493334055
+        },
+        {
+            "sample_idx": 941,
+            "label": 5,
+            "sdf_mse": 0.00014243062469176948,
+            "chamfer_distance": 0.009371353313326836
+        },
+        {
+            "sample_idx": 942,
+            "label": 2,
+            "sdf_mse": 8.6989275587257e-05,
+            "chamfer_distance": 0.011232788674533367
+        },
+        {
+            "sample_idx": 943,
+            "label": 5,
+            "sdf_mse": 0.00010865600779652596,
+            "chamfer_distance": 0.011410919018089771
+        },
+        {
+            "sample_idx": 944,
+            "label": 3,
+            "sdf_mse": 0.00010116669000126421,
+            "chamfer_distance": 0.015362611040472984
+        },
+        {
+            "sample_idx": 945,
+            "label": 3,
+            "sdf_mse": 0.0004699272394645959,
+            "chamfer_distance": 0.01526630762964487
+        },
+        {
+            "sample_idx": 946,
+            "label": 9,
+            "sdf_mse": 0.00010259811824653298,
+            "chamfer_distance": 0.008138090372085571
+        },
+        {
+            "sample_idx": 947,
+            "label": 8,
+            "sdf_mse": 0.00012314572813920677,
+            "chamfer_distance": 0.009688538499176502
+        },
+        {
+            "sample_idx": 948,
+            "label": 7,
+            "sdf_mse": 0.00012841756688430905,
+            "chamfer_distance": 0.010707845911383629
+        },
+        {
+            "sample_idx": 949,
+            "label": 2,
+            "sdf_mse": 8.849702135194093e-05,
+            "chamfer_distance": 0.010888487100601196
+        },
+        {
+            "sample_idx": 950,
+            "label": 1,
+            "sdf_mse": 0.00013239128747954965,
+            "chamfer_distance": 0.010259192436933517
+        },
+        {
+            "sample_idx": 951,
+            "label": 7,
+            "sdf_mse": 8.588427590439096e-05,
+            "chamfer_distance": 0.00754570122808218
+        },
+        {
+            "sample_idx": 952,
+            "label": 3,
+            "sdf_mse": 0.00010218255192739889,
+            "chamfer_distance": 0.011275801807641983
+        },
+        {
+            "sample_idx": 953,
+            "label": 7,
+            "sdf_mse": 8.8949927885551e-05,
+            "chamfer_distance": 0.01075417548418045
+        },
+        {
+            "sample_idx": 954,
+            "label": 9,
+            "sdf_mse": 0.0001678024127613753,
+            "chamfer_distance": 0.010863170959055424
+        },
+        {
+            "sample_idx": 955,
+            "label": 1,
+            "sdf_mse": 6.963865598663688e-05,
+            "chamfer_distance": 0.00639314902946353
+        },
+        {
+            "sample_idx": 956,
+            "label": 2,
+            "sdf_mse": 0.05351348966360092,
+            "chamfer_distance": 0.21878232061862946
+        },
+        {
+            "sample_idx": 957,
+            "label": 9,
+            "sdf_mse": 9.404436423210427e-05,
+            "chamfer_distance": 0.009732358157634735
+        },
+        {
+            "sample_idx": 958,
+            "label": 7,
+            "sdf_mse": 0.0011809092247858644,
+            "chamfer_distance": 0.029955387115478516
+        },
+        {
+            "sample_idx": 959,
+            "label": 1,
+            "sdf_mse": 0.00010451427078805864,
+            "chamfer_distance": 0.01930147223174572
+        },
+        {
+            "sample_idx": 960,
+            "label": 3,
+            "sdf_mse": 0.00010878185275942087,
+            "chamfer_distance": 0.009265569970011711
+        },
+        {
+            "sample_idx": 961,
+            "label": 8,
+            "sdf_mse": 0.0001163507258752361,
+            "chamfer_distance": 0.009902197867631912
+        },
+        {
+            "sample_idx": 962,
+            "label": 0,
+            "sdf_mse": 8.644968329463154e-05,
+            "chamfer_distance": 0.01701018400490284
+        },
+        {
+            "sample_idx": 963,
+            "label": 9,
+            "sdf_mse": 7.767457282170653e-05,
+            "chamfer_distance": 0.010447869077324867
+        },
+        {
+            "sample_idx": 964,
+            "label": 5,
+            "sdf_mse": 0.00010428082896396518,
+            "chamfer_distance": 0.010332000441849232
+        },
+        {
+            "sample_idx": 965,
+            "label": 5,
+            "sdf_mse": 8.644810441182926e-05,
+            "chamfer_distance": 0.011473430320620537
+        },
+        {
+            "sample_idx": 966,
+            "label": 1,
+            "sdf_mse": 0.00015137479931581765,
+            "chamfer_distance": 0.00752085167914629
+        },
+        {
+            "sample_idx": 967,
+            "label": 1,
+            "sdf_mse": 7.885639206506312e-05,
+            "chamfer_distance": 0.006006778217852116
+        },
+        {
+            "sample_idx": 968,
+            "label": 4,
+            "sdf_mse": 9.77160016191192e-05,
+            "chamfer_distance": 0.006725439336150885
+        },
+        {
+            "sample_idx": 969,
+            "label": 9,
+            "sdf_mse": 8.408165740547702e-05,
+            "chamfer_distance": 0.012227654457092285
+        },
+        {
+            "sample_idx": 970,
+            "label": 3,
+            "sdf_mse": 9.075662092072889e-05,
+            "chamfer_distance": 0.011827138252556324
+        },
+        {
+            "sample_idx": 971,
+            "label": 9,
+            "sdf_mse": 7.701412687310949e-05,
+            "chamfer_distance": 0.01068586204200983
+        },
+        {
+            "sample_idx": 972,
+            "label": 7,
+            "sdf_mse": 0.00029148851172067225,
+            "chamfer_distance": 0.015117542818188667
+        },
+        {
+            "sample_idx": 973,
+            "label": 5,
+            "sdf_mse": 8.898678788682446e-05,
+            "chamfer_distance": 0.008785262703895569
+        },
+        {
+            "sample_idx": 974,
+            "label": 2,
+            "sdf_mse": 9.719734953250736e-05,
+            "chamfer_distance": 0.015203310176730156
+        },
+        {
+            "sample_idx": 975,
+            "label": 0,
+            "sdf_mse": 0.00011486342555144802,
+            "chamfer_distance": 0.011842139065265656
+        },
+        {
+            "sample_idx": 976,
+            "label": 2,
+            "sdf_mse": 8.578766573918983e-05,
+            "chamfer_distance": 0.00936601310968399
+        },
+        {
+            "sample_idx": 977,
+            "label": 4,
+            "sdf_mse": 8.455607894575223e-05,
+            "chamfer_distance": 0.012136157602071762
+        },
+        {
+            "sample_idx": 978,
+            "label": 1,
+            "sdf_mse": 6.459672295022756e-05,
+            "chamfer_distance": 0.00795488990843296
+        },
+        {
+            "sample_idx": 979,
+            "label": 8,
+            "sdf_mse": 0.00017150974599644542,
+            "chamfer_distance": 0.011682233773171902
+        },
+        {
+            "sample_idx": 980,
+            "label": 5,
+            "sdf_mse": 9.5085495559033e-05,
+            "chamfer_distance": 0.011134950444102287
+        },
+        {
+            "sample_idx": 981,
+            "label": 2,
+            "sdf_mse": 0.006438784766942263,
+            "chamfer_distance": 0.08709216862916946
+        },
+        {
+            "sample_idx": 982,
+            "label": 7,
+            "sdf_mse": 6.58005301374942e-05,
+            "chamfer_distance": 0.00827462412416935
+        },
+        {
+            "sample_idx": 983,
+            "label": 3,
+            "sdf_mse": 0.00014771647693123668,
+            "chamfer_distance": 0.011793756857514381
+        },
+        {
+            "sample_idx": 984,
+            "label": 4,
+            "sdf_mse": 9.195238089887425e-05,
+            "chamfer_distance": 0.009184222668409348
+        },
+        {
+            "sample_idx": 985,
+            "label": 2,
+            "sdf_mse": 0.00012108142982469872,
+            "chamfer_distance": 0.011901119723916054
+        },
+        {
+            "sample_idx": 986,
+            "label": 0,
+            "sdf_mse": 9.202346700476483e-05,
+            "chamfer_distance": 0.011971822008490562
+        },
+        {
+            "sample_idx": 987,
+            "label": 5,
+            "sdf_mse": 0.00010683210712159052,
+            "chamfer_distance": 0.010927682742476463
+        },
+        {
+            "sample_idx": 988,
+            "label": 4,
+            "sdf_mse": 9.331580804428086e-05,
+            "chamfer_distance": 0.008691895753145218
+        },
+        {
+            "sample_idx": 989,
+            "label": 9,
+            "sdf_mse": 0.00011441503738751635,
+            "chamfer_distance": 0.00934133306145668
+        },
+        {
+            "sample_idx": 990,
+            "label": 3,
+            "sdf_mse": 0.00010996975470334291,
+            "chamfer_distance": 0.011903539299964905
+        },
+        {
+            "sample_idx": 991,
+            "label": 2,
+            "sdf_mse": 0.00011830747098429129,
+            "chamfer_distance": 0.0084337517619133
+        },
+        {
+            "sample_idx": 992,
+            "label": 5,
+            "sdf_mse": 0.00016842331388033926,
+            "chamfer_distance": 0.012683281674981117
+        },
+        {
+            "sample_idx": 993,
+            "label": 2,
+            "sdf_mse": 9.042713645612821e-05,
+            "chamfer_distance": 0.011154583655297756
+        },
+        {
+            "sample_idx": 994,
+            "label": 6,
+            "sdf_mse": 0.00028088002000004053,
+            "chamfer_distance": 0.01007809303700924
+        },
+        {
+            "sample_idx": 995,
+            "label": 1,
+            "sdf_mse": 6.172143912408501e-05,
+            "chamfer_distance": 0.006904909387230873
+        },
+        {
+            "sample_idx": 996,
+            "label": 1,
+            "sdf_mse": 0.00021652481518685818,
+            "chamfer_distance": 0.006777587346732616
+        },
+        {
+            "sample_idx": 997,
+            "label": 1,
+            "sdf_mse": 7.661940617254004e-05,
+            "chamfer_distance": 0.014861911535263062
+        },
+        {
+            "sample_idx": 998,
+            "label": 0,
+            "sdf_mse": 7.601532706758007e-05,
+            "chamfer_distance": 0.013079059310257435
+        },
+        {
+            "sample_idx": 999,
+            "label": 0,
+            "sdf_mse": 0.00011003396502928808,
+            "chamfer_distance": 0.012281515635550022
+        }
+    ]
+}
