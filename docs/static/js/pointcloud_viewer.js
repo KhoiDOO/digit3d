@@ -226,11 +226,34 @@
           this.geometry = parsed.geometry;
 
           if (parsed.isMesh) {
-            this.material = new THREE.MeshNormalMaterial({
-              side: THREE.DoubleSide,
-              flatShading: false
-            });
-            this.object3d = new THREE.Mesh(this.geometry, this.material);
+            const isVoxel = this.plyUrl && this.plyUrl.includes('voxel');
+            if (isVoxel) {
+              this.material = new THREE.MeshStandardMaterial({
+                color: 0x4338ca,
+                roughness: 0.35,
+                metalness: 0.15,
+                side: THREE.DoubleSide,
+                flatShading: true,
+                polygonOffset: true,
+                polygonOffsetFactor: 1,
+                polygonOffsetUnits: 1
+              });
+              this.object3d = new THREE.Mesh(this.geometry, this.material);
+
+              const edgesGeom = new THREE.EdgesGeometry(this.geometry, 20);
+              const lineMat = new THREE.LineBasicMaterial({
+                color: 0x38bdf8,
+                linewidth: 2
+              });
+              const edgeLines = new THREE.LineSegments(edgesGeom, lineMat);
+              this.object3d.add(edgeLines);
+            } else {
+              this.material = new THREE.MeshNormalMaterial({
+                side: THREE.DoubleSide,
+                flatShading: false
+              });
+              this.object3d = new THREE.Mesh(this.geometry, this.material);
+            }
           } else {
             this.material = createPointMaterial(this.pointSize);
             this.object3d = new THREE.Points(this.geometry, this.material);
