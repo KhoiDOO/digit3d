@@ -1,0 +1,9 @@
+{
+    "sample_idx": 21,
+    "class_label": 8,
+    "num_active_voxels": 1311,
+    "num_grid_vertices": 2528,
+    "num_quad_faces": 7866,
+    "threshold": 0.5,
+    "steps": 64
+}

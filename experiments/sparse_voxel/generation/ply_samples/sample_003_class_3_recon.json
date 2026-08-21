@@ -1,0 +1,14 @@
+{
+    "sample_idx": 23,
+    "class_label": 3,
+    "num_active_voxels": 1085,
+    "num_grid_vertices": 2117,
+    "num_mesh_vertices": 1093,
+    "num_mesh_triangles": 2114,
+    "threshold": 0.5,
+    "stage1_steps": 64,
+    "stage2_steps": 64,
+    "stage1_latency_ms": 81.44,
+    "stage2_latency_ms": 765.48,
+    "total_latency_ms": 851.25
+}

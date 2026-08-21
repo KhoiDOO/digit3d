@@ -1,0 +1,9 @@
+{
+    "sample_idx": 16,
+    "class_label": 9,
+    "num_active_voxels": 991,
+    "num_grid_vertices": 1967,
+    "num_reconstructed_vertices": 989,
+    "num_reconstructed_faces": 1940,
+    "steps": 64
+}
