@@ -1,0 +1,38 @@
+{
+  "sample_index": 8,
+  "digit_label": 5,
+  "steps": 64,
+  "gt_mesh": "sample_008_class_5_gt_mesh.ply",
+  "resolutions": {
+    "256": {
+      "num_points": 256,
+      "latency_ms": 101.78,
+      "pred_ply_file": "sample_008_class_5_pts_256.ply",
+      "gt_ply_file": "sample_008_class_5_gt_pts_256.ply"
+    },
+    "512": {
+      "num_points": 512,
+      "latency_ms": 100.75,
+      "pred_ply_file": "sample_008_class_5_pts_512.ply",
+      "gt_ply_file": "sample_008_class_5_gt_pts_512.ply"
+    },
+    "1024": {
+      "num_points": 1024,
+      "latency_ms": 99.44,
+      "pred_ply_file": "sample_008_class_5_pts_1024.ply",
+      "gt_ply_file": "sample_008_class_5_gt_pts_1024.ply"
+    },
+    "4096": {
+      "num_points": 4096,
+      "latency_ms": 120.57,
+      "pred_ply_file": "sample_008_class_5_pts_4096.ply",
+      "gt_ply_file": "sample_008_class_5_gt_pts_4096.ply"
+    },
+    "16384": {
+      "num_points": 16384,
+      "latency_ms": 262.5,
+      "pred_ply_file": "sample_008_class_5_pts_16384.ply",
+      "gt_ply_file": "sample_008_class_5_gt_pts_16384.ply"
+    }
+  }
+}
