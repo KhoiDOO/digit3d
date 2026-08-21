@@ -656,3 +656,185 @@ pre.bibtex-box {
 .footer a:hover {
   color: #38bdf8;
 }
+
+/* ==========================================================================
+   Two-Stage Sparse Voxel 3D Generation Progression Grid
+   ========================================================================== */
+.sparse-gen-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .sparse-gen-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sparse-gen-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.sparse-gen-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: var(--shadow-card), var(--shadow-glow);
+  transform: translateY(-2px);
+}
+
+.gen-time-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+}
+
+.sparse-progression-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  margin-top: 0.75rem;
+}
+
+.progression-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-width: 0;
+}
+
+.progression-step.step-img {
+  flex: 0.85;
+}
+
+.progression-step.step-img img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  background: #020617;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.progression-step.step-3d {
+  flex: 1.35;
+  background: radial-gradient(circle at center, #1e293b 0%, #090d16 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.progression-step.step-3d .ply-viewer {
+  width: 100%;
+  height: 160px;
+  min-height: 160px;
+}
+
+.progression-arrow {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0 0.2rem;
+  opacity: 0.7;
+}
+
+.progression-label {
+  font-size: 0.70rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 0.45rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.progression-label.img-label {
+  color: var(--text-muted);
+}
+
+.progression-label.stage1-label {
+  color: #38bdf8;
+}
+
+.progression-label.stage2-label {
+  color: #ec4899;
+}
+
+/* ==========================================================================
+   Limitations & Future Work Grid
+   ========================================================================== */
+.limitations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.limitation-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.limitation-card:hover {
+  background: rgba(26, 35, 54, 0.75);
+  border-color: rgba(245, 158, 11, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 20px rgba(245, 158, 11, 0.15);
+}
+
+.limitation-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #fbbf24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.limitation-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.6rem;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.limitation-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
