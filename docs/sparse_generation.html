@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <title>Two-Stage Sparse Voxel 3D Mesh Generation - Digit3D</title>
+  <meta name="title" content="Two-Stage Sparse Voxel 3D Mesh Generation - Digit3D">
+  <meta name="description" content="High-fidelity 3D mesh synthesis from 2D images via a cascaded sparse geometric flow framework (Stage 1 Structure DiT MeanFlow + Stage 2 Sparse Vertex SDF Rectified Flow).">
+  <meta name="author" content="Khoi DO">
+  <meta name="theme-color" content="#6366f1">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+  <!-- Background Animated Mesh -->
+  <div class="bg-mesh"></div>
+
+  <!-- Hero Section -->
+  <section class="hero is-bold">
+    <div class="hero-body">
+      <div class="container is-max-desktop has-text-centered">
+        
+        <span class="section-tag"><i class="fas fa-cube mr-2"></i>3D Vision & Generative AI</span>
+        
+        <h1 class="title publication-title">
+          <span class="text-gradient">Digit3D</span>: 3D Multimodal MNIST Benchmark
+        </h1>
+        
+        <p class="subtitle publication-subtitle">
+          Transforming 2D MNIST into rich 3D geometries (watertight meshes, sparse SDFs, and 6D normal-oriented point clouds) with continuous flow matching generative pipelines.
+        </p>
+
+        <!-- Authors & Affiliations -->
+        <div class="publication-authors">
+          <span class="author-block">
+            <a href="https://github.com/KhoiDOO" target="_blank"><i class="fab fa-github mr-1"></i>Khoi DO</a>
+          </span>
+          <div class="affiliation-block">
+            <span>Conquer3D Research & Open-Source Geometry Engine</span>
+          </div>
+        </div>
+
+        <!-- Action & Navigation Buttons -->
+        <div class="publication-links">
+          <a href="https://github.com/KhoiDOO/digit3d" target="_blank" class="btn-action">
+            <i class="fab fa-github"></i>
+            <span>Code</span>
+          </a>
+          <a href="https://github.com/KhoiDOO/conquer3d" target="_blank" class="btn-action">
+            <i class="fas fa-shapes"></i>
+            <span>Conquer3D Engine</span>
+          </a>
+          <a href="index.html" class="btn-action">
+            <i class="fas fa-home"></i>
+            <span>Overview</span>
+          </a>
+          <a href="unconditional.html" class="btn-action">
+            <i class="fas fa-dice"></i>
+            <span>Unconditional Flow</span>
+          </a>
+          <a href="class_conditional.html" class="btn-action">
+            <i class="fas fa-list-ol"></i>
+            <span>Class Conditional</span>
+          </a>
+          <a href="image_conditional.html" class="btn-action">
+            <i class="fas fa-image"></i>
+            <span>2D → 3D Image Condition</span>
+          </a>
+          <a href="sparse_reconstruction.html" class="btn-action">
+            <i class="fas fa-cubes"></i>
+            <span>Sparse Voxel Recon</span>
+          </a>
+          <a href="sparse_generation.html" class="btn-action is-active">
+            <i class="fas fa-cube"></i>
+            <span>Sparse Voxel Gen</span>
+          </a>
+          <a href="limitations.html" class="btn-action">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>Limitations</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content: Two-Stage Sparse Voxel Generation -->
+  <section class="section-wrapper">
+    <div class="glass-card">
+      <div class="section-header">
+        <span class="section-tag"><i class="fas fa-magic mr-1"></i>Experiment 5</span>
+        <h2 class="section-title">Two-Stage Sparse Voxel 3D Mesh Generation</h2>
+        <p class="section-desc">
+          High-fidelity 3D mesh synthesis from 2D MNIST input images via a cascaded sparse geometric flow framework. <strong>Stage 1 (Structure DiT MeanFlow)</strong> predicts 3D active voxel occupancy grids, followed by <strong>Stage 2 (Sparse Vertex SDF Rectified Flow)</strong> predicting continuous 1D Signed Distance Fields decoded into watertight triangle meshes via Differentiable Marching Cubes.
+        </p>
+      </div>
+
+      <div class="sparse-gen-grid">
+        <!-- Digit 0 -->
+        <div class="sparse-gen-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">0</span>
+            <span class="sample-id">Digit 0 (Sample #000)</span>
+            <span class="gen-time-badge"><i class="fas fa-bolt mr-1"></i>1.34s</span>
+          </div>
+          <div class="sparse-progression-container">
+            <div class="progression-step step-img">
+              <img src="data/sparse_voxel_gen/sample_000_class_0_input.png" alt="2D Input Digit 0" loading="lazy">
+              <span class="progression-label img-label">2D Input</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_000_class_0_stage1_voxels.ply" data-title="Digit 0 (Stage 1 Active Voxels)" data-stats="Voxels: 1360 / Quads: 8160" title="Inspect Stage 1 Voxels"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_000_class_0_stage1_voxels.ply"></div>
+              <span class="progression-label stage1-label">Stage 1 Voxels</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_000_class_0_recon.ply" data-title="Digit 0 (Stage 2 Watertight Mesh)" data-stats="Vertices: 1348 / Triangles: 2635" title="Inspect Stage 2 Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_000_class_0_recon.ply"></div>
+              <span class="progression-label stage2-label">Stage 2 Mesh</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 1 -->
+        <div class="sparse-gen-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">1</span>
+            <span class="sample-id">Digit 1 (Sample #001)</span>
+            <span class="gen-time-badge"><i class="fas fa-bolt mr-1"></i>420ms</span>
+          </div>
+          <div class="sparse-progression-container">
+            <div class="progression-step step-img">
+              <img src="data/sparse_voxel_gen/sample_001_class_1_input.png" alt="2D Input Digit 1" loading="lazy">
+              <span class="progression-label img-label">2D Input</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_001_class_1_stage1_voxels.ply" data-title="Digit 1 (Stage 1 Active Voxels)" data-stats="Voxels: 629 / Quads: 3774" title="Inspect Stage 1 Voxels"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_001_class_1_stage1_voxels.ply"></div>
+              <span class="progression-label stage1-label">Stage 1 Voxels</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_001_class_1_recon.ply" data-title="Digit 1 (Stage 2 Watertight Mesh)" data-stats="Vertices: 636 / Triangles: 1237" title="Inspect Stage 2 Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_001_class_1_recon.ply"></div>
+              <span class="progression-label stage2-label">Stage 2 Mesh</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 2 -->
+        <div class="sparse-gen-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">2</span>
+            <span class="sample-id">Digit 2 (Sample #002)</span>
+            <span class="gen-time-badge"><i class="fas fa-bolt mr-1"></i>737ms</span>
+          </div>
+          <div class="sparse-progression-container">
+            <div class="progression-step step-img">
+              <img src="data/sparse_voxel_gen/sample_002_class_2_input.png" alt="2D Input Digit 2" loading="lazy">
+              <span class="progression-label img-label">2D Input</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_002_class_2_stage1_voxels.ply" data-title="Digit 2 (Stage 1 Active Voxels)" data-stats="Voxels: 965 / Quads: 5790" title="Inspect Stage 1 Voxels"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_002_class_2_stage1_voxels.ply"></div>
+              <span class="progression-label stage1-label">Stage 1 Voxels</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_002_class_2_recon.ply" data-title="Digit 2 (Stage 2 Watertight Mesh)" data-stats="Vertices: 975 / Triangles: 1884" title="Inspect Stage 2 Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_002_class_2_recon.ply"></div>
+              <span class="progression-label stage2-label">Stage 2 Mesh</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 3 -->
+        <div class="sparse-gen-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">3</span>
+            <span class="sample-id">Digit 3 (Sample #003)</span>
+            <span class="gen-time-badge"><i class="fas fa-bolt mr-1"></i>851ms</span>
+          </div>
+          <div class="sparse-progression-container">
+            <div class="progression-step step-img">
+              <img src="data/sparse_voxel_gen/sample_003_class_3_input.png" alt="2D Input Digit 3" loading="lazy">
+              <span class="progression-label img-label">2D Input</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_003_class_3_stage1_voxels.ply" data-title="Digit 3 (Stage 1 Active Voxels)" data-stats="Voxels: 1085 / Quads: 6510" title="Inspect Stage 1 Voxels"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_003_class_3_stage1_voxels.ply"></div>
+              <span class="progression-label stage1-label">Stage 1 Voxels</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_003_class_3_recon.ply" data-title="Digit 3 (Stage 2 Watertight Mesh)" data-stats="Vertices: 1093 / Triangles: 2114" title="Inspect Stage 2 Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_003_class_3_recon.ply"></div>
+              <span class="progression-label stage2-label">Stage 2 Mesh</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 4 -->
+        <div class="sparse-gen-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">4</span>
+            <span class="sample-id">Digit 4 (Sample #004)</span>
+            <span class="gen-time-badge"><i class="fas fa-bolt mr-1"></i>678ms</span>
+          </div>
+          <div class="sparse-progression-container">
+            <div class="progression-step step-img">
+              <img src="data/sparse_voxel_gen/sample_004_class_4_input.png" alt="2D Input Digit 4" loading="lazy">
+              <span class="progression-label img-label">2D Input</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_004_class_4_stage1_voxels.ply" data-title="Digit 4 (Stage 1 Active Voxels)" data-stats="Voxels: 885 / Quads: 5310" title="Inspect Stage 1 Voxels"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_004_class_4_stage1_voxels.ply"></div>
+              <span class="progression-label stage1-label">Stage 1 Voxels</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_004_class_4_recon.ply" data-title="Digit 4 (Stage 2 Watertight Mesh)" data-stats="Vertices: 894 / Triangles: 1731" title="Inspect Stage 2 Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_004_class_4_recon.ply"></div>
+              <span class="progression-label stage2-label">Stage 2 Mesh</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 5 -->
+        <div class="sparse-gen-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">5</span>
+            <span class="sample-id">Digit 5 (Sample #005)</span>
+            <span class="gen-time-badge"><i class="fas fa-bolt mr-1"></i>997ms</span>
+          </div>
+          <div class="sparse-progression-container">
+            <div class="progression-step step-img">
+              <img src="data/sparse_voxel_gen/sample_005_class_5_input.png" alt="2D Input Digit 5" loading="lazy">
+              <span class="progression-label img-label">2D Input</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_005_class_5_stage1_voxels.ply" data-title="Digit 5 (Stage 1 Active Voxels)" data-stats="Voxels: 1200 / Quads: 7200" title="Inspect Stage 1 Voxels"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_005_class_5_stage1_voxels.ply"></div>
+              <span class="progression-label stage1-label">Stage 1 Voxels</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_005_class_5_recon.ply" data-title="Digit 5 (Stage 2 Watertight Mesh)" data-stats="Vertices: 1186 / Triangles: 2319" title="Inspect Stage 2 Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_005_class_5_recon.ply"></div>
+              <span class="progression-label stage2-label">Stage 2 Mesh</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 6 -->
+        <div class="sparse-gen-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">6</span>
+            <span class="sample-id">Digit 6 (Sample #006)</span>
+            <span class="gen-time-badge"><i class="fas fa-bolt mr-1"></i>734ms</span>
+          </div>
+          <div class="sparse-progression-container">
+            <div class="progression-step step-img">
+              <img src="data/sparse_voxel_gen/sample_006_class_6_input.png" alt="2D Input Digit 6" loading="lazy">
+              <span class="progression-label img-label">2D Input</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_006_class_6_stage1_voxels.ply" data-title="Digit 6 (Stage 1 Active Voxels)" data-stats="Voxels: 949 / Quads: 5694" title="Inspect Stage 1 Voxels"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_006_class_6_stage1_voxels.ply"></div>
+              <span class="progression-label stage1-label">Stage 1 Voxels</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_006_class_6_recon.ply" data-title="Digit 6 (Stage 2 Watertight Mesh)" data-stats="Vertices: 940 / Triangles: 1830" title="Inspect Stage 2 Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_006_class_6_recon.ply"></div>
+              <span class="progression-label stage2-label">Stage 2 Mesh</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 7 -->
+        <div class="sparse-gen-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">7</span>
+            <span class="sample-id">Digit 7 (Sample #007)</span>
+            <span class="gen-time-badge"><i class="fas fa-bolt mr-1"></i>620ms</span>
+          </div>
+          <div class="sparse-progression-container">
+            <div class="progression-step step-img">
+              <img src="data/sparse_voxel_gen/sample_007_class_7_input.png" alt="2D Input Digit 7" loading="lazy">
+              <span class="progression-label img-label">2D Input</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_007_class_7_stage1_voxels.ply" data-title="Digit 7 (Stage 1 Active Voxels)" data-stats="Voxels: 810 / Quads: 4860" title="Inspect Stage 1 Voxels"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_007_class_7_stage1_voxels.ply"></div>
+              <span class="progression-label stage1-label">Stage 1 Voxels</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_007_class_7_recon.ply" data-title="Digit 7 (Stage 2 Watertight Mesh)" data-stats="Vertices: 796 / Triangles: 1571" title="Inspect Stage 2 Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_007_class_7_recon.ply"></div>
+              <span class="progression-label stage2-label">Stage 2 Mesh</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 8 -->
+        <div class="sparse-gen-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">8</span>
+            <span class="sample-id">Digit 8 (Sample #008)</span>
+            <span class="gen-time-badge"><i class="fas fa-bolt mr-1"></i>1.10s</span>
+          </div>
+          <div class="sparse-progression-container">
+            <div class="progression-step step-img">
+              <img src="data/sparse_voxel_gen/sample_008_class_8_input.png" alt="2D Input Digit 8" loading="lazy">
+              <span class="progression-label img-label">2D Input</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_008_class_8_stage1_voxels.ply" data-title="Digit 8 (Stage 1 Active Voxels)" data-stats="Voxels: 1321 / Quads: 7926" title="Inspect Stage 1 Voxels"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_008_class_8_stage1_voxels.ply"></div>
+              <span class="progression-label stage1-label">Stage 1 Voxels</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_008_class_8_recon.ply" data-title="Digit 8 (Stage 2 Watertight Mesh)" data-stats="Vertices: 1287 / Triangles: 2488" title="Inspect Stage 2 Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_008_class_8_recon.ply"></div>
+              <span class="progression-label stage2-label">Stage 2 Mesh</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 9 -->
+        <div class="sparse-gen-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">9</span>
+            <span class="sample-id">Digit 9 (Sample #009)</span>
+            <span class="gen-time-badge"><i class="fas fa-bolt mr-1"></i>780ms</span>
+          </div>
+          <div class="sparse-progression-container">
+            <div class="progression-step step-img">
+              <img src="data/sparse_voxel_gen/sample_009_class_9_input.png" alt="2D Input Digit 9" loading="lazy">
+              <span class="progression-label img-label">2D Input</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_009_class_9_stage1_voxels.ply" data-title="Digit 9 (Stage 1 Active Voxels)" data-stats="Voxels: 987 / Quads: 5922" title="Inspect Stage 1 Voxels"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_009_class_9_stage1_voxels.ply"></div>
+              <span class="progression-label stage1-label">Stage 1 Voxels</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_009_class_9_recon.ply" data-title="Digit 9 (Stage 2 Watertight Mesh)" data-stats="Vertices: 1006 / Triangles: 1947" title="Inspect Stage 2 Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_009_class_9_recon.ply"></div>
+              <span class="progression-label stage2-label">Stage 2 Mesh</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <p class="has-text-centered is-size-7 mt-4 has-text-grey-light">
+        <i class="fas fa-info-circle mr-1"></i>Cascaded 3D Generation: Left: 2D Input &bull; Middle: Stage 1 Active Voxel Quads &bull; Right: Stage 2 Watertight Mesh
+      </p>
+    </div>
+  </section>
+
+  <!-- Fullscreen Modal 3D Inspector -->
+  <div id="ply-modal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content custom-modal">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3 class="title is-5 modal-sample-title mb-0">3D Geometry Inspector</h3>
+          <span class="modal-stats-badge" style="display: none;"></span>
+        </div>
+        <button class="delete modal-close-btn" aria-label="close"></button>
+      </div>
+      <div class="modal-viewer-container"></div>
+      <p class="is-size-7 has-text-grey-light mt-3 has-text-centered">
+        <i class="fas fa-mouse mr-1"></i>Left-drag to Orbit &bull; Right-drag to Pan &bull; Scroll to Zoom
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        <strong>Digit3D</strong> by <a href="https://github.com/KhoiDOO" target="_blank">Khoi DO</a>. Released under MIT License.
+      </p>
+      <p class="is-size-7 mt-2">
+        Built with <a href="https://bulma.io/" target="_blank">Bulma</a> and <a href="https://threejs.org/" target="_blank">Three.js</a>.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="static/js/three.min.js"></script>
+  <script src="static/js/OrbitControls.js"></script>
+  <script src="static/js/pointcloud_viewer.js"></script>
+</body>
+</html>
