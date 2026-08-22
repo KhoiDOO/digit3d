@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <title>Unconditional Point Cloud Generation - Digit3D</title>
+  <meta name="title" content="Unconditional Point Cloud Generation - Digit3D">
+  <meta name="description" content="Generating continuous 3D digit geometries spontaneously from pure Gaussian noise using Mean Flow continuous velocity matching.">
+  <meta name="author" content="Khoi DO">
+  <meta name="theme-color" content="#6366f1">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+  <!-- Background Animated Mesh -->
+  <div class="bg-mesh"></div>
+
+  <!-- Hero Section -->
+  <section class="hero is-bold">
+    <div class="hero-body">
+      <div class="container is-max-desktop has-text-centered">
+        
+        <span class="section-tag"><i class="fas fa-cube mr-2"></i>3D Vision & Generative AI</span>
+        
+        <h1 class="title publication-title">
+          <span class="text-gradient">Digit3D</span>: 3D Multimodal MNIST Benchmark
+        </h1>
+        
+        <p class="subtitle publication-subtitle">
+          Transforming 2D MNIST into rich 3D geometries (watertight meshes, sparse SDFs, and 6D normal-oriented point clouds) with continuous flow matching generative pipelines.
+        </p>
+
+        <!-- Authors & Affiliations -->
+        <div class="publication-authors">
+          <span class="author-block">
+            <a href="https://github.com/KhoiDOO" target="_blank"><i class="fab fa-github mr-1"></i>Khoi DO</a>
+          </span>
+          <div class="affiliation-block">
+            <span>Conquer3D Research & Open-Source Geometry Engine</span>
+          </div>
+        </div>
+
+        <!-- Action & Navigation Buttons -->
+        <div class="publication-links">
+          <a href="https://github.com/KhoiDOO/digit3d" target="_blank" class="btn-action">
+            <i class="fab fa-github"></i>
+            <span>Code</span>
+          </a>
+          <a href="https://github.com/KhoiDOO/conquer3d" target="_blank" class="btn-action">
+            <i class="fas fa-shapes"></i>
+            <span>Conquer3D Engine</span>
+          </a>
+          <a href="index.html" class="btn-action">
+            <i class="fas fa-home"></i>
+            <span>Overview</span>
+          </a>
+          <a href="unconditional.html" class="btn-action is-active">
+            <i class="fas fa-dice"></i>
+            <span>Unconditional Flow</span>
+          </a>
+          <a href="class_conditional.html" class="btn-action">
+            <i class="fas fa-list-ol"></i>
+            <span>Class Conditional</span>
+          </a>
+          <a href="image_conditional.html" class="btn-action">
+            <i class="fas fa-image"></i>
+            <span>2D → 3D Image Condition</span>
+          </a>
+          <a href="sparse_reconstruction.html" class="btn-action">
+            <i class="fas fa-cubes"></i>
+            <span>Sparse Voxel Recon</span>
+          </a>
+          <a href="sparse_generation.html" class="btn-action">
+            <i class="fas fa-cube"></i>
+            <span>Sparse Voxel Gen</span>
+          </a>
+          <a href="limitations.html" class="btn-action">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>Limitations</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content: Unconditional Generation -->
+  <section class="section-wrapper">
+    <div class="glass-card">
+      <div class="section-header">
+        <span class="section-tag"><i class="fas fa-dice mr-1"></i>Experiment 1</span>
+        <h2 class="section-title">Unconditional Point Cloud Generation</h2>
+        <p class="section-desc">
+          Generating continuous 3D digit geometries spontaneously from pure Gaussian noise $\mathbf{x}_0 \sim \mathcal{N}(0, \mathbf{I})$ using the <strong>Mean Flow</strong> velocity matching model.
+        </p>
+      </div>
+
+      <div class="pointcloud-grid grid-5">
+        <!-- Card 0 -->
+        <div class="pc-card">
+          <div class="pc-card-header">
+            <span class="sample-id">Sample #000</span>
+            <button class="btn-expand-ply" data-ply="data/unconditional/sample_000.ply" data-title="Unconditional Sample #000" title="Inspect 3D Point Cloud"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="ply-viewer" data-ply="data/unconditional/sample_000.ply"></div>
+        </div>
+
+        <!-- Card 1 -->
+        <div class="pc-card">
+          <div class="pc-card-header">
+            <span class="sample-id">Sample #001</span>
+            <button class="btn-expand-ply" data-ply="data/unconditional/sample_001.ply" data-title="Unconditional Sample #001" title="Inspect 3D Point Cloud"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="ply-viewer" data-ply="data/unconditional/sample_001.ply"></div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="pc-card">
+          <div class="pc-card-header">
+            <span class="sample-id">Sample #002</span>
+            <button class="btn-expand-ply" data-ply="data/unconditional/sample_002.ply" data-title="Unconditional Sample #002" title="Inspect 3D Point Cloud"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="ply-viewer" data-ply="data/unconditional/sample_002.ply"></div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="pc-card">
+          <div class="pc-card-header">
+            <span class="sample-id">Sample #003</span>
+            <button class="btn-expand-ply" data-ply="data/unconditional/sample_003.ply" data-title="Unconditional Sample #003" title="Inspect 3D Point Cloud"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="ply-viewer" data-ply="data/unconditional/sample_003.ply"></div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="pc-card">
+          <div class="pc-card-header">
+            <span class="sample-id">Sample #004</span>
+            <button class="btn-expand-ply" data-ply="data/unconditional/sample_004.ply" data-title="Unconditional Sample #004" title="Inspect 3D Point Cloud"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="ply-viewer" data-ply="data/unconditional/sample_004.ply"></div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="pc-card">
+          <div class="pc-card-header">
+            <span class="sample-id">Sample #005</span>
+            <button class="btn-expand-ply" data-ply="data/unconditional/sample_005.ply" data-title="Unconditional Sample #005" title="Inspect 3D Point Cloud"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="ply-viewer" data-ply="data/unconditional/sample_005.ply"></div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="pc-card">
+          <div class="pc-card-header">
+            <span class="sample-id">Sample #006</span>
+            <button class="btn-expand-ply" data-ply="data/unconditional/sample_006.ply" data-title="Unconditional Sample #006" title="Inspect 3D Point Cloud"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="ply-viewer" data-ply="data/unconditional/sample_006.ply"></div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="pc-card">
+          <div class="pc-card-header">
+            <span class="sample-id">Sample #007</span>
+            <button class="btn-expand-ply" data-ply="data/unconditional/sample_007.ply" data-title="Unconditional Sample #007" title="Inspect 3D Point Cloud"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="ply-viewer" data-ply="data/unconditional/sample_007.ply"></div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="pc-card">
+          <div class="pc-card-header">
+            <span class="sample-id">Sample #008</span>
+            <button class="btn-expand-ply" data-ply="data/unconditional/sample_008.ply" data-title="Unconditional Sample #008" title="Inspect 3D Point Cloud"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="ply-viewer" data-ply="data/unconditional/sample_008.ply"></div>
+        </div>
+
+        <!-- Card 9 -->
+        <div class="pc-card">
+          <div class="pc-card-header">
+            <span class="sample-id">Sample #009</span>
+            <button class="btn-expand-ply" data-ply="data/unconditional/sample_009.ply" data-title="Unconditional Sample #009" title="Inspect 3D Point Cloud"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="ply-viewer" data-ply="data/unconditional/sample_009.ply"></div>
+        </div>
+      </div>
+      
+      <p class="has-text-centered is-size-7 mt-4 has-text-grey-light">
+        <i class="fas fa-info-circle mr-1"></i>Drag to rotate 3D point cloud &bull; Scroll to zoom &bull; Shaded by continuous surface normal vectors
+      </p>
+    </div>
+  </section>
+
+  <!-- Fullscreen Modal 3D Inspector -->
+  <div id="ply-modal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content custom-modal">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3 class="title is-5 modal-sample-title mb-0">3D Geometry Inspector</h3>
+          <span class="modal-stats-badge" style="display: none;"></span>
+        </div>
+        <button class="delete modal-close-btn" aria-label="close"></button>
+      </div>
+      <div class="modal-viewer-container"></div>
+      <p class="is-size-7 has-text-grey-light mt-3 has-text-centered">
+        <i class="fas fa-mouse mr-1"></i>Left-drag to Orbit &bull; Right-drag to Pan &bull; Scroll to Zoom
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        <strong>Digit3D</strong> by <a href="https://github.com/KhoiDOO" target="_blank">Khoi DO</a>. Released under MIT License.
+      </p>
+      <p class="is-size-7 mt-2">
+        Built with <a href="https://bulma.io/" target="_blank">Bulma</a> and <a href="https://threejs.org/" target="_blank">Three.js</a>.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="static/js/three.min.js"></script>
+  <script src="static/js/OrbitControls.js"></script>
+  <script src="static/js/pointcloud_viewer.js"></script>
+</body>
+</html>
