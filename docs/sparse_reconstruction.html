@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <title>Sparse Voxel VAE 3D Reconstruction - Digit3D</title>
+  <meta name="title" content="Sparse Voxel VAE 3D Reconstruction - Digit3D">
+  <meta name="description" content="Hierarchical 3D sparse convolutional autoencoder compressing sparse Signed Distance Fields into 16-channel latents and decoding watertight triangle meshes.">
+  <meta name="author" content="Khoi DO">
+  <meta name="theme-color" content="#6366f1">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+  <!-- Background Animated Mesh -->
+  <div class="bg-mesh"></div>
+
+  <!-- Hero Section -->
+  <section class="hero is-bold">
+    <div class="hero-body">
+      <div class="container is-max-desktop has-text-centered">
+        
+        <span class="section-tag"><i class="fas fa-cube mr-2"></i>3D Vision & Generative AI</span>
+        
+        <h1 class="title publication-title">
+          <span class="text-gradient">Digit3D</span>: 3D Multimodal MNIST Benchmark
+        </h1>
+        
+        <p class="subtitle publication-subtitle">
+          Transforming 2D MNIST into rich 3D geometries (watertight meshes, sparse SDFs, and 6D normal-oriented point clouds) with continuous flow matching generative pipelines.
+        </p>
+
+        <!-- Authors & Affiliations -->
+        <div class="publication-authors">
+          <span class="author-block">
+            <a href="https://github.com/KhoiDOO" target="_blank"><i class="fab fa-github mr-1"></i>Khoi DO</a>
+          </span>
+          <div class="affiliation-block">
+            <span>Conquer3D Research & Open-Source Geometry Engine</span>
+          </div>
+        </div>
+
+        <!-- Action & Navigation Buttons -->
+        <div class="publication-links">
+          <a href="https://github.com/KhoiDOO/digit3d" target="_blank" class="btn-action">
+            <i class="fab fa-github"></i>
+            <span>Code</span>
+          </a>
+          <a href="https://github.com/KhoiDOO/conquer3d" target="_blank" class="btn-action">
+            <i class="fas fa-shapes"></i>
+            <span>Conquer3D Engine</span>
+          </a>
+          <a href="index.html" class="btn-action">
+            <i class="fas fa-home"></i>
+            <span>Overview</span>
+          </a>
+          <a href="unconditional.html" class="btn-action">
+            <i class="fas fa-dice"></i>
+            <span>Unconditional Flow</span>
+          </a>
+          <a href="class_conditional.html" class="btn-action">
+            <i class="fas fa-list-ol"></i>
+            <span>Class Conditional</span>
+          </a>
+          <a href="image_conditional.html" class="btn-action">
+            <i class="fas fa-image"></i>
+            <span>2D → 3D Image Condition</span>
+          </a>
+          <a href="sparse_reconstruction.html" class="btn-action is-active">
+            <i class="fas fa-cubes"></i>
+            <span>Sparse Voxel Recon</span>
+          </a>
+          <a href="sparse_generation.html" class="btn-action">
+            <i class="fas fa-cube"></i>
+            <span>Sparse Voxel Gen</span>
+          </a>
+          <a href="limitations.html" class="btn-action">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>Limitations</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content: Sparse Voxel Reconstruction -->
+  <section class="section-wrapper">
+    <div class="glass-card">
+      <div class="section-header">
+        <span class="section-tag"><i class="fas fa-cubes mr-1"></i>Experiment 4</span>
+        <h2 class="section-title">Sparse Voxel VAE 3D Reconstruction</h2>
+        <p class="section-desc">
+          Continuous 3D surface extraction from sparse voxel grids. <code>SimpleSparseVAE</code> compresses sparse Signed Distance Fields into a 16-channel latent grid, decoded into continuous watertight triangle meshes via differentiable marching cubes.
+        </p>
+      </div>
+
+      <div class="mesh-recon-grid">
+        <!-- Pair 0 (Class 0) -->
+        <div class="mesh-pair-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">0</span>
+            <span class="sample-id">Sample #000</span>
+          </div>
+          <div class="mesh-pair-container">
+            <div class="mesh-view-wrapper">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_000_class_0_gt.ply" data-title="Digit 0 (Ground Truth Mesh)" data-stats="C1351 / Vg2636 / VM250 / FM500" title="Inspect Ground Truth"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_recon/sample_000_class_0_gt.ply"></div>
+              <span class="mesh-view-label gt-label">Ground Truth</span>
+            </div>
+            <div class="mesh-view-wrapper">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_000_class_0_recon.ply" data-title="Digit 0 (Reconstructed Mesh)" data-stats="C1351 / Vg2636 / VM1348 / FM2683" title="Inspect Reconstructed Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_recon/sample_000_class_0_recon.ply"></div>
+              <span class="mesh-view-label recon-label">Reconstructed</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pair 1 (Class 1) -->
+        <div class="mesh-pair-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">1</span>
+            <span class="sample-id">Sample #002</span>
+          </div>
+          <div class="mesh-pair-container">
+            <div class="mesh-view-wrapper">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_002_class_1_gt.ply" data-title="Digit 1 (Ground Truth Mesh)" data-stats="C636 / Vg1257 / VM252 / FM500" title="Inspect Ground Truth"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_recon/sample_002_class_1_gt.ply"></div>
+              <span class="mesh-view-label gt-label">Ground Truth</span>
+            </div>
+            <div class="mesh-view-wrapper">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_002_class_1_recon.ply" data-title="Digit 1 (Reconstructed Mesh)" data-stats="C636 / Vg1257 / VM632 / FM1255" title="Inspect Reconstructed Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_recon/sample_002_class_1_recon.ply"></div>
+              <span class="mesh-view-label recon-label">Reconstructed</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pair 2 (Class 2) -->
+        <div class="mesh-pair-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">2</span>
+            <span class="sample-id">Sample #004</span>
+          </div>
+          <div class="mesh-pair-container">
+            <div class="mesh-view-wrapper">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_004_class_2_gt.ply" data-title="Digit 2 (Ground Truth Mesh)" data-stats="C997 / Vg1974 / VM250 / FM500" title="Inspect Ground Truth"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_recon/sample_004_class_2_gt.ply"></div>
+              <span class="mesh-view-label gt-label">Ground Truth</span>
+            </div>
+            <div class="mesh-view-wrapper">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_004_class_2_recon.ply" data-title="Digit 2 (Reconstructed Mesh)" data-stats="C997 / Vg1974 / VM988 / FM1968" title="Inspect Reconstructed Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_recon/sample_004_class_2_recon.ply"></div>
+              <span class="mesh-view-label recon-label">Reconstructed</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pair 3 (Class 3) -->
+        <div class="mesh-pair-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">3</span>
+            <span class="sample-id">Sample #006</span>
+          </div>
+          <div class="mesh-pair-container">
+            <div class="mesh-view-wrapper">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_006_class_3_gt.ply" data-title="Digit 3 (Ground Truth Mesh)" data-stats="C1113 / Vg2189 / VM252 / FM500" title="Inspect Ground Truth"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_recon/sample_006_class_3_gt.ply"></div>
+              <span class="mesh-view-label gt-label">Ground Truth</span>
+            </div>
+            <div class="mesh-view-wrapper">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_006_class_3_recon.ply" data-title="Digit 3 (Reconstructed Mesh)" data-stats="C1113 / Vg2189 / VM1105 / FM2201" title="Inspect Reconstructed Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_recon/sample_006_class_3_recon.ply"></div>
+              <span class="mesh-view-label recon-label">Reconstructed</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pair 4 (Class 4) -->
+        <div class="mesh-pair-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">4</span>
+            <span class="sample-id">Sample #008</span>
+          </div>
+          <div class="mesh-pair-container">
+            <div class="mesh-view-wrapper">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_008_class_4_gt.ply" data-title="Digit 4 (Ground Truth Mesh)" data-stats="C891 / Vg1780 / VM252 / FM500" title="Inspect Ground Truth"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_recon/sample_008_class_4_gt.ply"></div>
+              <span class="mesh-view-label gt-label">Ground Truth</span>
+            </div>
+            <div class="mesh-view-wrapper">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_008_class_4_recon.ply" data-title="Digit 4 (Reconstructed Mesh)" data-stats="C891 / Vg1780 / VM882 / FM1756" title="Inspect Reconstructed Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_recon/sample_008_class_4_recon.ply"></div>
+              <span class="mesh-view-label recon-label">Reconstructed</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pair 5 (Class 5) -->
+        <div class="mesh-pair-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">5</span>
+            <span class="sample-id">Sample #010</span>
+          </div>
+          <div class="mesh-pair-container">
+            <div class="mesh-view-wrapper">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_010_class_5_gt.ply" data-title="Digit 5 (Ground Truth Mesh)" data-stats="C1204 / Vg2370 / VM250 / FM500" title="Inspect Ground Truth"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_recon/sample_010_class_5_gt.ply"></div>
+              <span class="mesh-view-label gt-label">Ground Truth</span>
+            </div>
+            <div class="mesh-view-wrapper">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_010_class_5_recon.ply" data-title="Digit 5 (Reconstructed Mesh)" data-stats="C1204 / Vg2370 / VM1198 / FM2388" title="Inspect Reconstructed Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_recon/sample_010_class_5_recon.ply"></div>
+              <span class="mesh-view-label recon-label">Reconstructed</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pair 6 (Class 6) -->
+        <div class="mesh-pair-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">6</span>
+            <span class="sample-id">Sample #012</span>
+          </div>
+          <div class="mesh-pair-container">
+            <div class="mesh-view-wrapper">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_012_class_6_gt.ply" data-title="Digit 6 (Ground Truth Mesh)" data-stats="C986 / Vg1948 / VM252 / FM500" title="Inspect Ground Truth"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_recon/sample_012_class_6_gt.ply"></div>
+              <span class="mesh-view-label gt-label">Ground Truth</span>
+            </div>
+            <div class="mesh-view-wrapper">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_012_class_6_recon.ply" data-title="Digit 6 (Reconstructed Mesh)" data-stats="C986 / Vg1948 / VM980 / FM1952" title="Inspect Reconstructed Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_recon/sample_012_class_6_recon.ply"></div>
+              <span class="mesh-view-label recon-label">Reconstructed</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pair 7 (Class 7) -->
+        <div class="mesh-pair-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">7</span>
+            <span class="sample-id">Sample #014</span>
+          </div>
+          <div class="mesh-pair-container">
+            <div class="mesh-view-wrapper">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_014_class_7_gt.ply" data-title="Digit 7 (Ground Truth Mesh)" data-stats="C802 / Vg1589 / VM252 / FM500" title="Inspect Ground Truth"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_recon/sample_014_class_7_gt.ply"></div>
+              <span class="mesh-view-label gt-label">Ground Truth</span>
+            </div>
+            <div class="mesh-view-wrapper">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_014_class_7_recon.ply" data-title="Digit 7 (Reconstructed Mesh)" data-stats="C802 / Vg1589 / VM795 / FM1584" title="Inspect Reconstructed Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_recon/sample_014_class_7_recon.ply"></div>
+              <span class="mesh-view-label recon-label">Reconstructed</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pair 8 (Class 8) -->
+        <div class="mesh-pair-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">8</span>
+            <span class="sample-id">Sample #016</span>
+          </div>
+          <div class="mesh-pair-container">
+            <div class="mesh-view-wrapper">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_016_class_8_gt.ply" data-title="Digit 8 (Ground Truth Mesh)" data-stats="C1303 / Vg2559 / VM250 / FM500" title="Inspect Ground Truth"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_recon/sample_016_class_8_gt.ply"></div>
+              <span class="mesh-view-label gt-label">Ground Truth</span>
+            </div>
+            <div class="mesh-view-wrapper">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_016_class_8_recon.ply" data-title="Digit 8 (Reconstructed Mesh)" data-stats="C1303 / Vg2559 / VM1298 / FM2588" title="Inspect Reconstructed Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_recon/sample_016_class_8_recon.ply"></div>
+              <span class="mesh-view-label recon-label">Reconstructed</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pair 9 (Class 9) -->
+        <div class="mesh-pair-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">9</span>
+            <span class="sample-id">Sample #018</span>
+          </div>
+          <div class="mesh-pair-container">
+            <div class="mesh-view-wrapper">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_018_class_9_gt.ply" data-title="Digit 9 (Ground Truth Mesh)" data-stats="C991 / Vg1967 / VM252 / FM500" title="Inspect Ground Truth"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_recon/sample_018_class_9_gt.ply"></div>
+              <span class="mesh-view-label gt-label">Ground Truth</span>
+            </div>
+            <div class="mesh-view-wrapper">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_018_class_9_recon.ply" data-title="Digit 9 (Reconstructed Mesh)" data-stats="C991 / Vg1967 / VM978 / FM1941" title="Inspect Reconstructed Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/sparse_recon/sample_018_class_9_recon.ply"></div>
+              <span class="mesh-view-label recon-label">Reconstructed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <p class="has-text-centered is-size-7 mt-4 has-text-grey-light">
+        <i class="fas fa-info-circle mr-1"></i>Interactive 3D Mesh Inspection &bull; Left: Ground Truth &bull; Right: Sparse VAE Reconstruction &bull; Shaded by Surface Normals
+      </p>
+    </div>
+  </section>
+
+  <!-- Fullscreen Modal 3D Inspector -->
+  <div id="ply-modal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content custom-modal">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3 class="title is-5 modal-sample-title mb-0">3D Geometry Inspector</h3>
+          <span class="modal-stats-badge" style="display: none;"></span>
+        </div>
+        <button class="delete modal-close-btn" aria-label="close"></button>
+      </div>
+      <div class="modal-viewer-container"></div>
+      <p class="is-size-7 has-text-grey-light mt-3 has-text-centered">
+        <i class="fas fa-mouse mr-1"></i>Left-drag to Orbit &bull; Right-drag to Pan &bull; Scroll to Zoom
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        <strong>Digit3D</strong> by <a href="https://github.com/KhoiDOO" target="_blank">Khoi DO</a>. Released under MIT License.
+      </p>
+      <p class="is-size-7 mt-2">
+        Built with <a href="https://bulma.io/" target="_blank">Bulma</a> and <a href="https://threejs.org/" target="_blank">Three.js</a>.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="static/js/three.min.js"></script>
+  <script src="static/js/OrbitControls.js"></script>
+  <script src="static/js/pointcloud_viewer.js"></script>
+</body>
+</html>
