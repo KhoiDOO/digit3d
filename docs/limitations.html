@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <title>Limitations & Technical Analysis - Digit3D</title>
+  <meta name="title" content="Limitations & Technical Analysis - Digit3D">
+  <meta name="description" content="Detailed analysis of geometric, topological, and resolution trade-offs in Digit3D and sparse continuous flow matching pipelines.">
+  <meta name="author" content="Khoi DO">
+  <meta name="theme-color" content="#6366f1">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+  <!-- Background Animated Mesh -->
+  <div class="bg-mesh"></div>
+
+  <!-- Hero Section -->
+  <section class="hero is-bold">
+    <div class="hero-body">
+      <div class="container is-max-desktop has-text-centered">
+        
+        <span class="section-tag"><i class="fas fa-cube mr-2"></i>3D Vision & Generative AI</span>
+        
+        <h1 class="title publication-title">
+          <span class="text-gradient">Digit3D</span>: 3D Multimodal MNIST Benchmark
+        </h1>
+        
+        <p class="subtitle publication-subtitle">
+          Transforming 2D MNIST into rich 3D geometries (watertight meshes, sparse SDFs, and 6D normal-oriented point clouds) with continuous flow matching generative pipelines.
+        </p>
+
+        <!-- Authors & Affiliations -->
+        <div class="publication-authors">
+          <span class="author-block">
+            <a href="https://github.com/KhoiDOO" target="_blank"><i class="fab fa-github mr-1"></i>Khoi DO</a>
+          </span>
+          <div class="affiliation-block">
+            <span>Conquer3D Research & Open-Source Geometry Engine</span>
+          </div>
+        </div>
+
+        <!-- Action & Navigation Buttons -->
+        <div class="publication-links">
+          <a href="https://github.com/KhoiDOO/digit3d" target="_blank" class="btn-action">
+            <i class="fab fa-github"></i>
+            <span>Code</span>
+          </a>
+          <a href="https://github.com/KhoiDOO/conquer3d" target="_blank" class="btn-action">
+            <i class="fas fa-shapes"></i>
+            <span>Conquer3D Engine</span>
+          </a>
+          <a href="index.html" class="btn-action">
+            <i class="fas fa-home"></i>
+            <span>Overview</span>
+          </a>
+          <a href="unconditional.html" class="btn-action">
+            <i class="fas fa-dice"></i>
+            <span>Unconditional Flow</span>
+          </a>
+          <a href="class_conditional.html" class="btn-action">
+            <i class="fas fa-list-ol"></i>
+            <span>Class Conditional</span>
+          </a>
+          <a href="image_conditional.html" class="btn-action">
+            <i class="fas fa-image"></i>
+            <span>2D → 3D Image Condition</span>
+          </a>
+          <a href="sparse_reconstruction.html" class="btn-action">
+            <i class="fas fa-cubes"></i>
+            <span>Sparse Voxel Recon</span>
+          </a>
+          <a href="sparse_generation.html" class="btn-action">
+            <i class="fas fa-cube"></i>
+            <span>Sparse Voxel Gen</span>
+          </a>
+          <a href="limitations.html" class="btn-action is-active">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>Limitations</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content: Limitations & Discussion -->
+  <section class="section-wrapper">
+    <div class="glass-card">
+      <div class="section-header">
+        <span class="section-tag" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.3); color: #fbbf24;">
+          <i class="fas fa-exclamation-triangle mr-1"></i>Analysis & Discussion
+        </span>
+        <h2 class="section-title">Limitations & Future Roadmap</h2>
+        <p class="section-desc">
+          While Digit3D and its sparse continuous flow generative models achieve efficient 3D synthesis, several geometric and empirical limitations remain to be addressed in future research.
+        </p>
+      </div>
+
+      <div class="limitations-grid">
+        <!-- Limitation 1: Non-Diversified Assets -->
+        <div class="limitation-card">
+          <div class="limitation-icon">
+            <i class="fas fa-shapes"></i>
+          </div>
+          <h3 class="limitation-title">Asset Diversity & Morphological Complexity</h3>
+          <p class="limitation-desc">
+            The dataset's 3D meshes are constructed from 2D MNIST boundary contours with parametric extrusion, triangulation, and smoothing. While optimal for rapid algorithm development and differentiable benchmarking, the synthetic assets exhibit constrained topological diversity (e.g., restricted genus, lack of complex internal cavities, and uniform thickness) compared to unconstrained real-world 3D object repositories (such as ShapeNet, Objaverse, or OmniObject3D).
+          </p>
+        </div>
+
+        <!-- Limitation 2: Non-Manifold Mesh Generation -->
+        <div class="limitation-card">
+          <div class="limitation-icon">
+            <i class="fas fa-draw-polygon"></i>
+          </div>
+          <h3 class="limitation-title">Non-Manifold Topology & Small Model Regime</h3>
+          <p class="limitation-desc">
+            Operating under compact model parameterizations (6-layer Structure DiT and 6-layer Sparse Vertex Transformers, <i>D</i> = 256) trained for modest schedules (15–20 epochs on single consumer GPUs), the generative pipeline occasionally produces localized non-manifold artifacts—such as boundary self-intersections, isolated floating zero-crossing facets, or non-manifold edge junctions—when predicted vertex SDFs lack global continuity across neighboring sparse voxel cells.
+          </p>
+        </div>
+
+        <!-- Limitation 3: Discretization & Resolution Bounds -->
+        <div class="limitation-card">
+          <div class="limitation-icon">
+            <i class="fas fa-border-all"></i>
+          </div>
+          <h3 class="limitation-title">Resolution Trade-offs & High-Frequency Detail</h3>
+          <p class="limitation-desc">
+            The 32<sup>3</sup> volumetric grid resolution enables ultra-fast <i>O</i>(<i>B</i>) variable-length attention with zero dummy padding overhead, but sets a physical upper bound on fine corner sharpness and high-frequency structural boundaries. Future extensions will incorporate multi-resolution hierarchical octrees or adaptive tetrahedral complexes to completely eliminate topological defects while preserving high inference throughput.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: BibTeX Citation -->
+  <section class="section-wrapper">
+    <div class="glass-card">
+      <div class="section-header">
+        <span class="section-tag"><i class="fas fa-quote-right mr-1"></i>Citation</span>
+        <h2 class="section-title">BibTeX</h2>
+      </div>
+
+      <pre class="bibtex-box"><code>@article{do2026digit3d,
+  title   = {Digit3D: 3D Multimodal MNIST Benchmark},
+  author  = {Khoi DO},
+  journal = {arXiv preprint},
+  year    = {2026},
+  url     = {https://github.com/KhoiDOO/digit3d}
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        <strong>Digit3D</strong> by <a href="https://github.com/KhoiDOO" target="_blank">Khoi DO</a>. Released under MIT License.
+      </p>
+      <p class="is-size-7 mt-2">
+        Built with <a href="https://bulma.io/" target="_blank">Bulma</a> and <a href="https://threejs.org/" target="_blank">Three.js</a>.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="static/js/three.min.js"></script>
+  <script src="static/js/OrbitControls.js"></script>
+</body>
+</html>
