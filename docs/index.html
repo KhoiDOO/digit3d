@@ -54,37 +54,41 @@
           </div>
         </div>
 
-        <!-- Action Buttons -->
+        <!-- Action & Navigation Buttons -->
         <div class="publication-links">
-          <a href="https://github.com/KhoiDOO/digit3d" target="_blank" class="btn-action btn-primary">
+          <a href="https://github.com/KhoiDOO/digit3d" target="_blank" class="btn-action">
             <i class="fab fa-github"></i>
-            <span>Code & Repository</span>
+            <span>Code</span>
           </a>
           <a href="https://github.com/KhoiDOO/conquer3d" target="_blank" class="btn-action">
             <i class="fas fa-shapes"></i>
             <span>Conquer3D Engine</span>
           </a>
-          <a href="#unconditional" class="btn-action">
+          <a href="index.html" class="btn-action is-active">
+            <i class="fas fa-home"></i>
+            <span>Overview</span>
+          </a>
+          <a href="unconditional.html" class="btn-action">
             <i class="fas fa-dice"></i>
             <span>Unconditional Flow</span>
           </a>
-          <a href="#class-conditional" class="btn-action">
+          <a href="class_conditional.html" class="btn-action">
             <i class="fas fa-list-ol"></i>
             <span>Class Conditional</span>
           </a>
-          <a href="#image-conditional" class="btn-action">
+          <a href="image_conditional.html" class="btn-action">
             <i class="fas fa-image"></i>
             <span>2D → 3D Image Condition</span>
           </a>
-          <a href="#sparse-reconstruction" class="btn-action">
+          <a href="sparse_reconstruction.html" class="btn-action">
             <i class="fas fa-cubes"></i>
-            <span>Sparse Voxel Reconstruction</span>
+            <span>Sparse Voxel Recon</span>
           </a>
-          <a href="#sparse-generation" class="btn-action">
+          <a href="sparse_generation.html" class="btn-action">
             <i class="fas fa-cube"></i>
-            <span>Sparse Voxel Generation</span>
+            <span>Sparse Voxel Gen</span>
           </a>
-          <a href="#limitations" class="btn-action">
+          <a href="limitations.html" class="btn-action">
             <i class="fas fa-exclamation-triangle"></i>
             <span>Limitations</span>
           </a>
@@ -133,972 +137,122 @@
     </div>
   </section>
 
-  <!-- Section 1: Unconditional Generation -->
-  <section id="unconditional" class="section-wrapper">
+  <!-- Section: Interactive Experiments Directory Showcase -->
+  <section class="section-wrapper">
     <div class="glass-card">
       <div class="section-header">
-        <span class="section-tag"><i class="fas fa-dice mr-1"></i>Experiment 1</span>
-        <h2 class="section-title">Unconditional Point Cloud Generation</h2>
+        <span class="section-tag"><i class="fas fa-layer-group mr-1"></i>Benchmark Suite</span>
+        <h2 class="section-title">Explore Generative & Reconstructive Experiments</h2>
         <p class="section-desc">
-          Generating continuous 3D digit geometries spontaneously from pure Gaussian noise x<sub>0</sub> ~ N(0, I) using the <strong>Mean Flow</strong> velocity matching model.
+          Select any experiment below to inspect interactive 3D models, normal-mapped point clouds, sparse voxel grids, and quantitative benchmark metrics.
         </p>
       </div>
 
-      <div class="pointcloud-grid grid-5">
-        <!-- Card 0 -->
-        <div class="pc-card">
-          <div class="pc-card-header">
-            <span class="sample-id">Sample #000</span>
-            <button class="btn-expand-ply" data-ply="data/unconditional/sample_000.ply" data-title="Unconditional Sample #000" title="Inspect 3D Point Cloud"><i class="fas fa-expand-arrows-alt"></i></button>
+      <div class="dataset-features-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+        <!-- Exp 1 -->
+        <div class="feature-box" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="feature-icon has-text-primary"><i class="fas fa-dice"></i></div>
+            <h3 class="feature-title">1. Unconditional Point Cloud Generation</h3>
+            <p class="feature-desc">Spontaneous 3D digit generation from Gaussian noise x<sub>0</sub> ~ N(0, I) via Mean Flow continuous velocity matching.</p>
           </div>
-          <div class="ply-viewer" data-ply="data/unconditional/sample_000.ply"></div>
+          <a href="unconditional.html" class="btn-action btn-primary mt-4" style="align-self: flex-start;">
+            <span>Explore Unconditional Flow</span>
+            <i class="fas fa-arrow-right ml-1"></i>
+          </a>
         </div>
 
-        <!-- Card 1 -->
-        <div class="pc-card">
-          <div class="pc-card-header">
-            <span class="sample-id">Sample #001</span>
-            <button class="btn-expand-ply" data-ply="data/unconditional/sample_001.ply" data-title="Unconditional Sample #001" title="Inspect 3D Point Cloud"><i class="fas fa-expand-arrows-alt"></i></button>
+        <!-- Exp 2 -->
+        <div class="feature-box" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="feature-icon has-text-info"><i class="fas fa-list-ol"></i></div>
+            <h3 class="feature-title">2. Class-Conditional 3D Generation</h3>
+            <p class="feature-desc">Targeted 3D synthesis across all 10 digit classes (0–9) using class token embeddings and Classifier-Free Guidance (CFG).</p>
           </div>
-          <div class="ply-viewer" data-ply="data/unconditional/sample_001.ply"></div>
+          <a href="class_conditional.html" class="btn-action btn-primary mt-4" style="align-self: flex-start;">
+            <span>Explore Class Conditional</span>
+            <i class="fas fa-arrow-right ml-1"></i>
+          </a>
         </div>
 
-        <!-- Card 2 -->
-        <div class="pc-card">
-          <div class="pc-card-header">
-            <span class="sample-id">Sample #002</span>
-            <button class="btn-expand-ply" data-ply="data/unconditional/sample_002.ply" data-title="Unconditional Sample #002" title="Inspect 3D Point Cloud"><i class="fas fa-expand-arrows-alt"></i></button>
+        <!-- Exp 3 -->
+        <div class="feature-box" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="feature-icon has-text-success"><i class="fas fa-image"></i></div>
+            <h3 class="feature-title">3. 2D Image → 3D Point Cloud</h3>
+            <p class="feature-desc">Single-view 3D shape synthesis mapping 28 &times; 28 grayscale images through GroupNorm vision encoders to 6D normal-oriented point clouds.</p>
           </div>
-          <div class="ply-viewer" data-ply="data/unconditional/sample_002.ply"></div>
+          <a href="image_conditional.html" class="btn-action btn-primary mt-4" style="align-self: flex-start;">
+            <span>Explore 2D → 3D Flow</span>
+            <i class="fas fa-arrow-right ml-1"></i>
+          </a>
         </div>
 
-        <!-- Card 3 -->
-        <div class="pc-card">
-          <div class="pc-card-header">
-            <span class="sample-id">Sample #003</span>
-            <button class="btn-expand-ply" data-ply="data/unconditional/sample_003.ply" data-title="Unconditional Sample #003" title="Inspect 3D Point Cloud"><i class="fas fa-expand-arrows-alt"></i></button>
+        <!-- Exp 4 -->
+        <div class="feature-box" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="feature-icon has-text-purple"><i class="fas fa-cubes"></i></div>
+            <h3 class="feature-title">4. Sparse Voxel VAE Reconstruction</h3>
+            <p class="feature-desc">Hierarchical 3D sparse convolutional autoencoder compressing sparse SDF grids into 16-channel latents and decoding watertight meshes.</p>
           </div>
-          <div class="ply-viewer" data-ply="data/unconditional/sample_003.ply"></div>
+          <a href="sparse_reconstruction.html" class="btn-action btn-primary mt-4" style="align-self: flex-start;">
+            <span>Explore Sparse VAE</span>
+            <i class="fas fa-arrow-right ml-1"></i>
+          </a>
         </div>
 
-        <!-- Card 4 -->
-        <div class="pc-card">
-          <div class="pc-card-header">
-            <span class="sample-id">Sample #004</span>
-            <button class="btn-expand-ply" data-ply="data/unconditional/sample_004.ply" data-title="Unconditional Sample #004" title="Inspect 3D Point Cloud"><i class="fas fa-expand-arrows-alt"></i></button>
+        <!-- Exp 5 -->
+        <div class="feature-box" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="feature-icon has-text-warning"><i class="fas fa-cube"></i></div>
+            <h3 class="feature-title">5. Two-Stage Sparse Voxel Mesh Generation</h3>
+            <p class="feature-desc">Cascaded 3D pipeline combining Stage 1 Structure DiT MeanFlow (active voxels) and Stage 2 Sparse Vertex SDF Rectified Flow (watertight meshes).</p>
           </div>
-          <div class="ply-viewer" data-ply="data/unconditional/sample_004.ply"></div>
+          <a href="sparse_generation.html" class="btn-action btn-primary mt-4" style="align-self: flex-start;">
+            <span>Explore Sparse Voxel Gen</span>
+            <i class="fas fa-arrow-right ml-1"></i>
+          </a>
         </div>
 
-        <!-- Card 5 -->
-        <div class="pc-card">
-          <div class="pc-card-header">
-            <span class="sample-id">Sample #005</span>
-            <button class="btn-expand-ply" data-ply="data/unconditional/sample_005.ply" data-title="Unconditional Sample #005" title="Inspect 3D Point Cloud"><i class="fas fa-expand-arrows-alt"></i></button>
+        <!-- Limitations -->
+        <div class="feature-box" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="feature-icon has-text-danger"><i class="fas fa-exclamation-triangle"></i></div>
+            <h3 class="feature-title">6. Limitations & Technical Discussion</h3>
+            <p class="feature-desc">Analysis of topological genus constraints, small model regimes, resolution bounds, and multi-resolution roadmap.</p>
           </div>
-          <div class="ply-viewer" data-ply="data/unconditional/sample_005.ply"></div>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="pc-card">
-          <div class="pc-card-header">
-            <span class="sample-id">Sample #006</span>
-            <button class="btn-expand-ply" data-ply="data/unconditional/sample_006.ply" data-title="Unconditional Sample #006" title="Inspect 3D Point Cloud"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="ply-viewer" data-ply="data/unconditional/sample_006.ply"></div>
-        </div>
-
-        <!-- Card 7 -->
-        <div class="pc-card">
-          <div class="pc-card-header">
-            <span class="sample-id">Sample #007</span>
-            <button class="btn-expand-ply" data-ply="data/unconditional/sample_007.ply" data-title="Unconditional Sample #007" title="Inspect 3D Point Cloud"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="ply-viewer" data-ply="data/unconditional/sample_007.ply"></div>
-        </div>
-
-        <!-- Card 8 -->
-        <div class="pc-card">
-          <div class="pc-card-header">
-            <span class="sample-id">Sample #008</span>
-            <button class="btn-expand-ply" data-ply="data/unconditional/sample_008.ply" data-title="Unconditional Sample #008" title="Inspect 3D Point Cloud"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="ply-viewer" data-ply="data/unconditional/sample_008.ply"></div>
-        </div>
-
-        <!-- Card 9 -->
-        <div class="pc-card">
-          <div class="pc-card-header">
-            <span class="sample-id">Sample #009</span>
-            <button class="btn-expand-ply" data-ply="data/unconditional/sample_009.ply" data-title="Unconditional Sample #009" title="Inspect 3D Point Cloud"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="ply-viewer" data-ply="data/unconditional/sample_009.ply"></div>
-        </div>
-      </div>
-      
-      <p class="has-text-centered is-size-7 mt-4 has-text-grey-light">
-        <i class="fas fa-info-circle mr-1"></i>Drag to rotate 3D point cloud &bull; Scroll to zoom &bull; Shaded by surface normal vectors
-      </p>
-    </div>
-  </section>
-
-  <!-- Section 2: Class-Conditional Generation -->
-  <section id="class-conditional" class="section-wrapper">
-    <div class="glass-card">
-      <div class="section-header">
-        <span class="section-tag"><i class="fas fa-list-ol mr-1"></i>Experiment 2</span>
-        <h2 class="section-title">Class-Conditional 3D Generation (Digits 0–9)</h2>
-        <p class="section-desc">
-          Controllable 3D generation across all 10 semantic digit classes. Conditioning class embeddings guide the <strong>Mean Flow</strong> trajectory to synthesize crisp, distinct digits with faithful surface normals.
-        </p>
-      </div>
-
-      <div class="pointcloud-grid grid-5">
-        <!-- Digit 0 -->
-        <div class="pc-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">0</span>
-            <span class="sample-id">Class 0</span>
-            <button class="btn-expand-ply" data-ply="data/class_cond/sample_000_class_0.ply" data-title="Class 0 Point Cloud" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="ply-viewer" data-ply="data/class_cond/sample_000_class_0.ply"></div>
-        </div>
-
-        <!-- Digit 1 -->
-        <div class="pc-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">1</span>
-            <span class="sample-id">Class 1</span>
-            <button class="btn-expand-ply" data-ply="data/class_cond/sample_001_class_1.ply" data-title="Class 1 Point Cloud" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="ply-viewer" data-ply="data/class_cond/sample_001_class_1.ply"></div>
-        </div>
-
-        <!-- Digit 2 -->
-        <div class="pc-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">2</span>
-            <span class="sample-id">Class 2</span>
-            <button class="btn-expand-ply" data-ply="data/class_cond/sample_002_class_2.ply" data-title="Class 2 Point Cloud" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="ply-viewer" data-ply="data/class_cond/sample_002_class_2.ply"></div>
-        </div>
-
-        <!-- Digit 3 -->
-        <div class="pc-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">3</span>
-            <span class="sample-id">Class 3</span>
-            <button class="btn-expand-ply" data-ply="data/class_cond/sample_003_class_3.ply" data-title="Class 3 Point Cloud" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="ply-viewer" data-ply="data/class_cond/sample_003_class_3.ply"></div>
-        </div>
-
-        <!-- Digit 4 -->
-        <div class="pc-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">4</span>
-            <span class="sample-id">Class 4</span>
-            <button class="btn-expand-ply" data-ply="data/class_cond/sample_004_class_4.ply" data-title="Class 4 Point Cloud" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="ply-viewer" data-ply="data/class_cond/sample_004_class_4.ply"></div>
-        </div>
-
-        <!-- Digit 5 -->
-        <div class="pc-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">5</span>
-            <span class="sample-id">Class 5</span>
-            <button class="btn-expand-ply" data-ply="data/class_cond/sample_005_class_5.ply" data-title="Class 5 Point Cloud" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="ply-viewer" data-ply="data/class_cond/sample_005_class_5.ply"></div>
-        </div>
-
-        <!-- Digit 6 -->
-        <div class="pc-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">6</span>
-            <span class="sample-id">Class 6</span>
-            <button class="btn-expand-ply" data-ply="data/class_cond/sample_006_class_6.ply" data-title="Class 6 Point Cloud" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="ply-viewer" data-ply="data/class_cond/sample_006_class_6.ply"></div>
-        </div>
-
-        <!-- Digit 7 -->
-        <div class="pc-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">7</span>
-            <span class="sample-id">Class 7</span>
-            <button class="btn-expand-ply" data-ply="data/class_cond/sample_007_class_7.ply" data-title="Class 7 Point Cloud" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="ply-viewer" data-ply="data/class_cond/sample_007_class_7.ply"></div>
-        </div>
-
-        <!-- Digit 8 -->
-        <div class="pc-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">8</span>
-            <span class="sample-id">Class 8</span>
-            <button class="btn-expand-ply" data-ply="data/class_cond/sample_008_class_8.ply" data-title="Class 8 Point Cloud" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="ply-viewer" data-ply="data/class_cond/sample_008_class_8.ply"></div>
-        </div>
-
-        <!-- Digit 9 -->
-        <div class="pc-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">9</span>
-            <span class="sample-id">Class 9</span>
-            <button class="btn-expand-ply" data-ply="data/class_cond/sample_009_class_9.ply" data-title="Class 9 Point Cloud" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="ply-viewer" data-ply="data/class_cond/sample_009_class_9.ply"></div>
+          <a href="limitations.html" class="btn-action btn-primary mt-4" style="align-self: flex-start;">
+            <span>Read Limitations</span>
+            <i class="fas fa-arrow-right ml-1"></i>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Section 3: Image-Conditional Generation (2D -> 3D) -->
-  <section id="image-conditional" class="section-wrapper">
+  <!-- Section: Python Streaming Quickstart -->
+  <section class="section-wrapper">
     <div class="glass-card">
       <div class="section-header">
-        <span class="section-tag"><i class="fas fa-image mr-1"></i>Experiment 3</span>
-        <h2 class="section-title">2D Image → 3D Point Cloud Generation</h2>
-        <p class="section-desc">
-          Single-view 3D reconstruction and generative shape synthesis. A vision encoder maps raw 28 &times; 28 grayscale images through GroupNorm feature extractors to steer <strong>Mean Flow</strong> generation.
-        </p>
+        <span class="section-tag"><i class="fas fa-code mr-1"></i>Quick Start</span>
+        <h2 class="section-title">Zero-Extraction Dataset Streaming</h2>
+        <p class="section-desc">Stream 3D meshes, point clouds with normals, and sparse voxel SDFs directly from PyTorch:</p>
       </div>
 
-      <div class="img-cond-grid">
-        <!-- Pair 0 (Class 0) -->
-        <div class="img-cond-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">0</span>
-            <span class="sample-id">Sample #004</span>
-            <button class="btn-expand-ply" data-ply="data/img_cond/sample_004_class_0.ply" data-title="2D → 3D (Digit 0)" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="paired-container">
-            <div class="input-img-wrapper">
-              <img src="data/img_cond/sample_004_class_0_input.png" alt="2D Input Digit 0" loading="lazy">
-              <span class="input-label">2D Input</span>
-            </div>
-            <div class="output-3d-wrapper">
-              <div class="ply-viewer" data-ply="data/img_cond/sample_004_class_0.ply"></div>
-            </div>
-          </div>
-        </div>
+      <pre class="bibtex-box" style="background: rgba(10, 14, 26, 0.9);"><code># Install conquer3d and rectified-flow-pytorch
+from conquer3d.data.dataset.digit3d import Digit3D, PointDigit3D, SparseDigit3D
 
-        <!-- Pair 1 (Class 1) -->
-        <div class="img-cond-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">1</span>
-            <span class="sample-id">Sample #000</span>
-            <button class="btn-expand-ply" data-ply="data/img_cond/sample_000_class_1.ply" data-title="2D → 3D (Digit 1)" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="paired-container">
-            <div class="input-img-wrapper">
-              <img src="data/img_cond/sample_000_class_1_input.png" alt="2D Input Digit 1" loading="lazy">
-              <span class="input-label">2D Input</span>
-            </div>
-            <div class="output-3d-wrapper">
-              <div class="ply-viewer" data-ply="data/img_cond/sample_000_class_1.ply"></div>
-            </div>
-          </div>
-        </div>
+# 1. Stream 3D Meshes (Vertices, Faces, Class Label, Optional 2D Image)
+mesh_dataset = Digit3D(root="~/.conquer3d/", train=True, download=True, return_img=True)
+vertices, faces, label, img = mesh_dataset[0]
 
-        <!-- Pair 2 (Class 2) -->
-        <div class="img-cond-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">2</span>
-            <span class="sample-id">Sample #002</span>
-            <button class="btn-expand-ply" data-ply="data/img_cond/sample_002_class_2.ply" data-title="2D → 3D (Digit 2)" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="paired-container">
-            <div class="input-img-wrapper">
-              <img src="data/img_cond/sample_002_class_2_input.png" alt="2D Input Digit 2" loading="lazy">
-              <span class="input-label">2D Input</span>
-            </div>
-            <div class="output-3d-wrapper">
-              <div class="ply-viewer" data-ply="data/img_cond/sample_002_class_2.ply"></div>
-            </div>
-          </div>
-        </div>
+# 2. Stream [512, 6] Point Clouds with Surface Normals (X, Y, Z, Nx, Ny, Nz)
+pc_dataset = PointDigit3D(root="~/.conquer3d/", train=True, num_points=512, download=True)
+points, features, label = pc_dataset[0]
 
-        <!-- Pair 3 (Class 3) -->
-        <div class="img-cond-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">3</span>
-            <span class="sample-id">Sample #000</span>
-            <button class="btn-expand-ply" data-ply="data/img_cond/sample_000_class_3.ply" data-title="2D → 3D (Digit 3)" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="paired-container">
-            <div class="input-img-wrapper">
-              <img src="data/img_cond/sample_000_class_3_input.png" alt="2D Input Digit 3" loading="lazy">
-              <span class="input-label">2D Input</span>
-            </div>
-            <div class="output-3d-wrapper">
-              <div class="ply-viewer" data-ply="data/img_cond/sample_000_class_3.ply"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pair 4 (Class 4) -->
-        <div class="img-cond-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">4</span>
-            <span class="sample-id">Sample #005</span>
-            <button class="btn-expand-ply" data-ply="data/img_cond/sample_005_class_4.ply" data-title="2D → 3D (Digit 4)" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="paired-container">
-            <div class="input-img-wrapper">
-              <img src="data/img_cond/sample_005_class_4_input.png" alt="2D Input Digit 4" loading="lazy">
-              <span class="input-label">2D Input</span>
-            </div>
-            <div class="output-3d-wrapper">
-              <div class="ply-viewer" data-ply="data/img_cond/sample_005_class_4.ply"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pair 5 (Class 5) -->
-        <div class="img-cond-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">5</span>
-            <span class="sample-id">Sample #008</span>
-            <button class="btn-expand-ply" data-ply="data/img_cond/sample_008_class_5.ply" data-title="2D → 3D (Digit 5)" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="paired-container">
-            <div class="input-img-wrapper">
-              <img src="data/img_cond/sample_008_class_5_input.png" alt="2D Input Digit 5" loading="lazy">
-              <span class="input-label">2D Input</span>
-            </div>
-            <div class="output-3d-wrapper">
-              <div class="ply-viewer" data-ply="data/img_cond/sample_008_class_5.ply"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pair 6 (Class 6) -->
-        <div class="img-cond-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">6</span>
-            <span class="sample-id">Sample #001</span>
-            <button class="btn-expand-ply" data-ply="data/img_cond/sample_001_class_6.ply" data-title="2D → 3D (Digit 6)" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="paired-container">
-            <div class="input-img-wrapper">
-              <img src="data/img_cond/sample_001_class_6_input.png" alt="2D Input Digit 6" loading="lazy">
-              <span class="input-label">2D Input</span>
-            </div>
-            <div class="output-3d-wrapper">
-              <div class="ply-viewer" data-ply="data/img_cond/sample_001_class_6.ply"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pair 7 (Class 7) -->
-        <div class="img-cond-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">7</span>
-            <span class="sample-id">Sample #000</span>
-            <button class="btn-expand-ply" data-ply="data/img_cond/sample_000_class_7.ply" data-title="2D → 3D (Digit 7)" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="paired-container">
-            <div class="input-img-wrapper">
-              <img src="data/img_cond/sample_000_class_7_input.png" alt="2D Input Digit 7" loading="lazy">
-              <span class="input-label">2D Input</span>
-            </div>
-            <div class="output-3d-wrapper">
-              <div class="ply-viewer" data-ply="data/img_cond/sample_000_class_7.ply"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pair 8 (Class 8) -->
-        <div class="img-cond-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">8</span>
-            <span class="sample-id">Sample #000</span>
-            <button class="btn-expand-ply" data-ply="data/img_cond/sample_000_class_8.ply" data-title="2D → 3D (Digit 8)" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="paired-container">
-            <div class="input-img-wrapper">
-              <img src="data/img_cond/sample_000_class_8_input.png" alt="2D Input Digit 8" loading="lazy">
-              <span class="input-label">2D Input</span>
-            </div>
-            <div class="output-3d-wrapper">
-              <div class="ply-viewer" data-ply="data/img_cond/sample_000_class_8.ply"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pair 9 (Class 9) -->
-        <div class="img-cond-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">9</span>
-            <span class="sample-id">Sample #016</span>
-            <button class="btn-expand-ply" data-ply="data/img_cond/sample_016_class_9.ply" data-title="2D → 3D (Digit 9)" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
-          </div>
-          <div class="paired-container">
-            <div class="input-img-wrapper">
-              <img src="data/img_cond/sample_016_class_9_input.png" alt="2D Input Digit 9" loading="lazy">
-              <span class="input-label">2D Input</span>
-            </div>
-            <div class="output-3d-wrapper">
-              <div class="ply-viewer" data-ply="data/img_cond/sample_016_class_9.ply"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 4: Sparse Voxel VAE 3D Reconstruction -->
-  <section id="sparse-reconstruction" class="section-wrapper">
-    <div class="glass-card">
-      <div class="section-header">
-        <span class="section-tag"><i class="fas fa-cubes mr-1"></i>Experiment 4</span>
-        <h2 class="section-title">Sparse Voxel VAE 3D Reconstruction</h2>
-        <p class="section-desc">
-          Continuous 3D surface extraction from sparse voxel grids. <code>SimpleSparseVAE</code> compresses sparse Signed Distance Fields into a 16-channel latent grid, decoded into continuous watertight triangle meshes via differentiable marching cubes.
-        </p>
-      </div>
-
-      <div class="mesh-recon-grid">
-        <!-- Pair 0 (Class 0) -->
-        <div class="mesh-pair-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">0</span>
-            <span class="sample-id">Sample #000</span>
-          </div>
-          <div class="mesh-pair-container">
-            <div class="mesh-view-wrapper">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_000_class_0_gt.ply" data-title="Digit 0 (Ground Truth Mesh)" data-stats="C1351 / Vg2636 / VM250 / FM500" title="Inspect Ground Truth"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_recon/sample_000_class_0_gt.ply"></div>
-              <span class="mesh-view-label gt-label">Ground Truth</span>
-            </div>
-            <div class="mesh-view-wrapper">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_000_class_0_recon.ply" data-title="Digit 0 (Reconstructed Mesh)" data-stats="C1351 / Vg2636 / VM1348 / FM2683" title="Inspect Reconstructed Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_recon/sample_000_class_0_recon.ply"></div>
-              <span class="mesh-view-label recon-label">Reconstructed</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pair 1 (Class 1) -->
-        <div class="mesh-pair-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">1</span>
-            <span class="sample-id">Sample #002</span>
-          </div>
-          <div class="mesh-pair-container">
-            <div class="mesh-view-wrapper">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_002_class_1_gt.ply" data-title="Digit 1 (Ground Truth Mesh)" data-stats="C636 / Vg1257 / VM252 / FM500" title="Inspect Ground Truth"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_recon/sample_002_class_1_gt.ply"></div>
-              <span class="mesh-view-label gt-label">Ground Truth</span>
-            </div>
-            <div class="mesh-view-wrapper">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_002_class_1_recon.ply" data-title="Digit 1 (Reconstructed Mesh)" data-stats="C636 / Vg1257 / VM632 / FM1255" title="Inspect Reconstructed Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_recon/sample_002_class_1_recon.ply"></div>
-              <span class="mesh-view-label recon-label">Reconstructed</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pair 2 (Class 2) -->
-        <div class="mesh-pair-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">2</span>
-            <span class="sample-id">Sample #004</span>
-          </div>
-          <div class="mesh-pair-container">
-            <div class="mesh-view-wrapper">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_004_class_2_gt.ply" data-title="Digit 2 (Ground Truth Mesh)" data-stats="C983 / Vg1925 / VM252 / FM500" title="Inspect Ground Truth"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_recon/sample_004_class_2_gt.ply"></div>
-              <span class="mesh-view-label gt-label">Ground Truth</span>
-            </div>
-            <div class="mesh-view-wrapper">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_004_class_2_recon.ply" data-title="Digit 2 (Reconstructed Mesh)" data-stats="C983 / Vg1925 / VM988 / FM1952" title="Inspect Reconstructed Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_recon/sample_004_class_2_recon.ply"></div>
-              <span class="mesh-view-label recon-label">Reconstructed</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pair 3 (Class 3) -->
-        <div class="mesh-pair-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">3</span>
-            <span class="sample-id">Sample #006</span>
-          </div>
-          <div class="mesh-pair-container">
-            <div class="mesh-view-wrapper">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_006_class_3_gt.ply" data-title="Digit 3 (Ground Truth Mesh)" data-stats="C1079 / Vg2106 / VM252 / FM500" title="Inspect Ground Truth"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_recon/sample_006_class_3_gt.ply"></div>
-              <span class="mesh-view-label gt-label">Ground Truth</span>
-            </div>
-            <div class="mesh-view-wrapper">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_006_class_3_recon.ply" data-title="Digit 3 (Reconstructed Mesh)" data-stats="C1079 / Vg2106 / VM1066 / FM2121" title="Inspect Reconstructed Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_recon/sample_006_class_3_recon.ply"></div>
-              <span class="mesh-view-label recon-label">Reconstructed</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pair 4 (Class 4) -->
-        <div class="mesh-pair-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">4</span>
-            <span class="sample-id">Sample #008</span>
-          </div>
-          <div class="mesh-pair-container">
-            <div class="mesh-view-wrapper">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_008_class_4_gt.ply" data-title="Digit 4 (Ground Truth Mesh)" data-stats="C876 / Vg1726 / VM252 / FM500" title="Inspect Ground Truth"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_recon/sample_008_class_4_gt.ply"></div>
-              <span class="mesh-view-label gt-label">Ground Truth</span>
-            </div>
-            <div class="mesh-view-wrapper">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_008_class_4_recon.ply" data-title="Digit 4 (Reconstructed Mesh)" data-stats="C876 / Vg1726 / VM861 / FM1709" title="Inspect Reconstructed Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_recon/sample_008_class_4_recon.ply"></div>
-              <span class="mesh-view-label recon-label">Reconstructed</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pair 5 (Class 5) -->
-        <div class="mesh-pair-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">5</span>
-            <span class="sample-id">Sample #010</span>
-          </div>
-          <div class="mesh-pair-container">
-            <div class="mesh-view-wrapper">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_010_class_5_gt.ply" data-title="Digit 5 (Ground Truth Mesh)" data-stats="C1193 / Vg2358 / VM252 / FM500" title="Inspect Ground Truth"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_recon/sample_010_class_5_gt.ply"></div>
-              <span class="mesh-view-label gt-label">Ground Truth</span>
-            </div>
-            <div class="mesh-view-wrapper">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_010_class_5_recon.ply" data-title="Digit 5 (Reconstructed Mesh)" data-stats="C1193 / Vg2358 / VM1180 / FM2344" title="Inspect Reconstructed Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_recon/sample_010_class_5_recon.ply"></div>
-              <span class="mesh-view-label recon-label">Reconstructed</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pair 6 (Class 6) -->
-        <div class="mesh-pair-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">6</span>
-            <span class="sample-id">Sample #012</span>
-          </div>
-          <div class="mesh-pair-container">
-            <div class="mesh-view-wrapper">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_012_class_6_gt.ply" data-title="Digit 6 (Ground Truth Mesh)" data-stats="C957 / Vg1874 / VM252 / FM500" title="Inspect Ground Truth"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_recon/sample_012_class_6_gt.ply"></div>
-              <span class="mesh-view-label gt-label">Ground Truth</span>
-            </div>
-            <div class="mesh-view-wrapper">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_012_class_6_recon.ply" data-title="Digit 6 (Reconstructed Mesh)" data-stats="C957 / Vg1874 / VM952 / FM1896" title="Inspect Reconstructed Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_recon/sample_012_class_6_recon.ply"></div>
-              <span class="mesh-view-label recon-label">Reconstructed</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pair 7 (Class 7) -->
-        <div class="mesh-pair-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">7</span>
-            <span class="sample-id">Sample #014</span>
-          </div>
-          <div class="mesh-pair-container">
-            <div class="mesh-view-wrapper">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_014_class_7_gt.ply" data-title="Digit 7 (Ground Truth Mesh)" data-stats="C799 / Vg1606 / VM252 / FM500" title="Inspect Ground Truth"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_recon/sample_014_class_7_gt.ply"></div>
-              <span class="mesh-view-label gt-label">Ground Truth</span>
-            </div>
-            <div class="mesh-view-wrapper">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_014_class_7_recon.ply" data-title="Digit 7 (Reconstructed Mesh)" data-stats="C799 / Vg1606 / VM798 / FM1587" title="Inspect Reconstructed Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_recon/sample_014_class_7_recon.ply"></div>
-              <span class="mesh-view-label recon-label">Reconstructed</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pair 8 (Class 8) -->
-        <div class="mesh-pair-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">8</span>
-            <span class="sample-id">Sample #016</span>
-          </div>
-          <div class="mesh-pair-container">
-            <div class="mesh-view-wrapper">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_016_class_8_gt.ply" data-title="Digit 8 (Ground Truth Mesh)" data-stats="C1282 / Vg2485 / VM248 / FM500" title="Inspect Ground Truth"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_recon/sample_016_class_8_gt.ply"></div>
-              <span class="mesh-view-label gt-label">Ground Truth</span>
-            </div>
-            <div class="mesh-view-wrapper">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_016_class_8_recon.ply" data-title="Digit 8 (Reconstructed Mesh)" data-stats="C1282 / Vg2485 / VM1280 / FM2546" title="Inspect Reconstructed Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_recon/sample_016_class_8_recon.ply"></div>
-              <span class="mesh-view-label recon-label">Reconstructed</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pair 9 (Class 9) -->
-        <div class="mesh-pair-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">9</span>
-            <span class="sample-id">Sample #018</span>
-          </div>
-          <div class="mesh-pair-container">
-            <div class="mesh-view-wrapper">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_018_class_9_gt.ply" data-title="Digit 9 (Ground Truth Mesh)" data-stats="C991 / Vg1967 / VM250 / FM500" title="Inspect Ground Truth"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_recon/sample_018_class_9_gt.ply"></div>
-              <span class="mesh-view-label gt-label">Ground Truth</span>
-            </div>
-            <div class="mesh-view-wrapper">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_recon/sample_018_class_9_recon.ply" data-title="Digit 9 (Reconstructed Mesh)" data-stats="C991 / Vg1967 / VM978 / FM1941" title="Inspect Reconstructed Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_recon/sample_018_class_9_recon.ply"></div>
-              <span class="mesh-view-label recon-label">Reconstructed</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 5: Two-Stage Sparse Voxel 3D Mesh Generation -->
-  <section id="sparse-generation" class="section-wrapper">
-    <div class="glass-card">
-      <div class="section-header">
-        <span class="section-tag"><i class="fas fa-magic mr-1"></i>Experiment 5</span>
-        <h2 class="section-title">Two-Stage Sparse Voxel 3D Mesh Generation</h2>
-        <p class="section-desc">
-          High-fidelity 3D mesh synthesis from 2D MNIST input images via a cascaded sparse geometric flow framework. <strong>Stage 1 (Structure DiT MeanFlow)</strong> predicts 3D active voxel occupancy grids, followed by <strong>Stage 2 (Sparse Vertex SDF Rectified Flow)</strong> predicting continuous 1D Signed Distance Fields decoded into watertight triangle meshes via Differentiable Marching Cubes.
-        </p>
-      </div>
-
-      <div class="sparse-gen-grid">
-        <!-- Digit 0 -->
-        <div class="sparse-gen-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">0</span>
-            <span class="sample-id">Digit 0 (Sample #000)</span>
-            <span class="gen-time-badge"><i class="fas fa-bolt mr-1"></i>1.34s</span>
-          </div>
-          <div class="sparse-progression-container">
-            <div class="progression-step step-img">
-              <img src="data/sparse_voxel_gen/sample_000_class_0_input.png" alt="2D Input Digit 0" loading="lazy">
-              <span class="progression-label img-label">2D Input</span>
-            </div>
-            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="progression-step step-3d">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_000_class_0_stage1_voxels.ply" data-title="Digit 0 (Stage 1 Active Voxels)" data-stats="Voxels: 1360 / Quads: 8160" title="Inspect Stage 1 Voxels"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_000_class_0_stage1_voxels.ply"></div>
-              <span class="progression-label stage1-label">Stage 1 Voxels</span>
-            </div>
-            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="progression-step step-3d">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_000_class_0_recon.ply" data-title="Digit 0 (Stage 2 Watertight Mesh)" data-stats="Vertices: 1348 / Triangles: 2635" title="Inspect Stage 2 Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_000_class_0_recon.ply"></div>
-              <span class="progression-label stage2-label">Stage 2 Mesh</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Digit 1 -->
-        <div class="sparse-gen-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">1</span>
-            <span class="sample-id">Digit 1 (Sample #001)</span>
-            <span class="gen-time-badge"><i class="fas fa-bolt mr-1"></i>420ms</span>
-          </div>
-          <div class="sparse-progression-container">
-            <div class="progression-step step-img">
-              <img src="data/sparse_voxel_gen/sample_001_class_1_input.png" alt="2D Input Digit 1" loading="lazy">
-              <span class="progression-label img-label">2D Input</span>
-            </div>
-            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="progression-step step-3d">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_001_class_1_stage1_voxels.ply" data-title="Digit 1 (Stage 1 Active Voxels)" data-stats="Voxels: 629 / Quads: 3774" title="Inspect Stage 1 Voxels"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_001_class_1_stage1_voxels.ply"></div>
-              <span class="progression-label stage1-label">Stage 1 Voxels</span>
-            </div>
-            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="progression-step step-3d">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_001_class_1_recon.ply" data-title="Digit 1 (Stage 2 Watertight Mesh)" data-stats="Vertices: 636 / Triangles: 1237" title="Inspect Stage 2 Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_001_class_1_recon.ply"></div>
-              <span class="progression-label stage2-label">Stage 2 Mesh</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Digit 2 -->
-        <div class="sparse-gen-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">2</span>
-            <span class="sample-id">Digit 2 (Sample #002)</span>
-            <span class="gen-time-badge"><i class="fas fa-bolt mr-1"></i>737ms</span>
-          </div>
-          <div class="sparse-progression-container">
-            <div class="progression-step step-img">
-              <img src="data/sparse_voxel_gen/sample_002_class_2_input.png" alt="2D Input Digit 2" loading="lazy">
-              <span class="progression-label img-label">2D Input</span>
-            </div>
-            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="progression-step step-3d">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_002_class_2_stage1_voxels.ply" data-title="Digit 2 (Stage 1 Active Voxels)" data-stats="Voxels: 965 / Quads: 5790" title="Inspect Stage 1 Voxels"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_002_class_2_stage1_voxels.ply"></div>
-              <span class="progression-label stage1-label">Stage 1 Voxels</span>
-            </div>
-            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="progression-step step-3d">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_002_class_2_recon.ply" data-title="Digit 2 (Stage 2 Watertight Mesh)" data-stats="Vertices: 975 / Triangles: 1884" title="Inspect Stage 2 Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_002_class_2_recon.ply"></div>
-              <span class="progression-label stage2-label">Stage 2 Mesh</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Digit 3 -->
-        <div class="sparse-gen-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">3</span>
-            <span class="sample-id">Digit 3 (Sample #003)</span>
-            <span class="gen-time-badge"><i class="fas fa-bolt mr-1"></i>851ms</span>
-          </div>
-          <div class="sparse-progression-container">
-            <div class="progression-step step-img">
-              <img src="data/sparse_voxel_gen/sample_003_class_3_input.png" alt="2D Input Digit 3" loading="lazy">
-              <span class="progression-label img-label">2D Input</span>
-            </div>
-            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="progression-step step-3d">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_003_class_3_stage1_voxels.ply" data-title="Digit 3 (Stage 1 Active Voxels)" data-stats="Voxels: 1085 / Quads: 6510" title="Inspect Stage 1 Voxels"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_003_class_3_stage1_voxels.ply"></div>
-              <span class="progression-label stage1-label">Stage 1 Voxels</span>
-            </div>
-            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="progression-step step-3d">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_003_class_3_recon.ply" data-title="Digit 3 (Stage 2 Watertight Mesh)" data-stats="Vertices: 1093 / Triangles: 2114" title="Inspect Stage 2 Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_003_class_3_recon.ply"></div>
-              <span class="progression-label stage2-label">Stage 2 Mesh</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Digit 4 -->
-        <div class="sparse-gen-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">4</span>
-            <span class="sample-id">Digit 4 (Sample #004)</span>
-            <span class="gen-time-badge"><i class="fas fa-bolt mr-1"></i>678ms</span>
-          </div>
-          <div class="sparse-progression-container">
-            <div class="progression-step step-img">
-              <img src="data/sparse_voxel_gen/sample_004_class_4_input.png" alt="2D Input Digit 4" loading="lazy">
-              <span class="progression-label img-label">2D Input</span>
-            </div>
-            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="progression-step step-3d">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_004_class_4_stage1_voxels.ply" data-title="Digit 4 (Stage 1 Active Voxels)" data-stats="Voxels: 885 / Quads: 5310" title="Inspect Stage 1 Voxels"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_004_class_4_stage1_voxels.ply"></div>
-              <span class="progression-label stage1-label">Stage 1 Voxels</span>
-            </div>
-            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="progression-step step-3d">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_004_class_4_recon.ply" data-title="Digit 4 (Stage 2 Watertight Mesh)" data-stats="Vertices: 894 / Triangles: 1731" title="Inspect Stage 2 Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_004_class_4_recon.ply"></div>
-              <span class="progression-label stage2-label">Stage 2 Mesh</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Digit 5 -->
-        <div class="sparse-gen-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">5</span>
-            <span class="sample-id">Digit 5 (Sample #005)</span>
-            <span class="gen-time-badge"><i class="fas fa-bolt mr-1"></i>997ms</span>
-          </div>
-          <div class="sparse-progression-container">
-            <div class="progression-step step-img">
-              <img src="data/sparse_voxel_gen/sample_005_class_5_input.png" alt="2D Input Digit 5" loading="lazy">
-              <span class="progression-label img-label">2D Input</span>
-            </div>
-            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="progression-step step-3d">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_005_class_5_stage1_voxels.ply" data-title="Digit 5 (Stage 1 Active Voxels)" data-stats="Voxels: 1200 / Quads: 7200" title="Inspect Stage 1 Voxels"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_005_class_5_stage1_voxels.ply"></div>
-              <span class="progression-label stage1-label">Stage 1 Voxels</span>
-            </div>
-            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="progression-step step-3d">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_005_class_5_recon.ply" data-title="Digit 5 (Stage 2 Watertight Mesh)" data-stats="Vertices: 1186 / Triangles: 2319" title="Inspect Stage 2 Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_005_class_5_recon.ply"></div>
-              <span class="progression-label stage2-label">Stage 2 Mesh</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Digit 6 -->
-        <div class="sparse-gen-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">6</span>
-            <span class="sample-id">Digit 6 (Sample #006)</span>
-            <span class="gen-time-badge"><i class="fas fa-bolt mr-1"></i>734ms</span>
-          </div>
-          <div class="sparse-progression-container">
-            <div class="progression-step step-img">
-              <img src="data/sparse_voxel_gen/sample_006_class_6_input.png" alt="2D Input Digit 6" loading="lazy">
-              <span class="progression-label img-label">2D Input</span>
-            </div>
-            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="progression-step step-3d">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_006_class_6_stage1_voxels.ply" data-title="Digit 6 (Stage 1 Active Voxels)" data-stats="Voxels: 949 / Quads: 5694" title="Inspect Stage 1 Voxels"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_006_class_6_stage1_voxels.ply"></div>
-              <span class="progression-label stage1-label">Stage 1 Voxels</span>
-            </div>
-            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="progression-step step-3d">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_006_class_6_recon.ply" data-title="Digit 6 (Stage 2 Watertight Mesh)" data-stats="Vertices: 940 / Triangles: 1830" title="Inspect Stage 2 Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_006_class_6_recon.ply"></div>
-              <span class="progression-label stage2-label">Stage 2 Mesh</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Digit 7 -->
-        <div class="sparse-gen-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">7</span>
-            <span class="sample-id">Digit 7 (Sample #007)</span>
-            <span class="gen-time-badge"><i class="fas fa-bolt mr-1"></i>620ms</span>
-          </div>
-          <div class="sparse-progression-container">
-            <div class="progression-step step-img">
-              <img src="data/sparse_voxel_gen/sample_007_class_7_input.png" alt="2D Input Digit 7" loading="lazy">
-              <span class="progression-label img-label">2D Input</span>
-            </div>
-            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="progression-step step-3d">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_007_class_7_stage1_voxels.ply" data-title="Digit 7 (Stage 1 Active Voxels)" data-stats="Voxels: 810 / Quads: 4860" title="Inspect Stage 1 Voxels"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_007_class_7_stage1_voxels.ply"></div>
-              <span class="progression-label stage1-label">Stage 1 Voxels</span>
-            </div>
-            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="progression-step step-3d">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_007_class_7_recon.ply" data-title="Digit 7 (Stage 2 Watertight Mesh)" data-stats="Vertices: 796 / Triangles: 1571" title="Inspect Stage 2 Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_007_class_7_recon.ply"></div>
-              <span class="progression-label stage2-label">Stage 2 Mesh</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Digit 8 -->
-        <div class="sparse-gen-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">8</span>
-            <span class="sample-id">Digit 8 (Sample #008)</span>
-            <span class="gen-time-badge"><i class="fas fa-bolt mr-1"></i>1.10s</span>
-          </div>
-          <div class="sparse-progression-container">
-            <div class="progression-step step-img">
-              <img src="data/sparse_voxel_gen/sample_008_class_8_input.png" alt="2D Input Digit 8" loading="lazy">
-              <span class="progression-label img-label">2D Input</span>
-            </div>
-            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="progression-step step-3d">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_008_class_8_stage1_voxels.ply" data-title="Digit 8 (Stage 1 Active Voxels)" data-stats="Voxels: 1321 / Quads: 7926" title="Inspect Stage 1 Voxels"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_008_class_8_stage1_voxels.ply"></div>
-              <span class="progression-label stage1-label">Stage 1 Voxels</span>
-            </div>
-            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="progression-step step-3d">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_008_class_8_recon.ply" data-title="Digit 8 (Stage 2 Watertight Mesh)" data-stats="Vertices: 1287 / Triangles: 2488" title="Inspect Stage 2 Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_008_class_8_recon.ply"></div>
-              <span class="progression-label stage2-label">Stage 2 Mesh</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Digit 9 -->
-        <div class="sparse-gen-card">
-          <div class="pc-card-header">
-            <span class="digit-badge">9</span>
-            <span class="sample-id">Digit 9 (Sample #009)</span>
-            <span class="gen-time-badge"><i class="fas fa-bolt mr-1"></i>780ms</span>
-          </div>
-          <div class="sparse-progression-container">
-            <div class="progression-step step-img">
-              <img src="data/sparse_voxel_gen/sample_009_class_9_input.png" alt="2D Input Digit 9" loading="lazy">
-              <span class="progression-label img-label">2D Input</span>
-            </div>
-            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="progression-step step-3d">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_009_class_9_stage1_voxels.ply" data-title="Digit 9 (Stage 1 Active Voxels)" data-stats="Voxels: 987 / Quads: 5922" title="Inspect Stage 1 Voxels"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_009_class_9_stage1_voxels.ply"></div>
-              <span class="progression-label stage1-label">Stage 1 Voxels</span>
-            </div>
-            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="progression-step step-3d">
-              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/sparse_voxel_gen/sample_009_class_9_recon.ply" data-title="Digit 9 (Stage 2 Watertight Mesh)" data-stats="Vertices: 1006 / Triangles: 1947" title="Inspect Stage 2 Mesh"><i class="fas fa-expand-arrows-alt"></i></button>
-              <div class="ply-viewer" data-ply="data/sparse_voxel_gen/sample_009_class_9_recon.ply"></div>
-              <span class="progression-label stage2-label">Stage 2 Mesh</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section: Limitations & Discussion -->
-  <section id="limitations" class="section-wrapper">
-    <div class="glass-card">
-      <div class="section-header">
-        <span class="section-tag" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.3); color: #fbbf24;">
-          <i class="fas fa-exclamation-triangle mr-1"></i>Analysis & Discussion
-        </span>
-        <h2 class="section-title">Limitations & Future Work</h2>
-        <p class="section-desc">
-          While Digit3D and its sparse continuous flow generative models achieve efficient 3D synthesis, several geometric and empirical limitations remain to be addressed in future research.
-        </p>
-      </div>
-
-      <div class="limitations-grid">
-        <!-- Limitation 1: Non-Diversified Assets -->
-        <div class="limitation-card">
-          <div class="limitation-icon">
-            <i class="fas fa-shapes"></i>
-          </div>
-          <h3 class="limitation-title">Asset Diversity & Morphological Complexity</h3>
-          <p class="limitation-desc">
-            The dataset's 3D meshes are constructed from 2D MNIST boundary contours with parametric extrusion, triangulation, and smoothing. While optimal for rapid algorithm development and differentiable benchmarking, the synthetic assets exhibit constrained topological diversity (e.g., restricted genus, lack of complex internal cavities, and uniform thickness) compared to unconstrained real-world 3D object repositories (such as ShapeNet, Objaverse, or OmniObject3D).
-          </p>
-        </div>
-
-        <!-- Limitation 2: Non-Manifold Mesh Generation -->
-        <div class="limitation-card">
-          <div class="limitation-icon">
-            <i class="fas fa-draw-polygon"></i>
-          </div>
-          <h3 class="limitation-title">Non-Manifold Topology & Small Model Regime</h3>
-          <p class="limitation-desc">
-            Operating under compact model parameterizations (6-layer Structure DiT and 6-layer Sparse Vertex Transformers, <i>D</i> = 256) trained for modest schedules (15–20 epochs on single consumer GPUs), the generative pipeline occasionally produces localized non-manifold artifacts—such as boundary self-intersections, isolated floating zero-crossing facets, or non-manifold edge junctions—when predicted vertex SDFs lack global continuity across neighboring sparse voxel cells.
-          </p>
-        </div>
-
-        <!-- Limitation 3: Discretization & Resolution Bounds -->
-        <div class="limitation-card">
-          <div class="limitation-icon">
-            <i class="fas fa-border-all"></i>
-          </div>
-          <h3 class="limitation-title">Resolution Trade-offs & High-Frequency Detail</h3>
-          <p class="limitation-desc">
-            The 32<sup>3</sup> volumetric grid resolution enables ultra-fast <i>O</i>(<i>B</i>) variable-length attention with zero dummy padding overhead, but sets a physical upper bound on fine corner sharpness and high-frequency structural boundaries. Future extensions will incorporate multi-resolution hierarchical octrees or adaptive tetrahedral complexes to completely eliminate topological defects while preserving high inference throughput.
-          </p>
-        </div>
-      </div>
+# 3. Stream Sparse Voxel Coordinates and Signed Distance Fields
+sdf_dataset = SparseDigit3D(root="~/.conquer3d/", train=False, download=True)
+sparse_coords, sparse_sdfs, label = sdf_dataset[0]</code></pre>
     </div>
   </section>
 
@@ -1120,24 +274,6 @@
     </div>
   </section>
 
-  <!-- Fullscreen Modal 3D Inspector -->
-  <div id="ply-modal" class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-content custom-modal">
-      <div class="modal-header">
-        <div class="modal-title-group">
-          <h3 class="title is-5 modal-sample-title mb-0">3D Geometry Inspector</h3>
-          <span class="modal-stats-badge" style="display: none;"></span>
-        </div>
-        <button class="delete modal-close-btn" aria-label="close"></button>
-      </div>
-      <div class="modal-viewer-container"></div>
-      <p class="is-size-7 has-text-grey-light mt-3 has-text-centered">
-        <i class="fas fa-mouse mr-1"></i>Left-drag to Orbit &bull; Right-drag to Pan &bull; Scroll to Zoom
-      </p>
-    </div>
-  </div>
-
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
@@ -1145,7 +281,7 @@
         <strong>Digit3D</strong> by <a href="https://github.com/KhoiDOO" target="_blank">Khoi DO</a>. Released under MIT License.
       </p>
       <p class="is-size-7 mt-2">
-        Built with <a href="https://bulma.io/" target="_blank">Bulma</a> and <a href="https://threejs.org/" target="_blank">Three.js</a>. Based on the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+        Built with <a href="https://bulma.io/" target="_blank">Bulma</a> and <a href="https://threejs.org/" target="_blank">Three.js</a>.
       </p>
     </div>
   </footer>

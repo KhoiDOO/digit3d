@@ -282,8 +282,10 @@ class ClassConditionedPointTransformer(PointTransformer):
             
         t_embed = self.time_embed(timestep_embedding(t, self.backbone.width))
         
-        # Handle conditional dropout (CFG)
-        if self.training and self.cond_drop_prob > 0.0:
+        # Handle conditional dropout (CFG) or null condition
+        if cond is None:
+            cond = torch.full((len(x),), self.num_classes, device=x.device, dtype=torch.long)
+        elif self.training and self.cond_drop_prob > 0.0:
             mask = torch.rand(size=[len(x)], device=x.device) < self.cond_drop_prob
             cond = cond.clone()
             cond[mask] = self.num_classes

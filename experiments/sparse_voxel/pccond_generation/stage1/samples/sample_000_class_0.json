@@ -1,0 +1,11 @@
+{
+    "sample_idx": 4,
+    "class_label": 0,
+    "num_input_points": 512,
+    "num_active_voxels": 1377,
+    "num_grid_vertices": 2689,
+    "num_quad_faces": 8262,
+    "threshold": 0.5,
+    "steps": 64,
+    "latency_ms": 323.6
+}

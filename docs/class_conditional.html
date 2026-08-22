@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <title>Class-Conditional 3D Generation - Digit3D</title>
+  <meta name="title" content="Class-Conditional 3D Generation - Digit3D">
+  <meta name="description" content="Generating target 3D digit geometries (0–9) using class token embeddings and Classifier-Free Guidance (CFG).">
+  <meta name="author" content="Khoi DO">
+  <meta name="theme-color" content="#6366f1">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+  <!-- Background Animated Mesh -->
+  <div class="bg-mesh"></div>
+
+  <!-- Hero Section -->
+  <section class="hero is-bold">
+    <div class="hero-body">
+      <div class="container is-max-desktop has-text-centered">
+        
+        <span class="section-tag"><i class="fas fa-cube mr-2"></i>3D Vision & Generative AI</span>
+        
+        <h1 class="title publication-title">
+          <span class="text-gradient">Digit3D</span>: 3D Multimodal MNIST Benchmark
+        </h1>
+        
+        <p class="subtitle publication-subtitle">
+          Transforming 2D MNIST into rich 3D geometries (watertight meshes, sparse SDFs, and 6D normal-oriented point clouds) with continuous flow matching generative pipelines.
+        </p>
+
+        <!-- Authors & Affiliations -->
+        <div class="publication-authors">
+          <span class="author-block">
+            <a href="https://github.com/KhoiDOO" target="_blank"><i class="fab fa-github mr-1"></i>Khoi DO</a>
+          </span>
+          <div class="affiliation-block">
+            <span>Conquer3D Research & Open-Source Geometry Engine</span>
+          </div>
+        </div>
+
+        <!-- Action & Navigation Buttons -->
+        <div class="publication-links">
+          <a href="https://github.com/KhoiDOO/digit3d" target="_blank" class="btn-action">
+            <i class="fab fa-github"></i>
+            <span>Code</span>
+          </a>
+          <a href="https://github.com/KhoiDOO/conquer3d" target="_blank" class="btn-action">
+            <i class="fas fa-shapes"></i>
+            <span>Conquer3D Engine</span>
+          </a>
+          <a href="index.html" class="btn-action">
+            <i class="fas fa-home"></i>
+            <span>Overview</span>
+          </a>
+          <a href="unconditional.html" class="btn-action">
+            <i class="fas fa-dice"></i>
+            <span>Unconditional Flow</span>
+          </a>
+          <a href="class_conditional.html" class="btn-action is-active">
+            <i class="fas fa-list-ol"></i>
+            <span>Class Conditional</span>
+          </a>
+          <a href="image_conditional.html" class="btn-action">
+            <i class="fas fa-image"></i>
+            <span>2D → 3D Image Condition</span>
+          </a>
+          <a href="sparse_reconstruction.html" class="btn-action">
+            <i class="fas fa-cubes"></i>
+            <span>Sparse Voxel Recon</span>
+          </a>
+          <a href="sparse_generation.html" class="btn-action">
+            <i class="fas fa-cube"></i>
+            <span>Sparse Voxel Gen</span>
+          </a>
+          <a href="limitations.html" class="btn-action">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>Limitations</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content: Class-Conditional Generation -->
+  <section class="section-wrapper">
+    <div class="glass-card">
+      <div class="section-header">
+        <span class="section-tag"><i class="fas fa-list-ol mr-1"></i>Experiment 2</span>
+        <h2 class="section-title">Class-Conditional 3D Generation (Digits 0–9)</h2>
+        <p class="section-desc">
+          Steering 3D shape synthesis towards explicit digit classes. Point Transformer conditioning vectors incorporate learnable class embeddings with Classifier-Free Guidance (CFG, scale = 2.0).
+        </p>
+      </div>
+
+      <div class="pointcloud-grid grid-5">
+        <!-- Digit 0 -->
+        <div class="pc-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">0</span>
+            <span class="sample-id">Class 0</span>
+            <button class="btn-expand-ply" data-ply="data/class_cond/sample_000_class_0.ply" data-title="Class 0 Point Cloud" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="ply-viewer" data-ply="data/class_cond/sample_000_class_0.ply"></div>
+        </div>
+
+        <!-- Digit 1 -->
+        <div class="pc-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">1</span>
+            <span class="sample-id">Class 1</span>
+            <button class="btn-expand-ply" data-ply="data/class_cond/sample_001_class_1.ply" data-title="Class 1 Point Cloud" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="ply-viewer" data-ply="data/class_cond/sample_001_class_1.ply"></div>
+        </div>
+
+        <!-- Digit 2 -->
+        <div class="pc-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">2</span>
+            <span class="sample-id">Class 2</span>
+            <button class="btn-expand-ply" data-ply="data/class_cond/sample_002_class_2.ply" data-title="Class 2 Point Cloud" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="ply-viewer" data-ply="data/class_cond/sample_002_class_2.ply"></div>
+        </div>
+
+        <!-- Digit 3 -->
+        <div class="pc-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">3</span>
+            <span class="sample-id">Class 3</span>
+            <button class="btn-expand-ply" data-ply="data/class_cond/sample_003_class_3.ply" data-title="Class 3 Point Cloud" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="ply-viewer" data-ply="data/class_cond/sample_003_class_3.ply"></div>
+        </div>
+
+        <!-- Digit 4 -->
+        <div class="pc-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">4</span>
+            <span class="sample-id">Class 4</span>
+            <button class="btn-expand-ply" data-ply="data/class_cond/sample_004_class_4.ply" data-title="Class 4 Point Cloud" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="ply-viewer" data-ply="data/class_cond/sample_004_class_4.ply"></div>
+        </div>
+
+        <!-- Digit 5 -->
+        <div class="pc-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">5</span>
+            <span class="sample-id">Class 5</span>
+            <button class="btn-expand-ply" data-ply="data/class_cond/sample_005_class_5.ply" data-title="Class 5 Point Cloud" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="ply-viewer" data-ply="data/class_cond/sample_005_class_5.ply"></div>
+        </div>
+
+        <!-- Digit 6 -->
+        <div class="pc-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">6</span>
+            <span class="sample-id">Class 6</span>
+            <button class="btn-expand-ply" data-ply="data/class_cond/sample_006_class_6.ply" data-title="Class 6 Point Cloud" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="ply-viewer" data-ply="data/class_cond/sample_006_class_6.ply"></div>
+        </div>
+
+        <!-- Digit 7 -->
+        <div class="pc-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">7</span>
+            <span class="sample-id">Class 7</span>
+            <button class="btn-expand-ply" data-ply="data/class_cond/sample_007_class_7.ply" data-title="Class 7 Point Cloud" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="ply-viewer" data-ply="data/class_cond/sample_007_class_7.ply"></div>
+        </div>
+
+        <!-- Digit 8 -->
+        <div class="pc-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">8</span>
+            <span class="sample-id">Class 8</span>
+            <button class="btn-expand-ply" data-ply="data/class_cond/sample_008_class_8.ply" data-title="Class 8 Point Cloud" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="ply-viewer" data-ply="data/class_cond/sample_008_class_8.ply"></div>
+        </div>
+
+        <!-- Digit 9 -->
+        <div class="pc-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">9</span>
+            <span class="sample-id">Class 9</span>
+            <button class="btn-expand-ply" data-ply="data/class_cond/sample_009_class_9.ply" data-title="Class 9 Point Cloud" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="ply-viewer" data-ply="data/class_cond/sample_009_class_9.ply"></div>
+        </div>
+      </div>
+      
+      <p class="has-text-centered is-size-7 mt-4 has-text-grey-light">
+        <i class="fas fa-info-circle mr-1"></i>Drag to rotate 3D point cloud &bull; Scroll to zoom &bull; Shaded by continuous surface normal vectors
+      </p>
+    </div>
+  </section>
+
+  <!-- Fullscreen Modal 3D Inspector -->
+  <div id="ply-modal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content custom-modal">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3 class="title is-5 modal-sample-title mb-0">3D Geometry Inspector</h3>
+          <span class="modal-stats-badge" style="display: none;"></span>
+        </div>
+        <button class="delete modal-close-btn" aria-label="close"></button>
+      </div>
+      <div class="modal-viewer-container"></div>
+      <p class="is-size-7 has-text-grey-light mt-3 has-text-centered">
+        <i class="fas fa-mouse mr-1"></i>Left-drag to Orbit &bull; Right-drag to Pan &bull; Scroll to Zoom
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        <strong>Digit3D</strong> by <a href="https://github.com/KhoiDOO" target="_blank">Khoi DO</a>. Released under MIT License.
+      </p>
+      <p class="is-size-7 mt-2">
+        Built with <a href="https://bulma.io/" target="_blank">Bulma</a> and <a href="https://threejs.org/" target="_blank">Three.js</a>.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="static/js/three.min.js"></script>
+  <script src="static/js/OrbitControls.js"></script>
+  <script src="static/js/pointcloud_viewer.js"></script>
+</body>
+</html>

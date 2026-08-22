@@ -1,0 +1,19 @@
+{
+    "sample_idx": 4,
+    "class_label": 0,
+    "crop_axis": "z",
+    "crop_sign": 1.0,
+    "crop_ratio": 0.5,
+    "init_mode": "reflected",
+    "boundary_guidance": 1.0,
+    "num_observed_points": 256,
+    "num_total_points": 512,
+    "latency_ms": 141.1,
+    "cfg_scale": 1.0,
+    "resample_steps": 1,
+    "files": {
+        "gt_complete": "sample_004_class_0_gt_complete.ply",
+        "input_partial": "sample_004_class_0_input_partial.ply",
+        "completed": "sample_004_class_0_completed.ply"
+    }
+}

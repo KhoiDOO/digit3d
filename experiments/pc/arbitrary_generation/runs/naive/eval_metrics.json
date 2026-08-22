@@ -1,0 +1,42 @@
+{
+  "256": {
+    "num_points": 256,
+    "chamfer_distance": 0.19247,
+    "hausdorff_distance": 0.301572,
+    "normal_cosine_similarity": 0.6037,
+    "latency_ms": 108.05,
+    "throughput_fps": 9.3
+  },
+  "512": {
+    "num_points": 512,
+    "chamfer_distance": 0.162324,
+    "hausdorff_distance": 0.324953,
+    "normal_cosine_similarity": 0.614,
+    "latency_ms": 103.26,
+    "throughput_fps": 9.7
+  },
+  "1024": {
+    "num_points": 1024,
+    "chamfer_distance": 0.139558,
+    "hausdorff_distance": 0.338906,
+    "normal_cosine_similarity": 0.617,
+    "latency_ms": 104.99,
+    "throughput_fps": 9.5
+  },
+  "2048": {
+    "num_points": 2048,
+    "chamfer_distance": 0.123265,
+    "hausdorff_distance": 0.375529,
+    "normal_cosine_similarity": 0.6174,
+    "latency_ms": 106.41,
+    "throughput_fps": 9.4
+  },
+  "4096": {
+    "num_points": 4096,
+    "chamfer_distance": 0.111511,
+    "hausdorff_distance": 0.38808,
+    "normal_cosine_similarity": 0.6184,
+    "latency_ms": 121.92,
+    "throughput_fps": 8.2
+  }
+}

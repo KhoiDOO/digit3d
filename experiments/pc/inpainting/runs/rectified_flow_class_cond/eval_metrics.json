@@ -1,0 +1,80 @@
+{
+    "checkpoint": "model.pt",
+    "experiment": "rectified_flow_class_cond",
+    "num_eval_samples": 100,
+    "crop_axis": "z",
+    "crop_sign": 1.0,
+    "crop_ratio": 0.5,
+    "init_mode": "reflected",
+    "boundary_guidance": 1.0,
+    "steps": 64,
+    "cfg_scale": 1.0,
+    "resample_steps": 1,
+    "mean_chamfer_distance": 0.834139,
+    "mean_hausdorff_distance": 1.660717,
+    "mean_normal_cosine_similarity": 0.3076,
+    "mean_latency_ms": 140.31,
+    "throughput_fps": 7.1,
+    "per_class": {
+        "0": {
+            "num_samples": 5,
+            "chamfer_distance": 0.841208,
+            "hausdorff_distance": 1.795178,
+            "normal_cosine_similarity": 0.3072
+        },
+        "1": {
+            "num_samples": 23,
+            "chamfer_distance": 0.839563,
+            "hausdorff_distance": 1.683406,
+            "normal_cosine_similarity": 0.2998
+        },
+        "2": {
+            "num_samples": 12,
+            "chamfer_distance": 0.800439,
+            "hausdorff_distance": 1.646974,
+            "normal_cosine_similarity": 0.3142
+        },
+        "3": {
+            "num_samples": 4,
+            "chamfer_distance": 0.890606,
+            "hausdorff_distance": 1.770223,
+            "normal_cosine_similarity": 0.2801
+        },
+        "4": {
+            "num_samples": 6,
+            "chamfer_distance": 0.825053,
+            "hausdorff_distance": 1.700725,
+            "normal_cosine_similarity": 0.2843
+        },
+        "5": {
+            "num_samples": 11,
+            "chamfer_distance": 0.851186,
+            "hausdorff_distance": 1.627702,
+            "normal_cosine_similarity": 0.3221
+        },
+        "6": {
+            "num_samples": 5,
+            "chamfer_distance": 0.786439,
+            "hausdorff_distance": 1.708606,
+            "normal_cosine_similarity": 0.3073
+        },
+        "7": {
+            "num_samples": 12,
+            "chamfer_distance": 0.913011,
+            "hausdorff_distance": 1.689454,
+            "normal_cosine_similarity": 0.3131
+        },
+        "8": {
+            "num_samples": 13,
+            "chamfer_distance": 0.772644,
+            "hausdorff_distance": 1.522668,
+            "normal_cosine_similarity": 0.3244
+        },
+        "9": {
+            "num_samples": 9,
+            "chamfer_distance": 0.831573,
+            "hausdorff_distance": 1.645848,
+            "normal_cosine_similarity": 0.2972
+        }
+    }
+}

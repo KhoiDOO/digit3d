@@ -162,14 +162,16 @@ code {
   box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);
 }
 
-.btn-action.btn-primary {
+.btn-action.btn-primary,
+.btn-action.is-active {
   background: var(--primary-gradient);
   border: none;
   color: #ffffff;
   box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
 }
 
-.btn-action.btn-primary:hover {
+.btn-action.btn-primary:hover,
+.btn-action.is-active:hover {
   opacity: 0.92;
   transform: translateY(-2px);
   box-shadow: 0 6px 25px rgba(236, 72, 153, 0.5);
@@ -384,11 +386,17 @@ code {
   cursor: grabbing;
 }
 
-/* Image Conditioned Paired Card */
+/* Image Conditioned Paired Card (2 Columns x 5 Rows) */
 .img-cond-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .img-cond-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .img-cond-card {
@@ -455,11 +463,17 @@ code {
   min-height: 200px;
 }
 
-/* Sparse Voxel Reconstruction Mesh Cards */
+/* Sparse Voxel Reconstruction Mesh Cards (2 Columns x 5 Rows) */
 .mesh-recon-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .mesh-recon-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .mesh-pair-card {
