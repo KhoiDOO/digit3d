@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <title>2D Image to 3D Point Cloud Generation - Digit3D</title>
+  <meta name="title" content="2D Image to 3D Point Cloud Generation - Digit3D">
+  <meta name="description" content="Single-view 3D reconstruction mapping raw 28x28 grayscale MNIST images to 6D normal-oriented point clouds using Mean Flow.">
+  <meta name="author" content="Khoi DO">
+  <meta name="theme-color" content="#6366f1">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+  <!-- Background Animated Mesh -->
+  <div class="bg-mesh"></div>
+
+  <!-- Hero Section -->
+  <section class="hero is-bold">
+    <div class="hero-body">
+      <div class="container is-max-desktop has-text-centered">
+        
+        <span class="section-tag"><i class="fas fa-cube mr-2"></i>3D Vision & Generative AI</span>
+        
+        <h1 class="title publication-title">
+          <span class="text-gradient">Digit3D</span>: 3D Multimodal MNIST Benchmark
+        </h1>
+        
+        <p class="subtitle publication-subtitle">
+          Transforming 2D MNIST into rich 3D geometries (watertight meshes, sparse SDFs, and 6D normal-oriented point clouds) with continuous flow matching generative pipelines.
+        </p>
+
+        <!-- Authors & Affiliations -->
+        <div class="publication-authors">
+          <span class="author-block">
+            <a href="https://github.com/KhoiDOO" target="_blank"><i class="fab fa-github mr-1"></i>Khoi DO</a>
+          </span>
+          <div class="affiliation-block">
+            <span>Conquer3D Research & Open-Source Geometry Engine</span>
+          </div>
+        </div>
+
+        <!-- Action & Navigation Buttons -->
+        <div class="publication-links">
+          <a href="https://github.com/KhoiDOO/digit3d" target="_blank" class="btn-action">
+            <i class="fab fa-github"></i>
+            <span>Code</span>
+          </a>
+          <a href="https://github.com/KhoiDOO/conquer3d" target="_blank" class="btn-action">
+            <i class="fas fa-shapes"></i>
+            <span>Conquer3D Engine</span>
+          </a>
+          <a href="index.html" class="btn-action">
+            <i class="fas fa-home"></i>
+            <span>Overview</span>
+          </a>
+          <a href="unconditional.html" class="btn-action">
+            <i class="fas fa-dice"></i>
+            <span>Unconditional Flow</span>
+          </a>
+          <a href="class_conditional.html" class="btn-action">
+            <i class="fas fa-list-ol"></i>
+            <span>Class Conditional</span>
+          </a>
+          <a href="image_conditional.html" class="btn-action is-active">
+            <i class="fas fa-image"></i>
+            <span>2D → 3D Image Condition</span>
+          </a>
+          <a href="sparse_reconstruction.html" class="btn-action">
+            <i class="fas fa-cubes"></i>
+            <span>Sparse Voxel Recon</span>
+          </a>
+          <a href="sparse_generation.html" class="btn-action">
+            <i class="fas fa-cube"></i>
+            <span>Sparse Voxel Gen</span>
+          </a>
+          <a href="limitations.html" class="btn-action">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>Limitations</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content: Image-Conditional Generation -->
+  <section class="section-wrapper">
+    <div class="glass-card">
+      <div class="section-header">
+        <span class="section-tag"><i class="fas fa-image mr-1"></i>Experiment 3</span>
+        <h2 class="section-title">2D Image → 3D Point Cloud Generation</h2>
+        <p class="section-desc">
+          Single-view 3D reconstruction and generative shape synthesis. A vision encoder maps raw 28 &times; 28 grayscale images through GroupNorm feature extractors to steer <strong>Mean Flow</strong> generation.
+        </p>
+      </div>
+
+      <div class="img-cond-grid">
+        <!-- Pair 0 (Class 0) -->
+        <div class="img-cond-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">0</span>
+            <span class="sample-id">Sample #004</span>
+            <button class="btn-expand-ply" data-ply="data/img_cond/sample_004_class_0.ply" data-title="2D → 3D (Digit 0)" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="paired-container">
+            <div class="input-img-wrapper">
+              <img src="data/img_cond/sample_004_class_0_input.png" alt="2D Input Digit 0" loading="lazy">
+              <span class="input-label">2D Input</span>
+            </div>
+            <div class="output-3d-wrapper">
+              <div class="ply-viewer" data-ply="data/img_cond/sample_004_class_0.ply"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pair 1 (Class 1) -->
+        <div class="img-cond-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">1</span>
+            <span class="sample-id">Sample #000</span>
+            <button class="btn-expand-ply" data-ply="data/img_cond/sample_000_class_1.ply" data-title="2D → 3D (Digit 1)" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="paired-container">
+            <div class="input-img-wrapper">
+              <img src="data/img_cond/sample_000_class_1_input.png" alt="2D Input Digit 1" loading="lazy">
+              <span class="input-label">2D Input</span>
+            </div>
+            <div class="output-3d-wrapper">
+              <div class="ply-viewer" data-ply="data/img_cond/sample_000_class_1.ply"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pair 2 (Class 2) -->
+        <div class="img-cond-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">2</span>
+            <span class="sample-id">Sample #002</span>
+            <button class="btn-expand-ply" data-ply="data/img_cond/sample_002_class_2.ply" data-title="2D → 3D (Digit 2)" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="paired-container">
+            <div class="input-img-wrapper">
+              <img src="data/img_cond/sample_002_class_2_input.png" alt="2D Input Digit 2" loading="lazy">
+              <span class="input-label">2D Input</span>
+            </div>
+            <div class="output-3d-wrapper">
+              <div class="ply-viewer" data-ply="data/img_cond/sample_002_class_2.ply"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pair 3 (Class 3) -->
+        <div class="img-cond-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">3</span>
+            <span class="sample-id">Sample #000</span>
+            <button class="btn-expand-ply" data-ply="data/img_cond/sample_000_class_3.ply" data-title="2D → 3D (Digit 3)" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="paired-container">
+            <div class="input-img-wrapper">
+              <img src="data/img_cond/sample_000_class_3_input.png" alt="2D Input Digit 3" loading="lazy">
+              <span class="input-label">2D Input</span>
+            </div>
+            <div class="output-3d-wrapper">
+              <div class="ply-viewer" data-ply="data/img_cond/sample_000_class_3.ply"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pair 4 (Class 4) -->
+        <div class="img-cond-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">4</span>
+            <span class="sample-id">Sample #005</span>
+            <button class="btn-expand-ply" data-ply="data/img_cond/sample_005_class_4.ply" data-title="2D → 3D (Digit 4)" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="paired-container">
+            <div class="input-img-wrapper">
+              <img src="data/img_cond/sample_005_class_4_input.png" alt="2D Input Digit 4" loading="lazy">
+              <span class="input-label">2D Input</span>
+            </div>
+            <div class="output-3d-wrapper">
+              <div class="ply-viewer" data-ply="data/img_cond/sample_005_class_4.ply"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pair 5 (Class 5) -->
+        <div class="img-cond-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">5</span>
+            <span class="sample-id">Sample #008</span>
+            <button class="btn-expand-ply" data-ply="data/img_cond/sample_008_class_5.ply" data-title="2D → 3D (Digit 5)" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="paired-container">
+            <div class="input-img-wrapper">
+              <img src="data/img_cond/sample_008_class_5_input.png" alt="2D Input Digit 5" loading="lazy">
+              <span class="input-label">2D Input</span>
+            </div>
+            <div class="output-3d-wrapper">
+              <div class="ply-viewer" data-ply="data/img_cond/sample_008_class_5.ply"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pair 6 (Class 6) -->
+        <div class="img-cond-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">6</span>
+            <span class="sample-id">Sample #001</span>
+            <button class="btn-expand-ply" data-ply="data/img_cond/sample_001_class_6.ply" data-title="2D → 3D (Digit 6)" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="paired-container">
+            <div class="input-img-wrapper">
+              <img src="data/img_cond/sample_001_class_6_input.png" alt="2D Input Digit 6" loading="lazy">
+              <span class="input-label">2D Input</span>
+            </div>
+            <div class="output-3d-wrapper">
+              <div class="ply-viewer" data-ply="data/img_cond/sample_001_class_6.ply"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pair 7 (Class 7) -->
+        <div class="img-cond-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">7</span>
+            <span class="sample-id">Sample #000</span>
+            <button class="btn-expand-ply" data-ply="data/img_cond/sample_000_class_7.ply" data-title="2D → 3D (Digit 7)" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="paired-container">
+            <div class="input-img-wrapper">
+              <img src="data/img_cond/sample_000_class_7_input.png" alt="2D Input Digit 7" loading="lazy">
+              <span class="input-label">2D Input</span>
+            </div>
+            <div class="output-3d-wrapper">
+              <div class="ply-viewer" data-ply="data/img_cond/sample_000_class_7.ply"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pair 8 (Class 8) -->
+        <div class="img-cond-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">8</span>
+            <span class="sample-id">Sample #000</span>
+            <button class="btn-expand-ply" data-ply="data/img_cond/sample_000_class_8.ply" data-title="2D → 3D (Digit 8)" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="paired-container">
+            <div class="input-img-wrapper">
+              <img src="data/img_cond/sample_000_class_8_input.png" alt="2D Input Digit 8" loading="lazy">
+              <span class="input-label">2D Input</span>
+            </div>
+            <div class="output-3d-wrapper">
+              <div class="ply-viewer" data-ply="data/img_cond/sample_000_class_8.ply"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pair 9 (Class 9) -->
+        <div class="img-cond-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">9</span>
+            <span class="sample-id">Sample #016</span>
+            <button class="btn-expand-ply" data-ply="data/img_cond/sample_016_class_9.ply" data-title="2D → 3D (Digit 9)" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="paired-container">
+            <div class="input-img-wrapper">
+              <img src="data/img_cond/sample_016_class_9_input.png" alt="2D Input Digit 9" loading="lazy">
+              <span class="input-label">2D Input</span>
+            </div>
+            <div class="output-3d-wrapper">
+              <div class="ply-viewer" data-ply="data/img_cond/sample_016_class_9.ply"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <p class="has-text-centered is-size-7 mt-4 has-text-grey-light">
+        <i class="fas fa-info-circle mr-1"></i>Drag to rotate 3D point cloud &bull; Scroll to zoom &bull; Shaded by continuous surface normal vectors
+      </p>
+    </div>
+  </section>
+
+  <!-- Fullscreen Modal 3D Inspector -->
+  <div id="ply-modal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content custom-modal">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3 class="title is-5 modal-sample-title mb-0">3D Geometry Inspector</h3>
+          <span class="modal-stats-badge" style="display: none;"></span>
+        </div>
+        <button class="delete modal-close-btn" aria-label="close"></button>
+      </div>
+      <div class="modal-viewer-container"></div>
+      <p class="is-size-7 has-text-grey-light mt-3 has-text-centered">
+        <i class="fas fa-mouse mr-1"></i>Left-drag to Orbit &bull; Right-drag to Pan &bull; Scroll to Zoom
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        <strong>Digit3D</strong> by <a href="https://github.com/KhoiDOO" target="_blank">Khoi DO</a>. Released under MIT License.
+      </p>
+      <p class="is-size-7 mt-2">
+        Built with <a href="https://bulma.io/" target="_blank">Bulma</a> and <a href="https://threejs.org/" target="_blank">Three.js</a>.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="static/js/three.min.js"></script>
+  <script src="static/js/OrbitControls.js"></script>
+  <script src="static/js/pointcloud_viewer.js"></script>
+</body>
+</html>
