@@ -1,28 +1,32 @@
 import argparse
 import json
+import math
 import os
 import sys
-import time
 import numpy as np
 import torch
 import torch.nn as nn
 import trimesh
+from torch.amp import GradScaler, autocast
 from torch.utils.data import DataLoader
 from tqdm.auto import tqdm
 
-# Append repository root
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")))
 
 from conquer3d.data.dataset.digit3d import Digit3D
-from rectified_flow_pytorch import MeanFlow
-
-from experiments.pc.arbitrary_generation.models import ArbitraryPointFlowTransformer
+from experiments.pc.arbitrary_generation.transformer import (
+    ClassConditionedPointTransformer,
+    ImgConditionPointTransformer,
+    PointTransformer,
+)
+from rectified_flow_pytorch import MeanFlow, RectifiedFlow
+from rectified_flow_pytorch.soflow import SoFlow
 
 
 class TrimeshRandomPointCollate:
     """
-    Collate function that dynamically samples a synchronized random point count P ~ Uniform(min_points, max_points)
-    per batch and extracts 6D surface points [P, 6] (positions + exact face normals) using trimesh across DataLoader workers.
+    Collate function that samples a synchronized point budget P ~ Uniform(min_points, max_points)
+    for each batch and extracts 6D surface points [P, 6] (coordinates + face normals) across DataLoader workers.
     """
     def __init__(self, min_points: int = 256, max_points: int = 512):
         self.min_points = min_points
@@ -60,45 +64,61 @@ class TrimeshRandomPointCollate:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Train Arbitrary-Resolution Point Cloud MeanFlow on Digit3D")
-    parser.add_argument("--epochs", type=int, default=100, help="Number of training epochs")
-    parser.add_argument("--batch_size", type=int, default=64, help="Batch size")
-    parser.add_argument("--lr", type=float, default=2e-4, help="Learning rate")
-    parser.add_argument("--weight_decay", type=float, default=1e-4, help="Weight decay")
-    parser.add_argument("--embed_dim", type=int, default=256, help="Transformer hidden embedding dimension")
-    parser.add_argument("--depth", type=int, default=6, help="Transformer depth")
-    parser.add_argument("--num_heads", type=int, default=8, help="Number of attention heads")
-    parser.add_argument("--min_points", type=int, default=256, help="Minimum point count per batch during dynamic training")
-    parser.add_argument("--max_points", type=int, default=512, help="Maximum point count per batch during dynamic training")
-    parser.add_argument("--cond_drop_prob", type=float, default=0.15, help="Classifier-Free Guidance dropout probability")
-    parser.add_argument("--num_workers", type=int, default=8, help="DataLoader workers")
-    parser.add_argument("--save_dir", type=str, default="", help="Directory to save model checkpoints")
-    parser.add_argument("--exp_name", type=str, default="naive", help="Experiment name")
+    parser = argparse.ArgumentParser(description="Train Size-Varying Point Cloud Flow Model")
+    parser.add_argument('--mode', type=int, default=1, help='0: RectifiedFlow, 1: MeanFlow, 2: SoFlow')
+    parser.add_argument('--batch_size', type=int, default=64)
+    parser.add_argument('--epochs', type=int, default=100)
+    parser.add_argument('--lr', type=float, default=2e-4)
+    parser.add_argument('--weight_decay', type=float, default=1e-4)
+    parser.add_argument('--min_points', type=int, default=256, help="Minimum point count per batch")
+    parser.add_argument('--max_points', type=int, default=512, help="Maximum point count per batch")
+    
+    # PointTransformer args
+    parser.add_argument('--input_channels', type=int, default=6)
+    parser.add_argument('--output_channels', type=int, default=6)
+    parser.add_argument('--width', type=int, default=256)
+    parser.add_argument('--layers', type=int, default=6)
+    parser.add_argument('--heads', type=int, default=8)
+    parser.add_argument('--init_scale', type=float, default=0.25)
+    parser.add_argument('--time_token_cond', action='store_true')
+    parser.add_argument('--use_checkpoint', action='store_true', help='Enable gradient checkpointing')
+    parser.add_argument('--class_cond', action='store_true', help="Use class conditioning")
+    parser.add_argument('--img_cond', action='store_true', default=True, help="Use image conditioning")
+    parser.add_argument('--class_token_cond', action='store_true', help="Pass condition as a token")
+    parser.add_argument('--cond_drop_prob', type=float, default=0.15, help="CFG drop probability")
+    parser.add_argument('--exp_name', type=str, default="naive", help="Custom experiment name for the run folder")
+    parser.add_argument('--num_workers', type=int, default=8, help="DataLoader workers")
+    
     args = parser.parse_args()
 
-    default_save_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "runs", args.exp_name)
-    save_dir = args.save_dir if args.save_dir else default_save_dir
+    # Determine save directory
+    if args.exp_name:
+        run_name = args.exp_name
+    else:
+        mode_str = "rf" if args.mode == 0 else ("mf" if args.mode == 1 else "soflow")
+        cond_str = "img" if args.img_cond else ("class" if args.class_cond else "uncond")
+        run_name = f"{mode_str}_{cond_str}_arbitrary"
+        
+    save_dir = os.path.join(os.path.dirname(__file__), "runs", run_name)
     os.makedirs(save_dir, exist_ok=True)
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     print("==================================================================")
-    print("   Arbitrary-Resolution Point Cloud MeanFlow Training (Digit3D)   ")
+    print("   Arbitrary Point Cloud Generation Training (Self-Attention)     ")
     print("==================================================================")
+    print(f"Mode         : {args.mode} (0: RectifiedFlow, 1: MeanFlow, 2: SoFlow)")
+    print(f"Condition    : {'Image' if args.img_cond else ('Class' if args.class_cond else 'Unconditional')}")
     print(f"Epochs       : {args.epochs}")
     print(f"Batch Size   : {args.batch_size}")
     print(f"Learning Rate: {args.lr}")
-    print(f"Embed Dim    : {args.embed_dim}")
-    print(f"Depth        : {args.depth}")
-    print(f"Heads        : {args.num_heads}")
     print(f"Points Range : [{args.min_points}, {args.max_points}] (Dynamic Trimesh Collation)")
-    print(f"Device       : {device} ({torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU'})")
     print(f"Save Dir     : {save_dir}")
+    print(f"Device       : {device} ({torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU'})")
     print("------------------------------------------------------------------")
 
-    # 1. Datasets & DataLoaders with Dynamic Trimesh Collation
     print("Initializing Digit3D datasets...")
-    train_dataset = Digit3D(root="~/.conquer3d/", train=True, download=True, cached=True, return_img=True)
-    test_dataset = Digit3D(root="~/.conquer3d/", train=False, download=True, cached=True, return_img=True)
+    train_dataset = Digit3D(root="~/.conquer3d/", train=True, download=True, cached=True, return_img=args.img_cond)
+    test_dataset = Digit3D(root="~/.conquer3d/", train=False, download=True, cached=True, return_img=args.img_cond)
 
     train_collate_fn = TrimeshRandomPointCollate(min_points=args.min_points, max_points=args.max_points)
     test_collate_fn = TrimeshRandomPointCollate(min_points=512, max_points=512)
@@ -120,20 +140,62 @@ def main():
         pin_memory=True
     )
 
-    # 2. Model & MeanFlow Setup
-    model = ArbitraryPointFlowTransformer(
-        in_channels=6,
-        out_channels=6,
-        embed_dim=args.embed_dim,
-        depth=args.depth,
-        num_heads=args.num_heads,
-        mlp_ratio=4.0,
-        img_channels=1,
-        cond_drop_prob=args.cond_drop_prob,
-        num_freqs=6
-    ).to(device)
+    print("Initializing Model...")
+    if args.img_cond:
+        model = ImgConditionPointTransformer(
+            device=device,
+            dtype=torch.float32,
+            input_channels=args.input_channels,
+            output_channels=args.output_channels,
+            width=args.width,
+            layers=args.layers,
+            heads=args.heads,
+            init_scale=args.init_scale,
+            time_token_cond=args.time_token_cond,
+            use_checkpoint=args.use_checkpoint,
+            img_channels=1,
+            cond_drop_prob=args.cond_drop_prob,
+            token_cond=args.class_token_cond
+        )
+    elif args.class_cond:
+        model = ClassConditionedPointTransformer(
+            device=device,
+            dtype=torch.float32,
+            input_channels=args.input_channels,
+            output_channels=args.output_channels,
+            width=args.width,
+            layers=args.layers,
+            heads=args.heads,
+            init_scale=args.init_scale,
+            time_token_cond=args.time_token_cond,
+            use_checkpoint=args.use_checkpoint,
+            num_classes=10,
+            cond_drop_prob=args.cond_drop_prob,
+            token_cond=args.class_token_cond
+        )
+    else:
+        model = PointTransformer(
+            device=device,
+            dtype=torch.float32,
+            input_channels=args.input_channels,
+            output_channels=args.output_channels,
+            width=args.width,
+            layers=args.layers,
+            heads=args.heads,
+            init_scale=args.init_scale,
+            time_token_cond=args.time_token_cond,
+            use_checkpoint=args.use_checkpoint,
+        )
 
-    mf = MeanFlow(model=model, accept_cond=True).to(device)
+    accept_cond = args.class_cond or args.img_cond
+    if args.mode == 0:
+        flow_model = RectifiedFlow(model=model, accept_cond=accept_cond).to(device)
+    elif args.mode == 1:
+        flow_model = MeanFlow(model=model, accept_cond=accept_cond).to(device)
+    elif args.mode == 2:
+        flow_model = SoFlow(model=model, accept_cond=accept_cond).to(device)
+    else:
+        raise ValueError("Mode must be 0 (RectifiedFlow), 1 (MeanFlow), or 2 (SoFlow)")
 
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.epochs, eta_min=1e-6)
@@ -149,14 +211,24 @@ def main():
         total_train_samples = 0
         pbar = tqdm(train_loader, desc=f"Epoch {epoch:03d}/{args.epochs:03d} [Train]")
 
-        for feats, imgs, _ in pbar:
-            feats = feats.to(device)
-            imgs = imgs.to(device)
+        for feats, imgs, labels in pbar:
+            feats = feats.to(device)  # [B, P, 6]
             B = feats.shape[0]
             P = feats.shape[1]
 
+            if args.img_cond:
+                cond = imgs.to(device)
+            elif args.class_cond:
+                cond = labels.to(device)
+            else:
+                cond = None
+
             optimizer.zero_grad(set_to_none=True)
-            loss = mf(feats, cond=imgs)
+            if cond is not None:
+                loss = flow_model(feats, cond=cond)
+            else:
+                loss = flow_model(feats)
+
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
             optimizer.step()
@@ -173,11 +245,22 @@ def main():
         val_loss = 0.0
         total_val_samples = 0
         with torch.no_grad():
-            for feats, imgs, _ in test_loader:
+            for feats, imgs, labels in test_loader:
                 feats = feats.to(device)
-                imgs = imgs.to(device)
                 B = feats.shape[0]
-                loss = mf(feats, cond=imgs)
+
+                if args.img_cond:
+                    cond = imgs.to(device)
+                elif args.class_cond:
+                    cond = labels.to(device)
+                else:
+                    cond = None
+
+                if cond is not None:
+                    loss = flow_model(feats, cond=cond)
+                else:
+                    loss = flow_model(feats)
+
                 val_loss += loss.item() * B
                 total_val_samples += B
 
@@ -187,7 +270,7 @@ def main():
 
         print(f"Epoch {epoch:03d} | Train Loss: {avg_train_loss:.4f} | Val Loss: {avg_val_loss:.4f}")
 
-        # Save Checkpoints
+        # Save Checkpoint
         ckpt = {
             "epoch": epoch,
             "model": model.state_dict(),
