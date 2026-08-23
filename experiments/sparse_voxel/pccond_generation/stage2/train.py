@@ -86,7 +86,7 @@ def prepare_stacked_vertex_batch(sparse_coords, sparse_sdfs, batch_size, device)
 
 def main():
     parser = argparse.ArgumentParser(description="Train Stage 2 Point-Conditioned Sparse Vertex SDF Rectified Flow on Digit3D")
-    parser.add_argument("--epochs", type=int, default=200, help="Number of training epochs")
+    parser.add_argument("--epochs", type=int, default=100, help="Number of training epochs")
     parser.add_argument("--batch_size", type=int, default=16, help="Batch size per forward pass")
     parser.add_argument("--accum_steps", type=int, default=2, help="Gradient accumulation steps")
     parser.add_argument("--lr", type=float, default=2e-4, help="Learning rate")
