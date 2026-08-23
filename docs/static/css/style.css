@@ -45,12 +45,12 @@ h1, h2, h3, h4, h5, h6, .title, .subtitle {
   color: var(--text-main) !important;
 }
 
-code {
-  background: rgba(99, 102, 241, 0.12) !important;
-  color: #c7d2fe !important;
-  border: 1px solid rgba(99, 102, 241, 0.25) !important;
+:not(pre) > code {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #38bdf8 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   padding: 0.15em 0.45em !important;
-  border-radius: 6px !important;
+  border-radius: 4px !important;
   font-family: 'JetBrains Mono', monospace !important;
   font-size: 0.88em !important;
   font-weight: 500 !important;
@@ -640,16 +640,29 @@ code {
 }
 
 /* Code & BibTeX Snippet */
-pre.bibtex-box {
-  background: #020617 !important;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 1.25rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
-  color: #e2e8f0;
+pre, pre.bibtex-box {
+  background: #090d16 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: var(--radius-md) !important;
+  padding: 1.25rem 1.5rem !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.88rem !important;
+  color: #f1f5f9 !important;
   overflow-x: auto;
-  line-height: 1.5;
+  line-height: 1.65;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+pre code, pre.bibtex-box code {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  color: #f1f5f9 !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: 400 !important;
+  display: block;
 }
 
 /* Footer */
@@ -852,3 +865,168 @@ pre.bibtex-box {
   color: var(--text-muted);
   line-height: 1.6;
 }
+
+/* ==========================================================================
+   Arbitrary Resolution Multi-Scale Progression (Sparse Voxel Gen Style)
+   ========================================================================== */
+.arbitrary-gen-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.arbitrary-gen-card {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  transition: all 0.25s ease;
+}
+
+.arbitrary-gen-card:hover {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 8px 25px rgba(6, 182, 212, 0.2);
+}
+
+.arbitrary-progression-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.arbitrary-progression-container .progression-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-width: 0;
+}
+
+.arbitrary-progression-container .progression-step.step-img {
+  flex: 0.85;
+}
+
+.arbitrary-progression-container .progression-step.step-img img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  background: #020617;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.arbitrary-progression-container .progression-step.step-3d {
+  flex: 1.2;
+  background: radial-gradient(circle at center, #1e293b 0%, #090d16 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.arbitrary-progression-container .progression-step.step-3d .ply-viewer {
+  width: 100%;
+  height: 155px;
+  min-height: 155px;
+}
+
+@media (max-width: 1024px) {
+  .arbitrary-progression-container {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+  .arbitrary-progression-container .progression-step {
+    min-width: 130px;
+  }
+  .arbitrary-progression-container .progression-step.step-img {
+    min-width: 100px;
+  }
+}
+
+/* ==========================================================================
+   Global Resolution Switcher Tabs
+   ========================================================================== */
+.res-tabs-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  padding: 0.85rem 1.25rem;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(8px);
+}
+
+.res-tab-label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+}
+
+.res-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.res-tab-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-main);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.res-tab-btn:hover {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: var(--primary);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.res-tab-btn.is-active {
+  background: var(--primary-gradient);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+}
+
+.density-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  background: rgba(6, 182, 212, 0.15);
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  margin-left: auto;
+  margin-right: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+
+
+
+
