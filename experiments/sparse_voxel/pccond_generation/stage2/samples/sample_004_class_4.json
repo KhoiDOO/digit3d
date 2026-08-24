@@ -1,0 +1,10 @@
+{
+    "sample_idx": 5,
+    "class_label": 4,
+    "num_input_points": 512,
+    "num_grid_vertices": 1726,
+    "num_mesh_vertices": 880,
+    "num_mesh_triangles": 1729,
+    "steps": 64,
+    "latency_ms": 319.43
+}

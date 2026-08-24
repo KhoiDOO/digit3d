@@ -16,6 +16,20 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/style.css">
+  <!-- MathJax Configuration & Script -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -47,7 +61,7 @@
           </div>
         </div>
 
-        <!-- Action & Navigation Buttons -->
+                                <!-- Action & Navigation Buttons -->
         <div class="publication-links">
           <a href="https://github.com/KhoiDOO/digit3d" target="_blank" class="btn-action">
             <i class="fab fa-github"></i>
@@ -63,23 +77,31 @@
           </a>
           <a href="unconditional.html" class="btn-action">
             <i class="fas fa-dice"></i>
-            <span>Unconditional Flow</span>
+            <span>Unconditional Generation</span>
           </a>
           <a href="class_conditional.html" class="btn-action">
             <i class="fas fa-list-ol"></i>
-            <span>Class Conditional</span>
+            <span>Class-Conditional Generation</span>
           </a>
           <a href="image_conditional.html" class="btn-action is-active">
             <i class="fas fa-image"></i>
-            <span>2D → 3D Image Condition</span>
+            <span>Image-Conditional Generation</span>
+          </a>
+          <a href="arbitrary_pc_generation.html" class="btn-action">
+            <i class="fas fa-braille"></i>
+            <span>Arbitrary-Resolution Generation</span>
           </a>
           <a href="sparse_reconstruction.html" class="btn-action">
             <i class="fas fa-cubes"></i>
-            <span>Sparse Voxel Recon</span>
+            <span>Sparse Voxel Reconstruction</span>
           </a>
           <a href="sparse_generation.html" class="btn-action">
             <i class="fas fa-cube"></i>
-            <span>Sparse Voxel Gen</span>
+            <span>Image-Conditional Mesh Generation</span>
+          </a>
+          <a href="pccond_mesh_generation.html" class="btn-action">
+            <i class="fas fa-shapes"></i>
+            <span>PointCloud-Conditional Mesh Generation</span>
           </a>
           <a href="limitations.html" class="btn-action">
             <i class="fas fa-exclamation-triangle"></i>

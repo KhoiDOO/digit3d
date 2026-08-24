@@ -270,6 +270,22 @@
         });
     }
 
+    updateModel(newUrl, newPointSize) {
+      if (newUrl === this.plyUrl && (newPointSize === undefined || newPointSize === this.pointSize)) return;
+      this.plyUrl = newUrl;
+      if (newPointSize !== undefined) this.pointSize = newPointSize;
+      
+      if (this.object3d) {
+        this.scene.remove(this.object3d);
+        if (this.geometry) this.geometry.dispose();
+        if (this.material) this.material.dispose();
+        this.object3d = null;
+      }
+      this.isLoaded = false;
+      this.showSpinner();
+      this.loadModel();
+    }
+
     setupEvents() {
       // Mouse drag for interactive rotation
       this.canvas.addEventListener('mousedown', (e) => {
@@ -503,4 +519,20 @@
     initAllCards();
     initModalViewer();
   }
+
+  // Global API for dynamic updates
+  window.Digit3DViewer = {
+    init: initAllCards,
+    mountCard: function (el, plyUrl, pointSize) {
+      if (!el) return;
+      if (plyUrl) el.setAttribute('data-ply', plyUrl);
+      if (pointSize) el.setAttribute('data-point-size', pointSize.toString());
+      el.innerHTML = '';
+      const card = new PointCloudCard(el);
+      el._card = card;
+      allCards.push(card);
+      visibleCards.add(card);
+      return card;
+    }
+  };
 })();

@@ -1,0 +1,37 @@
+{
+  "256": {
+    "chamfer_distance": 0.216765096783638,
+    "hausdorff_distance": 0.30692802369594574,
+    "normal_similarity": 0.7628830018639564,
+    "latency_ms": 97.03378915786743,
+    "fps": 10.305688448104066
+  },
+  "512": {
+    "chamfer_distance": 0.17558972105383874,
+    "hausdorff_distance": 0.2695373822748661,
+    "normal_similarity": 0.8243754905462265,
+    "latency_ms": 96.43777132034302,
+    "fps": 10.369381066244689
+  },
+  "1024": {
+    "chamfer_distance": 0.14753964565694333,
+    "hausdorff_distance": 0.2608135387301445,
+    "normal_similarity": 0.8441355121135712,
+    "latency_ms": 125.77456474304199,
+    "fps": 7.95073313943089
+  },
+  "2048": {
+    "chamfer_distance": 0.1320595196634531,
+    "hausdorff_distance": 0.25597904324531556,
+    "normal_similarity": 0.8573253190517426,
+    "latency_ms": 284.9892568588257,
+    "fps": 3.508904198783069
+  },
+  "4096": {
+    "chamfer_distance": 0.11782073304057121,
+    "hausdorff_distance": 0.25493046805262565,
+    "normal_similarity": 0.868767466545105,
+    "latency_ms": 856.6575217247009,
+    "fps": 1.167327636354268
+  }
+}

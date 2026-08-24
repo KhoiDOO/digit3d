@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <title>Arbitrary-Resolution Point Cloud Generation - Digit3D</title>
+  <meta name="title" content="Arbitrary-Resolution Point Cloud Generation - Digit3D">
+  <meta name="description" content="Synthesizing point clouds across arbitrary point counts (N=256, 512, 1024, 4096, 16384) from a single 2D input image via continuous Mean Flow.">
+  <meta name="author" content="Khoi DO">
+  <meta name="theme-color" content="#6366f1">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/style.css">
+  <!-- MathJax Configuration & Script -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <!-- Background Animated Mesh -->
+  <div class="bg-mesh"></div>
+
+  <!-- Hero Section -->
+  <section class="hero is-bold">
+    <div class="hero-body">
+      <div class="container is-max-desktop has-text-centered">
+        
+        <span class="section-tag"><i class="fas fa-cube mr-2"></i>3D Vision & Generative AI</span>
+        
+        <h1 class="title publication-title">
+          <span class="text-gradient">Digit3D</span>: 3D Multimodal MNIST Benchmark
+        </h1>
+        
+        <p class="subtitle publication-subtitle">
+          Transforming 2D MNIST into rich 3D geometries (watertight meshes, sparse SDFs, and 6D normal-oriented point clouds) with continuous flow matching generative pipelines.
+        </p>
+
+        <!-- Authors & Affiliations -->
+        <div class="publication-authors">
+          <span class="author-block">
+            <a href="https://github.com/KhoiDOO" target="_blank"><i class="fab fa-github mr-1"></i>Khoi DO</a>
+          </span>
+          <div class="affiliation-block">
+            <span>Conquer3D Research & Open-Source Geometry Engine</span>
+          </div>
+        </div>
+
+                        <!-- Action & Navigation Buttons -->
+        <div class="publication-links">
+          <a href="https://github.com/KhoiDOO/digit3d" target="_blank" class="btn-action">
+            <i class="fab fa-github"></i>
+            <span>Code</span>
+          </a>
+          <a href="https://github.com/KhoiDOO/conquer3d" target="_blank" class="btn-action">
+            <i class="fas fa-shapes"></i>
+            <span>Conquer3D Engine</span>
+          </a>
+          <a href="index.html" class="btn-action">
+            <i class="fas fa-home"></i>
+            <span>Overview</span>
+          </a>
+          <a href="unconditional.html" class="btn-action">
+            <i class="fas fa-dice"></i>
+            <span>Unconditional Generation</span>
+          </a>
+          <a href="class_conditional.html" class="btn-action">
+            <i class="fas fa-list-ol"></i>
+            <span>Class-Conditional Generation</span>
+          </a>
+          <a href="image_conditional.html" class="btn-action">
+            <i class="fas fa-image"></i>
+            <span>Image-Conditional Generation</span>
+          </a>
+          <a href="arbitrary_pc_generation.html" class="btn-action is-active">
+            <i class="fas fa-braille"></i>
+            <span>Arbitrary-Resolution Generation</span>
+          </a>
+          <a href="sparse_reconstruction.html" class="btn-action">
+            <i class="fas fa-cubes"></i>
+            <span>Sparse Voxel Reconstruction</span>
+          </a>
+          <a href="sparse_generation.html" class="btn-action">
+            <i class="fas fa-cube"></i>
+            <span>Image-Conditional Mesh Generation</span>
+          </a>
+          <a href="pccond_mesh_generation.html" class="btn-action">
+            <i class="fas fa-shapes"></i>
+            <span>PointCloud-Conditional Mesh Generation</span>
+          </a>
+          <a href="limitations.html" class="btn-action">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>Limitations</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content: Arbitrary-Resolution Point Cloud Generation -->
+  <section class="section-wrapper">
+    <div class="glass-card">
+      <div class="section-header">
+        <span class="section-tag"><i class="fas fa-braille mr-1"></i>Multi-Scale Geometry</span>
+        <h2 class="section-title">Arbitrary-Resolution 3D Point Cloud Generation</h2>
+        <p class="section-desc">
+          Continuous 3D point cloud synthesis across arbitrary point counts from a single 2D input image via <strong>Mean Flow</strong>. Select a resolution below to dynamically inspect geometries or compare all scales side-by-side.
+        </p>
+      </div>
+
+      <!-- Global Resolution Switcher Tabs -->
+      <div class="res-tabs-container">
+        <span class="res-tab-label"><i class="fas fa-sliders-h mr-2"></i>Point Density:</span>
+        <div class="res-tabs">
+          <button class="res-tab-btn is-active" data-res="1024"><i class="fas fa-braille mr-1"></i>N = 1024 (Standard)</button>
+          <button class="res-tab-btn" data-res="256"><i class="fas fa-braille mr-1"></i>N = 256 (Sparse)</button>
+          <button class="res-tab-btn" data-res="512"><i class="fas fa-braille mr-1"></i>N = 512</button>
+          <button class="res-tab-btn" data-res="4096"><i class="fas fa-braille mr-1"></i>N = 4096 (High-Res)</button>
+          <button class="res-tab-btn" data-res="16384"><i class="fas fa-braille mr-1"></i>N = 16,384 (Ultra Surface)</button>
+          <button class="res-tab-btn" data-res="all"><i class="fas fa-layer-group mr-1"></i>All Scales (Side-by-Side)</button>
+        </div>
+      </div>
+
+      <!-- View Mode 1: Single Resolution 2-Column Grid (10 active viewports — Fast & Lightweight) -->
+      <div id="single-res-container" class="img-cond-grid">
+        
+        <!-- Digit 0 -->
+        <div class="img-cond-card" data-sample="sample_004_class_0" data-digit="0">
+          <div class="pc-card-header">
+            <span class="digit-badge">0</span>
+            <span class="sample-id">Digit 0 (Sample #004)</span>
+            <span class="density-badge"><i class="fas fa-braille mr-1"></i>N = 1024 pts</span>
+            <button class="btn-expand-ply" data-ply="data/arbitrary_pc_gen/sample_004_class_0_pts_1024.ply" data-title="Digit 0 (N = 1024 pts)" data-stats="Points: 1024 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="paired-container">
+            <div class="input-img-wrapper">
+              <img src="data/arbitrary_pc_gen/sample_004_class_0_input.png" alt="2D Input Digit 0" loading="lazy">
+              <span class="input-label">2D Input</span>
+            </div>
+            <div class="output-3d-wrapper">
+              <div class="ply-viewer dynamic-res-viewer" data-ply="data/arbitrary_pc_gen/sample_004_class_0_pts_1024.ply" data-point-size="0.06"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 1 -->
+        <div class="img-cond-card" data-sample="sample_000_class_1" data-digit="1">
+          <div class="pc-card-header">
+            <span class="digit-badge">1</span>
+            <span class="sample-id">Digit 1 (Sample #000)</span>
+            <span class="density-badge"><i class="fas fa-braille mr-1"></i>N = 1024 pts</span>
+            <button class="btn-expand-ply" data-ply="data/arbitrary_pc_gen/sample_000_class_1_pts_1024.ply" data-title="Digit 1 (N = 1024 pts)" data-stats="Points: 1024 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="paired-container">
+            <div class="input-img-wrapper">
+              <img src="data/arbitrary_pc_gen/sample_000_class_1_input.png" alt="2D Input Digit 1" loading="lazy">
+              <span class="input-label">2D Input</span>
+            </div>
+            <div class="output-3d-wrapper">
+              <div class="ply-viewer dynamic-res-viewer" data-ply="data/arbitrary_pc_gen/sample_000_class_1_pts_1024.ply" data-point-size="0.06"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 2 -->
+        <div class="img-cond-card" data-sample="sample_002_class_2" data-digit="2">
+          <div class="pc-card-header">
+            <span class="digit-badge">2</span>
+            <span class="sample-id">Digit 2 (Sample #002)</span>
+            <span class="density-badge"><i class="fas fa-braille mr-1"></i>N = 1024 pts</span>
+            <button class="btn-expand-ply" data-ply="data/arbitrary_pc_gen/sample_002_class_2_pts_1024.ply" data-title="Digit 2 (N = 1024 pts)" data-stats="Points: 1024 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="paired-container">
+            <div class="input-img-wrapper">
+              <img src="data/arbitrary_pc_gen/sample_002_class_2_input.png" alt="2D Input Digit 2" loading="lazy">
+              <span class="input-label">2D Input</span>
+            </div>
+            <div class="output-3d-wrapper">
+              <div class="ply-viewer dynamic-res-viewer" data-ply="data/arbitrary_pc_gen/sample_002_class_2_pts_1024.ply" data-point-size="0.06"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 3 -->
+        <div class="img-cond-card" data-sample="sample_023_class_3" data-digit="3">
+          <div class="pc-card-header">
+            <span class="digit-badge">3</span>
+            <span class="sample-id">Digit 3 (Sample #023)</span>
+            <span class="density-badge"><i class="fas fa-braille mr-1"></i>N = 1024 pts</span>
+            <button class="btn-expand-ply" data-ply="data/arbitrary_pc_gen/sample_023_class_3_pts_1024.ply" data-title="Digit 3 (N = 1024 pts)" data-stats="Points: 1024 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="paired-container">
+            <div class="input-img-wrapper">
+              <img src="data/arbitrary_pc_gen/sample_023_class_3_input.png" alt="2D Input Digit 3" loading="lazy">
+              <span class="input-label">2D Input</span>
+            </div>
+            <div class="output-3d-wrapper">
+              <div class="ply-viewer dynamic-res-viewer" data-ply="data/arbitrary_pc_gen/sample_023_class_3_pts_1024.ply" data-point-size="0.06"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 4 -->
+        <div class="img-cond-card" data-sample="sample_005_class_4" data-digit="4">
+          <div class="pc-card-header">
+            <span class="digit-badge">4</span>
+            <span class="sample-id">Digit 4 (Sample #005)</span>
+            <span class="density-badge"><i class="fas fa-braille mr-1"></i>N = 1024 pts</span>
+            <button class="btn-expand-ply" data-ply="data/arbitrary_pc_gen/sample_005_class_4_pts_1024.ply" data-title="Digit 4 (N = 1024 pts)" data-stats="Points: 1024 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="paired-container">
+            <div class="input-img-wrapper">
+              <img src="data/arbitrary_pc_gen/sample_005_class_4_input.png" alt="2D Input Digit 4" loading="lazy">
+              <span class="input-label">2D Input</span>
+            </div>
+            <div class="output-3d-wrapper">
+              <div class="ply-viewer dynamic-res-viewer" data-ply="data/arbitrary_pc_gen/sample_005_class_4_pts_1024.ply" data-point-size="0.06"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 5 -->
+        <div class="img-cond-card" data-sample="sample_008_class_5" data-digit="5">
+          <div class="pc-card-header">
+            <span class="digit-badge">5</span>
+            <span class="sample-id">Digit 5 (Sample #008)</span>
+            <span class="density-badge"><i class="fas fa-braille mr-1"></i>N = 1024 pts</span>
+            <button class="btn-expand-ply" data-ply="data/arbitrary_pc_gen/sample_008_class_5_pts_1024.ply" data-title="Digit 5 (N = 1024 pts)" data-stats="Points: 1024 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="paired-container">
+            <div class="input-img-wrapper">
+              <img src="data/arbitrary_pc_gen/sample_008_class_5_input.png" alt="2D Input Digit 5" loading="lazy">
+              <span class="input-label">2D Input</span>
+            </div>
+            <div class="output-3d-wrapper">
+              <div class="ply-viewer dynamic-res-viewer" data-ply="data/arbitrary_pc_gen/sample_008_class_5_pts_1024.ply" data-point-size="0.06"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 6 -->
+        <div class="img-cond-card" data-sample="sample_001_class_6" data-digit="6">
+          <div class="pc-card-header">
+            <span class="digit-badge">6</span>
+            <span class="sample-id">Digit 6 (Sample #001)</span>
+            <span class="density-badge"><i class="fas fa-braille mr-1"></i>N = 1024 pts</span>
+            <button class="btn-expand-ply" data-ply="data/arbitrary_pc_gen/sample_001_class_6_pts_1024.ply" data-title="Digit 6 (N = 1024 pts)" data-stats="Points: 1024 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="paired-container">
+            <div class="input-img-wrapper">
+              <img src="data/arbitrary_pc_gen/sample_001_class_6_input.png" alt="2D Input Digit 6" loading="lazy">
+              <span class="input-label">2D Input</span>
+            </div>
+            <div class="output-3d-wrapper">
+              <div class="ply-viewer dynamic-res-viewer" data-ply="data/arbitrary_pc_gen/sample_001_class_6_pts_1024.ply" data-point-size="0.06"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 7 -->
+        <div class="img-cond-card" data-sample="sample_029_class_7" data-digit="7">
+          <div class="pc-card-header">
+            <span class="digit-badge">7</span>
+            <span class="sample-id">Digit 7 (Sample #029)</span>
+            <span class="density-badge"><i class="fas fa-braille mr-1"></i>N = 1024 pts</span>
+            <button class="btn-expand-ply" data-ply="data/arbitrary_pc_gen/sample_029_class_7_pts_1024.ply" data-title="Digit 7 (N = 1024 pts)" data-stats="Points: 1024 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="paired-container">
+            <div class="input-img-wrapper">
+              <img src="data/arbitrary_pc_gen/sample_029_class_7_input.png" alt="2D Input Digit 7" loading="lazy">
+              <span class="input-label">2D Input</span>
+            </div>
+            <div class="output-3d-wrapper">
+              <div class="ply-viewer dynamic-res-viewer" data-ply="data/arbitrary_pc_gen/sample_029_class_7_pts_1024.ply" data-point-size="0.06"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 8 -->
+        <div class="img-cond-card" data-sample="sample_021_class_8" data-digit="8">
+          <div class="pc-card-header">
+            <span class="digit-badge">8</span>
+            <span class="sample-id">Digit 8 (Sample #021)</span>
+            <span class="density-badge"><i class="fas fa-braille mr-1"></i>N = 1024 pts</span>
+            <button class="btn-expand-ply" data-ply="data/arbitrary_pc_gen/sample_021_class_8_pts_1024.ply" data-title="Digit 8 (N = 1024 pts)" data-stats="Points: 1024 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="paired-container">
+            <div class="input-img-wrapper">
+              <img src="data/arbitrary_pc_gen/sample_021_class_8_input.png" alt="2D Input Digit 8" loading="lazy">
+              <span class="input-label">2D Input</span>
+            </div>
+            <div class="output-3d-wrapper">
+              <div class="ply-viewer dynamic-res-viewer" data-ply="data/arbitrary_pc_gen/sample_021_class_8_pts_1024.ply" data-point-size="0.06"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 9 -->
+        <div class="img-cond-card" data-sample="sample_016_class_9" data-digit="9">
+          <div class="pc-card-header">
+            <span class="digit-badge">9</span>
+            <span class="sample-id">Digit 9 (Sample #016)</span>
+            <span class="density-badge"><i class="fas fa-braille mr-1"></i>N = 1024 pts</span>
+            <button class="btn-expand-ply" data-ply="data/arbitrary_pc_gen/sample_016_class_9_pts_1024.ply" data-title="Digit 9 (N = 1024 pts)" data-stats="Points: 1024 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+          </div>
+          <div class="paired-container">
+            <div class="input-img-wrapper">
+              <img src="data/arbitrary_pc_gen/sample_016_class_9_input.png" alt="2D Input Digit 9" loading="lazy">
+              <span class="input-label">2D Input</span>
+            </div>
+            <div class="output-3d-wrapper">
+              <div class="ply-viewer dynamic-res-viewer" data-ply="data/arbitrary_pc_gen/sample_016_class_9_pts_1024.ply" data-point-size="0.06"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- View Mode 2: All Scales Progression (Side-by-Side — shown only when 'All Scales' tab is clicked) -->
+      <div id="all-scales-container" class="sparse-gen-grid" style="display: none; grid-template-columns: 1fr;">
+        
+        <!-- Digit 0 -->
+        <div class="sparse-gen-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">0</span>
+            <span class="sample-id">Digit 0 (Sample #004)</span>
+          </div>
+          <div class="sparse-progression-container">
+            <div class="progression-step step-img">
+              <img src="data/arbitrary_pc_gen/sample_004_class_0_input.png" alt="2D Input Digit 0" loading="lazy">
+              <span class="progression-label img-label">2D Input</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_004_class_0_pts_256.ply" data-title="Digit 0 (N = 256 pts)" data-stats="Points: 256 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_004_class_0_pts_256.ply" data-point-size="0.08"></div>
+              <span class="progression-label" style="color: #a855f7;">N = 256</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_004_class_0_pts_512.ply" data-title="Digit 0 (N = 512 pts)" data-stats="Points: 512 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_004_class_0_pts_512.ply" data-point-size="0.07"></div>
+              <span class="progression-label" style="color: #6366f1;">N = 512</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_004_class_0_pts_1024.ply" data-title="Digit 0 (N = 1024 pts)" data-stats="Points: 1024 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_004_class_0_pts_1024.ply" data-point-size="0.06"></div>
+              <span class="progression-label" style="color: #38bdf8;">N = 1024</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_004_class_0_pts_4096.ply" data-title="Digit 0 (N = 4096 pts)" data-stats="Points: 4096 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_004_class_0_pts_4096.ply" data-point-size="0.05"></div>
+              <span class="progression-label" style="color: #10b981;">N = 4096</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_004_class_0_pts_16384.ply" data-title="Digit 0 (N = 16,384 pts)" data-stats="Points: 16384 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_004_class_0_pts_16384.ply" data-point-size="0.045"></div>
+              <span class="progression-label" style="color: #ec4899;">N = 16,384</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 1 -->
+        <div class="sparse-gen-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">1</span>
+            <span class="sample-id">Digit 1 (Sample #000)</span>
+          </div>
+          <div class="sparse-progression-container">
+            <div class="progression-step step-img">
+              <img src="data/arbitrary_pc_gen/sample_000_class_1_input.png" alt="2D Input Digit 1" loading="lazy">
+              <span class="progression-label img-label">2D Input</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_000_class_1_pts_256.ply" data-title="Digit 1 (N = 256 pts)" data-stats="Points: 256 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_000_class_1_pts_256.ply" data-point-size="0.08"></div>
+              <span class="progression-label" style="color: #a855f7;">N = 256</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_000_class_1_pts_512.ply" data-title="Digit 1 (N = 512 pts)" data-stats="Points: 512 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_000_class_1_pts_512.ply" data-point-size="0.07"></div>
+              <span class="progression-label" style="color: #6366f1;">N = 512</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_000_class_1_pts_1024.ply" data-title="Digit 1 (N = 1024 pts)" data-stats="Points: 1024 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_000_class_1_pts_1024.ply" data-point-size="0.06"></div>
+              <span class="progression-label" style="color: #38bdf8;">N = 1024</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_000_class_1_pts_4096.ply" data-title="Digit 1 (N = 4096 pts)" data-stats="Points: 4096 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_000_class_1_pts_4096.ply" data-point-size="0.05"></div>
+              <span class="progression-label" style="color: #10b981;">N = 4096</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_000_class_1_pts_16384.ply" data-title="Digit 1 (N = 16,384 pts)" data-stats="Points: 16384 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_000_class_1_pts_16384.ply" data-point-size="0.045"></div>
+              <span class="progression-label" style="color: #ec4899;">N = 16,384</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 2 -->
+        <div class="sparse-gen-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">2</span>
+            <span class="sample-id">Digit 2 (Sample #002)</span>
+          </div>
+          <div class="sparse-progression-container">
+            <div class="progression-step step-img">
+              <img src="data/arbitrary_pc_gen/sample_002_class_2_input.png" alt="2D Input Digit 2" loading="lazy">
+              <span class="progression-label img-label">2D Input</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_002_class_2_pts_256.ply" data-title="Digit 2 (N = 256 pts)" data-stats="Points: 256 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_002_class_2_pts_256.ply" data-point-size="0.08"></div>
+              <span class="progression-label" style="color: #a855f7;">N = 256</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_002_class_2_pts_512.ply" data-title="Digit 2 (N = 512 pts)" data-stats="Points: 512 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_002_class_2_pts_512.ply" data-point-size="0.07"></div>
+              <span class="progression-label" style="color: #6366f1;">N = 512</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_002_class_2_pts_1024.ply" data-title="Digit 2 (N = 1024 pts)" data-stats="Points: 1024 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_002_class_2_pts_1024.ply" data-point-size="0.06"></div>
+              <span class="progression-label" style="color: #38bdf8;">N = 1024</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_002_class_2_pts_4096.ply" data-title="Digit 2 (N = 4096 pts)" data-stats="Points: 4096 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_002_class_2_pts_4096.ply" data-point-size="0.05"></div>
+              <span class="progression-label" style="color: #10b981;">N = 4096</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_002_class_2_pts_16384.ply" data-title="Digit 2 (N = 16,384 pts)" data-stats="Points: 16384 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_002_class_2_pts_16384.ply" data-point-size="0.045"></div>
+              <span class="progression-label" style="color: #ec4899;">N = 16,384</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 3 -->
+        <div class="sparse-gen-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">3</span>
+            <span class="sample-id">Digit 3 (Sample #023)</span>
+          </div>
+          <div class="sparse-progression-container">
+            <div class="progression-step step-img">
+              <img src="data/arbitrary_pc_gen/sample_023_class_3_input.png" alt="2D Input Digit 3" loading="lazy">
+              <span class="progression-label img-label">2D Input</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_023_class_3_pts_256.ply" data-title="Digit 3 (N = 256 pts)" data-stats="Points: 256 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_023_class_3_pts_256.ply" data-point-size="0.08"></div>
+              <span class="progression-label" style="color: #a855f7;">N = 256</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_023_class_3_pts_512.ply" data-title="Digit 3 (N = 512 pts)" data-stats="Points: 512 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_023_class_3_pts_512.ply" data-point-size="0.07"></div>
+              <span class="progression-label" style="color: #6366f1;">N = 512</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_023_class_3_pts_1024.ply" data-title="Digit 3 (N = 1024 pts)" data-stats="Points: 1024 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_023_class_3_pts_1024.ply" data-point-size="0.06"></div>
+              <span class="progression-label" style="color: #38bdf8;">N = 1024</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_023_class_3_pts_4096.ply" data-title="Digit 3 (N = 4096 pts)" data-stats="Points: 4096 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_023_class_3_pts_4096.ply" data-point-size="0.05"></div>
+              <span class="progression-label" style="color: #10b981;">N = 4096</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_023_class_3_pts_16384.ply" data-title="Digit 3 (N = 16,384 pts)" data-stats="Points: 16384 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_023_class_3_pts_16384.ply" data-point-size="0.045"></div>
+              <span class="progression-label" style="color: #ec4899;">N = 16,384</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 4 -->
+        <div class="sparse-gen-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">4</span>
+            <span class="sample-id">Digit 4 (Sample #005)</span>
+          </div>
+          <div class="sparse-progression-container">
+            <div class="progression-step step-img">
+              <img src="data/arbitrary_pc_gen/sample_005_class_4_input.png" alt="2D Input Digit 4" loading="lazy">
+              <span class="progression-label img-label">2D Input</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_005_class_4_pts_256.ply" data-title="Digit 4 (N = 256 pts)" data-stats="Points: 256 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_005_class_4_pts_256.ply" data-point-size="0.08"></div>
+              <span class="progression-label" style="color: #a855f7;">N = 256</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_005_class_4_pts_512.ply" data-title="Digit 4 (N = 512 pts)" data-stats="Points: 512 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_005_class_4_pts_512.ply" data-point-size="0.07"></div>
+              <span class="progression-label" style="color: #6366f1;">N = 512</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_005_class_4_pts_1024.ply" data-title="Digit 4 (N = 1024 pts)" data-stats="Points: 1024 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_005_class_4_pts_1024.ply" data-point-size="0.06"></div>
+              <span class="progression-label" style="color: #38bdf8;">N = 1024</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_005_class_4_pts_4096.ply" data-title="Digit 4 (N = 4096 pts)" data-stats="Points: 4096 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_005_class_4_pts_4096.ply" data-point-size="0.05"></div>
+              <span class="progression-label" style="color: #10b981;">N = 4096</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_005_class_4_pts_16384.ply" data-title="Digit 4 (N = 16,384 pts)" data-stats="Points: 16384 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_005_class_4_pts_16384.ply" data-point-size="0.045"></div>
+              <span class="progression-label" style="color: #ec4899;">N = 16,384</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 5 -->
+        <div class="sparse-gen-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">5</span>
+            <span class="sample-id">Digit 5 (Sample #008)</span>
+          </div>
+          <div class="sparse-progression-container">
+            <div class="progression-step step-img">
+              <img src="data/arbitrary_pc_gen/sample_008_class_5_input.png" alt="2D Input Digit 5" loading="lazy">
+              <span class="progression-label img-label">2D Input</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_008_class_5_pts_256.ply" data-title="Digit 5 (N = 256 pts)" data-stats="Points: 256 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_008_class_5_pts_256.ply" data-point-size="0.08"></div>
+              <span class="progression-label" style="color: #a855f7;">N = 256</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_008_class_5_pts_512.ply" data-title="Digit 5 (N = 512 pts)" data-stats="Points: 512 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_008_class_5_pts_512.ply" data-point-size="0.07"></div>
+              <span class="progression-label" style="color: #6366f1;">N = 512</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_008_class_5_pts_1024.ply" data-title="Digit 5 (N = 1024 pts)" data-stats="Points: 1024 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_008_class_5_pts_1024.ply" data-point-size="0.06"></div>
+              <span class="progression-label" style="color: #38bdf8;">N = 1024</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_008_class_5_pts_4096.ply" data-title="Digit 5 (N = 4096 pts)" data-stats="Points: 4096 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_008_class_5_pts_4096.ply" data-point-size="0.05"></div>
+              <span class="progression-label" style="color: #10b981;">N = 4096</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_008_class_5_pts_16384.ply" data-title="Digit 5 (N = 16,384 pts)" data-stats="Points: 16384 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_008_class_5_pts_16384.ply" data-point-size="0.045"></div>
+              <span class="progression-label" style="color: #ec4899;">N = 16,384</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 6 -->
+        <div class="sparse-gen-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">6</span>
+            <span class="sample-id">Digit 6 (Sample #001)</span>
+          </div>
+          <div class="sparse-progression-container">
+            <div class="progression-step step-img">
+              <img src="data/arbitrary_pc_gen/sample_001_class_6_input.png" alt="2D Input Digit 6" loading="lazy">
+              <span class="progression-label img-label">2D Input</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_001_class_6_pts_256.ply" data-title="Digit 6 (N = 256 pts)" data-stats="Points: 256 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_001_class_6_pts_256.ply" data-point-size="0.08"></div>
+              <span class="progression-label" style="color: #a855f7;">N = 256</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_001_class_6_pts_512.ply" data-title="Digit 6 (N = 512 pts)" data-stats="Points: 512 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_001_class_6_pts_512.ply" data-point-size="0.07"></div>
+              <span class="progression-label" style="color: #6366f1;">N = 512</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_001_class_6_pts_1024.ply" data-title="Digit 6 (N = 1024 pts)" data-stats="Points: 1024 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_001_class_6_pts_1024.ply" data-point-size="0.06"></div>
+              <span class="progression-label" style="color: #38bdf8;">N = 1024</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_001_class_6_pts_4096.ply" data-title="Digit 6 (N = 4096 pts)" data-stats="Points: 4096 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_001_class_6_pts_4096.ply" data-point-size="0.05"></div>
+              <span class="progression-label" style="color: #10b981;">N = 4096</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_001_class_6_pts_16384.ply" data-title="Digit 6 (N = 16,384 pts)" data-stats="Points: 16384 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_001_class_6_pts_16384.ply" data-point-size="0.045"></div>
+              <span class="progression-label" style="color: #ec4899;">N = 16,384</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 7 -->
+        <div class="sparse-gen-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">7</span>
+            <span class="sample-id">Digit 7 (Sample #029)</span>
+          </div>
+          <div class="sparse-progression-container">
+            <div class="progression-step step-img">
+              <img src="data/arbitrary_pc_gen/sample_029_class_7_input.png" alt="2D Input Digit 7" loading="lazy">
+              <span class="progression-label img-label">2D Input</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_029_class_7_pts_256.ply" data-title="Digit 7 (N = 256 pts)" data-stats="Points: 256 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_029_class_7_pts_256.ply" data-point-size="0.08"></div>
+              <span class="progression-label" style="color: #a855f7;">N = 256</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_029_class_7_pts_512.ply" data-title="Digit 7 (N = 512 pts)" data-stats="Points: 512 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_029_class_7_pts_512.ply" data-point-size="0.07"></div>
+              <span class="progression-label" style="color: #6366f1;">N = 512</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_029_class_7_pts_1024.ply" data-title="Digit 7 (N = 1024 pts)" data-stats="Points: 1024 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_029_class_7_pts_1024.ply" data-point-size="0.06"></div>
+              <span class="progression-label" style="color: #38bdf8;">N = 1024</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_029_class_7_pts_4096.ply" data-title="Digit 7 (N = 4096 pts)" data-stats="Points: 4096 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_029_class_7_pts_4096.ply" data-point-size="0.05"></div>
+              <span class="progression-label" style="color: #10b981;">N = 4096</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_029_class_7_pts_16384.ply" data-title="Digit 7 (N = 16,384 pts)" data-stats="Points: 16384 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_029_class_7_pts_16384.ply" data-point-size="0.045"></div>
+              <span class="progression-label" style="color: #ec4899;">N = 16,384</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 8 -->
+        <div class="sparse-gen-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">8</span>
+            <span class="sample-id">Digit 8 (Sample #021)</span>
+          </div>
+          <div class="sparse-progression-container">
+            <div class="progression-step step-img">
+              <img src="data/arbitrary_pc_gen/sample_021_class_8_input.png" alt="2D Input Digit 8" loading="lazy">
+              <span class="progression-label img-label">2D Input</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_021_class_8_pts_256.ply" data-title="Digit 8 (N = 256 pts)" data-stats="Points: 256 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_021_class_8_pts_256.ply" data-point-size="0.08"></div>
+              <span class="progression-label" style="color: #a855f7;">N = 256</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_021_class_8_pts_512.ply" data-title="Digit 8 (N = 512 pts)" data-stats="Points: 512 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_021_class_8_pts_512.ply" data-point-size="0.07"></div>
+              <span class="progression-label" style="color: #6366f1;">N = 512</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_021_class_8_pts_1024.ply" data-title="Digit 8 (N = 1024 pts)" data-stats="Points: 1024 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_021_class_8_pts_1024.ply" data-point-size="0.06"></div>
+              <span class="progression-label" style="color: #38bdf8;">N = 1024</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_021_class_8_pts_4096.ply" data-title="Digit 8 (N = 4096 pts)" data-stats="Points: 4096 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_021_class_8_pts_4096.ply" data-point-size="0.05"></div>
+              <span class="progression-label" style="color: #10b981;">N = 4096</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_021_class_8_pts_16384.ply" data-title="Digit 8 (N = 16,384 pts)" data-stats="Points: 16384 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_021_class_8_pts_16384.ply" data-point-size="0.045"></div>
+              <span class="progression-label" style="color: #ec4899;">N = 16,384</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digit 9 -->
+        <div class="sparse-gen-card">
+          <div class="pc-card-header">
+            <span class="digit-badge">9</span>
+            <span class="sample-id">Digit 9 (Sample #016)</span>
+          </div>
+          <div class="sparse-progression-container">
+            <div class="progression-step step-img">
+              <img src="data/arbitrary_pc_gen/sample_016_class_9_input.png" alt="2D Input Digit 9" loading="lazy">
+              <span class="progression-label img-label">2D Input</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_016_class_9_pts_256.ply" data-title="Digit 9 (N = 256 pts)" data-stats="Points: 256 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_016_class_9_pts_256.ply" data-point-size="0.08"></div>
+              <span class="progression-label" style="color: #a855f7;">N = 256</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_016_class_9_pts_512.ply" data-title="Digit 9 (N = 512 pts)" data-stats="Points: 512 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_016_class_9_pts_512.ply" data-point-size="0.07"></div>
+              <span class="progression-label" style="color: #6366f1;">N = 512</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_016_class_9_pts_1024.ply" data-title="Digit 9 (N = 1024 pts)" data-stats="Points: 1024 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_016_class_9_pts_1024.ply" data-point-size="0.06"></div>
+              <span class="progression-label" style="color: #38bdf8;">N = 1024</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_016_class_9_pts_4096.ply" data-title="Digit 9 (N = 4096 pts)" data-stats="Points: 4096 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_016_class_9_pts_4096.ply" data-point-size="0.05"></div>
+              <span class="progression-label" style="color: #10b981;">N = 4096</span>
+            </div>
+            <div class="progression-arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="progression-step step-3d">
+              <button class="btn-expand-ply mesh-expand-btn" data-ply="data/arbitrary_pc_gen/sample_016_class_9_pts_16384.ply" data-title="Digit 9 (N = 16,384 pts)" data-stats="Points: 16384 / 6D Normals" title="Inspect 3D"><i class="fas fa-expand-arrows-alt"></i></button>
+              <div class="ply-viewer" data-ply="data/arbitrary_pc_gen/sample_016_class_9_pts_16384.ply" data-point-size="0.045"></div>
+              <span class="progression-label" style="color: #ec4899;">N = 16,384</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="has-text-centered is-size-7 mt-4 has-text-grey-light">
+        <i class="fas fa-info-circle mr-1"></i>Multi-Scale Point Cloud Synthesis: Switch resolution tabs above to dynamically inspect densities or compare all scales side-by-side.
+      </p>
+    </div>
+  </section>
+
+  <!-- Fullscreen Modal 3D Inspector -->
+  <div id="ply-modal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content custom-modal">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3 class="title is-5 modal-sample-title mb-0">3D Geometry Inspector</h3>
+          <span class="modal-stats-badge" style="display: none;"></span>
+        </div>
+        <button class="delete modal-close-btn" aria-label="close"></button>
+      </div>
+      <div class="modal-viewer-container"></div>
+      <p class="is-size-7 has-text-grey-light mt-3 has-text-centered">
+        <i class="fas fa-mouse mr-1"></i>Left-drag to Orbit &bull; Right-drag to Pan &bull; Scroll to Zoom
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        <strong>Digit3D</strong> by <a href="https://github.com/KhoiDOO" target="_blank">Khoi DO</a>. Released under MIT License.
+      </p>
+      <p class="is-size-7 mt-2">
+        Built with <a href="https://bulma.io/" target="_blank">Bulma</a> and <a href="https://threejs.org/" target="_blank">Three.js</a>.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="static/js/three.min.js"></script>
+  <script src="static/js/OrbitControls.js"></script>
+  <script src="static/js/pointcloud_viewer.js"></script>
+  
+  <!-- Interactive Resolution Tab Controller -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const resButtons = document.querySelectorAll('.res-tab-btn');
+      const singleContainer = document.getElementById('single-res-container');
+      const allContainer = document.getElementById('all-scales-container');
+      const pointSizes = {
+        '256': 0.08,
+        '512': 0.07,
+        '1024': 0.06,
+        '4096': 0.05,
+        '16384': 0.045
+      };
+
+      resButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          resButtons.forEach((b) => b.classList.remove('is-active'));
+          btn.classList.add('is-active');
+
+          const targetRes = btn.getAttribute('data-res');
+
+          if (targetRes === 'all') {
+            singleContainer.style.display = 'none';
+            allContainer.style.display = 'grid';
+            if (window.Digit3DViewer && window.Digit3DViewer.init) {
+              window.Digit3DViewer.init();
+            }
+          } else {
+            allContainer.style.display = 'none';
+            singleContainer.style.display = 'grid';
+
+            const cards = singleContainer.querySelectorAll('.img-cond-card');
+            const ptSize = pointSizes[targetRes] || 0.06;
+
+            cards.forEach((card) => {
+              const sample = card.getAttribute('data-sample');
+              const digit = card.getAttribute('data-digit');
+              const newPly = `data/arbitrary_pc_gen/${sample}_pts_${targetRes}.ply`;
+              const title = `Digit ${digit} (N = ${targetRes} pts)`;
+              const stats = `Points: ${targetRes} / 6D Normals`;
+
+              // Update badge
+              const badge = card.querySelector('.density-badge');
+              if (badge) {
+                badge.innerHTML = `<i class="fas fa-braille mr-1"></i>N = ${targetRes} pts`;
+              }
+
+              // Update expand modal button target
+              const expandBtn = card.querySelector('.btn-expand-ply');
+              if (expandBtn) {
+                expandBtn.setAttribute('data-ply', newPly);
+                expandBtn.setAttribute('data-title', title);
+                expandBtn.setAttribute('data-stats', stats);
+              }
+
+              // Hot-swap 3D model in active canvas
+              const viewer = card.querySelector('.dynamic-res-viewer');
+              if (viewer && window.Digit3DViewer && window.Digit3DViewer.mountCard) {
+                window.Digit3DViewer.mountCard(viewer, newPly, ptSize);
+              }
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

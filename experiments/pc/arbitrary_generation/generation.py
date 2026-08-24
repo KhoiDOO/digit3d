@@ -1,5 +1,6 @@
 import argparse
 import json
+import math
 import os
 import sys
 import time
@@ -7,17 +8,21 @@ from typing import Optional, Tuple
 
 import torch
 import torch.nn.functional as F
+import torchvision.transforms.functional as TF
 import trimesh
 from PIL import Image
-import torchvision.transforms.functional as TF
 from tqdm.auto import tqdm
 
-# Append repository root
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")))
 
 from conquer3d.data.dataset.digit3d import Digit3D
-from rectified_flow_pytorch import MeanFlow
-from experiments.pc.arbitrary_generation.models import ArbitraryPointFlowTransformer
+from experiments.pc.arbitrary_generation.transformer import (
+    ClassConditionedPointTransformer,
+    ImgConditionPointTransformer,
+    PointTransformer,
+)
+from rectified_flow_pytorch import MeanFlow, RectifiedFlow
+from rectified_flow_pytorch.soflow import SoFlow
 
 
 def save_point_cloud_ply(
@@ -78,60 +83,119 @@ def save_point_cloud_ply(
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Arbitrary-Resolution Point Cloud Generation Pipeline")
-    parser.add_argument("--ckpt", type=str, default="", help="Path to trained model checkpoint (.pt)")
-    parser.add_argument("--exp_name", type=str, default="naive", help="Experiment run folder")
-    parser.add_argument("--num_points", type=int, default=1024, help="Target point count to generate")
-    parser.add_argument("--resolutions", nargs="+", type=int, default=[], help="Generate multiple resolutions (e.g. 256 512 1024 4096 16384)")
+    parser = argparse.ArgumentParser(description="Arbitrary-Resolution Point Cloud Generation via Self-Attention")
+    parser.add_argument("--mode", type=int, default=1, help="0: RectifiedFlow, 1: MeanFlow, 2: SoFlow")
+    parser.add_argument("--class_cond", action="store_true", help="Use class conditioning")
+    parser.add_argument("--img_cond", action="store_true", default=True, help="Use image conditioning")
+    parser.add_argument("--ckpt", type=str, default="", help="Path to checkpoint (.pt)")
+    parser.add_argument("--exp_name", type=str, default="", help="Custom experiment run folder name")
+    parser.add_argument("--num_points", type=int, default=1024, help="Default points to generate")
+    parser.add_argument("--resolutions", nargs="+", type=int, default=[], help="List of resolutions (e.g. 256 512 1024 4096 16384)")
     parser.add_argument("--steps", type=int, default=64, help="Sampling steps for flow ODE solver (1 for MeanFlow, 64 for ODE)")
     parser.add_argument("--num_samples", type=int, default=10, help="Number of test samples to generate")
     parser.add_argument("--full_class", action="store_true", help="Generate 1 sample for each digit class 0 to 9")
-    parser.add_argument("--save_dir", type=str, default="", help="Output directory for generated samples")
+    parser.add_argument("--save_dir", type=str, default="", help="Output directory (defaults to runs/<run_name>/ply_samples)")
     args = parser.parse_args()
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+    # Determine run name matching train.py convention
+    if args.exp_name:
+        run_name = args.exp_name
+    else:
+        mode_str = "rf" if args.mode == 0 else ("mf" if args.mode == 1 else "soflow")
+        cond_str = "img" if args.img_cond else ("class" if args.class_cond else "uncond")
+        run_name = f"{mode_str}_{cond_str}_arbitrary"
+
+    run_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "runs", run_name)
 
     # Locate checkpoint
     if args.ckpt:
         ckpt_path = args.ckpt
     else:
-        default_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "runs", args.exp_name)
-        ckpt_path = os.path.join(default_dir, "best_model.pt")
+        ckpt_path = os.path.join(run_dir, "best_model.pt")
         if not os.path.exists(ckpt_path):
-            ckpt_path = os.path.join(default_dir, "latest_model.pt")
+            ckpt_path = os.path.join(run_dir, "latest_model.pt")
 
     if not os.path.exists(ckpt_path):
         raise FileNotFoundError(f"Checkpoint not found at: {ckpt_path}")
 
-    save_dir = args.save_dir if args.save_dir else os.path.join(os.path.dirname(os.path.abspath(__file__)), "ply_samples")
+    # Output directory inside the corresponding run folder
+    save_dir = args.save_dir if args.save_dir else os.path.join(run_dir, "ply_samples")
     os.makedirs(save_dir, exist_ok=True)
 
     print(f"Loading checkpoint: {ckpt_path}")
     checkpoint = torch.load(ckpt_path, map_location=device)
     saved_args = checkpoint.get("args", {})
 
-    model = ArbitraryPointFlowTransformer(
-        in_channels=6,
-        out_channels=6,
-        embed_dim=saved_args.get("embed_dim", 256),
-        depth=saved_args.get("depth", 6),
-        num_heads=saved_args.get("num_heads", 8),
-        mlp_ratio=4.0,
-        img_channels=1,
-        cond_drop_prob=0.0,
-        num_freqs=saved_args.get("num_freqs", 6)
-    ).to(device)
+    mode = saved_args.get("mode", args.mode)
+    img_cond = saved_args.get("img_cond", args.img_cond)
+    class_cond = saved_args.get("class_cond", args.class_cond)
+
+    if img_cond:
+        model = ImgConditionPointTransformer(
+            device=device,
+            dtype=torch.float32,
+            input_channels=saved_args.get("input_channels", 6),
+            output_channels=saved_args.get("output_channels", 6),
+            width=saved_args.get("width", 256),
+            layers=saved_args.get("layers", 6),
+            heads=saved_args.get("heads", 8),
+            init_scale=saved_args.get("init_scale", 0.25),
+            time_token_cond=saved_args.get("time_token_cond", False),
+            use_checkpoint=saved_args.get("use_checkpoint", False),
+            img_channels=1,
+            cond_drop_prob=0.0,
+            token_cond=saved_args.get("class_token_cond", False)
+        )
+    elif class_cond:
+        model = ClassConditionedPointTransformer(
+            device=device,
+            dtype=torch.float32,
+            input_channels=saved_args.get("input_channels", 6),
+            output_channels=saved_args.get("output_channels", 6),
+            width=saved_args.get("width", 256),
+            layers=saved_args.get("layers", 6),
+            heads=saved_args.get("heads", 8),
+            init_scale=saved_args.get("init_scale", 0.25),
+            time_token_cond=saved_args.get("time_token_cond", False),
+            use_checkpoint=saved_args.get("use_checkpoint", False),
+            num_classes=10,
+            cond_drop_prob=0.0,
+            token_cond=saved_args.get("class_token_cond", False)
+        )
+    else:
+        model = PointTransformer(
+            device=device,
+            dtype=torch.float32,
+            input_channels=saved_args.get("input_channels", 6),
+            output_channels=saved_args.get("output_channels", 6),
+            width=saved_args.get("width", 256),
+            layers=saved_args.get("layers", 6),
+            heads=saved_args.get("heads", 8),
+            init_scale=saved_args.get("init_scale", 0.25),
+            time_token_cond=saved_args.get("time_token_cond", False),
+            use_checkpoint=saved_args.get("use_checkpoint", False),
+        )
 
     model.load_state_dict(checkpoint["model"])
     model.eval()
 
-    # Wrap with MeanFlow generative sampler
-    flow_model = MeanFlow(model=model, accept_cond=True).to(device)
+    accept_cond = img_cond or class_cond
+    if mode == 0:
+        flow_model = RectifiedFlow(model=model, accept_cond=accept_cond).to(device)
+    elif mode == 1:
+        flow_model = MeanFlow(model=model, accept_cond=accept_cond).to(device)
+    elif mode == 2:
+        flow_model = SoFlow(model=model, accept_cond=accept_cond).to(device)
+    else:
+        raise ValueError(f"Unknown mode: {mode}")
+
     flow_model.eval()
-    print("Model and MeanFlow wrapper initialized successfully.")
+    print("Model and Flow wrapper initialized successfully.")
 
     # Load test dataset
-    test_dataset = Digit3D(root="~/.conquer3d/", train=False, download=True, cached=True, return_img=True)
+    test_dataset = Digit3D(root="~/.conquer3d/", train=False, download=True, cached=True, return_img=img_cond)
 
     # Select target samples
     selected_indices = []
@@ -153,8 +217,9 @@ def main():
     resolutions = args.resolutions if args.resolutions else [args.num_points]
 
     print("==================================================================")
-    print("   Arbitrary-Resolution Point Cloud Generation via MeanFlow       ")
+    print("   Arbitrary-Resolution Point Cloud Generation via Self-Attn      ")
     print("==================================================================")
+    print(f"Run Name     : {run_name}")
     print(f"Samples Count: {len(selected_indices)}")
     print(f"Resolutions  : {resolutions}")
     print(f"Steps        : {args.steps}")
@@ -164,12 +229,13 @@ def main():
     with torch.no_grad():
         for idx, label in tqdm(selected_indices, desc="Generating Samples"):
             v, f, _, img_t = test_dataset[idx]
-            img_gpu = img_t.unsqueeze(0).to(device)  # [1, 1, 28, 28]
+            img_gpu = img_t.unsqueeze(0).to(device) if img_t is not None else None
 
             # Save paired 2D input image
-            img_pil = TF.to_pil_image(img_t)
-            img_save_path = os.path.join(save_dir, f"sample_{idx:03d}_class_{label}_input.png")
-            img_pil.save(img_save_path)
+            if img_t is not None:
+                img_pil = TF.to_pil_image(img_t)
+                img_save_path = os.path.join(save_dir, f"sample_{idx:03d}_class_{label}_input.png")
+                img_pil.save(img_save_path)
 
             # Construct ground-truth mesh
             mesh = trimesh.Trimesh(vertices=v.numpy(), faces=f.numpy(), process=False)

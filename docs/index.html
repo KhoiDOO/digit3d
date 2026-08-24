@@ -23,6 +23,20 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/style.css">
+  <!-- MathJax Configuration & Script -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -54,7 +68,7 @@
           </div>
         </div>
 
-        <!-- Action & Navigation Buttons -->
+                                <!-- Action & Navigation Buttons -->
         <div class="publication-links">
           <a href="https://github.com/KhoiDOO/digit3d" target="_blank" class="btn-action">
             <i class="fab fa-github"></i>
@@ -70,23 +84,31 @@
           </a>
           <a href="unconditional.html" class="btn-action">
             <i class="fas fa-dice"></i>
-            <span>Unconditional Flow</span>
+            <span>Unconditional Generation</span>
           </a>
           <a href="class_conditional.html" class="btn-action">
             <i class="fas fa-list-ol"></i>
-            <span>Class Conditional</span>
+            <span>Class-Conditional Generation</span>
           </a>
           <a href="image_conditional.html" class="btn-action">
             <i class="fas fa-image"></i>
-            <span>2D → 3D Image Condition</span>
+            <span>Image-Conditional Generation</span>
+          </a>
+          <a href="arbitrary_pc_generation.html" class="btn-action">
+            <i class="fas fa-braille"></i>
+            <span>Arbitrary-Resolution Generation</span>
           </a>
           <a href="sparse_reconstruction.html" class="btn-action">
             <i class="fas fa-cubes"></i>
-            <span>Sparse Voxel Recon</span>
+            <span>Sparse Voxel Reconstruction</span>
           </a>
           <a href="sparse_generation.html" class="btn-action">
             <i class="fas fa-cube"></i>
-            <span>Sparse Voxel Gen</span>
+            <span>Image-Conditional Mesh Generation</span>
+          </a>
+          <a href="pccond_mesh_generation.html" class="btn-action">
+            <i class="fas fa-shapes"></i>
+            <span>PointCloud-Conditional Mesh Generation</span>
           </a>
           <a href="limitations.html" class="btn-action">
             <i class="fas fa-exclamation-triangle"></i>
@@ -125,7 +147,7 @@
         <div class="feature-box">
           <div class="feature-icon has-text-success"><i class="fas fa-braille"></i></div>
           <h3 class="feature-title">Point Clouds with Normals</h3>
-          <p class="feature-desc">Lightweight [512, 6] tensors containing 3D coordinates (X, Y, Z) paired with oriented surface normal vectors (N<sub>x</sub>, N<sub>y</sub>, N<sub>z</sub>).</p>
+          <p class="feature-desc">Lightweight $[512, 6]$ tensors containing 3D coordinates (X, Y, Z) paired with oriented surface normal vectors $(n_x, n_y, n_z)$.</p>
         </div>
 
         <div class="feature-box">
@@ -154,10 +176,10 @@
           <div>
             <div class="feature-icon has-text-primary"><i class="fas fa-dice"></i></div>
             <h3 class="feature-title">1. Unconditional Point Cloud Generation</h3>
-            <p class="feature-desc">Spontaneous 3D digit generation from Gaussian noise x<sub>0</sub> ~ N(0, I) via Mean Flow continuous velocity matching.</p>
+            <p class="feature-desc">Spontaneous 3D digit generation from Gaussian noise $\mathbf{x}_0 \sim \mathcal{N}(\mathbf{0}, \mathbf{I})$ via Mean Flow continuous velocity matching.</p>
           </div>
           <a href="unconditional.html" class="btn-action btn-primary mt-4" style="align-self: flex-start;">
-            <span>Explore Unconditional Flow</span>
+            <span>Explore Unconditional Generation</span>
             <i class="fas fa-arrow-right ml-1"></i>
           </a>
         </div>
@@ -170,7 +192,7 @@
             <p class="feature-desc">Targeted 3D synthesis across all 10 digit classes (0–9) using class token embeddings and Classifier-Free Guidance (CFG).</p>
           </div>
           <a href="class_conditional.html" class="btn-action btn-primary mt-4" style="align-self: flex-start;">
-            <span>Explore Class Conditional</span>
+            <span>Explore Class-Conditional Generation</span>
             <i class="fas fa-arrow-right ml-1"></i>
           </a>
         </div>
@@ -183,20 +205,20 @@
             <p class="feature-desc">Single-view 3D shape synthesis mapping 28 &times; 28 grayscale images through GroupNorm vision encoders to 6D normal-oriented point clouds.</p>
           </div>
           <a href="image_conditional.html" class="btn-action btn-primary mt-4" style="align-self: flex-start;">
-            <span>Explore 2D → 3D Flow</span>
+            <span>Explore Image-Conditional Generation</span>
             <i class="fas fa-arrow-right ml-1"></i>
           </a>
         </div>
 
-        <!-- Exp 4 -->
+        <!-- Exp 4: Arbitrary-Resolution Point Cloud Generation -->
         <div class="feature-box" style="display: flex; flex-direction: column; justify-content: space-between;">
           <div>
-            <div class="feature-icon has-text-purple"><i class="fas fa-cubes"></i></div>
-            <h3 class="feature-title">4. Sparse Voxel VAE Reconstruction</h3>
-            <p class="feature-desc">Hierarchical 3D sparse convolutional autoencoder compressing sparse SDF grids into 16-channel latents and decoding watertight meshes.</p>
+            <div class="feature-icon has-text-cyan" style="color: var(--accent-cyan);"><i class="fas fa-braille"></i></div>
+            <h3 class="feature-title">4. Arbitrary-Resolution Generation</h3>
+            <p class="feature-desc">Continuous point cloud synthesis from 2D images across flexible point counts (N = 256, 512, 1024, 4096, 16384) with multi-scale surface fidelity.</p>
           </div>
-          <a href="sparse_reconstruction.html" class="btn-action btn-primary mt-4" style="align-self: flex-start;">
-            <span>Explore Sparse VAE</span>
+          <a href="arbitrary_pc_generation.html" class="btn-action btn-primary mt-4" style="align-self: flex-start;">
+            <span>Explore Arbitrary-Resolution Generation</span>
             <i class="fas fa-arrow-right ml-1"></i>
           </a>
         </div>
@@ -204,12 +226,38 @@
         <!-- Exp 5 -->
         <div class="feature-box" style="display: flex; flex-direction: column; justify-content: space-between;">
           <div>
+            <div class="feature-icon has-text-purple"><i class="fas fa-cubes"></i></div>
+            <h3 class="feature-title">5. Sparse Voxel VAE Reconstruction</h3>
+            <p class="feature-desc">Hierarchical 3D sparse convolutional autoencoder compressing sparse SDF grids into 16-channel latents and decoding watertight meshes.</p>
+          </div>
+          <a href="sparse_reconstruction.html" class="btn-action btn-primary mt-4" style="align-self: flex-start;">
+            <span>Explore Sparse Voxel Reconstruction</span>
+            <i class="fas fa-arrow-right ml-1"></i>
+          </a>
+        </div>
+
+        <!-- Exp 6 -->
+        <div class="feature-box" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
             <div class="feature-icon has-text-warning"><i class="fas fa-cube"></i></div>
-            <h3 class="feature-title">5. Two-Stage Sparse Voxel Mesh Generation</h3>
-            <p class="feature-desc">Cascaded 3D pipeline combining Stage 1 Structure DiT MeanFlow (active voxels) and Stage 2 Sparse Vertex SDF Rectified Flow (watertight meshes).</p>
+            <h3 class="feature-title">6. Image-Conditional Mesh Generation</h3>
+            <p class="feature-desc">Cascaded 3D pipeline combining Stage 1 Structure DiT MeanFlow (active voxels) and Stage 2 Sparse Vertex SDF Rectified Flow (watertight meshes) from 2D images.</p>
           </div>
           <a href="sparse_generation.html" class="btn-action btn-primary mt-4" style="align-self: flex-start;">
-            <span>Explore Sparse Voxel Gen</span>
+            <span>Explore Image-Conditional Mesh Generation</span>
+            <i class="fas fa-arrow-right ml-1"></i>
+          </a>
+        </div>
+
+        <!-- Exp 7: PointCloud-Conditional Mesh Generation -->
+        <div class="feature-box" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="feature-icon has-text-pink" style="color: var(--accent-pink);"><i class="fas fa-shapes"></i></div>
+            <h3 class="feature-title">7. PointCloud-Conditional Mesh Generation</h3>
+            <p class="feature-desc">Direct 3D shape reconstruction and surface completion conditioned on sparse 6D point clouds ($N = 512$) to generate high-fidelity watertight meshes.</p>
+          </div>
+          <a href="pccond_mesh_generation.html" class="btn-action btn-primary mt-4" style="align-self: flex-start;">
+            <span>Explore PointCloud-Conditional Mesh Generation</span>
             <i class="fas fa-arrow-right ml-1"></i>
           </a>
         </div>
@@ -218,7 +266,7 @@
         <div class="feature-box" style="display: flex; flex-direction: column; justify-content: space-between;">
           <div>
             <div class="feature-icon has-text-danger"><i class="fas fa-exclamation-triangle"></i></div>
-            <h3 class="feature-title">6. Limitations & Technical Discussion</h3>
+            <h3 class="feature-title">8. Limitations & Technical Discussion</h3>
             <p class="feature-desc">Analysis of topological genus constraints, small model regimes, resolution bounds, and multi-resolution roadmap.</p>
           </div>
           <a href="limitations.html" class="btn-action btn-primary mt-4" style="align-self: flex-start;">
@@ -236,11 +284,11 @@
       <div class="section-header">
         <span class="section-tag"><i class="fas fa-code mr-1"></i>Quick Start</span>
         <h2 class="section-title">Zero-Extraction Dataset Streaming</h2>
-        <p class="section-desc">Stream 3D meshes, point clouds with normals, and sparse voxel SDFs directly from PyTorch:</p>
+        <p class="section-desc">Stream 3D meshes and point clouds with surface normals directly in PyTorch:</p>
       </div>
 
-      <pre class="bibtex-box" style="background: rgba(10, 14, 26, 0.9);"><code># Install conquer3d and rectified-flow-pytorch
-from conquer3d.data.dataset.digit3d import Digit3D, PointDigit3D, SparseDigit3D
+      <pre class="bibtex-box"><code># Install conquer3d
+from conquer3d.data.dataset.digit3d import Digit3D, PointDigit3D
 
 # 1. Stream 3D Meshes (Vertices, Faces, Class Label, Optional 2D Image)
 mesh_dataset = Digit3D(root="~/.conquer3d/", train=True, download=True, return_img=True)
@@ -248,11 +296,7 @@ vertices, faces, label, img = mesh_dataset[0]
 
 # 2. Stream [512, 6] Point Clouds with Surface Normals (X, Y, Z, Nx, Ny, Nz)
 pc_dataset = PointDigit3D(root="~/.conquer3d/", train=True, num_points=512, download=True)
-points, features, label = pc_dataset[0]
-
-# 3. Stream Sparse Voxel Coordinates and Signed Distance Fields
-sdf_dataset = SparseDigit3D(root="~/.conquer3d/", train=False, download=True)
-sparse_coords, sparse_sdfs, label = sdf_dataset[0]</code></pre>
+points, features, label = pc_dataset[0]</code></pre>
     </div>
   </section>
 
