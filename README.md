@@ -1,22 +1,31 @@
-# Digit3D (3D MNIST): Geometry, Classification & Generative Modeling
+# Digit3D: 3D Multimodal MNIST Benchmark
 
-Digit3D transforms the classic 2D MNIST dataset into a rich, lightweight 3D multimodal benchmark. It features lightweight `.obj` meshes, high-resolution sparse Signed Distance Fields (SDF), 3D point clouds with surface normals, and 2D source images for end-to-end 3D vision, representation learning, and generative modeling.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![PyTorch 2.0+](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
+[![Project Page](https://img.shields.io/badge/Docs-Live%20Platform-brightgreen)](https://khoidoo.github.io/digit3d/)
+
+**Digit3D** is a lightweight, watertight 3D multimodal benchmark extending the classic MNIST dataset into 3D Computer Vision and Geometric AI. It provides 70,000 paired watertight `.obj` meshes, oriented 6D point clouds with surface normals ($[N, 6]$), and $28 \times 28$ grayscale source images for rapid algorithm prototyping, representation learning, and 3D generative modeling.
 
 ---
 
-## Key Features
+## 3D Watertight Mesh Modalities (Digits 0–9)
 
-- **Multimodal Representations**:
-  - **Dense 3D Meshes**: Watertight, Taubin-smoothed `.obj` meshes with controlled triangle counts (~500 faces).
-  - **Sparse Voxel SDFs**: Offline-precomputed Signed Distance Fields compressed into sparse narrow-band `.npz` archives via GPU-accelerated BVH queries.
-  - **Point Clouds with Normals**: Lightweight $[N, 6]$ point coordinates $(X, Y, Z)$ and surface normal vectors $(N_x, N_y, N_z)$.
-  - **Paired 2D Images**: Source $28 \times 28$ PNG images for multimodal image $\to$ 3D tasks.
-- **High-Performance Dataset Streaming**: Zero-extraction PyTorch datasets (`Digit3D`, `PointDigit3D`, `SparseDigit3D`) that stream directly from compressed zip archives into CPU/GPU memory without inode exhaustion.
-- **Point Cloud Classification Benchmark**: `PointTransformerCls` architecture achieving **~99.0% accuracy** on 10-class 3D digit recognition, complete with automated misclassification export and error analysis.
-- **Continuous Normalizing Flows & Generative Modeling**:
-  - State-of-the-art flow matching algorithms: **Rectified Flow**, **Mean Flow**, and **SoFlow** (1-step generative flows).
-  - Flexible conditioning modes: **Unconditional**, **Class-Conditioned** (`--class_cond`), and **Image-Conditioned** (`--img_cond`).
-  - **Inference & Sampling**: Single-image 3D generation (`--img_path`), class filtering (`--class_label`), Classifier-Free Guidance (`--cfg_scale`), and latent class morphing/interpolation (`interpolation.py`).
+| **Digit 0** | **Digit 1** | **Digit 2** | **Digit 3** | **Digit 4** |
+|:---:|:---:|:---:|:---:|:---:|
+| <img src="docs/static/gifs/mesh_digit_0.gif" width="140" alt="Digit 0 Mesh" /> | <img src="docs/static/gifs/mesh_digit_1.gif" width="140" alt="Digit 1 Mesh" /> | <img src="docs/static/gifs/mesh_digit_2.gif" width="140" alt="Digit 2 Mesh" /> | <img src="docs/static/gifs/mesh_digit_3.gif" width="140" alt="Digit 3 Mesh" /> | <img src="docs/static/gifs/mesh_digit_4.gif" width="140" alt="Digit 4 Mesh" /> |
+| **Digit 5** | **Digit 6** | **Digit 7** | **Digit 8** | **Digit 9** |
+| <img src="docs/static/gifs/mesh_digit_5.gif" width="140" alt="Digit 5 Mesh" /> | <img src="docs/static/gifs/mesh_digit_6.gif" width="140" alt="Digit 6 Mesh" /> | <img src="docs/static/gifs/mesh_digit_7.gif" width="140" alt="Digit 7 Mesh" /> | <img src="docs/static/gifs/mesh_digit_8.gif" width="140" alt="Digit 8 Mesh" /> | <img src="docs/static/gifs/mesh_digit_9.gif" width="140" alt="Digit 9 Mesh" /> |
+
+---
+
+## Core Benefits of Digit3D
+
+- ⚡ **Ultra-Fast Prototyping**: Train state-of-the-art 3D point cloud classifiers (~99% accuracy) and continuous normalizing flows in under 10–30 minutes on a single consumer GPU.
+- 🔄 **Multimodal 2D $\longleftrightarrow$ 3D Alignment**: Direct 1-to-1 pairing between 2D images ($28 \times 28$), watertight 3D meshes (~500 faces), and oriented 6D point clouds ($[N, 6]$) for image-to-3D, point cloud generation, and cross-modal learning.
+- 📦 **Zero-Extraction Dataset Streaming**: Native PyTorch dataset classes stream assets directly from compressed zip archives into memory, eliminating disk extraction and filesystem inode exhaustion.
+- 🎯 **Clean Watertight Topology**: Every 3D mesh is constructed with distance field extrusions, Taubin smoothing, and surface decimation, ensuring consistent outward face normals and zero topological degeneracies.
+- 🧪 **Comprehensive Generative & Discriminative Baselines**: Established benchmark suites for Point Cloud Classification, Continuous Flow Matching (Rectified Flow, Mean Flow, SoFlow), Multi-Scale / Arbitrary-Resolution Synthesis, Point Cloud Inpainting, and Two-Stage Watertight Mesh Generation.
 
 ---
 
@@ -24,12 +33,22 @@ Digit3D transforms the classic 2D MNIST dataset into a rich, lightweight 3D mult
 
 ```text
 digit3d/
-├── data/                               # Dataset construction & SDF computation pipeline
+├── data/                               # Dataset construction & generation pipeline
 │   ├── construct.py                   # 2D MNIST -> 3D .obj mesh & .png construction
-│   ├── compute.py                     # Mesh -> Sparse SDF narrow-band computation (GPU BVH)
-│   └── run.sh                         # Complete end-to-end dataset generation bash script
+│   ├── render_dataset_mesh_gifs.py    # 3D spinning mesh animation generator
+│   └── run.sh                         # Complete dataset construction script
 │
-├── docs/                               # Interactive academic project page & WebGL viewers
+├── docs/                               # Interactive multi-page documentation platform
+│   ├── index.html                     # Benchmark overview & project showcase
+│   ├── unconditional.html             # Unconditional Point Cloud Generation
+│   ├── class_conditional.html         # Class-Conditional Point Cloud Generation
+│   ├── image_conditional.html         # Image-Conditional Point Cloud Generation
+│   ├── arbitrary_pc_generation.html   # Arbitrary-Resolution Multi-Scale Generation
+│   ├── sparse_reconstruction.html     # Sparse Voxel VAE Reconstruction
+│   ├── sparse_generation.html         # Image-Conditional Mesh Generation
+│   ├── pccond_mesh_generation.html    # PointCloud-Conditional Mesh Generation
+│   ├── limitations.html               # Technical analysis & future roadmap
+│   └── static/gifs/                   # 3D spinning mesh & trajectory animations
 │
 └── experiments/
     ├── pc/                            # Point Cloud experiments
@@ -39,57 +58,77 @@ digit3d/
     │   │   ├── eval.py                # Evaluation & misclassified case export (.ply + .png)
     │   │   └── eval_results.json      # Benchmark metrics & per-class breakdown
     │   │
-    │   └── generation/                # 3D Generative modeling & continuous flows
-    │       ├── transformer.py         # PointTransformer, ClassConditioned, ImgConditionPointTransformer
-    │       ├── train.py               # RectifiedFlow, MeanFlow, SoFlow training
-    │       ├── generation.py          # Image-conditioned & class-conditioned 3D sampling
-    │       ├── interpolation.py       # Latent shape morphing & class interpolation
-    │       ├── fid.py                 # Fréchet Distance evaluation for 3D point clouds
-    │       └── checkpoint.py          # Memory-efficient gradient checkpointing
+    │   ├── generation/                # Continuous flow generative modeling
+    │   │   ├── transformer.py         # PointTransformer, ClassConditioned, ImgConditionPointTransformer
+    │   │   ├── train.py               # RectifiedFlow, MeanFlow, SoFlow training
+    │   │   ├── generation.py          # Image-conditioned & class-conditioned 3D sampling
+    │   │   ├── interpolation.py       # Latent shape morphing & class interpolation
+    │   │   ├── record_trajectory_video.py # ODE continuous flow trajectory GIF recorder
+    │   │   ├── fid.py                 # Fréchet Distance evaluation for 3D point clouds
+    │   │   └── checkpoint.py          # Memory-efficient gradient checkpointing
+    │   │
+    │   ├── arbitrary_generation/      # Multi-scale arbitrary point cloud synthesis
+    │   │   ├── transformer.py         # Continuous multi-resolution PointTransformer
+    │   │   ├── train.py               # Arbitrary point density training pipeline
+    │   │   ├── checkpoint.py          # Model checkpoint management
+    │   │   ├── fid.py                 # Multi-scale Chamfer Distance & FID evaluation
+    │   │   └── interpolation.py       # Resolution and class latent interpolation
+    │   │
+    │   └── inpainting/                # Point cloud inpainting & surface completion
+    │       ├── train.py               # Partial point cloud completion flow training
+    │       ├── eval.py                # Inpainting Chamfer Distance evaluation
+    │       └── models.py              # PointInpaintingTransformer
     │
-    └── sparse_voxel/                  # Sparse Voxel experiments
-        ├── classification/            # Sparse Voxel ResNet classification benchmark
-        │   ├── models.py              # SparseClassifier architecture
-        │   ├── train.py               # Classification training script
-        │   ├── eval.py                # Evaluation & misclassified error export (.ply + .png)
-        │   └── eval_results.json      # Benchmark metrics & per-class breakdown
-        │
-        └── reconstruction/            # Sparse Voxel VAE 3D reconstruction
-            ├── models.py              # SimpleSparseVAE architecture
-            ├── train.py               # VAE reconstruction training script
-            ├── generation.py          # 3D Mesh reconstruction & ply_samples export
-            ├── eval.py                # Reconstruction evaluation (Chamfer Distance, SDF MSE)
-            └── arch.py                # Layer-by-layer stride & coordinate inspection
+    ├── sparse_voxel/                  # Sparse Voxel experiments
+    │   ├── classification/            # Sparse Voxel ResNet classification benchmark
+    │   │   ├── models.py              # SparseClassifier architecture
+    │   │   ├── train.py               # Classification training script
+    │   │   ├── eval.py                # Evaluation & error analysis
+    │   │   └── eval_results.json      # Benchmark metrics & per-class breakdown
+    │   │
+    │   ├── reconstruction/            # Sparse Voxel VAE 3D reconstruction
+    │   │   ├── models.py              # SimpleSparseVAE architecture
+    │   │   ├── train.py               # VAE reconstruction training script
+    │   │   ├── generation.py          # 3D Mesh reconstruction & sample export
+    │   │   └── eval.py                # Reconstruction evaluation (Chamfer Distance)
+    │   │
+    │   ├── generation/                # Two-Stage Image-to-Mesh Generation
+    │   │   ├── stage1/                # Structure DiT MeanFlow (Active Voxels)
+    │   │   └── stage2/                # Sparse Vertex SDF Rectified Flow (Watertight Mesh)
+    │   │
+    │   └── pccond_generation/         # Two-Stage PointCloud-to-Mesh Generation
+    │       ├── stage1/                # Point-Conditioned Structure DiT
+    │       └── stage2/                # Point-Conditioned Sparse Vertex SDF
+    │
+    └── render_experiment_videos.py    # Multi-panel 3D experiment video rendering engine
 ```
 
 ---
 
 ## 1. Dataset Generation Pipeline
 
-To generate the complete 70,000-sample dataset from scratch:
+To construct the complete 70,000-sample dataset:
 
 ```bash
 cd data/
 bash run.sh
 ```
 
-### Pipeline Steps:
+### Construction Details:
 1. **Mesh Construction (`construct.py`)**:
-   Downloads MNIST via `torchvision`, computes distance transforms, applies spherical parabolic thickness along the Z-axis, extracts isosurfaces via Marching Cubes, smooths via Taubin filter, and decimates to ~500 triangles. Saves 70,000 paired `.obj` meshes and `.png` images into `src/`.
-2. **Dense Archiving**: Compresses `src/` into `digit3d.zip`.
-3. **Offline Sparse Voxelization (`compute.py`)**: Queries GPU-accelerated BVH trees with `conquer3d` to compute Signed Distance Fields, saving sparse narrow-band coordinates (`idx_grids`) and features (`sdf`) into `sdf/`.
-4. **Sparse Archiving**: Compresses `sdf/` into `digit3d_sdf.zip`.
+   Downloads MNIST via `torchvision`, computes 2D distance transforms, applies spherical parabolic thickness along the $Z$-axis, extracts isosurfaces via Marching Cubes, smooths with a Taubin filter, and decimates to ~500 triangles. Saves 70,000 paired `.obj` meshes and `.png` images into `src/`.
+2. **Streaming Archiving**: Compresses `src/` into `digit3d.zip`.
 
 ---
 
-## 2. Dataset Usage in PyTorch
+## 2. Dataset Streaming in PyTorch
 
 The dataset classes stream assets directly from zip archives without requiring manual extraction on disk:
 
 ```python
-from conquer3d.data.dataset.digit3d import Digit3D, PointDigit3D, SparseDigit3D
+from conquer3d.data.dataset.digit3d import Digit3D, PointDigit3D
 
-# 1. Point Cloud Dataset (XYZ + Normals + Optional Paired Image)
+# 1. Point Cloud Dataset (XYZ + Surface Normals + Optional Paired Image)
 point_dataset = PointDigit3D(
     root="~/.conquer3d/",
     train=True,
@@ -98,18 +137,17 @@ point_dataset = PointDigit3D(
     return_img=True
 )
 points, features, label, img = point_dataset[0]
-# points:   [512, 3] (XYZ)
-# features: [512, 6] (XYZ + NxNyNz normals)
+# points:   [512, 3] (XYZ coordinates)
+# features: [512, 6] (XYZ + NxNyNz oriented normals)
 # label:    int (0-9)
 # img:      [1, 28, 28] (Tensor in [0, 1])
 
-# 2. Dense Mesh Dataset (Vertices & Faces)
-mesh_dataset = Digit3D(root="~/.conquer3d/", train=False, download=True)
-vertices, faces, label = mesh_dataset[0]
-
-# 3. Sparse SDF Dataset (Voxel Grid Indices & SDF Values)
-sdf_dataset = SparseDigit3D(root="~/.conquer3d/", train=False, download=True)
-idx_grids, sdf_values, label = sdf_dataset[0]
+# 2. Watertight 3D Mesh Dataset (Vertices & Triangular Faces)
+mesh_dataset = Digit3D(root="~/.conquer3d/", train=False, download=True, return_img=True)
+vertices, faces, label, img = mesh_dataset[0]
+# vertices: [V, 3] (3D vertex coordinates)
+# faces:    [F, 3] (Triangular face indices)
+# label:    int (0-9)
 ```
 
 ---
@@ -128,11 +166,11 @@ python experiments/pc/classification/train.py --epochs 100 --batch_size 32
 python experiments/pc/classification/eval.py
 ```
 - **Accuracy**: **~98.95%** on the 10,000-sample test set.
-- **Misclassification Export**: Automatically identifies any misclassified test samples and saves paired 2D images (`.png`) and 3D point clouds with normals (`.ply`) to `experiments/pc/classification/wrong/` for error analysis.
+- **Misclassification Export**: Automatically identifies misclassified test samples and saves paired 2D images (`.png`) and 3D point clouds with normals (`.ply`) to `experiments/pc/classification/wrong/` for error analysis.
 
 ---
 
-## 4. 3D Generative Modeling & Flow Matching
+## 4. 3D Generative Modeling & Continuous Flows
 
 The generative suite implements continuous normalizing flows on 3D point clouds with surface normals.
 
@@ -190,18 +228,13 @@ python experiments/pc/generation/generation.py \
     --cfg_scale 1.5
 ```
 
-#### 3. Generate Sequential Samples from the Test Dataset:
+#### 3. Record Continuous Flow ODE Trajectory Animation (`record_trajectory_video.py`):
 ```bash
-python experiments/pc/generation/generation.py \
-    --img_cond \
-    --num_samples 10 \
-    --sample_offset 0
+python experiments/pc/generation/record_trajectory_video.py \
+    --img_path docs/data/img_cond/sample_004_class_0_input.png \
+    --steps 50 \
+    --output_gif experiments/pc/generation/image_conditional_trajectory.gif
 ```
-
-All generated samples are saved as:
-- Individual readable `.ply` point cloud files (with coordinates and normal vectors) in `runs/<exp_name>/ply_samples/`.
-- Paired input `.png` images side-by-side (`sample_000_class_7_input.png` next to `sample_000_class_7.ply`).
-- Complete PyTorch trajectory tensor `samples.pt`.
 
 ---
 
@@ -219,9 +252,6 @@ python experiments/pc/generation/interpolation.py \
     --noise_strength 1.0
 ```
 
-- Generates $k$ intermediate shapes smoothly transitioning from `class_start` to `class_end`.
-- Exports all trajectory point clouds into `runs/<exp_name>/interpolation/from_0_to_8/`.
-
 ---
 
 ### D. Generative Quality Evaluation (`fid.py`)
@@ -236,7 +266,7 @@ python experiments/pc/generation/fid.py --mode 0 --class_cond --batch_size 500
 
 ## 5. 3D Visualization
 
-All generated `.ply` and `.obj` files can be directly opened in standard 3D viewers such as **MeshLab**, **CloudCompare**, **Blender**, or **macOS Preview**.
+All generated `.ply` and `.obj` files can be directly inspected in standard 3D viewers such as **MeshLab**, **CloudCompare**, **Blender**, or through the interactive web platform at [`docs/index.html`](https://khoidoo.github.io/digit3d/).
 
 ---
 
