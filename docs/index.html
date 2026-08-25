@@ -68,7 +68,7 @@
           </div>
         </div>
 
-                                <!-- Action & Navigation Buttons -->
+        <!-- Action & Navigation Buttons -->
         <div class="publication-links">
           <a href="https://github.com/KhoiDOO/digit3d" target="_blank" class="btn-action">
             <i class="fab fa-github"></i>
@@ -116,6 +116,53 @@
           </a>
         </div>
 
+        <!-- 3D Watertight Mesh Modalities Showcase (Digits 0–9) -->
+        <div class="hero-mesh-showcase">
+          <div class="hero-mesh-title"><i class="fas fa-cubes mr-2"></i>Watertight 3D Mesh Modalities (Digits 0–9)</div>
+          <div class="digit-mesh-grid">
+            <div class="digit-gif-card">
+              <img src="static/gifs/mesh_digit_0.gif" alt="Digit 0 Mesh" class="digit-mesh-gif" />
+              <span class="digit-label">Digit 0</span>
+            </div>
+            <div class="digit-gif-card">
+              <img src="static/gifs/mesh_digit_1.gif" alt="Digit 1 Mesh" class="digit-mesh-gif" />
+              <span class="digit-label">Digit 1</span>
+            </div>
+            <div class="digit-gif-card">
+              <img src="static/gifs/mesh_digit_2.gif" alt="Digit 2 Mesh" class="digit-mesh-gif" />
+              <span class="digit-label">Digit 2</span>
+            </div>
+            <div class="digit-gif-card">
+              <img src="static/gifs/mesh_digit_3.gif" alt="Digit 3 Mesh" class="digit-mesh-gif" />
+              <span class="digit-label">Digit 3</span>
+            </div>
+            <div class="digit-gif-card">
+              <img src="static/gifs/mesh_digit_4.gif" alt="Digit 4 Mesh" class="digit-mesh-gif" />
+              <span class="digit-label">Digit 4</span>
+            </div>
+            <div class="digit-gif-card">
+              <img src="static/gifs/mesh_digit_5.gif" alt="Digit 5 Mesh" class="digit-mesh-gif" />
+              <span class="digit-label">Digit 5</span>
+            </div>
+            <div class="digit-gif-card">
+              <img src="static/gifs/mesh_digit_6.gif" alt="Digit 6 Mesh" class="digit-mesh-gif" />
+              <span class="digit-label">Digit 6</span>
+            </div>
+            <div class="digit-gif-card">
+              <img src="static/gifs/mesh_digit_7.gif" alt="Digit 7 Mesh" class="digit-mesh-gif" />
+              <span class="digit-label">Digit 7</span>
+            </div>
+            <div class="digit-gif-card">
+              <img src="static/gifs/mesh_digit_8.gif" alt="Digit 8 Mesh" class="digit-mesh-gif" />
+              <span class="digit-label">Digit 8</span>
+            </div>
+            <div class="digit-gif-card">
+              <img src="static/gifs/mesh_digit_9.gif" alt="Digit 9 Mesh" class="digit-mesh-gif" />
+              <span class="digit-label">Digit 9</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -148,12 +195,6 @@
           <div class="feature-icon has-text-success"><i class="fas fa-braille"></i></div>
           <h3 class="feature-title">Point Clouds with Normals</h3>
           <p class="feature-desc">Lightweight $[512, 6]$ tensors containing 3D coordinates (X, Y, Z) paired with oriented surface normal vectors $(n_x, n_y, n_z)$.</p>
-        </div>
-
-        <div class="feature-box">
-          <div class="feature-icon has-text-warning"><i class="fas fa-bolt"></i></div>
-          <h3 class="feature-title">Zero-Extraction Streaming</h3>
-          <p class="feature-desc">Native PyTorch dataset classes streaming point clouds, meshes, and sparse SDFs directly from zip archives without disk extraction.</p>
         </div>
       </div>
     </div>
@@ -278,13 +319,13 @@
     </div>
   </section>
 
-  <!-- Section: Python Streaming Quickstart -->
+  <!-- Section: PyTorch Dataset Quickstart -->
   <section class="section-wrapper">
     <div class="glass-card">
       <div class="section-header">
         <span class="section-tag"><i class="fas fa-code mr-1"></i>Quick Start</span>
-        <h2 class="section-title">Zero-Extraction Dataset Streaming</h2>
-        <p class="section-desc">Stream 3D meshes and point clouds with surface normals directly in PyTorch:</p>
+        <h2 class="section-title">PyTorch Dataset Quickstart</h2>
+        <p class="section-desc">Load 3D meshes and point clouds with surface normals directly in PyTorch:</p>
       </div>
 
       <pre class="bibtex-box"><code># Install conquer3d
